@@ -1,0 +1,605 @@
+==========================
+RELEASE NOTE APLIKASI PPOB
+==========================
+
+================================================================
+Versi 02.03.15 (2012-07-02)
+[NEW]
+- check purchase status 
+
+[FIXED]
+
+[ENHANCEMENT]
+- format data diganti json
+
+[KNOWN ISSUES]
+
+[TODO]
+
+[CONTRIBUTORS]
+Endy Muhardin (10):
+      implement check purchase
+      fix validasi msn/idpel
+      menambahkan informasi jumlah records
+      fix query by operator
+      fix duplicate filter
+      nilai pembelian dalam ribuan
+      purchase response return full object
+      add informasi saldo setelah purchase
+      mas sony resign, remove email
+      file rekon kirim ke mas romli
+      menyesuaikan playsms dengan format data baru
+
+================================================================
+Versi 02.03.14 (2012-05-30)
+[NEW]
+- transaksi via sms
+  - ganti pin
+  - cek saldo
+  - pembelian token listrik prabayar
+
+[FIXED]
+
+[ENHANCEMENT]
+
+[KNOWN ISSUES]
+
+[TODO]
+
+[CONTRIBUTORS]
+Adi Sulistiono (1):
+      data awal loket dan operator
+
+Endy Muhardin (22):
+      template sms handler
+      jenis transaksi sms
+      implement domain model handphone loket
+      implement cek saldo
+      implement UI management untuk add/remove hp loket
+      implement plugin playsms untuk ppob
+      implement transaksi purchase by sms
+      implement ganti pin
+      implement purchase advice
+      jumlah parameter yang diterima playsms tidak dibatasi
+      fix response cek saldo
+      fix number format
+      fix parameter assignment
+      implement no hp pembeli
+      fix timeout supaya lebih lama (5 menit)
+      remove transaksi advice, tidak jadi dipakai
+      implement error handling purchase prepaid
+      fix imports
+      fix json decoding
+      add padding di token
+      fix error handling format salah
+      fix struk sms
+
+Fanani M. Ihsan (1):
+      modify .gitignore
+
+================================================================
+Versi 02.03.13 (2011-10-16)
+[NEW]
+
+[FIXED]
+- transaksi sebelum jam rekon tidak masuk file rekon
+
+[ENHANCEMENT]
+
+[KNOWN ISSUES]
+
+[TODO]
+
+[CONTRIBUTORS]
+Endy Muhardin (1):
+      fix bug awal hari rekon postpaid
+
+================================================================
+Versi 02.03.12 (2011-10-13)
+[NEW]
+
+[FIXED]
+
+[ENHANCEMENT]
+- tuning rekon query supaya menggunakan index
+
+[KNOWN ISSUES]
+
+[TODO]
+
+[CONTRIBUTORS]
+Endy Muhardin (1):
+      fix query rekon postpaid
+
+================================================================
+Versi 02.03.11 (2011-09-20)
+[NEW]
+
+
+[FIXED]
+- Fix freeze setelah payment kolektor
+
+[ENHANCEMENT]
+
+[KNOWN ISSUES]
+
+[TODO]
+
+[CONTRIBUTORS]
+Endy Muhardin (3):
+      add delay sebelum print posting selesai
+      tidak perlu request payment kalau array sudah kosong
+      add delay antar payment
+
+
+================================================================
+Versi 02.03.10 (2011-09-19)
+[NEW]
+
+
+[FIXED]
+- Fix printout laporan direct print nontaglis
+
+[ENHANCEMENT]
+- inline css untuk optimasi loading page
+
+[KNOWN ISSUES]
+
+[TODO]
+
+[CONTRIBUTORS]
+Endy Muhardin (23):
+      inline css supaya ngebut loadingnya
+      add flag kolektor pada saat inquiry
+      implement handler dan helper untuk print tagihan kolektor (untested)
+      fix #1677 screen freeze setelah payment kolektor
+      cetak kolektor sesuai setting printer (direct/inkjet)
+      fix waktu rekon supaya tidak mulai berbarengan
+      fix retry kolektif
+      fix nama method
+      menambahkan variabel nama kolektor
+      handle null content
+      fix alignment dan formatting
+      fix jumlah pelanggan
+      memperbesar kolom
+      fix garisnya
+      ganti huruf jadi kecil
+      fix typo
+      fix tagihan tidak muncul di template depan
+      fix setting font dan line spacing
+      fix page 2
+      fix template cetakan by mkcm
+      fix tanggal transaksi cetak laporan nontaglis
+      Merge branch 'fix/dialog-unmask' into mkcm/next
+      Merge branch 'fitur/direct-print-kolektor' into mkcm/next
+
+================================================================
+Versi 02.03.09 (2011-08-17)
+[NEW]
+
+
+[FIXED]
+- fix #1644 paging laporan pelunasan jastel
+- fix #1643 paging laporan pelunasan nontaglis
+- fix #1645 paging laporan pelunasan prabayar
+- fix paging laporan pascabayar
+
+[ENHANCEMENT]
+
+[KNOWN ISSUES]
+- Laporan direct print nontaglis masih berantakan printoutnya
+
+[TODO]
+- Fix printout laporan direct print nontaglis
+
+[CONTRIBUTORS]
+Endy Muhardin (4):
+      fix #1644 paging laporan pelunasan jastel
+      fix #1643 paging laporan pelunasan nontaglis
+      fix #1645 paging laporan pelunasan prabayar
+      fix paging laporan pascabayar
+
+
+================================================================
+Versi 02.03.08 (2011-08-09)
+[NEW]
+
+
+[FIXED]
+- rekap transaksi jastel di aplikasi loket tidak berfungsi #1627
+- rekap transaksi prabayar di aplikasi loket tidak berfungsi #1625
+
+[ENHANCEMENT]
+- temp folder untuk generate rekon dinamai dengan UUID
+  supaya dummy dan production tidak bentrok
+
+[KNOWN ISSUES]
+- Laporan direct print nontaglis masih berantakan printoutnya
+
+[TODO]
+- Fix printout laporan direct print nontaglis
+
+[CONTRIBUTORS]
+Endy Muhardin (5):
+      fix #1627 error print rekap jastel global dan detail
+      fix #1625
+      externalize konfigurasi temporary folder
+      fix rekon folder supaya gak saling menimpa
+      fix #1610 error download laporan setoran xls
+
+================================================================
+Versi 02.03.07 (2011-08-06)
+[NEW]
+
+
+[FIXED]
+- screen disabled setelah inquiry kolektor #1630
+- aplikasi seharusnya hanya bisa diakses melalui https
+- struk jastel harusnya pakai struk kecil
+
+[ENHANCEMENT]
+- ganti theme menjadi soria, supaya muat di resolusi netbook BLAHx600 #1631, #1613
+
+[KNOWN ISSUES]
+- rekap transaksi jastel di aplikasi loket tidak berfungsi #1627
+- rekap transaksi prabayar di aplikasi loket tidak berfungsi #1625
+- Laporan direct print nontaglis masih berantakan printoutnya
+
+[TODO]
+- Fix printout laporan direct print nontaglis
+
+[CONTRIBUTORS]
+Endy Muhardin (14):
+      fix close dialog tidak membuka overlay
+      add delay antar inquiry supaya dialog boxnya gak balapan
+      pindahkan konfigurasi scheduler dari xml ke annotation
+      konfigurasi jetty supaya menjalankan https
+      semua akses ke aplikasi harus lewat https
+      rename supaya konsisten dengan naming convention konfigurasi lainnya
+      fix layout, ganti textfield menjadi label
+      ganti theme ke soria, pindahkan version number ke atas
+      fix label total,dibayar,kembalian
+      ganti layout atas/bawah menjadi kiri/kanan
+      fix width tabel kiri/kanan
+      ganti titlepane menjadi contentpane
+      revert ke titlepane
+      fix #1634  ganti struk jastel menjadi struk kecil
+
+
+================================================================
+Versi 02.03.06 (2011-08-02)
+[NEW]
+
+
+[FIXED]
+- gagal kirim rekon email
+
+[ENHANCEMENT]
+
+[KNOWN ISSUES]
+- Laporan direct print nontaglis masih berantakan printoutnya
+
+[TODO]
+- Fix printout laporan direct print nontaglis
+
+[CONTRIBUTORS]
+Endy Muhardin (4):
+      ganti konfigurasi scheduler rekon menjadi annotation
+      Revert "ganti konfigurasi scheduler rekon menjadi annotation"
+      fix salah konfigurasi mailCc
+      merapikan source tree
+
+================================================================
+Versi 02.03.05 (2011-08-01)
+[NEW]
+
+
+[FIXED]
+- gagal upload karena kurang commons.io
+
+[ENHANCEMENT]
+
+[KNOWN ISSUES]
+- Laporan direct print nontaglis masih berantakan printoutnya
+
+[TODO]
+- Fix printout laporan direct print nontaglis
+
+[CONTRIBUTORS]
+Endy Muhardin (1):
+      fix gagal upload karena kurang commons.io
+
+================================================================
+Versi 02.03.04 (2011-08-01)
+[NEW]
+
+
+[FIXED]
+- fix version number
+
+[ENHANCEMENT]
+
+[KNOWN ISSUES]
+- Laporan direct print nontaglis masih berantakan printoutnya
+
+[TODO]
+- Fix printout laporan direct print nontaglis
+
+[CONTRIBUTORS]
+Endy Muhardin (2):
+      batal pakai maven-release-plugin, terlalu kaku
+      bump version number
+
+================================================================
+Versi 02.03.03 (2011-08-01)
+[NEW]
+
+
+[FIXED]
+
+[ENHANCEMENT]
+- konfigurasi tujuan email dikeluarkan dari xml ke properties file
+
+[KNOWN ISSUES]
+- Laporan direct print nontaglis masih berantakan printoutnya
+
+[TODO]
+- Fix printout laporan direct print nontaglis
+
+[CONTRIBUTORS]
+Endy Muhardin (3):
+      bump version number untuk development berikutnya
+      konfigurasi tujuan email rekon dikeluarkan ke konfigurasi
+      add plugin release supaya gampang menaikkan version number
+
+================================================================
+Versi 02.03.02 (2011-07-31)
+[NEW]
+
+
+[FIXED]
+- konfigurasi database production salah
+
+[ENHANCEMENT]
+
+
+[KNOWN ISSUES]
+- Laporan direct print nontaglis masih berantakan printoutnya
+
+[TODO]
+- Fix printout laporan direct print nontaglis
+
+[CONTRIBUTORS]
+Endy Muhardin (2):
+      Merge branch 'master' of artivisi.com:ppob-gsp
+      fix konfigurasi database production
+
+Fanani M. Ihsan (2):
+      update script import
+      update script update
+
+================================================================
+Versi 02.03.00 (2011-07-31)
+[NEW]
+- info jastel
+- laporan direct print untuk semua produk
+- test print
+
+[FIXED]
+- pesan error prepaid dan jastel tercampur
+
+[ENHANCEMENT]
+- menampilkan versi aplikasi di tampilan
+
+[KNOWN ISSUES]
+- Laporan direct print nontaglis masih berantakan printoutnya
+
+[TODO]
+- Fix printout laporan direct print nontaglis
+
+[CONTRIBUTORS]
+Adi Sulistiono (4):
+      membuat fitur info jastel
+      fixing menu info jastel, muncul tampilan kesalahan sistem
+      query untuk info jastel yaitu berdasarkan nomer pelanggan dan bulan tagihan. bukan tanggal transaksi itu dibayar.
+      fixing menu info jastel, query berdasarkan bulan tagihan
+
+Endy Muhardin (56):
+      implement pemilihan deployment environment berdasarkan variabel stage
+      build dojo via maven
+      remove file/folder yang tidak perlu
+      improve logging     - logger bisa switch tergantung environment (productio
+      pasang repository ArtiVisi supaya semua dependensi sudah tersedia
+      kelebihan /
+      ganti theme jadi claro
+      exclude folder extract dojo
+      fix kosmetik karena ganti theme
+      Merge branch 'mkcm/next'
+      integrasi dari db ke ui untuk laporan jastel
+      implement struk jastel
+      refactor generate tagihan jastel dummy
+      refactor kode buat generate operator dummy
+      template velocity printout rekening koran
+      implement template direct print koran
+      implement controller dan view untuk print laporan koran
+      implement html dan js untuk screen cetak laporan koran
+      fix kode error jastel dan nontaglis
+      add template laporan prabayar detail
+      contoh perhitungan total
+      merge master dan print-laporan-direct
+      Merge branch 'endy/pesan-error' into next
+      Merge branch 'endy/laporan-direct-print' into next
+      template laporan pascabayar
+      integrate print rekap prabayar dengan UI
+      mengecilkan font
+      fix dynamic field supaya match dengan class Purchase
+      implement laporan direct pascabayar
+      fix LIE
+      fixed by mkcm
+      template export laporan koran ke csv
+      method untuk meload laporan koran csv
+      handler untuk http request laporan koran csv
+      implement export csv di UI
+      template csv export laporan pascabayar
+      method untuk generate csv
+      handler http request
+      implement UI export laporan pascabayar csv
+      implement export csv rekap prabayar
+      implement export rekap jastel ke csv
+      fix waktu transaksi dan no urut transaksi
+      implement cetak dan export nontaglis
+      implement #1460 rekap global pascabayar
+      implement cetak rekap global prabayar
+      implement #1489 cetak global nontaglis
+      implement #1490 rekap global jastel
+      fix broken test
+      fix #1512 rekap prabayar
+      implement #1525 inject nontaglis
+      fix :     - bit 61 dan 63 tidak mandatory     - salah nama variabel pesan sukses/error     - salah pasang response code
+      Merge commit 'bbf9a380adf' into next
+      Merge branch 'fitur/inject-nontaglis' into next
+      implement #1529 reset rekap nontaglis
+      Merge branch 'fitur/laporan-direct-print' into mkcm/next
+      Merge branch 'fitur/reset-laporan-nontaglis' into mkcm/next
+      fix import
+      remove konfigurasi eclipse
+      remove unused import
+      implement #1391 rekap pelunasan nontaglis
+      implement #1526 info pelunasan nontaglis
+      implement #1406 laporan transaksi loket
+      implement #1390
+      fix deprecated method
+      implement #1362 test print
+      implement version numbering
+
+Fanani M. Ihsan (1):
+      buat script import kolektor
+
+izwan (3):
+      edit laporan prabayar detail
+      edit laporan pascabayar detail
+      Merge branch 'fitur/laporan-direct-print' of artivisi.com:ppob-gsp into fitur/laporan-direct-print
+
+
+================================================================
+Versi 02.02.00 (2010-11-15)
+[NEW]
+- Transaksi Jastel
+  - Pembayaran Jastel
+  - Cetak Ulang Jastel
+  - Rekap Transaksi Jastel
+
+[FIXED]
+- Aplikasi Loket Web Based
+  - Popup Rekap Inquiry Postpaid hanya muncul pada waktu inquiry kolektor
+
+[ENHANCEMENT]
+- Tidak ada
+
+[KNOWN ISSUES]
+- Tidak ada
+
+[TODO]
+- Laporan Jastel di aplikasi management
+
+================================================================
+Versi 02.01.00 (2010-08-09)
+- 02.01.00.M003 go live
+
+
+================================================================
+Versi 02.01.00.M003 (2010-08-09)
+[NEW]
+- Aplikasi Loket Web Based
+  - Rekap Setoran (feature #273, #1052)
+  - Laporan Koran  (feature #272, #1051)
+  - Rekap Transaksi Prepaid (feature #1034)
+  - Rekap Transaksi Postpaid (feature #1033)
+- Aplikasi Management
+  - Hapus transaksi prepaid yang pending (feature #1031)
+
+
+[FIXED]
+- Aplikasi Loket Web Based
+  - Nilai total pada transaksi pascabayar tidak terupdate pada waktu dihapus
+    (bug #1043)
+  - Transaksi pascabayar tidak bisa menghandle tunggakan (bug #1048)
+
+
+[ENHANCEMENT]
+- Cetak tagihan kolektor disamakan dengan versi desktop (issue #1036)
+- Parsing tanggal ganti implementasi dari SimpleDateFormat menjadi DateTimeFormatternya Joda
+- IDPEL bisa terdaftar di banyak kolektor asal beda loket (issue #1040)
+- Setelah inquiry kolektor, tampilkan informasi hasilnya (feature #1047)
+- Rekap transaksi bisa diprint (feature #1053)
+
+
+[KNOWN ISSUES]
+- Tekan enter tidak jalan di Ubuntu Chrome
+
+[TODO]
+
+
+
+================================================================
+Versi 02.01.00.M002 (2010-08-01)
+[NEW]
+- Aplikasi Loket Web Based
+  - Add/Remove Kolektor
+  - Transaksi Kolektor
+
+[FIXED]
+
+[ENHANCEMENT]
+- CSS dan JS sudah dituning untuk mengurangi round-trip request
+
+[KNOWN ISSUES]
+- Tekan enter tidak jalan di Ubuntu Chrome
+
+[TODO]
+- Rekap Setoran
+- Laporan Koran
+- Rekap Transaksi Prepaid
+- Rekap Transaksi Postpaid
+
+
+================================================================
+Versi 02.01.00.M001 (2010-07-19)
+
+[NEW]
+- Aplikasi Loket Web Based
+  - Login
+  - Logout
+  - Transaksi Prepaid
+    - Inquiry
+    - Purchase
+    - Advice
+    - Cetak Ulang
+  - Transaksi Postpaid
+    - Inquiry
+    - Payment
+    - Cetak Ulang
+
+
+[FIXED]
+- HQL untuk query cetak ulang prepaid
+- Jumlah tagihan tidak perlu ditambah PPn karena sudah included
+
+
+[ENHANCEMENT]
+- Project sudah bisa dibuka dengan Eclipse
+- Upgrade Spring Framework ke versi 3
+
+[KNOWN ISSUES]
+- Pada waktu aplikasi loket mengalami session expired,
+  yang kena redirect hanya panelnya, harusnya seluruh page
+- Baru ditest di Ubuntu Firefox 3.6.6
+
+
+[TODO]
+- Aplikasi Web Loket
+  - Transaksi Kolektor
+  - Laporan
+    - Setoran
+    - Transaksi
+

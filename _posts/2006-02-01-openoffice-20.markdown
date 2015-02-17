@@ -1,0 +1,27 @@
+---
+comments: true
+date: 2006-02-01 10:23:20
+layout: post
+slug: openoffice-20
+title: OpenOffice 2.0
+wordpress_id: 27
+categories:
+- aplikasi
+---
+
+Tadi malam, saya baru saja mencoba OpenOffice 2.0. Ya ya ya .. saya tau .. telat banget ya. Ya mau bagaimana lagi, saya sudah merasa cukup dengan OpenOffice 1.1.3 yang terinstal menggunakan apt-get bawaan Debian Sarge. Saya tidak gunakan fitur-fitur canggih, dan semua berjalan dengan lancar. 
+
+Di rumah, istri saya sudah bolak-balik menyuruh saya untuk menghapus Windows permanently (tidak untuk diinstal lagi). Windows di rumah hanya digunakan untuk bermain game saja. Untuk kegiatan produktif saya menggunakan Linux. Istri saya juga menggunakan Linux untuk membuat laporan keuangan keluarga, membuka email, mengikuti mailing list, dan kadang-kadang chatting. 
+
+Masalahnya, adik saya masing sering bermain game di Windows. Jadi masih ada alasan untuk mempertahankan Windows. Ketika akhirnya si Windows ini terjangkiti Rontokbro, hilang sudah alasan saya untuk mempertahankannya. 
+
+Akhirnya saya instal Ubuntu terbaru ke partisi Windowsnya. Sorry Bill and Steve. Nothing personal, it's all business. 
+
+Di Ubuntu, OpenOffice yang terinstal adalah versi 2.0. Sekilas tidak ada perbedaan signifikan selain beberapa perbedaan letak tombol dan toolbar. Saya coba untuk mengerjakan buku saya "Menggunakan Subversion" dengan OpenOffice 2.0. 
+
+Layout sudah selesai. Tinggal mencoba hasil printnya. Karena di rumah tidak ada printer, saya export ke PDF untuk diprint di kantor atau di rumah tetangga. Di sinilah baru terlihat kecanggihan OpenOffice 2.0. 
+
+PDF yang dihasilkan lengkap dengan Table Of Content. Lihat screenshot, sebelah kiri. Sudah ada Table of Contents yang bisa diklik. Output seperti ini belum bisa dihasilkan oleh OpenOffice 1.1.3.
+![Screenshot Acrobat Reader with Bookmarks ](/images/outputoo2.png)
+
+Hmm... saya jadi ingin segera upgrade ke 2.0. Ada yang tau caranya instal 2.0 untuk Sarge?

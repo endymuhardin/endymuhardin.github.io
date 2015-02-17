@@ -1,0 +1,172 @@
+---
+comments: true
+date: 2007-10-09 16:16:08
+layout: post
+slug: hudson
+title: Continuous Integration dengan Hudson
+wordpress_id: 279
+categories:
+- java
+---
+
+Pada artikel sebelumnya, kita sudah membahas [penggunaan Luntbuild](http://endy.artivisi.com/blog/java/luntbuild/) dan [CruiseControl](http://endy.artivisi.com/blog/java/cruise-control/) untuk menerapkan Continuous Integration (CI). Kali ini, kita akan mencoba [Hudson](https://hudson.dev.java.net/), aplikasi CI lain yang tersedia. 
+
+Hudson dapat [diunduh dari websitenya](https://hudson.dev.java.net/servlets/ProjectDocumentList?folderID=2761&expandFolder=2761&folderID=0). Setelah mengunduh, kita akan mendapatkan satu file *war. File ini dapat langsung dijalankan standalone dengan perintah: 
+
+`java -jar hudson.war`
+
+Ataupun dideploy ke servlet engine favorit Anda, seperti Tomcat atau sejenisnya. 
+
+Setelah dideploy, kita bisa melihat tampilan awalnya melalui browser ke alamat http://localhost:8080 (untuk standalone) atau http://localhost:8080/hudson (bila dideploy ke servlet engine)
+
+
+
+Keunggulan pertama Hudson adalah kemudahan setupnya. Segera setelah dijalankan (baik standalone maupun dideploy), kita bisa segera mengunjungi halaman depannya.
+
+![Hudson Welcome Page ](/images/uploads/2007/10/welcome.png)
+
+Hal pertama yang saya lakukan adalah konfigurasi email. Bila ini tidak dilakukan, Hudson akan gagal mengirim email laporan hasil build.
+
+Klik Manage Hudson di sebelah kiri atas. Layar konfigurasi akan muncul. 
+
+![Manage Hudson ](/images/uploads/2007/10/manage-hudson.png)
+
+Selanjutnya, pilih System Configuration, lalu scroll ke bagian bawah untuk mengatur email. 
+
+![Email Configuration ](/images/uploads/2007/10/email-config.png)
+
+Setelah selesai, klik OK. 
+
+Bila Ant belum ada di PATH komputer Anda, jangan lupa untuk menyebutkan folder instalasi Ant di halaman ini.
+
+Setelah selesai, kita bisa langsung mendaftarkan job. Klik tombol New Job di kiri atas.
+
+![Create New Job ](/images/uploads/2007/10/create-job.png)
+
+Project saya menggunakan Ant biasa, tanpa Maven. Jadi saya pilih free-style. Klik OK.
+
+Selanjutnya, kita konfigurasi repository project. Isikan nilai yang sesuai di bagian Source Code Management. 
+
+![Configure Subversion ](/images/uploads/2007/10/configure-svn.png)
+
+Segera setelah kursor meninggalkan field Repository URL (on blur), Hudson akan memeriksa URL yang kita berikan. Bila URL tersebut membutuhkan otentikasi, Hudson akan mengeluarkan pesan error dengan link untuk mengkonfigurasi username dan password. 
+
+![Subversion Authentication ](/images/uploads/2007/10/svn-auth.png)
+
+Isikan nilai yang sesuai. Seperti kita lihat, Hudson mendukung beberapa modus otentikasi.
+
+Bagian selanjutnya adalah jadwal build atau trigger. Hudson menggunakan format yang mirip dengan Cron. 
+
+![Build Schedule ](/images/uploads/2007/10/build-schedule.png)
+
+Bila kita ingin melakukan build setiap jam, hanya pada hari kerja, entrinya adalah sebagai berikut: 
+
+`1 * * * 1-5`
+
+Agar build berjalan setiap jam 1 dini hari, hari Senin dan Rabu, entrinya sebagai berikut: 
+
+`0 * 1 * 1,3`
+
+Setelah jadwal, kita mengkonfigurasi proses build itu sendiri. Di project saya, build dilakukan oleh Ant. Kita bisa mendaftarkan target yang akan dieksekusi.
+
+![Build Method ](/images/uploads/2007/10/build-method.png)
+
+Terakhir, kita mengkonfigurasi post build. Ini adalah kegiatan yang dilakukan setelah build sukses dijalankan. Pada tahap ini, saya ingin Hudson mempublikasikan *.jar atau *.war yang dihasilkan agar siap didonlod.
+
+![Post Build ](/images/uploads/2007/10/post-build.png)
+
+Selain itu, saya juga bisa menyuruh Hudson untuk memproses hasil unit test JUnit. Hudson mengerti file XML yang dihasilkan JUnit dan TestNG.
+
+Hudson juga bisa disuruh mengirim email apabila terjadi kegagalan build. Di sini biasanya saya isi dengan alamat mailing list developer.
+
+Setelah selesai, klik Save. 
+
+Selanjutnya, kita tinggal melihat-lihat hasilnya. 
+
+Di halaman depan, kita bisa lihat rangkuman status tiap project. 
+
+![Build Status ](/images/uploads/2007/10/build-status.png)
+
+Klik salah satu project, dan lihat detailnya
+
+![Build Result ](/images/uploads/2007/10/build-result.png)
+
+Di situ kita bisa lihat artifact yang sudah dipublish. Dari semua build yang sudah dilakukan, kita bisa lihat trendnya. 
+
+![Trend of Build Time ](/images/uploads/2007/10/build-time-trend.png)
+
+Selain itu, kita juga bisa lihat hasil JUnit test. 
+
+![JUnit Result ](/images/uploads/2007/10/junit-result.png)
+
+Kesimpulan akhir, berikut adalah perbandingan ketiga tools ini. 
+
+
+
+
+
+
+
+Tools Setup Tampilan Aksesoris Tag Otomatis 
+
+
+
+
+  
+CruiseControl
+
+  
+Sulit, semua harus pakai XML
+
+  
+Kurang bagus, terlihat kuno
+
+  
+Lengkap
+
+  
+Bisa, menggunakan publisher
+
+
+
+
+
+
+  
+Luntbuild
+
+  
+Mudah, setup melalui web
+
+  
+Rumit dan kurang intuitif
+
+  
+Sangat sedikit
+
+  
+Bisa, dikonfigurasi melalui web
+
+
+
+
+
+
+  
+Hudson
+
+  
+Sangat Mudah
+
+  
+Bagus, intuitif, Web 2.0, AJAX
+
+  
+Eclipse plugin, Netbeans Plugin, Trac Plugin 
+
+  
+Tidak bisa, harus manual
+
+
+
+Demikianlah, semoga bermanfaat.

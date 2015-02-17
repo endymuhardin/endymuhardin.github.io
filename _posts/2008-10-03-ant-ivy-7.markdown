@@ -1,0 +1,350 @@
+---
+comments: true
+date: 2008-10-03 10:55:34
+layout: post
+slug: ant-ivy-7
+title: Ivy Configuration
+wordpress_id: 395
+categories:
+- java
+---
+
+Rangkaian [artikel sebelumnya](http://endy.artivisi.com/blog/java/ant-ivy-6/) telah memberikan kita pemahaman yang memadai untuk menggunakan Ivy. Pada artikel ini, kita akan membahas satu fitur Ivy yang walaupun tidak wajib dikuasai, tapi sangat penting, karena dapat membuat konfigurasi modul kita menjadi fleksibel. Fitur ini dalam dunia Ivy dikenal dengan istilah `configuration`. 
+
+Sebagai paket standar kualitas di ArtiVisi, kami menggunakan Cobertura untuk melakukan coverage test. Sayangnya Cobertura dan Hibernate tidak kompatibel. Hibernate menggunakan pustaka `asm` dengan versi 1.5.3. Sedangkan Cobertura juga menggunakan `asm`, dengan versi 2.2.1. Bila kedua versi kita campur, maka akan terjadi error karena Java VM kebingungan menentukan versi mana yang akan digunakan. 
+
+Untuk mengatasi masalah ini, kita menggunakan fitur `configuration` Ivy. Kita membuat konfigurasi bernama `test` yang membawa `asm` versi 2.2.1 sesuai kebutuhan Cobertura. Selain itu, kita juga membuat konfigurasi bernama `runtime` dengan `asm` versi 1.5.3 untuk digunakan Hibernate. Hal ini dimungkinkan karena Cobertura hanya kita gunakan pada saat test. 
+
+Contoh lain penggunaan `configuration` adalah kombinasi modul untuk merakit aplikasi. Misalnya, kita memiliki modul-modul berikut dalam aplikasi kita: 
+
+
+
+
+  * model
+
+
+  * dao.api
+
+
+  * dao.hibernate
+
+
+  * dao.jdbc
+
+
+  * ui.web
+
+
+  * ui.desktop
+
+
+
+Kita dapat menggunakan konfigurasi Ivy untuk membentuk 4 kombinasi aplikasi, yaitu: 
+
+
+  * Desktop dengan JDBC
+
+
+  * Desktop dengan Hibernate
+
+
+  * Web-based dengan JDBC
+
+
+  * Web-based dengan Hibernate
+
+
+
+Fitur configuration juga bisa digunakan untuk mengatur rilis artifak, sehingga dari satu paket source-code, kita bisa membuat rilis: 
+
+
+  * Hanya source-code (source only)
+
+
+  * Hanya hasil kompilasi (binary only)
+
+
+  * Paket dokumentasi (javadoc, reference)
+
+
+  * Paket komplit (source, binary, dokumentasi)
+
+
+Kombinasi rilis ini umum kita temui dalam pustaka open-source populer seperti Spring Framework atau Hibernate.
+
+Masih banyak lagi skenario penggunaan configuration. Silahkan kembangkan imajinasi Anda untuk penggunaannya. Pada artikel ini, kita akan membahas skenario kombinasi aplikasi seperti ilustrasi di atas. 
+
+Kita telah memiliki modul person-model, dengan deklarasi dependensi (ivy.xml) sebagai berikut:
+
+
+    
+    
+    <ivy-module version="1.0">
+        <info organisation="com.artivisi" module="person-model"/>
+        
+        <configurations>
+    		<include file="${basedir}/../person-build/ivy/ivyconfigurations.xml" />
+    	</configurations>
+    
+    	<publications>
+    		<artifact name="${ant.project.name}" conf="api"/>
+    		<artifact name="${ant.project.name}-sources" conf="source" type="src" ext="jar"/>
+    	</publications>
+        
+    </ivy-module>
+    
+
+
+
+Daftar konfigurasi yang kita miliki didefinisikan dalam file ivyconfigurations.xml dan di-include dari masing-masing ivy.xml. Berikut isi ivyconfigurations.xml.
+
+
+    
+    
+    <configurations>
+    	<conf name="compile"            description="dependency for compile time only" />
+    	<conf name="api"     description="Domain Model and API only"/>
+    	<conf name="impl"    description="implementation of APIs"/>
+    	<conf name="source"  description="source code only"/>
+    </configurations>
+    
+
+
+
+Kita juga punya modul person-dao, interface yang digunakan sebagai patokan implementasi akses database, dengan dependensi sebagai berikut: 
+
+
+    
+    
+    <ivy-module version="1.0">
+        <info organisation="com.artivisi" module="person-dao-api"/>
+        
+        <configurations>
+    		<include file="${basedir}/../person-build/ivy/ivyconfigurations.xml" />
+    	</configurations>
+    
+    	<publications>
+    		<artifact name="${ant.project.name}" conf="api"/>
+    		<artifact name="${ant.project.name}-sources" conf="source" type="src" ext="jar"/>
+    	</publications>
+        
+        <dependencies>
+            <dependency name="person-model" rev="latest.integration" conf="api"/>
+        </dependencies>
+    </ivy-module>
+    
+
+
+
+Modul person-dao ini memiliki dua jenis implementasi, yaitu dengan JDBC: 
+
+
+    
+    
+    <ivy-module version="1.0">
+        <info organisation="com.artivisi" module="person-dao-jdbc"/>
+        
+        <configurations>
+    		<include file="${basedir}/../person-build/ivy/ivyconfigurations.xml" />
+    	</configurations>
+    
+    	<publications>
+    		<artifact name="${ant.project.name}" conf="impl"/>
+    		<artifact name="${ant.project.name}-sources" conf="source" type="src" ext="jar"/>
+    	</publications>
+        
+            <dependency name="person-dao-api" rev="latest.integration" conf="api"/>
+            
+        </dependencies>
+    </ivy-module>
+    
+
+
+
+dan dengan Hibernate: 
+
+
+    
+    
+    <ivy-module version="1.0">
+        <info organisation="com.artivisi" module="person-dao-hibernate"/>
+        
+        <configurations>
+    		<include file="${basedir}/../person-build/ivy/ivyconfigurations.xml" />
+    	</configurations>
+    
+    	<publications>
+    		<artifact name="${ant.project.name}" conf="impl"/>
+    		<artifact name="${ant.project.name}-sources" conf="source" type="src" ext="jar"/>
+    	</publications>
+        
+            <dependency name="person-dao-api" rev="latest.integration" conf="api"/>
+        </dependencies>
+    </ivy-module>
+    
+
+
+
+Dengan memisahkan interface dan implementasi DAO, kita bisa langsung membuat dua jenis user interface, yaitu yang berbasis web sebagai berikut: 
+
+
+    
+    
+    <ivy-module version="1.0">
+        <info organisation="com.artivisi" module="person-ui-springmvc"/>
+        
+        <configurations>
+    		<include file="${basedir}/../person-build/ivy/ivyconfigurations.xml" />
+    	</configurations>
+    	
+    	<publications>
+    		<artifact name="${ant.project.name}" conf="impl"/>
+    		<artifact name="${ant.project.name}-sources" conf="source" type="src" ext="jar"/>
+    	</publications>
+        
+            <dependency name="person-dao-api" rev="latest.integration"  conf="api"/>
+        </dependencies>
+    </ivy-module>
+    
+
+
+
+dan berbasis desktop sebagai berikut: 
+
+
+    
+    
+    <ivy-module version="1.0">
+        <info organisation="com.artivisi" module="person-ui-swing"/>
+        
+        <configurations>
+    		<include file="${basedir}/../person-build/ivy/ivyconfigurations.xml" />
+    	</configurations>
+    	
+    	<publications>
+    		<artifact name="${ant.project.name}" conf="impl"/>
+    		<artifact name="${ant.project.name}-sources" conf="source" type="src" ext="jar"/>
+    	</publications>
+        
+            <dependency name="person-dao-api" rev="latest.integration"  conf="api"/>
+        </dependencies>
+    </ivy-module>
+    
+
+
+
+Seperti kita lihat, untuk bisa membuat UI, kita hanya membutuhkan modul dao saja. 
+
+Untuk merangkai aplikasi ini, kita membuat satu modul yang tidak berisi source-code Java sama sekali, melainkan hanya deklarasi dependensi saja. 
+
+Berikut konfigurasi untuk aplikasi desktop dengan JDBC.
+
+
+    
+    
+    <ivy-module version="1.0">
+        <info organisation="com.artivisi" module="person-apps"/>
+        
+        <configurations>
+    		<conf name="person-app-desktop-jdbc" description="Application with desktop UI and JDBC backend"/>
+    	</configurations>
+        
+        <dependencies>
+        	
+            <dependency name="person-dao-jdbc" rev="latest.integration" 
+            conf="person-app-desktop-jdbc->impl"/>
+            
+            <dependency name="person-ui-swing" rev="latest.integration" 
+            conf="person-app-desktop-jdbc->impl"/>
+            
+        </dependencies>
+        
+    </ivy-module>
+    
+
+
+
+dan ini adalah konfigurasi untuk aplikasi web dengan Hibernate. 
+
+
+    
+    
+    <ivy-module version="1.0">
+        <info organisation="com.artivisi" module="person-apps"/>
+        
+        <configurations>
+    		<conf name="person-app-web-hibernate" description="Application with web-based UI and Hibernate backend"/>
+    	</configurations>
+        
+        <dependencies>
+        	        
+            <dependency name="person-dao-hibernate" rev="latest.integration" 
+            conf="person-app-web-hibernate->impl"/>
+            
+            <dependency name="person-ui-springmvc" rev="latest.integration" 
+            conf="person-app-web-hibernate->impl"/>
+            
+             
+        </dependencies>
+        
+    </ivy-module>
+    
+
+
+
+Deklarasi lengkap konfigurasi dan dependensi untuk keempat kombinasi aplikasi sebagai berikut.
+
+
+    
+    
+    <ivy-module version="1.0">
+        <info organisation="com.artivisi" module="person-apps"/>
+        
+        <configurations>
+    		<conf name="person-app-web-jdbc" description="Application with web-based UI and JDBC backend"/>
+    		<conf name="person-app-desktop-jdbc" description="Application with desktop UI and JDBC backend"/>
+    		<conf name="person-app-web-hibernate" description="Application with web-based UI and Hibernate backend"/>
+    		<conf name="person-app-desktop-hibernate" description="Application with desktop UI and Hibernate backend"/>
+    	</configurations>
+        
+        <dependencies>
+        	
+            <dependency name="person-model" rev="latest.integration" conf="*->api"/>
+    
+            <dependency name="person-dao-api" rev="latest.integration" conf="*->api"/>
+    		
+            <dependency name="person-dao-jdbc" rev="latest.integration" 
+            conf="person-app-web-jdbc->impl;person-app-desktop-jdbc->impl"/>
+            
+            <dependency name="person-dao-hibernate" rev="latest.integration" 
+            conf="person-app-web-hibernate->impl;person-app-desktop-hibernate->impl"/>
+            
+            <dependency name="person-ui-swing" rev="latest.integration" 
+            conf="person-app-desktop-jdbc->impl;person-app-desktop-hibernate->impl"/>
+            
+            <dependency name="person-ui-springmvc" rev="latest.integration" 
+            conf="person-app-web-jdbc->impl;person-app-web-hibernate->impl"/>
+            
+             
+        </dependencies>
+        
+    </ivy-module>
+    
+
+
+
+Kita dapat merakit aplikasi dengan ant sebagai berikut
+
+
+    
+    ant resolve
+
+
+
+Nanti pada folder lib akan terbentuk empat folder sesuai konfigurasi. Isi dari masing-masing folder mencerminkan paket aplikasi sesuai kombinasi yang kita inginkan.
+
+Seperti kita lihat, dengan menggunakan fitur configuration, kita dapat merangkai empat kombinasi aplikasi dengan mudah. Tentunya aplikasi kita harus dirancang secara modular supaya mudah dikombinasikan seperti cerita di atas. 
+
+[Artikel berikutnya](http://endy.artivisi.com/blog/java/ant-ivy-8/) akan menutup seri Ivy ini dengan cara membuat repository dalam organisasi kita. Dengan adanya repository lokal, kita dapat menghemat bandwidth internasional karena kebutuhan dependensi dapat ditangani oleh server internal. 
+
+Kita akan melihat kemampuan Ivy untuk mengadaptasi repository baik yang memiliki metadata Ivy, maupun Maven.

@@ -1,0 +1,25 @@
+---
+comments: true
+date: 2006-12-08 15:59:47
+layout: post
+slug: snap
+title: Snap
+wordpress_id: 183
+categories:
+- aplikasi
+- lain
+---
+
+Ide orang memang ada-ada saja. Kali ini ada situs yang menampilkan preview dari suatu link. Coba arahkan (tidak perlu klik) mouse anda ke [link Snap.com ini](http://snap.com "Snap.com"). Tunggu sejenak, dan (tergantung kecepatan bandwidth anda) screenshot website Snap akan muncul. 
+
+Cara mendapatkannya tidak sulit. Cukup buka halaman pendaftarannya, dan masukkan: 
+
+-  URL website kita
+-  Email
+-  Tulisan di gambar captcha
+
+Centang *I Agree* dan klik *Get Code*. 
+
+Pada halaman berikutnya kita akan mendapat sepotong kode untuk dipasang di kode HTML website kita. Sangat mudah. 
+
+Selain Snap.Com, ada lagi website yang namanya Twitter. Kalau yang ini benar-benar kurang kerjaan. Silahkan [cek sendiri](http://twitter.com "Twitter") dan cari tahu apa yang [dikerjakan dunia saat ini](http://twitter.com/public_timeline "Twitter"). 

@@ -1,0 +1,40 @@
+<header>
+    <h1><a href="{{ site.BASE_PATH }}/">{{ site.title }}</a></h1>
+    <p>{{ site.tagline }}</p>
+    <nav><ul>
+      {% comment %}
+        The code below dynamically generates a sidebar nav of pages with
+        `layout: page` in the front-matter. See readme for usage.
+      {% endcomment %}
+
+      {% assign pages_list = site.pages %}
+      {% for node in pages_list %}
+        {% if node.title != null %}
+          {% if node.layout == "page" %}
+            <li>
+              <a href="{{ node.url }}">{{ node.title }}</a>
+            </li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul></nav>
+
+    <p>
+        <a href="{{ site.BASE_PATH }}/">
+            <img src="http://www.gravatar.com/avatar/{{site.author.email_md5}}?s=150" />
+        </a>
+    </p>
+
+
+    {% if site.author.bio %}
+    <div>
+      <h2>{{ site.author.name }}</h2>
+      <p>
+        {{ site.author.bio}}
+      </p>
+    </div>
+    {% endif %}
+
+    
+    {% include paypal_donate.html %}
+</header>

@@ -1,0 +1,146 @@
+---
+comments: true
+date: 2008-01-24 09:59:36
+layout: post
+slug: stack-2008-1
+title: Java Stack 2008
+wordpress_id: 328
+categories:
+- java
+---
+
+Di milis Java sedang dibahas tentang kombinasi teknologi yang digunakan untuk membuat aplikasi Java.
+
+Ada beberapa kategori teknologi, yaitu:
+
+
+
+	
+  * Presentation Layer. Yaitu teknologi untuk membangun User Interface
+
+	
+  * Business Layer. Yaitu teknologi untuk menyediakan logika proses bisnis.
+
+	
+  * Data Access Layer. Yaitu teknologi untuk mengakses penyimpanan data, misalnya database.
+
+	
+  * Security Framework. Teknologi untuk mengelola otentikasi dan otorisasi.
+
+	
+  * Build System. Sistem untuk mengotomasi proses build.
+
+	
+  * Testing System. Sistem untuk mengotomasi pengetesan aplikasi.
+
+	
+  * Application Server
+
+	
+  * Database Server
+
+	
+  * Project Management Tools. Perangkat pembantu untuk mengelola project.
+
+
+Berikut adalah stack yang saya gunakan, per Januari 2008. Sesuai perkembangan jaman, mungkin sekali stack ini akan berubah.
+
+
+### Presentation Layer
+
+
+Tergantung tujuan developmentnya. Kalau butuh rapid, saya pakai JSF 1.2 dengan komponen RichFaces. Kalau ingin sederhana dan fleksibel, saya pakai Spring MVC.
+
+Sebagai tambahan, sekarang saya sedang mengeksplorasi  Spring Web Flow untuk mengelola state aplikasi. Framework ini bisa digunakan baik untuk JSF maupun Spring MVC.
+
+Baik dalam Spring MVC maupun JSF,  kita dapat memilih View Engine yang digunakan. Kebanyakan orang tidak tahu, atau tidak mau repot, atau mungkin juga merasa nyaman menggunakan JSP. Tapi saya tidak. Saya lebih suka pakai Velocity atau Freemarker untuk Spring MVC, dan pakai Facelets di JSF.
+
+
+### Business Layer
+
+
+Saya menggunakan Spring Framework untuk mengorkestrasi transaction, integrasi dengan berbagai data access layer, messaging system, dan sebagainya.
+
+
+### Data Access Layer
+
+
+Bila ingin rapid development, saya pakai Hibernate. Bila ingin main low level SQL, saya pakai Spring JDBC.
+
+Saya tidak pakai JPA. Dulu pernah pakai iBatis, tapi belakangan sepertinya sudah cukup dengan Spring JDBC saja.
+
+
+### Security Framework
+
+
+Pakai Spring Security. Fiturnya cukup lengkap dan desainnya sudah teruji di skenario dunia nyata.
+
+
+### Build System
+
+
+Orang-orang pada pakai Maven. Saya sudah merasa cukup pakai Ant saja.
+
+
+### Testing System
+
+
+Saat ini pakai JUnit 4 dan DBUnit. Tapi sedang eksplorasi TestNG. Saya tertarik dengan kemampuan test-grouping. Ini penting apabila kita ingin memisahkan test yang harus dieksekusi programmer sebelum dia commit (sehingga harus cepat), dan test yang dieksekusi oleh tools Continuous Integration saja (karena butuh waktu lama).
+
+Test sebelum commit contohnya adalah unit test dan integration test. Selain itu, ada test yang butuh waktu lama, misalnya test End of Day/Month/Year process, dan test simulasi kinerja aplikasi dengan data satu tahun kedepan.
+
+Untuk coverage test, saya gunakan Cobertura. Sedangkan untuk Static Code Analysis saya gunakan PMD.
+
+Ke depan, saya sedang menganalisa efektifitas penggunakan JDepend untuk memastikan dependensi antar modul yang sudah ditentukan di awal tidak dilanggar programmer lain. Misalnya, tidak ada urusannya presentation layer melakukan import HibernateException. Nah, ini sepertinya bisa dienforce oleh JDepend, tapi belum sempat saya coba.
+
+
+### Application Server
+
+
+Saya gunakan Winstone untuk tutorial dan pelatihan. Untuk development saya gunakan Tomcat. Untuk production saya gunakan Glassfish.
+
+
+### Database Server
+
+
+Untuk development dan production, saya menggunakan PostgreSQL. Untuk pelatihan dan tutorial, saya gunakan MySQL.
+
+
+### Project Management Tools
+
+
+Untuk melakukan tracking terhadap:
+
+
+
+	
+  * implementasi fitur
+
+	
+  * resiko dalam project
+
+	
+  * masalah dalam project
+
+	
+  * penyelesaian bug
+
+	
+  * perbaikan dokumen berdasarkan review/audit
+
+
+saya menggunakan Redmine.
+
+Untuk membantu proses Configuration Management, saya menggunakan Subversion. Kadang-kadang dibantu dengan SVK bila ingin kerja offline.
+
+Sebelum saya tutup artikel ini, pasti nanti ada yang ingin berkomentar seperti ini,
+
+
+> Wuah, banyak sekali persenjataannya. Kok repot-repot sekali sih?
+
+
+Di sebelah rumah saya, tetangga sedang membangun rumah. Para pekerjanya (2-3 orang) cukup bermodalkan cangkul untuk mengaduk semen. Bila mereka ingin mengecor lantai dua, cukup membuat bekisting dari triplek dan papan bekas, yang setelah pakai bisa langsung dibuang. Sekali-sekali, saya melihat mereka menggotong perkakas dan bahan baku bila lokasi kerjanya pindah.
+
+Di depan jendela saya di kantor, sedang dibangun gedung perkantoran yang baru. Untuk mengaduk semen, tidak pakai cangkul, melainkan dituang dari truk molen. Tim pekerjanya (200-300 orang) punya cetakan/bekisting khusus yang reusable untuk mengecor tiang dan lantai. Bila ada perkakas atau bahan baku yang perlu dipindahkan, mereka tidak gotong sendiri. Untuk keperluan itu, ada alat sendiri yang namanya [tower crane](http://science.howstuffworks.com/tower-crane.htm). Bahkan ada pilotnya khusus.
+
+Nah, itu analoginya. Silahkan simpulkan sendiri, kenapa harus repot-repot.

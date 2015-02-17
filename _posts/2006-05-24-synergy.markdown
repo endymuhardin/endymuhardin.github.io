@@ -1,0 +1,132 @@
+---
+comments: true
+date: 2006-05-24 10:13:37
+layout: post
+slug: synergy
+title: Synergy
+wordpress_id: 94
+categories:
+- aplikasi
+---
+
+![Synergy Screenshot ](/images/uploads/2006/05/synergy.gif)
+
+Perhatikan gambar di atas. 
+
+Seringkali kita bekerja dengan lebih dari satu komputer pada saat yang bersamaan. Misalnya seperti saya. Untuk kegiatan rutin sehari-hari saya menggunakan Debian GNU/Linux, yaitu untuk browsing (Firefox), membaca email (KMail), berlangganan RSS (aKregator), chatting (Gaim), dan sebagainya. 
+
+Tetapi ada kalanya saya 'terpaksa' menggunakan Windows. Misalnya untuk mengedit template dokumen dengan MS Word. Template dokumen sangat mementingkan ketepatan setting font, border, margin pada suatu dokumen. Jadi walaupun bisa dibuka dengan OpenOffice, tetap saja ada beberapa komponen layout yang rusak. Kegiatan lainnya adalah membuat perencanaan project dengan menggunakan MS Project. Aplikasi ini belum ada padanannya di Linux. Jadi mau tidak mau saya harus menggunakan MS Project agar rencana project saya bisa digunakan orang 
+
+Banyak juga orang yang bekerja menggunakan laptop, sedangkan di kantor tetap disediakan PC. Biasanya polanya sama. Kegiatan internet rutin tetap di laptop, sedangkan pekerjaan kantor di PC.
+
+Apapun alasannya, banyak orang yang menggunakan dua komputer sekaligus. 
+
+Pada jaman dahulu kala, kita terpaksa menggunakan dua perangkat keyboard dan mouse untuk mengendalikan kedua komputer tersebut. Yang lebih canggih biasanya menggunakan remote desktop agar bisa mengendalikan komputer satu dari lainnya, sehingga tidak perlu pindah-pindah keyboard. Tapi solusi ini, walaupun hi-tech, tetap masih kurang produktif. Karena dengan menggunakan dua monitor, kita bisa lebih cepat bekerja. Monitor satu menampilkan referensi/tutorial, monitor satu lagi digunakan untuk coding. 
+
+Gambar di atas adalah solusinya. Ada aplikasi ajaib bernama [Synergy](http://synergy2.sourceforge.net). Selain ajaib, aplikasi ini juga gratis dan mudah diinstal. 
+
+Cara kerjanya demikian. Kita instal Synergy di kedua komputer. Kemudian kita jalankan Synergy sebagai server **di komputer yang keyboard dan mousenya ingin kita gunakan**. Untuk berjalan sebagai server, kita perlu membuat file konfigurasi _synergy.conf_ sebagai berikut: 
+
+    
+```
+section: screens
+    laptop:
+    pc:    
+end
+section: links
+    laptop
+        right = pc
+    pc:
+        left = laptop
+end
+```
+
+
+
+Berikut penjelasannya: 
+
+
+
+	
+  * laptop: hostname komputer yang pertama
+
+	
+  * pc: hostname komputer yang kedua
+
+	
+  * pada konfigurasi di atas, laptop diletakkan di sebelah kiri pc. 
+
+
+Dengan konfigurasi di atas, apabila kita sedang mengendalikan laptop, kemudian kita menggerakkan kursor mouse ke pinggir layar sebelah kanan, kursor akan menyeberang dari monitor laptop ke monitor PC. Begitu juga sebaliknya. 
+
+Untuk administrator, Synergy ini bisa digunakan untuk menggantikan KVM terminal. KVM terminal adalah hardware yang memungkinkan beberapa komputer dikendalikan dengan satu perangkat monitor, keyboard, dan mouse. 
+
+Lebih canggih lagi, clipboardnya berhubungan. Artinya kita bisa copy text dari laptop, dan paste di PC. 
+
+Setelah selesai, silahkan lakukan koneksi dari client ke server. 
+Petunjuk lengkap bisa dibaca [di sini](http://synergy2.sourceforge.net/running.html). 
+
+Oh iya, walaupun sudah jelas dari screenshot di atas (KDE di kiri -sudah pasti Linux- dan Windows di kanan), pasti ada aja yang tanya, "Bisa jalan di Windows atau Linux gak ya?"
+Jawabannya, "Sangat bisa !!!"
+
+Saya sudah menggunakan Synergy untuk menghubungkan Debian Sarge dan Windows 2000 Professional. Untuk Sarge harus pakai Synergy 1.2.2 (bawaan apt-get) sedangkan versi terbaru (per 24 Mei 2006) adalah 1.3.1.
+
+Tentu saja versi client dan server harus sama, untuk menghindari kepusingan tanpa manfaat.
+
+Update: 
+Beberapa teman mencoba menjalankan Synergy server di Windows dan mengaku mengalami kesulitan. Kebetulan di tempat saya ada beberapa anak magang yang tertarik untuk mencoba. 
+Ternyata, kesalahan utama dalam setting server di Windows adalah **lupa memberitahu Synergy komputer mana yang di kiri dan yang mana yang di kanan.**
+
+Baiklah, mari kita lihat saja screenshotnya: 
+
+
+### Tampilan Awal
+
+
+Begitu Synergy dijalankan, kita akan melihat tampilan berikut: 
+![Synergy Start Up ](/images/uploads/2006/08/sinergi1.JPG)
+
+Dari sini, kita kemudian memilih setting Synergy sebagai server. Lalu klik configure, sehingga kita masuk ke halaman selanjutnya. 
+
+
+
+### Konfigurasi Screen
+
+
+Screen, atau layar, memberitahukan Synergy berapa komputer yang terlibat dalam jaringan, dan nama masing-masing komputer. Sebagai ilustrasi, kita akan menggunakan dua komputer, kita beri nama **komputerkiri** dan **komputerkanan**. Dengan layout (seperti dari namanya) komputerkiri berada di sebelah kiri komputerkanan. 
+
+Berikut adalah tampilan untuk menambah screen: 
+![Konfigurasi Screen ](/images/uploads/2006/08/sinergi2.JPG)
+
+Setelah dikonfigurasi, komputerkiri muncul di layar sebagai berikut: 
+![KomputerKiri sudah dikonfigurasi ](/images/uploads/2006/08/sinergi3.JPG)
+
+Lanjutkan dengan konfigurasi komputerkanan. 
+![Konfigurasi KomputerKanan ](/images/uploads/2006/08/sinergi4.JPG)
+
+Layar setelah konfigurasi terlihat seperti ini: 
+![Setelah konfigurasi dua screen ](/images/uploads/2006/08/sinergi5.JPG)
+
+
+
+### Konfigurasi Link
+
+
+Beberapa orang yang menceritakan kesulitan pada saya, biasanya berhenti pada tahap ini. Oh, kedua komputer sudah saya entri ke dalam Synergy, berarti sekarang sudah bisa connect. Ya memang bisa connect, kalo kita jalankan dengan log debug, akan terlihat bahwa kedua komputer sudah connected. Tapi kenapa mousenya belum bisa *menyeberang layar*?
+
+Jawabannya adalah, karena Synergy belum tau seperti apa layoutnya. Bagaimana susunan komputernya? Apakah komputerkiri di sebelah kiri, kanan, atas, bawah atau di mana?
+
+Baiklah, sekarang kita akan memberi tahu layoutnya kepada Synergy. Lihat panel Link di bawah? Nah di situlah letak konfigurasinya. 
+Isikan nilai yang diinginkan, yaitu di 0-100% sisi layar kiri dari **komputerkanan** adalah **komputerkiri**. Setelah diisi, klik tombol +. 
+Berikut adalah layar konfigurasinya adalah sebagai berikut: 
+![Link komputer kiri ke kanan ](/images/uploads/2006/08/sinergi7.JPG)
+
+Lakukan hal yang sama dengan komputer kanan. Ini supaya mouse yang sudah **menyeberang** ke komputer kiri bisa kembali lagi ke komputerkanan. Kalau cuma satu link, dia bisa pindah ke kiri, tapi tidak bisa kembali lagi. Jangan lupa membalik nilainya, isinya adalah: 
+0-100% sisi layar kanan dari **komputerkiri** adalah **komputerkanan**.
+
+Berikut layar konfigurasi setelah diisi: 
+![Layar konfigurasi akhir ](/images/uploads/2006/08/sinergi8.JPG)
+
+Selanjutnya, jalankan servernya, dan coba connect dari client. 
+
+Selamat mencoba :D

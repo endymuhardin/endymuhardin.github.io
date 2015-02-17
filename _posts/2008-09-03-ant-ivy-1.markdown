@@ -1,0 +1,164 @@
+---
+comments: true
+date: 2008-09-03 11:54:15
+layout: post
+slug: ant-ivy-1
+title: Instalasi Ant Ivy
+wordpress_id: 355
+categories:
+- java
+---
+
+[Ant](http://ant.apache.org), adalah tools untuk mengotomasi kegiatan build di Java. Seperti kita tahu, dari mulai source code diketik sampai bisa digunakan user, ada beberapa kegiatan yang harus dilakukan, misalnya: 
+
+
+
+
+	
+  1. Bersihkan sisa-sisa kompilasi terdahulu
+
+	
+  2. Setting CLASSPATH
+
+	
+  3. Kompilasi
+
+	
+  4. Masukkan artifak lain ke CLASSPATH sesuai kebutuhan (*.properties, *.xml)
+
+	
+  5. Jalankan automated test
+
+	
+  6. Kompilasi Javadoc
+
+	
+  7. Paket menjadi *jar atau *war
+
+	
+  8. Deploy ke server (bila perlu)
+
+
+
+Rangkaian kegiatan ini disebut dengan proses build.
+
+Jika kegiatan ini dilakukan secara manual, tentu saja masa muda kita akan habis untuk melakukan build dan tidak akan sempat menulis kode program. 
+
+Kita bisa memudahkan proses build dengan bantuan IDE. Tinggal klik Clean and Build, langsung beres. Tapi kita tahu bahwa masing-masing orang memiliki IDE favorit masing-masing. Jadi langkah-langkah build bisa jadi berbeda di masing-masing IDE. Selain itu, build dengan IDE tidak otomatis. Harus ada seseorang yang menekan tombol Clean and Build. Tentu saja hal ini mencegah kita untuk melakukan otomasi penuh semacam Continuous Integration. 
+
+Ada dua tools yang biasa digunakan untuk build, yaitu Ant dan [Maven](http://maven.apache.org). Maven memiliki kelebihan dibanding Ant, yaitu dia: 
+
+
+
+	
+  * mampu mengelola dependensi
+
+	
+  * membuatkan website
+
+	
+  * melakukan kegiatan lain yang fancy, seperti menjalankan webserver (mvn:jetty), unit test, dan lain sebagainya
+
+dan fitur-fitur lain yang bisa dilihat [di sini](http://maven.apache.org/what-is-maven.html) dan [di sini](http://maven.apache.org/maven-features.html). 
+
+
+Maven sangat powerful, tapi seperti sudah sering saya katakan, 
+
+
+
+> with great power, comes great complexity
+
+
+
+Maven relatif sulit dipelajari dan [banyak mengandung black-magic](http://bluxte.net/blog/2006-04/27-06-50.html) (baca: banyak mengandung undocumented behavior). Selain itu, Maven juga [tidak reliable](http://www.bearaway.org/wp/?p=518), dibuktikan dengan [dokumentasi cara melakukan build untuk salah satu project open source terkenal Cocoon](http://svn.apache.org/repos/asf/cocoon/trunk/README.txt). 
+
+Dengan berbagai plus-minus di atas, akhirnya saya memutuskan untuk menggunakan Ant ditambah dengan [Ivy](http://ant.apache.org/ivy) saja. Toh sebenarnya kami di ArtiVisi cuma butuh dependency management saja. Ivy lebih mudah dipelajari, dan hei ... [contoh aplikasi SpringSource Application Platform (SSAP)](http://www.springsource.com/beta/applicationplatform) di-build menggunakan Ivy. 
+
+Sekedar informasi, contoh aplikasi Petclinic SSAP cukup kompleks. Aplikasi tersebut memiliki banyak konfigurasi yang dapat dipilih, antara lain: 
+
+
+
+	
+  * Framework akses database : JDBC, JPA, Hibernate, atau Eclipselink
+
+	
+  * Database provider : HSQLDB atau MySQL
+
+
+
+Dengan banyak kombinasi tersebut, pengelolaan dependency dan proses build menjadi rumit. Domain modelnya saja digunakan oleh banyak modul lain. Belum lagi dependency terhadap pustaka external seperti Hibernate dan Eclipselink. Akan ada banyak konfigurasi untuk compile, test, dan deployment.
+
+Aplikasi contoh tersebut sudah mencerminkan kemampuan Ivy untuk mengelola project dengan banyak relasi ke project lainnya. Dan faktor yang paling penting, **Ivy mudah dipelajari**. Kita akan buktikan dalam beberapa posting berikutnya.
+
+Lebih jauh tentang dependency management akan dibahas pada posting selanjutnya tentang Ivy. Untuk sekarang, kita akan bahas cara instalasinya. 
+
+
+
+### Instalasi Ant
+
+
+Pertama, kita harus menginstal Ant dulu. Karena saya menggunakan Ubuntu, instalasi tidak terlalu sulit. Cukup ketikkan perintah berikut di command prompt. 
+
+
+    
+    sudo apt-get install ant ant-optional
+
+
+
+Atau jika Anda alergi dengan command prompt, bisa menggunakan System > Administration > Synaptic Package Manager.
+
+Selain cara otomatis seperti di atas, kita juga bisa menginstal secara manual. Caranya, [donlod Ant](http://ant.apache.org/bindownload.cgi), kemudian extract. Masukkan path menuju folder bin di dalam hasil extract ke dalam environment variable PATH.
+
+Kemudian, test instalasi dengan mengetik perintah `ant -v` di command prompt. Berikut hasilnya di komputer saya: 
+
+    
+    
+    endy@kintoun:~$ ant -v
+    Apache Ant version 1.7.0 compiled on August 29 2007
+    Buildfile: build.xml does not exist!
+    Build failed
+    
+
+
+
+Baiklah, kita sudah mendapatkan Ant versi 1.7.0. Selanjutnya, instalasi Ivy.
+
+
+
+### Instalasi Ivy
+
+
+Pertama, tentunya [download dulu Ivy-nya](http://ant.apache.org/ivy/download.html). Pada saat artikel ini ditulis, versi terbaru adalah 2.0.0-beta2. Jangan khawatir dengan status beta, karena menurut pengalaman saya, versi ini cukup stabil. 
+
+Setelah donlod, kemudian extract. Kita membutuhkan file berikut : 
+
+
+
+	
+  * ivy-2.0.0-beta2.jar
+
+	
+  * ivy-core-2.0.0-beta2
+
+
+
+dan satu file lagi bila kita ingin mengakses repository melalui ssh. 
+
+
+	
+  * lib/jsch-0.1.25.jar
+
+
+
+Masukkan file tersebut ke lokasi instalasi Ant, dalam folder lib. Bila Anda menggunakan Ubuntu seperti saya, dan menginstal Ant menggunakan Synaptic, apt-get, atau aptitude, maka lokasi instalasi Ant ada di 
+    
+    /usr/share/ant
+
+
+
+Instalasi Ivy selesai. 
+
+Dengan menggunakan Ivy, kita dapat mengelola proyek raksasa (terdiri dari banyak modul, dikerjakan oleh puluhan tim) dengan lebih mudah.
+
+Bagaimana cara menggunakannya? Tunggu posting selanjutnya :D
+  *[IDE]: Integrated Development Environment

@@ -1,0 +1,31 @@
+---
+comments: true
+date: 2006-09-18 16:40:24
+layout: post
+slug: wiki
+title: Wiki
+wordpress_id: 135
+categories:
+- aplikasi
+---
+
+Bagi mereka yang belum tahu, wiki adalah website yang bisa diedit. Contohnya ada di [Wikipedia][]
+
+Biasanya wiki digunakan untuk membuat dokumentasi. Sifatnya yang bisa diedit siapa saja menyebabkan banyak orang bisa langsung berkontribusi mengisi wiki. Tidak perlu direpotkan dengan birokrasi aplikasi CMS seperti biasanya. 
+
+
+
+Ada banyak aplikasi wiki yang tersedia. Dibuat dalam berbagai bahasa pemrograman. Biasanya, aplikasi wiki diinstal di web server dan diakses oleh orang banyak. 
+
+Selain yang diinstal di web server, ada juga yang digunakan di desktop. Saya sendiri menggunakan [Zim Desktop Wiki][] di komputer saya untuk menulis buku. 
+
+Buat yang malas (atau tidak bisa) menginstal, bisa menggunakan aplikasi wiki web based yang tidak perlu diinstal di server. Gunakan [Tiddly Wiki][]. Wiki anda tinggal ditulis di komputer sendiri, kemudian diupload ketika sudah selesai.
+
+Saking banyaknya orang yang membuat aplikasi wiki, akhirnya ada yang menyediakan one stop solution untuk memilih wiki. Silahkan kunjungi [wikimatrix] untuk membandingkan berbagai aplikasi wiki. Dia juga menyediakan wizard untuk membantu pemilihan aplikasi wiki yang sesuai. 
+
+Selamat mengeksplorasi. Semoga bermanfaat. 
+
+[Wikipedia]: http://www.wikipedia.org "Bapak moyangnya wiki"
+[Zim Desktop Wiki]: http://zoidberg.student.utwente.nl/zim/ "Homepage Zim"
+[Tiddly Wiki]: http://www.tiddlywiki.com/ "Standalone Web based Wiki"
+[wikimatrix]: http://www.wikimatrix.org "Wiki Matrix, bandingkan dan pilih wiki favorit"

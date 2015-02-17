@@ -1,0 +1,161 @@
+---
+comments: true
+date: 2008-09-28 09:51:32
+layout: post
+slug: ant-ivy-5
+title: Internal Dependency dengan Ivy
+wordpress_id: 389
+categories:
+- java
+---
+
+Pada [artikel sebelumny](http://endy.artivisi.com/blog/java/ant-ivy-4/)a, kita telah menyimpan artifact modul person-model di shared repository melalui mekanisme scp dengan private key. Pada artikel ini, kita akan menggunakan artifact person-model tersebut dalam modul person-dao-api. Pengambilan artifact dilakukan melalui mekanisme yang sama, yaitu scp dengan private key. 
+
+
+
+Berikut struktur folder modul person-dao-api. 
+
+![ ](/images/uploads/2008/09/folder-person-dao-api-before-resolve.png)
+
+Kita memiliki folder src yang berisi source code class `PersonDao.java`, yang isinya sebagai berikut. 
+
+
+    
+    
+    package com.artivisi.tutorial.ivy.dao;
+    
+    import java.util.List;
+    
+    import com.artivisi.tutorial.ivy.model.Person;
+    
+    public interface PersonDao {
+    	
+    	/**
+    	 * saves Person object into database. 
+    	 * If object is already exists (denoted by not-null ID field), 
+    	 * the existing record with the corresponding ID is updated. 
+    	 * If the object is new (denoted by null ID field), 
+    	 * new record is inserted.
+    	 * 
+    	 *  This method also set the ID field for new record.
+    	 * */
+    	public void save(Person person);
+    	
+    	/**
+    	 * fetch all person object in database.
+    	 * @return List of all person
+    	 * */
+    	public List getAll();
+    	
+    	/**
+    	 * fetch Person object with the speficied ID. 
+    	 * @param id identifier for person object
+    	 * @return Person object if there is record found for the speficied id, null otherwise
+    	 * */
+    	public Person getById(Long id);
+    }
+    
+
+
+
+
+Seperti terlihat dalam deklarasi import, class ini menggunakan class `Person`, yang sudah tersedia di shared repository. Kita akan melakukan build dengan menggunakan script `build.xml`. Isinya sama dengan yang ada di modul person-model, dengan perkecualian nama projectnya. Berikut isi `build.xml`. 
+
+
+    
+    
+    <project name="person-dao-api" default="build">
+    
+    	<property file="build.properties"/>
+    	
+    	<import file="${basedir}/../person-build/default.xml"/>
+    	<import file="${basedir}/../person-build/ivy-builder.xml"/>
+    	
+    </project>
+    
+
+
+
+Dependensi modul `person-dao-api` terhadap `person-model` kita deklarasikan dalam `ivy.xml` sebagai berikut. 
+
+    
+    
+    <ivy-module version="1.0">
+        <info organisation="com.artivisi" module="person-dao-api"/>
+        
+    	<publications>
+    		<artifact name="${ant.project.name}" conf="api"/>
+    		<artifact name="${ant.project.name}-sources" conf="source" type="src" ext="jar"/>
+    	</publications>
+        
+        <dependencies>
+            <dependency name="person-model" rev="latest.integration" conf="api"/>
+        </dependencies>
+    </ivy-module>
+    
+
+
+
+Setelah `build.xml` dan `ivy.xml` selesai dibuat, kita bisa langsung melakukan build. Panggil target dari command line sebagai berikut: 
+
+    
+    
+    ant build
+    
+
+
+Dari output perintah di atas terlihat bahwa Ivy akan menguraikan dependensi project dengan melakukan query ke semua resolver yang terdaftar. Setelah modul yang dibutuhkan (person-model) ditemukan, Ivy akan langsung mendonlodnya ke dalam folder lib. Karena isi folder lib sudah kita daftarkan ke dalam classpath, maka proses kompilasi akan berjalan dengan mulus. Berikut struktur folder `person-dao-api` setelah melakukan proses resolve.
+
+![ ](/images/uploads/2008/09/folder-person-dao-api-after-resolve.png)
+
+Pada deklarasi dependensi di atas, terlihat bahwa modul `person-dao-api` memiliki dependensi terhadap modul `person-model` dengan revision `latest.integration`. Ini artinya Ivy akan menggunakan versi terbaru yang ada dalam repository. Untuk melihat kemampuan fitur ini, mari kita publish `person-model` dengan revision yang lebih baru. 
+
+Edit file build.properties dalam modul person-model, sehingga menjadi seperti ini. 
+
+
+    
+    
+    build.version = 0.0.2
+    release.type = integration
+    
+
+
+
+Setelah itu, bersihkan hasil kompilasi terdahulu, dan publish modul `person-model`. 
+
+    
+    
+    ant clean publish-local
+    
+
+
+Lalu, pindah ke modul person-dao-api, dan lakukan build lagi. 
+
+    
+    
+    ant clean build
+    
+
+
+Terlihat pada output, bahwa modul `person-model` yang terbaru akan didonlod, dan yang versi lama akan dihapus. Sehingga isi folder lib akan terlihat sebagai berikut. 
+
+
+Ivy memiliki beberapa cara untuk menentukan mana artifak yang terbaru (latest), yaitu: latest-time, latest-revision, dan latest-lexico. 
+
+Dengan menggunakan latest-time, Ivy akan melihat tanggal dibuatnya suatu artifak. Kalau artifak berada di repository filesystem, maka tanggal sistem operasi akan digunakan. Bila repository diakses melalui http, Ivy akan melakukan query terhadap http server. Metode ini, walaupun efektif, relatif lambat bila akses jaringan ke repository tidak mumpuni. 
+
+Latest-revision membandingkan nama versi artifak, dan mengenali beberapa keyword. Dia dapat menentukan bahwa versi 1.0-alpha lebih baru daripada 1.0-dev1, dan 1.0 lebih baru daripada 1.0-rc1.
+
+Sedangkan strategi latest-lexico hanya membandingkan berdasarkan urutan abjad. Jadi, 1.0-m1 akan lebih baru daripada 1.0-build135.
+
+Ketiga strategi tersebut sudah built-in dalam Ivy dan tidak memerlukan konfigurasi lebih lanjut. 
+
+Selain revision, Ivy juga mengenal terminologi status. Secara default, Ivy menyediakan tiga status diurutkan dari yang paling stabil/mature, yaitu release, milestone, dan integration. Bila kita menggunakan latest.integration, Ivy akan mengambil artifak terbaru berstatus apapun dari repository. Bila kita gunakan latest.milestone, Ivy akan mengabaikan rilis integration, dan hanya akan membandingkan milestone dan release. Demikian juga bila kita gunakan latest.release, maka versi terbaru hanya akan dicari dari artifak berstatus release. 
+
+Cara deklarasi latest.integration di atas disebut dengan dynamic revision, karena nomer revision tidak secara eksplisit disebutkan. Selain menggunakan latest.integration, ada beberapa mekanisme lain, yaitu menggunakan +, dan menggunakan range. 
+
+Kita bisa menggunakan + untuk memilih revisi terbaru untuk rilis tertentu. Misalnya bila kita memiliki modul dengan revisi 1.0.1, 1.0.4, 1.0.7, dan 1.1.4 dalam repository, kita dapat menggunakan 1.0.+ untuk memilih versi terbaru dalam lini 1.0, yaitu 1.0.7. 
+
+Kita juga bisa menggunakan range, untuk menentukan revisi yang dapat digunakan, misalnya [1.0,2.2] akan memilih semua revisi yang sama atau lebih besar dari 1.0, tapi lebih kecil atau sama dengan 2.2. Lebih lengkap tentang ini bisa dilihat di dokumentasi Ivy tentang dependensi. 
+
+Demikianlah deklarasi dependensi dengan Ivy. Pada artikel ini, kita baru mencoba dependensi terhadap modul yang kita buat sendiri. Di [artikel selanjutnya](http://endy.artivisi.com/blog/java/ant-ivy-6/), kita akan lihat bagaimana mendeklarasikan dependensi terhadap modul eksternal seperti Spring Framework atau Hibernate. 

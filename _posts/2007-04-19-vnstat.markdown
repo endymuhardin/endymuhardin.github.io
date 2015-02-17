@@ -1,0 +1,62 @@
+---
+comments: true
+date: 2007-04-19 10:50:52
+layout: post
+slug: vnstat
+title: vnStat
+wordpress_id: 216
+categories:
+- aplikasi
+---
+
+Sekarang sedang marak layanan internet berbasis paket. Artinya, kita dikenakan biaya berdasarkan besar data yang kita konsumsi, baik kirim (uplink) maupun terima (downlink). 
+
+Perbedaan cara penagihan tentunya juga mempengaruhi perilaku berinternet kita. Dengan layanan berbasis waktu, kita dapat membatasi pengeluaran dengan cara membatasi durasi berinternet. Nah, kalau berbasis paket, bagaimana cara mengendalikan pemakaian?
+
+Berbagai aplikasi open source dapat digunakan untuk memonitor pemakaian internet, salah satunya adalah [vnStat](http://humdi.net/vnstat/). Aplikasi kecil ini sangat mudah digunakan. Cukup instal, inisialisasi databasenya, dan lihat laporannya. 
+
+
+
+### Instalasi vnStat
+
+
+Instalasi, seperti biasa, sangat mudah. Di Ubuntu, cukup dengan satu baris. 
+`sudo apt-get install vnstat`
+
+Setelah terinstal, kita harus menginisialisasi database tempat data monitoring diletakkan. Di komputer saya, ada dua antarmuka jaringan, WiFi (eth1) dan kabel (eth2). Nantinya bila menggunakan modem ADSL, biasanya saya akan menggunakan antarmuka kabel (eth2) yang terhubung ke modem ADSL. 
+
+Untuk menginisialisasi database, lakukan perintah berikut, sesuai dengan nama antarmuka yang akan dimonitor. 
+
+    
+    <code>sudo vnstat -u -i eth1
+    sudo vnstat -u -i eth2</code>
+
+
+
+vnStat akan mengeluarkan pesan error tentang file database yang tidak ditemukan. Biarkan saja, karena filenya belum ada. 
+
+Setelah itu, vnStat sudah bekerja di belakang layar. Untuk melihat pemakaian internet, kita harus menginstal satu aplikasi lagi, yaitu [vnStat Front End](http://www.sqweek.com/sqweek/index.php?p=1). Aplikasi ini kerjanya membaca database yang dihasilkan vnStat dan menampilkannya di web. Karena berbasis PHP, seharusnya tidak sulit untuk diinstal. 
+
+
+
+### Instalasi vnStat FrontEnd
+
+
+Instalasinya tidak sulit. Cukup download dari websitenya, dan extract di folder yang dikenali oleh Apache HTTPD. Di komputer saya, saya gunakan folder `/opt/lampp/htdocs/vnstat`.
+
+Edit file config.php sehingga menjadi seperti ini. 
+
+    
+    <code>
+    // list of network interfaces monitored by vnStat
+    $iface_list = array('eth1', 'eth2');
+    $iface_title['eth1'] = 'Wireless';
+    $iface_title['eth2'] = 'Wired';
+    </code>
+
+
+
+Selanjutnya, browse ke http://localhost/vnstat. Kita akan mendapati data penggunaan jaringan kita seperti gambar di bawah. 
+![vnStat Front End Screenshot ](/images/uploads/2007/04/vnstat.png)
+
+Selamat mencoba

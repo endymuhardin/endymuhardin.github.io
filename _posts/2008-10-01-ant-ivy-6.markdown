@@ -1,0 +1,198 @@
+---
+comments: true
+date: 2008-10-01 10:06:24
+layout: post
+slug: ant-ivy-6
+title: External Dependency dengan Ivy
+wordpress_id: 393
+categories:
+- java
+---
+
+Pada [artikel sebelumnya](http://endy.artivisi.com/blog/java/ant-ivy-5/), kita telah menghubungkan dua modul berbeda dengan deklarasi dependensi. Tapi hal itu belum cukup, karena pada aplikasi yang sebenarnya, kita akan banyak menggunakan pustaka yang tidak kita buat sendiri. 
+
+Agar kita bisa menggunakan pustaka luar tersebut, kita harus mengetahui alamat repository yang menyimpan pustaka yang kita inginkan, berikut dependensinya. Misalnya, bila kita ingin menggunakan Hibernate, kita harus mengetahui repository yang memuat artifak hibernate.jar dan juga dependensinya seperti asm.jar, cglib.jar, dan segudang *.jar lainnya. 
+
+Selanjutnya, untuk menghemat bandwidth perusahaan, kita dapat menaruh pustaka yang sering digunakan tersebut dalam jaringan perusahaan. Dengan demikian semua orang yang akan menggunakan *.jar tersebut tidak perlu mendonlod dari lokasi asalnya, tapi cukup dari jaringan lokal. Pembuatan mirror ini akan kita diskusikan di artikel terakhir dalam seri ini. 
+
+
+
+Ada dua masalah utama yang kita hadapi dalam menggunakan pustaka luar. Pertama, bagaimana mencari dan memilih repository yang baik. Kedua, bagaimana mendaftarkannya dalam project kita. 
+
+Mencari dan memilih repository merupakan hal yang krusial. Para pengguna Maven, tools untuk dependency management seperti Ivy, memiliki repository yang dapat diakses melalui internet. Akan tetapi, ada satu masalah besar, isinya tidak lengkap dan deklarasi metadatanya banyak yang berantakan. Sebagai ilustrasi, dari dokumentasi Hibernate kita mengetahui bahwa hibernate.jar membutuhkan asm.jar, commons-collection.jar, dan cglib.jar. Tapi di repository Maven, kadang hanya tersedia asm.jar. Artifak commons-collection.jar ada di deklarasi dependensi, tapi filenya tidak ada. Bahkan cglib.jar sama sekali tidak dicantumkan dalam deklarasi dependensi. Nah, kira-kira seperti itulah kondisi repository yang tidak dipelihara dengan baik. Metadata dependensinya tidak akurat, dan koleksi artifaknya tidak lengkap.
+
+Untungnya --SpringSource, perusahaan yang membekingi Spring Framework-- telah membuatkan [repository](http://www.springsource.com/repository/) yang cukup mumpuni. Mereka menjamin bahwa repository tersebut transitively complete. Artinya, bila hibernate.jar membutuhkan commons-collection.jar dan commons-collection.jar membutuhkan commons-lang.jar, kita bisa yakin bahwa ketiga .jar tersebut ada dalam repository. SpringSource menyediakan metadata untuk ivy dan maven2. Jadi selain kita pengguna Ivy, pengguna Maven2 juga bisa menggunakan repository tersebut. Semua *.jar yang ada dalam repo ini sudah dijamin OSGi compliant. Ini akan sangat berguna apabila kita membangun di platform OSGi. Yang paling penting, repository ini memiliki fasilitas pencarian. 
+
+Bila dependensi yang kita inginkan tidak tersedia di repository SpringSource, kita masih dapat mencari ke repository Maven2 yang disediakan oleh ibiblio. 
+
+Baiklah, masalah pertama sudah terpecahkan. Sekarang mari kita selesaikan masalah kedua, yaitu menggunakan kedua repository tersebut dalam aplikasi kita. 
+
+
+Repository ini, sama dengan internal repository yang sudah kita bahas pada artikel terdahulu, akan dideklarasikan dalam file ivysettings.xml. Berikut adalah entri untuk repository SpringSource. 
+
+
+    
+    
+    <url name="springsource.release.repo.resolver">
+    	<ivy pattern="http://repository.springsource.com/ivy/bundles/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    	<artifact pattern="http://repository.springsource.com/ivy/bundles/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    </url>
+    
+    <url name="springsource.external.repo.resolver">
+    	<ivy pattern="http://repository.springsource.com/ivy/bundles/external/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    	<artifact pattern="http://repository.springsource.com/ivy/bundles/external/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    </url>
+    
+
+
+
+
+Cara konfigurasi ini juga bisa dilihat di situs repository SpringSource. 
+Dan ini adalah konfigurasi untuk repository iBiblio. 
+
+
+    
+    
+    <ibiblio name="maven2" m2compatible="true" />
+    
+
+
+
+Kita dapat menyuruh Ivy untuk terlebih dulu mencari di repo SpringSource. Bila ditemukan, hentikan pencarian. Bila tidak ditemukan, lanjutkan ke iBiblio. Untuk mengaktifkan mekanisme ini, gunakan ChainResolver sebagai berikut. 
+
+
+    
+    
+    <chain name="external-repository">
+    
+    	<chain name="springsource-repository" returnFirst="true">
+    		<url name="springsource.release.repo.resolver">
+    			<ivy pattern="http://repository.springsource.com/ivy/bundles/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    			<artifact pattern="http://repository.springsource.com/ivy/bundles/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    		</url>
+    		<url name="springsource.external.repo.resolver">
+    			<ivy pattern="http://repository.springsource.com/ivy/bundles/external/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    			<artifact pattern="http://repository.springsource.com/ivy/bundles/external/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    		</url>
+    	</chain>
+    
+    	<chain name="ibiblio.repo.resolver">
+    		<ibiblio name="maven2" m2compatible="true" />
+    	</chain>
+    
+    </chain>
+    
+
+
+
+Atribut `returnFirst` digunakan untuk menghentikan pencarian bila artifak sudah ditemukan. 
+
+Setelah repository kita daftarkan, kita tinggal mengkonfigurasi dependensi di project kita. Modul person-dao-impl akan menggunakan Spring Framework 2.5.5.A dan juga Hibernate 3.2.6.ga. Kita dapat mencari di situs repository SpringSource untuk mendapatkan deklarasi dependensi yang sesuai untuk [Spring Framework](http://www.springsource.com/repository/app/search?query=spring) dan [Hibernate](http://www.springsource.com/repository/app/search?query=hibernate). 
+
+Berikut adalah file ivy.xml dari modul person-dao-impl. 
+
+
+    
+    
+    <ivy-module version="1.0">
+    	<info organisation="com.artivisi" module="com.artivisi.tutorial.ivy.dao.impl"/>
+    	<publications>    
+    		<artifact name="${ant.project.name}"/>
+    		<artifact name="${ant.project.name}-sources" type="src" ext="jar"/>
+    	</publications>
+    
+    	<dependencies>
+    
+    		<dependency
+    			org="com.artivisi"
+    			name="com.artivisi.tutorial.ivy.dao.api"
+    			rev="latest.integration"
+    		/>
+    
+    		<dependency 
+    			org="org.springframework" 
+    			name="org.springframework.orm" 
+    			rev="2.5.5.A"
+    		/>
+    			
+    		<dependency 
+    			org="org.hibernate" 
+    			name="com.springsource.org.hibernate" 
+    			rev="3.2.6.ga"
+    		/>
+    
+    	</dependencies>
+    
+    </ivy-module>
+    
+
+
+
+Terlihat dari ivy.xml bahwa modul ini memiliki dependensi terhadap modul person-dao-api, yang mana memiliki dependensi terhadap person-model. Dengan fitur transitive-dependency yang dimiliki Ivy, kita tidak perlu mendeklarasikan dependensi terhadap person-model, karena sudah secara otomatis didaftarkan melalui person-dao-api.
+
+Modul ini memiliki satu source code, yaitu PersonDaoHibernate, sebagai berikut. 
+
+
+    
+    
+    package com.artivisi.tutorial.ivy.dao.impl;
+    
+    import java.util.List;
+    
+    import com.artivisi.tutorial.ivy.model.Person;
+    import com.artivisi.tutorial.ivy.dao.PersonDao;
+    
+    @Transactional
+    public class PersonDaoHibernate implements PersonDao {
+    
+    	private SessionFactory sessionFactory;
+    
+    	@Autowired
+    	public void setSessionFactory(SessionFactory sf) {
+    		this.sessionFactory = sf;
+    	}
+    	
+    	public void save(Person person) {
+    		sessionFactory.getCurrentSession()
+    		.saveOrUpdate(person);
+    	}
+    	
+    	@SuppressWarnings("unchecked")		
+    	public List<Person> getAll(){
+    		return sessionFactory.getCurrentSession()
+    		.createCriteria(Person.class)
+    		.list();
+    	}
+    	
+    	public Person getById(Long id){
+    		return (Person) sessionFactory.getCurrentSession()
+    		.get(Person.class, id);
+    	}
+    }
+    
+
+
+
+Seperti kita lihat, kode program tersebut menggunakan @Transactional dari Spring Framework, dan SessionFactory milik Hibernate. Mari kita lakukan kompilasi. 
+
+    
+    
+    ant build
+    
+
+
+
+
+
+
+
+
+> PERHATIAN!!! Perintah build ini akan mengakses internet dan mendonlod semua *.jar yang dibutuhkan. Ini akan memakan banyak bandwidth internasional Anda.
+
+
+
+ 
+
+Dari output kita bisa lihat bahwa Ivy menemukan dependensi yang dibutuhkan di repository SpringSource, dan kemudian mendonlodnya. Hasil donlod akan disimpan dalam cache, sehingga bila kita melakukan build lagi, tidak perlu mendonlod berkali-kali. 
+
+Demikianlah penjelasan tentang dependensi eksternal. Pada [artikel selanjutnya](http://endy.artivisi.com/blog/java/ant-ivy-7/), kita akan bahas tentang configuration, fitur yang sangat canggih dari Ivy. 

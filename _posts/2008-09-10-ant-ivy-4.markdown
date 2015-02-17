@@ -1,0 +1,396 @@
+---
+comments: true
+date: 2008-09-10 09:57:41
+layout: post
+slug: ant-ivy-4
+title: Publish Modul ke Repository
+wordpress_id: 381
+categories:
+- java
+---
+
+Template project sudah dibuat pada [artikel sebelumnya](http://endy.artivisi.com/blog/java/ant-ivy-3/). Pada artikel ini, kita akan menghubungkan kedua modul ini dengan menggunakan Ivy. 
+
+Seperti kita ketahui, modul `person-dao-api` mempunyai dependensi terhadap modul `person-model`. Berikut gambarnya. 
+
+![ ](/images/uploads/2008/09/dep-after.png)
+
+Dependensi ini terlihat di source-code `PersonDao.java`, yang melakukan import terhadap class Person, sebagai berikut. 
+
+
+    
+    
+    package com.artivisi.tutorial.ivy.dao;
+    
+    import java.util.List;
+    
+    import com.artivisi.tutorial.ivy.model.Person;
+    
+    public interface PersonDao {
+    	
+    	/**
+    	 * saves Person object into database. 
+    	 * If object is already exists (denoted by not-null ID field), 
+    	 * the existing record with the corresponding ID is updated. 
+    	 * If the object is new (denoted by null ID field), 
+    	 * new record is inserted.
+    	 * 
+    	 *  This method also set the ID field for new record.
+    	 * */
+    	public void save(Person person);
+    	
+    	/**
+    	 * fetch all person object in database.
+    	 * @return List of all person
+    	 * */
+    	public List getAll();
+    	
+    	/**
+    	 * fetch Person object with the speficied ID. 
+    	 * @param id identifier for person object
+    	 * @return Person object if there is record found for the speficied id, null otherwise
+    	 * */
+    	public Person getById(Long id);
+    }
+    
+
+
+
+Agar class diatas bisa dikompilasi dengan lancar, ada tiga hal yang harus dilakukan: 
+
+
+
+	
+  1. Menyediakan lokasi yang dapat diakses oleh kedua modul
+
+	
+  2. Mempublikasikan distribusi modul person-model
+
+	
+  3. Mendeklarasikan dependensi person-dao-api terhadap person-model
+
+
+
+
+
+### Repository Ivy
+
+
+Dalam dunia Ivy, file-file distribusi suatu modul, seperti `person-model.jar`, `person-model-sources.jar`, disebut dengan istilah artifact. 
+Artifact ini diletakkan di lokasi tertentu, disebut dengan istilah repository. Konfigurasi tentang cara mengakses suatu repository disebut dengan istilah resolver. Ivy menyediakan berbagai resolver untuk berbagai metode/protokol, yaitu: 
+
+
+
+	
+  * Filesystem : ini biasanya digunakan untuk folder di komputer lokal atau shared folder (NFS atau Windows Share)
+
+	
+  * URL : digunakan untuk mengakses repository melalui http
+
+	
+  * SSH : digunakan untuk mengakses repository melalui mekanisme scp
+
+	
+  * SFTP : menggunakan protokol FTP yang terenkripsi
+
+	
+  * VFS : menggunakan Apache Commons VFS sebagai backend. Mendukung apapun jenis filesystem yang didukung VFS, salah satunya sftp
+
+	
+  * Ibiblio : untuk mengakses repository maven2
+
+
+
+Selain itu, Ivy juga menyediakan composite resolver, yaitu resolver yang dapat menampung resolver lainnya. Composite resolver ada dua: 
+
+	
+  * Chain Resolver : menggabungkan beberapa resolver, sehingga kalau suatu artifak tidak ditemukan di resolver pertama, bisa melanjutkan pencarian ke resolver selanjutnya dalam chain
+
+	
+  * Dual Resolver : memisahkan resolver untuk menghitung dependensi, dan resolver untuk mendownload artifak.
+
+
+
+Baiklah, ternyata Ivy bisa menangani macam-macam protokol. Tapi bagaimana cara kita mendesain repository yang baik? Bagaimana best-practicesnya? Mari kita bahas.
+
+
+
+### Desain Repository
+
+
+
+Biasanya, kita memiliki dua jenis repository, internal dan external. Repository internal digunakan untuk menyimpan artifak yang dihasilkan project dalam organisasi. Sebagian atau semua artifak internal ini mungkin saja bersifat komersil atau proprietary, sehingga tidak dibuka untuk konsumsi publik.
+
+Di internet tersedia repository yang bisa diakses semua orang. Pengguna Maven biasanya menggunakan [repository ibiblio](http://www.ibiblio.org/maven/). Pengguna Spring OSGi biasanya menggunakan [repository SpringSource](http://www.springsource.com/repository), yang sudah berisi library yang OSGi compliant. Repository SpringSource kompatibel baik dengan Ivy maupun Maven. Untuk menghemat bandwidth internasional, organisasi kita bisa membuat mirror dari repository publik ini agar dependensi bisa diunduh dari jaringan lokal.
+
+Pada artikel ini, kita hanya akan membahas tentang internal repository. Pembahasan tentang external repository akan dibahas pada artikel yang akan datang.
+
+
+
+### Internal Repository
+
+
+Internal repository dibagi lagi menjadi dua kategori, yaitu local repository, dan shared repository. 
+
+Local repository berada di PC masing-masing programmer. Misalnya satu programmer mengerjakan dua modul yang saling berhubungan, misalnya `person-model` dan `person-dao-api`. Seringkali dia membuat perubahan di `person-model` yang akan digunakan di `person-dao-api`. Tapi karena kode programnya belum sempurna, dia tidak ingin merilis artifak tersebut ke anggota tim yang lain. Untuk kebutuhan ini, dia mempublikasikan artifact `person-model` ke local repo di PCnya dia sendiri, sehingga bisa diakses oleh modul `person-dao-api`. 
+
+Setelah `person-model` dan `person-dao-api` dibuat dan ditest secara menyeluruh, barulah programmer tersebut merilis artifak ke shared repo agar bisa digunakan rekan-rekannya.
+
+
+
+### Konfigurasi Internal Resolver
+
+
+Untuk mengimplementasikan skenario di atas, kita pertama akan mendefinisikan repository local. Asumsikan saja repository ini akan disimpan di folder local-repo sejajar dengan modul-modul yang lainnya. Kita akan mengkonfigurasi resolvernya di file bernama `ivysettings.xml`, diletakkan di modul `person-build` dalam subfolder ivy. Berikut isinya. 
+
+    
+    
+    <ivysettings>
+    	<settings defaultResolver="local" />
+    
+    	<caches defaultCacheDir="${ivy.settings.dir}/../../ivy-cache" />
+    	<resolvers>		
+    		<filesystem name="local">
+    			<artifact
+    				pattern="${ivy.settings.dir}/../../local-repo/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    			<ivy
+    				pattern="${ivy.settings.dir}/../../local-repo/release/[organisation]/[module]/[revision]/[artifact]-[revision].xml" />
+    		</filesystem>
+    	</resolvers>
+    </ivysettings>
+    
+
+
+
+Ada beberapa hal yang harus dijelaskan di sini. 
+
+
+
+
+  * defaultResolver : ini adalah resolver yang digunakan oleh Ivy bila kita tidak secara eksplisit memilih resolver. Setting ini akan berguna nantinya bila kita mendeklarasikan dependensi
+
+
+  * defaultCacheDir : menyebutkan lokasi cache di komputer lokal. Bila tidak dikonfigurasi, Ivy akan menyimpan cache di folder `.ivy2/cache` dalam home folder user.
+
+
+  * Variabel ${ivy.settings.dir} : lokasi folder tempat file `ivysettings.xml` berada
+
+
+  * Artifact Pattern : struktur folder tempat artifak disimpan
+
+
+  * Ivy Pattern : struktur folder tempat metadata modul disimpan. Kita akan membahas tentang metadata ini nanti.
+
+
+
+Selanjutnya, kita butuh repository yang bisa digunakan seluruh tim dan programmer dalam perusahaan. Ini berguna bila modul yang kita buat akan digunakan oleh tim lain. Untuk itu, kita akan mengkonfigurasi repository yang akan kita beri nama company. Agar aman, kita gunakan protokol scp untuk memindahkan file ke server. Otentikasinya menggunakan public/private key supaya semua artifact disimpan dengan nama user yang sama. Berikut konfigurasi resolvernya. Tambahkan di bawah resolver local.
+
+
+    
+    
+    <ssh name="company" keyFile="${user.home}/.ssh/id_rsa" host="nama-servernya" user="user-untuk-login-di-server">
+    	<ivy
+    		pattern="/lokasi-folder-di-server/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    	<artifact
+    		pattern="/lokasi-folder-di-server/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    </ssh>
+    
+
+
+
+Kita telah memiliki dua resolver, satu untuk repository di komputer lokal, dan satu lagi repository yang disharing ke seluruh organisasi. 
+
+
+
+### Target Resolve dan Publish
+
+
+Setelah kita melakukan konfigurasi resolver, sekarang kita bisa mempublish artifact dari modul person-model. 
+Untuk melakukan publishing, kita perlu membuat target di buildfile kita. Agar buildfile tetap rapi, kita buat file baru, yaitu `ivy-builder.xml`, diletakkan di modul `person-build`. File ini nantinya akan kita import di `build.xml` dalam masing-masing modul. Berikut isi file `ivy-builder.xml`
+
+
+    
+    
+    <project name="ivy-related-targets" xmlns:ivy="antlib:org.apache.ivy.ant">
+    	
+    	<target name="resolve" description="--> resolve and retrieve dependencies with ivy">
+    		<ivy:retrieve 
+    			sync="true"
+    			pattern="lib/[conf]/[artifact].[ext]"
+    		/>
+    	</target>
+        
+    	<target name="clean-cache" description="--> clean the ivy cache">
+    		<ivy:cleancache />
+    	</target>
+    
+    
+    	<target name="publish-local" depends="build" description="--> publish this project in the ivy repository">
+    		<property name="revision" value="${build.version}" />
+    		<delete file="${build.dir}/ivy.xml" />
+    		<ivy:publish 
+    			artifactspattern="${dist.dir}/[artifact].[ext]" 
+    			resolver="local" 
+    			pubrevision="${revision}" 
+    			status="${release.type}" 
+    			update="true" 
+    			overwrite="true" 
+    		/>
+    		<echo message="project ${ant.project.name} released locally with version ${revision} and status ${release.type}" />
+    	</target>
+    	
+    	<target name="publish-company" depends="build" description="--> publish this project to company repository">
+    		<property name="revision" value="${build.version}" />
+    		<delete file="${build.dir}/ivy.xml" />
+    		<ivy:publish 
+    			artifactspattern="${dist.dir}/[artifact].[ext]" 
+    			resolver="company" 
+    			pubrevision="${revision}" 
+    			status="${release.type}" 
+    			update="true" 
+    			overwrite="true" 
+    		/>
+    		<echo message="project ${ant.project.name} released to company repo with version ${revision} and status ${release.type}" />
+    	</target>
+        
+    	<target name="ivy-report" depends="resolve" description="--> generate dependency report">
+    		<ivy:report todir="build/ivy-report"/>
+    	</target>
+    	
+    </project>
+    
+
+
+
+Terlihat dari target publish di atas bahwa kita membutuhkan dua variabel untuk melakukan publish, yaitu `${revision}` dan `${release.type}`. Kedua variabel ini akan kita sediakan pada masing-masing modul. 
+
+Bila kita ingin mempublish artifact, terlebih dulu kita harus melakukan build. Kita juga memiliki target resolve untuk menentukan dependency. Target resolve ini dijalankan sebelum melakukan kompilasi. Dengan demikian, kita harus menyesuaikan target compile dalam `default.xml` agar menjalankan resolve sebelum compile. Ubah baris berikut dalam `default.xml`
+
+
+    
+    
+    <target name="compile" depends="prepare">
+    	<javac srcdir="${src.java.dir}" destdir="${compile.dir}" classpathref="compile.classpath" />
+    </target>
+    
+
+
+
+menjadi seperti ini. 
+
+
+    
+    
+    <target name="compile" depends="resolve, prepare">
+    	<javac srcdir="${src.java.dir}" destdir="${compile.dir}" classpathref="compile.classpath" />
+    </target>
+    
+
+
+
+
+
+### Mempublish Artifact
+
+
+Sekarang kita ingin mempublish artifact yang dihasilkan modul `person-model`. Seperti kita ketahui pada artikel sebelumnya, bila kita menjalankan target build, akan dihasilkan dua jar dalam folder `dist`, yaitu `person-model.jar` dan `person-model-sources.jar`. Kita akan mempublish kedua artifak ini ke repository. 
+
+Pastikan file `ivy-builder.xml` sudah diimport dalam `build.xml`. Isi `build.xml` harusnya terlihat seperti ini. 
+
+
+    
+    
+    <project name="person-model" default="build">
+    	<property file="build.properties"/>
+    	
+    	<import file="${basedir}/../person-build/default.xml"/>
+    	<import file="${basedir}/../person-build/ivy-builder.xml"/>
+    	
+    </project>
+    
+
+
+
+File tersebut mengacu pada file `build.properties`. Berikut isi file `build.properties`.
+
+
+    
+    
+    build.version = 0.0.1
+    release.type = integration
+    
+
+
+
+Kedua variabel di atas digunakan untuk mengisi variabel `${build.version}` dan `${release.type}` yang dibutuhkan target publish di atas. Setiap kali kita melakukan publish, kita harus menentukan versi dan jenis artifak tersebut. 
+
+Nomer versi (build.version) tidak sulit dipahami. Untuk menentukan mana yang lebih baru, tinggal dibandingkan versi major, minor, dan micronya. Release type membutuhkan penjelasan lebih lanjut. 
+
+Secara default, Ivy memiliki tiga jenis release, diurutkan dari yang paling experimental sampai yang paling stabil: integration, milestone, dan release. Kita juga bisa mendefinisikan jenis release sendiri, dengan menggunakan tag status dalam `ivysettings.xml`. Untuk kebutuhan kita, tiga status yang disediakan Ivy sudah memadai.
+
+Selanjutnya, kita mendefinisikan beberapa metadata yang berkaitan dengan artifact yang ingin dipublish, yaitu: 
+
+
+
+
+  * Nama organisasi kita. Ini akan digunakan Ivy untuk mengatur struktur folder dalam repository
+
+
+  * Nama modul yang akan dipublish
+
+
+  * Daftar artifak yang akan dipublish. Satu modul bisa mempublish banyak artifak, misalnya: *.jar yang berisi hasil compile, javadoc, source-code, dsb
+
+
+
+Metadata tersebut ditulis dalam file yang bernama `ivy.xml`. Diletakkan di sebelah `build.xml`. Berikut isinya.
+
+
+    
+    
+    <ivy-module version="1.0">
+    	<info organisation="com.artivisi" module="com.artivisi.tutorial.ivy.model"/>
+    	<publications>    
+    		<artifact name="${ant.project.name}"/>
+    		<artifact name="${ant.project.name}-sources" type="src" ext="jar"/>
+    	</publications>
+    </ivy-module>
+    
+
+
+
+Setelah semuanya lengkap, kita tinggal memanggil
+
+    
+    
+    ant publish-local 
+    
+
+
+untuk mempublish ke repository local, atau 
+
+    
+    
+    ant publish-company
+    
+
+
+untuk mempublish ke repository shared. Bila dalam proses pembuatan private key kita menggunakan password, akan muncul dialog box yang menanyakan password. Isikan nama user yang digunakan untuk login ke server dan password dari private key kita. Sekali lagi, username yang dimasukkan adalah username di server, sedangkan password yang dimasukkan adalah password untuk private key kita sendiri. Jadi, kita tidak memasukkan password dari username di server.
+
+Setelah dijalankan, kita akan melihat banyak file dalam repository. Ivy akan merilis: `person-model-0.0.1.jar`, `person-sources-0.0.1.jar`, dan `ivy-0.0.1.xml` yang berisi metadata dari rilis tersebut. Setiap file disertai signature md5 dan sha1 untuk kebutuhan verifikasi keabsahan file. 
+
+Berikut struktur folder keseluruhan. 
+![ ](/images/uploads/2008/09/struktur-folder-4-all.png)
+
+Isi folder local repo sebagai berikut. 
+
+![ ](/images/uploads/2008/09/struktur-folder-4-local-repo.png)
+
+Isi folder person-build sebagai berikut.
+
+![ ](/images/uploads/2008/09/struktur-folder-4-person-build.png)
+
+Isi folder person-model sebagai berikut.
+![ ](/images/uploads/2008/09/struktur-folder-4-person-model.png)
+
+Pada [artikel selanjutnya](http://endy.artivisi.com/blog/java/ant-ivy-5), kita akan membahas bagaimana cara mengambil artifact yang sudah dipublish tersebut. 

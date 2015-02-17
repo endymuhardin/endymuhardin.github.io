@@ -1,0 +1,26 @@
+---
+comments: true
+date: 2006-01-23 19:15:00
+layout: post
+slug: url-bagus
+title: URL bagus
+wordpress_id: 22
+categories:
+- aplikasi
+---
+
+URL untuk website bagusnya tidak didikte oleh aplikasi maupun teknologi. Dengan demikian, kita bisa ganti engine website kita tanpa harus merusak URL. 
+
+Untuk itu, saya mengaktifkan fungsi Permalinks pada Wordpress. Jadi, URL yang tadinya seperti ini: **http://endy.artivisi.com/blog/?p=7** akan berubah menjadi seperti ini: **http://endy.artivisi.com/blog/aplikasi/instalasi-subversion/**
+
+Lebih canggih lagi, kalau kita browse ke **http://endy.artivisi.com/blog/aplikasi/** Wordpress akan menampilkan semua artikel yang ada dalam kategori **aplikasi**. 
+
+Ini akan sangat meningkatkan usability website.
+
+Caranya, login ke control panel Wordpress, kemudian pergi ke Options > Permalinks. 
+
+Lalu baca manual dan tentang:
+1. Format URL yang digunakan Wordpress
+2. Cara mengaktifkan .htaccess di Apache.
+
+Ini sebetulnya fitur lama dan umum digunakan orang, tapi saya belum sempat aktifkan sampai sekarang. 

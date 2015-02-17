@@ -1,0 +1,151 @@
+---
+layout: post
+title: "Otodidak"
+date: 2013-08-18 20:04
+comments: true
+categories: 
+- life
+---
+
+Sebagai programmer, ada banyak tokoh yang bisa kita teladani, seperti Linus Torvalds, Bill Gates, Richard Stallman, Eric Raymond, Brian Kernighan, Dennis Ritchie, Erich Gamma, dan banyak lainnya. Tetapi di dunia modern seperti sekarang ini, dimana teknologi baru bermunculan lebih cepat dari kemampuan kita untuk bisa menggunakannya (apalagi bisa mempelajarinya), ada satu tokoh yang wajib kita teladani, bukan berasal dari dunia IT. Siapa dia?
+
+![Hatake Kakashi ](/images/uploads/2013/08/otodidak/hatake-kakashi.jpg)
+
+Gambar diambil dari [Fanpop](http://www.fanpop.com/clubs/kakashi/images/18899114/title/kakashi-hatake-screencap)
+
+Dia adalah Hatake Kakashi dari komik Naruto.
+
+Kenapa begitu? Karena skill dan special ability yang dia miliki adalah juga skill dan special ability yang wajib dimiliki semua programmer tanpa kecuali, agar bisa selamat dari bencana pengangguran. Buat yang tidak mengikuti komik Naruto, berikut profil singkat Hatake Kakashi yang berkaitan dengan urusan programming. Sisanya bisa dibaca sendiri [di sini](http://naruto.wikia.com/wiki/Kakashi_Hatake).
+
+<!--more-->
+
+> Hatake Kakashi adalah guru (sensei) dari Uzumaki Naruto dan Uchiha Sasuke, dua tokoh sentral dalam komik Naruto. Dia memiliki julukan _Copy Ninja Kakashi_, karena kemampuannya untuk mengamati, menganalisa, dan menirukan jurus yang digunakan lawannya hanya dengan sekali lihat saja. Karena kemampuan khusus ini, lawannya menjadi serba salah. Mengeluarkan jurus andalan, resikonya dicuri dan digunakan melawan dia sendiri. Tidak mengeluarkan jurus, ya sama saja menyediakan diri menjadi sansak berjalan. 
+
+Penggunaan skill ini bisa dibaca di [Naruto episode 15](http://komikbaru.com/Naruto/015/7) dimana Kakashi bertarung melawan Momochi Zabuza. Kakashi melihat, menganalisa, mempelajari, menirukan, dan kemudian menghajar Zabuza dengan jurusnya sendiri.
+
+Seorang programmer harus mampu menguasai konsep dan teknik baru dengan cepat, seperti halnya Copy Ninja Kakashi.
+Ini disebabkan karena pengetahuan teknis dalam pemrograman bisa kadaluarsa dalam waktu yang cepat. Contohnya, di tahun 2003, programmer Java menggunakan framework yang disebut EJB 2 dan Struts 1 untuk membuat aplikasi. Hanya dalam kurun waktu 2 tahun (tahun 2005), kedua teknologi tersebut sudah usang dan diganti dengan jargon baru yang disebut SOAP. Saat ini di tahun 2013, siapapun yang berani menyebut-nyebut EJB 2, Struts 1, ataupun SOAP, terancam diledek sebagai Pak Tua ;) Di tahun 2013 ini, era-nya REST dan JavaScript. Entah apa lagi trend di masa depan.
+
+Saya sendiri belajar banyak hal secara otodidak, diantaranya adalah pemrograman, fotografi, membaca Al Qur'an, bahkan kerajinan membuat gelang ;)
+
+![Camera Strap buatan sendiri ](/images/uploads/2013/08/otodidak/camera-strap.jpg)
+
+Saking sering mempelajari segala sesuatu secara otodidak, saya seringkali malas diajari orang lain. Belum tentu cara mengajar dan cara berpikirnya sesuai dengan kebutuhan saya. Orang lain biasanya tidak tahu _modal awal_ kita, sehingga bisa jadi terlalu banyak memberikan materi pemula, atau sebaliknya mengasumsikan saya sudah tau banyak hal dan langsung saja ke topik advanced.
+
+> I am always ready to learn although I do not always like being taught - Winston Churchill
+
+
+Dalam hal belajar otodidak, hal yang paling penting kita kuasai adalah:
+
+1. Membuat jalur belajar (roadmap), mana yang duluan, mana yang belakangan
+2. Menentukan metode latihan untuk menguasai konsep atau teknik tertentu
+3. Melakukan kegiatan belajar (membaca / menonton) yang diperlukan sesuai langkah #2 sampai paham
+4. Kalau langkah #3 tidak efektif, revisi metode latihan (kembali ke #2)
+5. Begitu sudah dikuasai cepat-cepat diabadikan dalam bentuk tulisan atau pelatihan supaya tidak cepat lupa
+
+Satu hal penting lainnya, kita juga harus tahu sampai di mana batasnya kita bisa belajar otodidak. Belajar membaca Al Qur'an, tidak boleh 100% otodidak. Ada materi tertentu -misalnya _makhrajul huruf_- yang harus diverifikasi oleh orang yang kompeten. Ini disebabkan karena Al Qur'an diwariskan secara lisan, bukan tulisan. Sehingga teknik membacanya harus dicek secara lisan juga apakah sudah benar atau belum. Selain itu, ilmu membaca Al Qur'an merupakan suatu ilmu yang harus jelas sanadnya. Teknik yang kita gunakan harus bisa ditelusuri asal-usulnya sampai ke Rasulullah SAW. Walaupun demikian, belajar otodidak dapat digunakan supaya kita tidak terlalu merepotkan guru kita.
+
+Langkah #1 dan #2 juga penting apabila kita menjadi mengajari orang lain baik sebagai instruktur, guru, atau dosen. Pengajar yang baik mampu mendefinisikan urutan belajar dan metode latihan yang cocok untuk setiap muridnya. Contohnya, lagi-lagi dari komik Naruto, kita lihat bagaimana Kakashi membuatkan metode latihan untuk kontrol chakra pada Naruto, Sasuke, dan Sakura [di episode 18](http://komikbaru.com/Naruto/018/2). Lihat juga bagaimana Sensei Jiraiya memberikan latihan khusus untuk Naruto [di episode 150](http://komikbaru.com/Naruto/150/16).
+
+Mari kita bahas satu persatu.
+
+
+## Membuat Roadmap ##
+
+Langkah pertama yang harus kita lakukan adalah memetakan topik yang akan kita pelajari. Mana yang termasuk pengetahuan dasar (fundamental), mana yang tingkat menengah, mana yang tingkat lanjut. Kita juga harus menentukan urutan penguasaan materi. Sebagai contoh, untuk bisa memahami penggunaan framework Hibernate, kita harus paham dulu konsep SQL dan database relasional. Untuk bisa memahami [berbagai strategi transaction dalam Java EE](http://www.infoq.com/minibooks/JTDS), kita harus paham dulu [apa itu database transaction](http://software.endy.muhardin.com/java/database-transaction/).
+
+Jalur untuk belajar Java sudah saya tuliskan di beberapa artikel:
+
+* [Java Fundamental](http://software.endy.muhardin.com/java/road-to-java-se/).
+* [Java EE](http://software.endy.muhardin.com/java/road-to-java-ee/)
+
+Bila kita ikut kursus, sekolah, atau kuliah, dosen yang kompeten sudah membuatkan jalur belajar ini sehingga peserta tinggal mengikutinya. Tapi bila kita ingin belajar secara otodidak, kita harus memiliki kemampuan untuk membuat jalur ini sendiri. 
+
+> Bagaimana cara membuat roadmap belajar?
+
+Pertama, kita kumpulkan dulu semua materi yang berkaitan dengan topik yang ingin kita pelajari. Sebagai contoh, pada waktu saya belajar fotografi, semua artikel dan video yang berhasil saya kumpulkan saya masukkan ke [Springpad](https://springpad.com/#!/endy.muhardin/notebooks/belajarfotografi/blocks).
+
+Materi ini tidak perlu dibaca/ditonton semua. Pada tahap ini kita hanya mengumpulkan dan mengelompokkan. Biasanya saya hanya membaca/menonton sedikit bagian di awal, tengah, dan akhir saja. Dari hasil skimming ini, saya kelompokkan menjadi materi dasar, menengah, dan lanjut. Untuk materi fotografi, hasil pengelompokannya bisa dilihat [di sini](https://springpad.com/#!/endy.muhardin/notebooks/belajarfotografi/blocks/note/learningpath).
+
+Beberapa pertimbangan dalam membuat roadmap:
+
+* urutan penguasaan materi. Misalnya sebelum Hibernate, harus paham JDBC dulu. Sebelum Spring MVC harus paham Servlet dan JSP dulu.
+* tingkat kompleksitas materi. Materi tingkat lanjut biasanya baru bisa dipahami dengan menggabungkan konsep-konsep tingkat dasar. Contohnya untuk bisa memahami `@Transactional`, kita harus paham dulu [konsep umum database transaction](http://software.endy.muhardin.com/java/database-transaction/), [apa itu distributed transaction dan berbagai strategi penggunaannya](http://www.infoq.com/minibooks/JTDS), baru kemudian terakhir [bagaimana cara pakainya dalam kode program](http://static.springsource.org/spring/docs/3.2.x/spring-framework-reference/html/transaction.html).
+* urutan dan pengelompokan ini tidak bersifat final. Sepanjang perjalanan kita belajar, kita akan beberapa kali mengoreksi sudut pandang kita, mengubah prioritas mana yang penting mana yang tidak, dan juga mengubah pemahaman kita terhadap suatu konsep. Pada waktu itu terjadi, jangan sungkan untuk merevisi roadmap. Toh ini kita buat untuk diri sendiri, ya bebas saja kalau mau diubah kapanpun. Ini adalah hal yang normal.
+
+## Menentukan Metode Latihan ##
+
+Selain konsep di atas, kita juga perlu menentukan latihan yang dibutuhkan. Contohnya seperti ini:
+
+1. Memahami akses database Java menggunakan JDBC
+
+    * membuat koneksi database
+    * memasukkan data ke dalam database (insert)
+    * mengubah data dalam database (update)
+    * mengambil data dari database (select)
+    * menghapus data dalam database (delete)
+
+2. Memahami fitur aplikasi web Java
+
+    * menangani request terhadap URL tertentu
+    * menerima variabel melalui HTTP GET
+    * menerima variabel melalui HTTP POST
+    * implementasi login menggunakan HTTP Session dan Filter
+    * membuat inisialisasi aplikasi web menggunakan Listener
+    * upload/download file
+
+Kalau kita tidak otodidak, melainkan kursus, sekolah, atau kuliah, pengajar sudah membuatkan daftar latihan ini buat kita. 
+Kita tinggal ikuti. Masalahnya adalah, metode latihan yang dibuatkan pengajar biasanya disesuaikan untuk kebutuhan orang banyak dari berbagai latar belakang. Kadang cocok dengan kita, kadang tidak cocok. Bila kita otodidak, kita bisa menentukan metode latihan yang sesuai dengan kebutuhan kita. 
+
+Bila kita ingin menjadi pengajar, kita juga harus bisa melihat karakteristik murid dan membuatkan metode latihan yang cocok dengan murid tersebut. Dalam komik Naruto, ini dicontohkan Sensei Jiraiya [di episode 92](http://komikbaru.com/Naruto/092/13), pada waktu dia membuatkan latihan khusus sesuai bakat Naruto.
+
+Yang perlu diperhatikan dalam menentukan metode latihan adalah tujuan dari suatu latihan. Setiap kegiatan yang kita lakukan harus memiliki tujuan akhir, yaitu pemahaman konsep tertentu atau penguasaan teknik tertentu.
+
+Latihan yang kita rancang haruslah mencukupi, tapi tidak berlebihan. Jangan sampai dalam latihan untuk menguasai materi Z, kita terpaksa melakukan semua kegiatan dari A sampai Y. Contohnya, bila kita ingin menguasai Hibernate, tidak perlu membuat tampilan desktop/web secara lengkap. Cukup method `public static void main` saja dengan data yang dihardcode, dibuat kode programnya sampai bisa masuk ke tabel database.
+
+Hal lain yang juga penting, kita tidak perlu menyusun program latihan sampai materi tingkat lanjut. Kenapa begitu? Karena pada waktu kita baru mulai di tingkat dasar, tentu kita belum paham materi tingkat lanjut, sehingga belum tau metode latihan yang sesuai dengan materi tersebut. Kalaupun dipaksakan, hasilnya tidak akan bagus dan kemungkinan besar pasti akan direvisi lagi di tengah jalan. Jadi daripada dua kali kerja, lebih baik tidak usah dikerjakan dulu sebelum waktunya.
+
+Sama seperti urutan materi, jangan ragu untuk merevisi program latihan di tengah jalan.
+
+## Belajar dan Berlatih ##
+
+Setelah urutan belajar dan daftar latihan kita susun, kita harus luangkan waktu untuk melakukannya dengan benar sampai ke tujuan. Artinya, setelah membaca artikel tertentu dan melakukan program latihan tertentu, pastikan bahwa kita menguasai konsep dan teknik yang kita tuju. Bila masih belum paham konsepnya, atau belum mahir tekniknya, ulangi atau revisi program latihannya.
+
+Beberapa latihan yang saya lakukan dapat dilihat di repository Github saya, misalnya:
+
+* [belajar-restful](https://github.com/endymuhardin/belajar-restful) : latihan untuk memahami arsitektur [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)
+* [belajar-sip](https://github.com/endymuhardin/belajar-sip) : latihan untuk memahami [Session Initiation Protocol](http://en.wikipedia.org/wiki/Session_Initiation_Protocol) menggunakan Java
+* [belajar-akses-database-java](https://github.com/endymuhardin/belajar-akses-database-java) : latihan untuk memahami berbagai metode akses database
+* [belajar-spring-android](https://github.com/endymuhardin/belajar-spring-android) : latihan untuk memahami struktur project aplikasi Android dengan Maven
+* [belajar-velocity-textoutput](https://github.com/endymuhardin/belajar-velocity-textoutput) : latihan untuk menguasai penggunaan library [Velocity](http://velocity.apache.org) untuk membuat cetakan printer dot matrix
+* [belajar-ssl](https://github.com/endymuhardin/belajar-ssl) : latihan untuk memahami konfigurasi SSL
+* [belajar-auditlog](https://github.com/endymuhardin/belajar-auditlog) : latihan untuk menguasai library [Hibernate Envers](http://www.jboss.org/envers), library untuk membuat history perubahan database
+* [belajar-spring-integration](https://github.com/endymuhardin/belajar-spring-integration) : latihan untuk menguasai library [Spring Integration](http://www.springsource.org/spring-integration)
+* [belajar-spring-data-jpa](https://github.com/endymuhardin/belajar-spring-data-jpa) : latihan untuk menguasai library [Spring Data JPA](http://www.springsource.org/spring-data/jpa)
+* [belajar-spring-security](https://github.com/endymuhardin/belajar-spring-security) : latihan untuk menguasai library [Spring Security](http://www.springsource.org/spring-security)
+* [belajar-jmf](https://github.com/endymuhardin/belajar-jmf) : latihan untuk mencoba fitur [Java Media Framework](http://www.oracle.com/technetwork/java/javase/tech/index-jsp-140239.html)
+* [belajar-software-testing](https://github.com/endymuhardin/belajar-software-testing) : latihan untuk mencoba software testing dengan Maven
+* [belajar-ws](https://github.com/endymuhardin/belajar-ws) : latihan untuk mencoba berbagai teknik dan framework [SOAP](http://en.wikipedia.org/wiki/SOAP)
+* [belajar-extjs](https://github.com/endymuhardin/belajar-extjs) : latihan untuk memahami framework javascript [ExtJS](http://www.sencha.com/products/extjs)
+* [belajar-css](https://github.com/endymuhardin/belajar-css) : latihan untuk memahami CSS, berguna untuk yang sama sekali belum tau apa itu CSS
+* [belajar-spring](https://github.com/endymuhardin/belajar-spring) : latihan untuk memahami cara penggunaan [Spring Framework](http://www.springsource.org/spring-framework)
+* [belajar-servlet](https://github.com/endymuhardin/belajar-servlet) : latihan untuk memahami fundamental aplikasi web dalam Java
+* [belajar-jsf](https://github.com/endymuhardin/belajar-jsf) : latihan untuk memahami penggunaan framework [JSF](http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html)
+* [belajar-jpos](https://github.com/endymuhardin/belajar-jpos) : latihan untuk memahami penggunaan library [JPos](http://jpos.org/) untuk menangani message [ISO-8583](http://en.wikipedia.org/wiki/ISO_8583)
+
+Dari latihan yang sekian banyak, kita bisa melihat bahwa tidak ada yang instan di dunia ini. Untuk menguasai berbagai hal secara otodidak, kita harus mencoba dengan tangan sendiri sampai paham. Pantau terus koleksi repository saya untuk mengamati bagaimana proses belajar saya. Semua repository yang diawali dengan nama `belajar-` adalah repository latihan yang saya buat untuk memahami sesuatu.
+
+## Menulis dan Mengajar ##
+
+If you can't explain it simply, you don't understand it well enough. - Albert Einstein
+
+
+Salah satu kelemahan saya dalam urusan belajar adalah easy come easy go. Setelah puluhan tahun belajar macam-macam hal secara otodidak, maka saya bisa belajar hal baru dalam waktu relatif singkat. Walaupun demikian, kapasitas otak manusia ternyata ada batasnya. Setiap kali saya mempelajari sesuatu yang baru, ada saja pengetahuan lama yang hilang. Contohnya, pada waktu saya belajar Linux dan networking, pengetahuan akuntansi saya memudar. Demikian juga setelah lama berfokus di pemrograman Java, konsep dan perintah aplikasi `iptables` (aplikasi firewall di Linux) yang dulu saya hafal, saya lupa semua. 
+
+Untuk mengatasi masalah tersebut, ada beberapa cara yang saya lakukan:
+
+1. Sering menggunakan konsep dan teknik yang dimaksud. Sebagai contoh, supaya saya tidak lupa [cara menggunakan rsync](http://software.endy.muhardin.com/linux/backup-home-folder/), saya selalu menggunakannya untuk copy file dari laptop ke komputer lain atau ke harddisk external.
+2. Mencatatnya di blog. Perintah `iptables` adalah sesuatu yang jarang saya pakai, karena sebagai orang normal, saya tidak mengkonfigurasi firewall setiap hari. Bahkan belum tentu saya lakukan sebulan sekali. Agar tidak lupa, pemakaian yang sering saya gunakan seperti [internet connection sharing](http://software.endy.muhardin.com/linux/network-address-translation/) dan [port forwarding](http://software.endy.muhardin.com/linux/setup-proxmox-dengan-1-ip-public/) saya tuliskan di blog. Demikian juga halnya untuk [cara konfigurasi SSL](http://software.endy.muhardin.com/aplikasi/memasang-sertifikat-ssl/).
+3. Mengajarkannya pada orang lain. Ini adalah salah satu alasan mengapa saya mengajar di Universitas Pancasila dan berbagai pelatihan. Dengan mengajar, saya memperdalam pengetahuan saya tentang materi yang diajarkan, dan juga mencegah supaya tidak lupa.
+
+Demikianlah penjelasan tentang otodidak. Skill ini adalah salah satu solusi untuk mengatasi beratnya perjuangan di dunia IT seperti dibahas [di artikel ini](http://www.halfsigma.com/2007/03/why_a_career_in.html). Ada solusi lain yaitu menguasai konsep, bukan teknis implementasi yang bisa dibaca di [artikel berikutnya](http://software.endy.muhardin.com/life/lan-na-zha/).

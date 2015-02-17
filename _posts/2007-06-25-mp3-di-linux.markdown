@@ -1,0 +1,56 @@
+---
+comments: true
+date: 2007-06-25 11:57:16
+layout: post
+slug: mp3-di-linux
+title: MP3 di Linux
+wordpress_id: 220
+categories:
+- linux
+---
+
+Distro Linux yang gratis umumnya tidak menyertakan dukungan MP3, Flash, DVD, dan berbagai format file non-open-source yang lainnya. Ini disebabkan karena format tersebut dilarang di beberapa negara, walaupun di Indonesia diperbolehkan. Ini merupakan masalah yang sudah banyak jawabannya. Bahkan beberapa distro populer sudah memudahkan cara instalasinya. 
+
+Mari kita lihat dua distro populer, Ubuntu dan OpenSuSE. 
+Pada Ubuntu Feisty, ada paket yang khusus untuk mengatasi masalah ini, namanya ubuntu-restricted-extras. Cukup buka command prompt, dan ketikkan
+    
+```
+sudo apt-get install ubuntu-restricted-extras
+```
+
+Paket ini ada di repository `multiverse`, jadi pastikan komputer Anda memiliki database dari repository tersebut. 
+
+Paket ubuntu-restricted-extras ini memungkinkan kita untuk: 
+
+
+
+
+  * Memainkan MP3
+
+
+  * Memainkan DVD
+
+
+  * Membuka website ber-Flash
+
+
+  * Membuka website ber-Java Applet
+
+
+  * Menggunakan font Arial, Trebuchet, dan font Windows lainnya
+
+
+
+Untuk OpenSuSE 10.2, kita harus tambahkan repository packman. Buka Yast, klik Installation Source. Nanti kita akan disuguhi berbagai pilihan protokol. Pilih protokol HTTP. 
+
+Selanjutnya, kita akan ditanyai dua hal, nama server repository, dan folder tempat database paket berada. Masukkan ftp.uni-erlangen.de pada kolom nama server, dan /pub/mirrors/packman/suse/10.2 pada nama folder. 
+
+Tidak, saya tidak salah ketik, protokolnya memang HTTP dan alamat servernya diawali dengan FTP. Kalau tidak percaya coba saja sendiri, atau lihat [di sini](http://amarok.kde.org/wiki/MP3_on_openSUSE_10.2). 
+
+Setelah repository ditambah, Yast akan mendownload database aplikasi yang disediakan, untuk kemudian mengupdate database internalnya. Bila koneksi internet Anda lambat, bersabar sedikit. 
+
+Begitu repository selesai ditambah, kita bisa buka menu Software Management, dan Search dengan keyword `libxine1`. Ini adalah library yang dibutuhkan agar Amarok bisa memainkan MP3. Amarok adalah aplikasi pemain musik (music player) di KDE. 
+
+Instal libxine1, dan  Amarok akan segera bisa menyanyikan MP3. 
+
+Selamat mencoba. 

@@ -1,0 +1,169 @@
+---
+comments: true
+date: 2007-01-18 13:19:14
+layout: post
+slug: intro-jms
+title: Intro JMS
+wordpress_id: 193
+categories:
+- java
+---
+
+Pada artikel ini, kita akan coba buat demo penggunaan JMS menggunakan [Spring Framework](http://www.springframework.org) dan [ActiveMQ](http://incubator.apache.org/activemq). Spring Framework 2.0 telah dilengkapi dengan helper class untuk memudahkan kita menggunakan JMS (Java Messaging Service). Sayangnya dokumentasi di Spring Reference kurang lengkap, sehingga ada beberapa bagian yang harus kita cari sendiri. 
+
+Jangan khawatir, bagian yang kurang tersebut bisa dibaca di artikel ini. 
+
+
+
+Berikut skenario yang ingin saya buat: 
+
+
+
+
+  
+  1. Jalankan JMS server (kali ini saya gunakan ActiveMQ)
+
+  
+  2. Siapkan _MessageListener_, yang akan bereaksi bila menerima pesan pada destination tertentu
+
+  
+  3. Kirim beberapa pesan ke destination yang didengarkan oleh _MessageListener_
+
+  
+  4. Pastikan pesan tersebut diterima dengan baik
+
+ 
+  
+Kita akan buat kasus sederhana saja, melibatkan tiga class: 
+
+
+  
+  * Sender.java : pengirim pesan
+
+  
+  * Receiver.java : penerima pesan (MessageListener)
+
+  
+  * Main.java : class untuk menjalankan pengirim dan penerima
+
+
+  
+Berikut adalah kode programnya. 
+
+
+
+### Sender.java
+
+``` java
+package tutorial.spring.jms;
+
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
+
+public class Sender {
+	private String message = "default message";
+	private JmsTemplate jmsTemplate;
+	
+	public void setJmsTemplate(JmsTemplate jmsTemplate) {
+		this.jmsTemplate = jmsTemplate;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public void send() {
+		jmsTemplate.send(new MessageCreator(){
+			public Message createMessage(Session sess) throws JMSException {
+				return sess.createTextMessage(message);
+			}			
+		});
+	}
+}
+```
+### Receiver.java
+
+``` java
+package tutorial.spring.jms;
+
+import javax.jms.JMSException;
+
+public class Receiver implements MessageListener {
+
+	public void onMessage(Message msg){
+		if (msg instanceof TextMessage) {
+			TextMessage txtMsg = (TextMessage) msg;
+			try {
+				System.out.println(txtMsg.getText());
+			} catch (JMSException e) {
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("Unsupported message type : "+msg.getClass());
+		}
+	}	
+}
+```
+### Main.java
+    
+``` java
+package tutorial.spring.jms;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Main {
+	public static void main(String[] args) {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("jms-ctx.xml");
+		Sender sender = (Sender) ctx.getBean("sender");
+		
+		sender.setMessage("Percobaan menggunakan JMS dengan Spring. ");		
+		sender.send();
+		
+		sender.setMessage("Pesan ini seharusnya diterima oleh Message Driven POJO");
+		sender.send();
+	}
+}
+```
+Integrasi antara kode Java dan ActiveMQ diatur di konfigurasi Spring, jms-ctx.xml. Berikut kodenya. 
+
+### jms-ctx.xml
+    
+``` xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<bean id="messageListener" class="tutorial.spring.jms.Receiver" />
+	<bean id="listenerContainer" class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+		<property name="connectionFactory" ref="jmsConnectionFactory"/>
+		<property name="destinationName" value="TEST.FOO"/>
+		<property name="messageListener" ref="messageListener"/>
+	</bean>
+	
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<constructor-arg index="0"><null/></constructor-arg>
+		<constructor-arg index="1"><null/></constructor-arg>
+		<constructor-arg index="2" value="tcp://localhost:61616"></constructor-arg>
+	</bean>	
+	
+	<bean id="sender" class="tutorial.spring.jms.Sender">
+		<property name="jmsTemplate" ref="jmsTemplate"/>		
+	</bean>
+
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory"/>
+		<property name="defaultDestinationName" value="TEST.FOO"/>
+	</bean>
+
+</beans>
+```
+    
+Apabila kita ingin menggunakan JMS server yang lain (selain ActiveMQ), cukup ganti deklarasi _jmsConnectionFactory_ pada _jms-ctx.xml_ di atas. Destination name juga di-hard code dengan nilai _TEST.FOO_. Nantinya pada aplikasi nyata, nilai ini mungkin ingin kita konfigurasi lebih jauh, atau diparameterisasi dalam database. 
+
+ActiveMQ mendukung _dynamic destination creation_, artinya destination _TEST.FOO_ akan dibuatkan bila belum ada. Pada aplikasi server JMS yang lain, mungkin kita harus membuat _TEST.FOO_ secara manual di server tersebut. 
+
+Selamat mencoba, semoga sukses.

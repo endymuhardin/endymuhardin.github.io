@@ -1,0 +1,109 @@
+---
+comments: true
+date: 2006-03-17 15:44:45
+layout: post
+slug: rtfm
+title: RTFM !!!
+wordpress_id: 39
+categories:
+- life
+---
+
+**Disclaimer**: Saya menulis artikel ini bukan karena sudah tidak mau lagi menjawab pertanyaan. Bertanya boleh, sepanjang saya ada waktu dan bisa membantu insya Allah akan saya jawab. Tapi intinya adalah, bagaimana teknik bertanya yang dapat menghasilkan nilai tambah yang besar, bukan hanya untuk penanya, tapi juga untuk penjawab. Mengingat saya tidak dibayar untuk menjawab pertanyaan Anda, melainkan sebagai sedekah dan niat baik saja. Di lain pihak, dalam menjawab pertanyaan Anda, ada waktu yang saya gunakan. Waktu ini entah merupakan hak pelanggan saya (yang membayar untuk jasa saya), atau hak keluarga di rumah. _Jadi untuk kebaikan kita semua, mohon baca artikel berikut sampai tuntas_.
+
+RTFM adalah singkatan dari Read The F!@#*ing Manuals, atau Read The Fine Manual, tergantung mood Anda saat mengucapkannya.
+
+Kalimat sederhana, tapi entah kenapa banyak orang yang tidak melakukannya. Untuk kesekian kalinya, saya mendapat pertanyaan, "Bagaimana cara pakai ini? Bagaimana menjalankan aplikasi itu? Mengapa framework ini tidak berjalan seperti harapan saya?" dan pertanyaan lain yang sejenis.
+
+Bukan, ini bukan tentang [playbilling](http://playbilling.sourceforge.net). Playbilling memang parah dokumentasinya, jadi bukan salah Anda kalo mengalami kesulitan :D
+
+Yang sedang saya bicarakan adalah teknologi yang sehari-hari digunakan programmer. Misalnya PHP, Java, Hibernate, Spring, Freemarker, Linux, dan lainnya. Itu semua adalah produk mature, yang siap pakai, sudah banyak komunitasnya. Dengan demikian, manual dan dokumentasi pasti tersedia di mana-mana.
+
+Sering sekali terjadi, ada yang tanya ke saya, baik melalui Y!, SMS, telpon, dan sebagainya. Dulu, saya masih mau menjawab panjang lebar. Akhir-akhir ini, pertanyaan semakin banyak, jadi respon standar saya adalah balik bertanya. Berikut urutan pertanyaan saya:
+
+
+
+	
+  1. Sudah download?
+
+	
+  2. Sudah extract?
+
+	
+  3. Sudah baca dokumentasinya?
+
+	
+  4. Sudah coba jalankan contohnya?
+
+	
+  5. Sudah lihat dokumentasi/FAQ/forum di websitenya?
+
+	
+  6. Sudah cari di Google?
+
+
+Misal, ada yang tanya, "Bagaimana cara membuat mapping one-to-many di Hibernate?" Maka respon saya adalah:
+
+	
+  1. Sudah download Hibernate?
+
+	
+  2. Sudah extract hibernate-xx.zip?
+
+	
+  3. Sudah baca dokumentasinya?
+
+	
+  4. Sudah coba jalankan contohnya?
+
+	
+  5. Sudah lihat dokumentasi/FAQ/forum di [websitenya](http://www.hibernate.org)?
+
+	
+  6. Sudah cari di Google dengan keyword "hibernate one to many mapping"?
+
+
+Sayang sekali, sampai saat ini belum ada yang sampai nomer 6. Biasanya para penanya sudah "menyerah" di nomer 3. Pada beberapa kasus menyedihkan, nomer 1 saja dijawab "Belum".
+
+Untuk mereka yang menyerah di nomer 1, Anda hanya membuang waktu dan bandwidth saya yang berharga. Mereka ini adalah tipikal orang yang ingin gampang dan tidak memikirkan kepentingan orang lain. Sama saja dengan menganggap saya sebagai petugas 108 yang siap menjawab segala pertanyaan, karena memang dibayar untuk itu.
+
+Bagi mereka yang menyerah di nomer 3, saya masih sedikit berempati. Mungkin penguasaan bahasa Inggrisnya kurang. Atau mungkin keder melihat dokumen berpuluh-puluh halaman, dalam bahasa Inggris pula. Walaupun mungkin juga ada yang bermentalitas cari gampang seperti nomer 1 di atas.
+
+Tapi saran saya adalah, bacalah dokumentasi. Kalau bahasa Inggris yang kurang, kursus. Kalau ngeri melihat dokumen yang banyak, jangan dibaca semua. Gunakan Ctrl+F alias fasilitas find.
+
+Jika Anda ingin serius dalam karir duniawi, investasi Bahasa Inggris sangat penting. Kemampuan membaca tulisan Inggris akan memungkinkan Anda maju secara mandiri. Kalau tidak, kemajuan Anda akan tergantung kepada orang-orang baik hati yang mau membantu Anda. Orang seperti ini tidak selalu ada. Mereka sangat mungkin memiliki kesibukan lain, sehingga kemajuan Anda akan menunggu 'bala bantuan' tersebut punya waktu luang untuk membantu Anda. Konsekuensinya jelas, Anda hanya akan jadi orang tertinggal.
+
+Dalam proses membaca dan memahami dokumentasi, pengetahuan kita akan meningkat. Bukan saja kita mendapat jawaban atas masalah kita, tapi kita mendapatkan pengalaman memahami dokumentasi teknis. Ini adalah skill yang sangat bermanfaat, dan telah terbukti berguna pada waktu saya mengalami kesulitan.
+
+Ada satu skill lagi yang sangat bermanfaat, yaitu skill problem solving. Anda mendapat masalah, kemudian melakukan langkah-langkah pemecahan. Kalau tidak berhasil, mungkin ada yang perlu diperbaiki di sistematika pemecahan masalahnya. Kemampuan problem solving sangat penting bagi karir Anda. Anda akan dianggap orang yang '_bisa bekerja secara mandiri_' atau '_mampu bekerja dengan supervisi minimal_'. Sering lihat kan kriteria seperti ini di lowongan pekerjaan?
+
+Problem solving skill bukan teknik instan. Ini harus dilatih terus menerus sepanjang hidup. Semakin banyak masalah yang kita hadapi dan kita coba pecahkan, kemampuan kita akan meningkat, berhasil itu cuma masalah waktu saja.
+
+Bagi mereka yang sudah menjawab Ya sampai nomer 5, saya ucapkan selamat untuk Anda. Anda sudah membuktikan bahwa Anda telah mengerjakan PR Anda sebelum akhirnya memutuskan untuk meminta waktu saya. Dan kalau ternyata memang belum menyelesaikan masalah, saya tidak keberatan untuk membantu Anda.
+
+Untuk kaum nomer 5, biasanya prosedur standar saya adalah menggunakan Google untuk mencari jawaban. Kemungkinan pertama, search langsung menghasilkan jawaban. Pada kasus ini, saya akan memberikan keyword google yang saya gunakan dan menunjukkan pada entri keberapa jawaban ditemukan. Harapan saya adalah, pada kesempatan berikutnya si penanya akan tahu metode dan teknik memilih keyword supaya hasil Google-nya akurat. Dengan demikian, si penanya akan bisa lebih mandiri.
+
+Kemungkinan yang lain, saya harus bersusah payah mencari sebelum berhasil menemukan jawaban. Biasanya alirannya begini: Google -> Website -> dapat keyword lain -> Google lagi, dan seterusnya sampai ketemu. Kalau begini kejadiannya, saya akan menjelaskan proses berpikir saya dalam menelusuri internet kepada si penanya. Lagi-lagi tujuannya adalah supaya si penanya bisa mencoba sendiri di kemudian hari.
+
+Buat mereka yang sudah lulus sampai nomer 6, tapi masih belum ketemu jawaban, lalu tanya saya ... hmm ... sejauh ini belum ada :D Kalau sudah lihai pakai Google dan gak ketemu, kecil sekali kemungkinan saya bakal ditanya. Kalaupun ditanya, jawaban saya cepat. Kalau saya sudah pernah mengalami masalah yang sama, saya akan jawab. Kalo belum pernah, ya saya bilang belum pernah, sehingga saya sama tidak tahunya dengan si penanya.
+
+Pertanyaan yang saya benci adalah pertanyaan debug. Misalnya begini, "Saya bikin kode seperti ini , kemudian muncul NullPointerException, kenapa ya?"
+
+Saya tidak suka karena:
+
+
+
+	
+  1. Baca source code di Y! adalah penyiksaan, lewat SMS itu mungkin sudah melanggar HAM :P . Jangan ketawa, ada yang pernah kirim source code via SMS ke saya.
+
+	
+  2. Untuk bisa debug, paling efektif adalah dengan coding langsung, pasang println disana-sini, recompile, re-run, lihat hasilnya.
+
+
+So, jangan ajukan pertanyaan debug ke saya. Coba kirim ke milis. Mudah-mudahan ada yang mau bantu. Kalo saya sih tidak ... lihat source code yang ditulis sendiri aja pusing, apalagi source code orang, lewat SMS pula ...
+
+Kalau ada pertanyaan yang dibenci, tentunya ada pertanyaan yang disukai. Pertanyaan yang saya suka adalah yang konseptual. Misalnya, "Apa itu anonymous inner class, dan kapan kita menggunakannya". Contoh lain, "Teknik mapping inheritance mana yang paling baik untuk kasus saya, one-table-for-all, table-per-subclass, atau table-per-class"?
+
+Pertanyaan seperti ini mencerdaskan kedua belah pihak. Si penanya mendapat wawasan baru, sedangkan saya mendapat kesempatan untuk menguji apakah pemahaman saya sudah lengkap dan benar.
+
+Jadi, mari bertanya secara cerdas demi kebaikan kita semua.

@@ -1,0 +1,126 @@
+---
+comments: true
+date: 2008-09-08 09:48:29
+layout: post
+slug: ant-ivy-2
+title: Build Management dengan Ivy
+wordpress_id: 370
+categories:
+- java
+---
+
+Pada [posting sebelumnya](http://endy.artivisi.com/blog/java/ant-ivy-1), saya telah membahas tentang [cara instalasi Ivy](http://endy.artivisi.com/blog/java/ant-ivy-1), dan juga sedikit pengantar tentang apa itu Ivy. 
+
+Ivy adalah dependency management tools. Dia mampu menangani dependensi antar modul dalam aplikasi. Tentunya penjelasan ini sangat abstrak. Baiklah mari kita lihat problem apa yang kita hadapi dalam membuat aplikasi, dan bagaimana Ivy menyelesaikan problem tersebut. 
+
+
+
+> Peringatan : Bukan untuk pemula !!!  
+
+Rangkaian artikel ini diperuntukkan untuk Senior Developer, Team Leader, atau Architect.   
+
+Saya asumsikan pembaca sudah mahir menggunakan Ant, Linux, dan memiliki bandwidth yang besar.  
+
+
+
+
+
+
+
+
+### Studi Kasus
+
+
+
+Untuk contoh kasus, mari kita buat aplikasi sederhana dengan Spring MVC 2.5. Aplikasi ini bisa didonlod [di sini](http://code.google.com/p/hello-spring-25). 
+
+Aplikasi sederhana ini terdiri dari 3 bagian utama, yaitu: 
+
+
+
+	
+  * Domain Model
+
+	
+  * Kode Akses Database (DAO)
+
+	
+  * Tampilan (UI)
+
+
+
+Hubungan dependensi antara ketiga bagian ini dapat digambarkan sebagai berikut: 
+
+![ ](/images/uploads/2008/09/dep-before.png)
+
+Tanda panah dibaca sebagai "tergantung kepada". Contohnya, modul DAO tergantung kepada modul Domain Model, sehingga untuk mengkompilasi modul DAO, kita harus punya modul Domain Model. Sebaliknya, untuk mengkompilasi modul Domain Model, kita tidak butuh modul DAO. 
+
+
+
+### Dependensi, Pembagian Tim, dan Penjadwalan
+
+
+
+Ketergantungan antar modul ini perlu dipertimbangkan dengan seksama, karena dari desain ketergantungan ini, kita dapat menentukan pembagian tim yang efisien. Idealnya masing-masing tim development dapat bekerja secara paralel dan tidak saling menunggu tim lain selesai. 
+
+Dengan skema dependensi seperti di atas, pembagian tugas antar tim kita tidak efisien, karena tim DAO harus menunggu tim DM selesai, baru dia dapat mulai. Demikian juga, tim UI harus menunggu tim DM dan juga tim DAO selesai, baru dia dapat mulai. Ini dapat dilihat di project schedule berikut.
+
+![ ](/images/uploads/2008/09/sch-before.png)
+
+Dengan schedule seperti ini, kita membutuhkan 11 minggu untuk development, karena modul UI dan DAO yang membutuhkan waktu lama harus dikerjakan secara serial.
+
+Agar kita dapat bekerja secara paralel, kita dapat mengatur ulang dependensi sebagai berikut. 
+
+![ ](/images/uploads/2008/09/dep-after.png)
+
+Kita menambahkan modul baru, yaitu DAO-API dan DAO-Impl. Modul DAO-API ini berisi interface dari modul DAO, tanpa implementasi. Implementasinya berada di modul DAO-Impl.
+
+Pembagian yang baru ini didasarkan pada waktu pengembangan dari masing-masing modul. Modul DM dan DAO-API bisa dikembangkan dengan cepat, karena hanya berisi struktur data dan deklarasi method saja. Modul UI dan DAO-Impl butuh waktu lama, karena relatif kompleks dan membutuhkan banyak test. 
+
+Dengan skema baru, project schedule menjadi seperti ini. 
+
+![ ](/images/uploads/2008/09/sch-after.png)
+
+Dengan skema di atas, kita dapat mengalokasikan agar tim DAO dan tim UI bersama-sama mengerjakan modul Domain Model dan DAO-API. Setelah selesai, tim UI dapat mengerjakan modul UI secara paralel dengan tim DAO yang mengerjakan modul DAO-Impl. 
+
+Durasi development dapat dikurangi menjadi 7 minggu saja.
+
+
+
+### Masalah dalam implementasi
+
+
+
+Ok, kita sudah mendesain dependensi sedemikian rupa, sehingga bisa meminimasi idle time. Berarti kita sudah menjadi Development Team Leader yang canggih ... benar??
+
+Belum, yang kita lakukan ini baru setengah jalan. Mengelola tim yang bekerja paralel itu bukan pekerjaan yang mudah. Desain dependensi yang baik memungkinkan tim bekerja paralel. Tapi butuh perangkat tambahan agar mereka bisa berkoordinasi secara efisien. 
+
+Masalah terbesar dengan project multi-modul ini adalah bagaimana mengelola perubahan (Change Management). Developer yang berpengalaman pasti sudah tahu bahwa keinginan end-user selalu berubah. Perubahan ini menjadi masalah bila terjadi di modul yang digantungi banyak modul lain. 
+
+Contohnya, pada assessment awal, kita sudah mendefinisikan bahwa class Person memiliki tiga property, yaitu id, nama, dan tanggalLahir. Class Person ini kita tempatkan di modul Domain Model, yang digunakan oleh semua modul lain. Katakan saja misalnya kita rilis dengan versi 1.0. 
+
+Ternyata peta persaingan bisnis aplikasi contact berubah. Perusahaan pesaing menyediakan aplikasi yang tidak hanya menyimpan tanggal lahir, tapi juga nomer handphone. Tentunya kita harus buru-buru mengupgrade aplikasi (yang belum selesai dikerjakan) agar juga memuat data nomer handphone. 
+
+Nah, bagaimana mengelola perubahan ini agar kedua tim yang sedang bekerja (DAO-Impl dan UI) dapat menyesuaikan diri dengan mudah?
+
+Implementasi yang paling sederhana bisa dilakukan dengan USB Flashdisk. Compile saja modul DM, kemudian copy ke flashdisk. Edarkan flashdisk tersebut ke seluruh tim ... masalah selesai. 
+
+Cara flashdisk, walaupun bisa dilakukan, tapi tidak scalable. Jika dependensinya rumit (misalnya membuat aplikasi ERP), kita harus membuat satu departemen khusus untuk mengedarkan flashdisk.
+
+Nah, inilah gunanya Ivy. Dengan Ivy, kita bisa membuat perubahan di class Person, kemudian menyuruh Ivy untuk mempublikasikannya ke lokasi tertentu dengan versi 1.1. Begitu tim lain melakukan kompilasi, Ivy secara otomatis akan mendeteksi bahwa ada update terbaru di modul Domain Model, mendownload versi terbaru, menghapus versi yang lama, baru melakukan kompilasi.
+
+Ivy dapat mengelola dependensi antar modul dalam internal perusahaan, maupun dependensi dengan pustaka open-source. Contoh aplikasi kita di atas menggunakan pustaka dari [Spring Framework](http://www.springframework.org), [MySQL](http://www.mysql.org), [Velocity](http://velocity.apache.org), dan SiteMesh. Masing-masing pustaka tersebut memiliki dependensi lagi terhadap pustaka lain, misalnya [Apache Commons](http://commons.apache.org) dan [Log4J](http://logging.apache.org/log4j).
+
+Dengan menggunakan Ivy, kita hanya perlu mendeklarasikan dependensi langsung, yaitu Spring Framework, MySQL, Velocity, dan SiteMesh. Selanjutnya Ivy akan mencari tahu semua dependensi level kedua terhadap Jakarta Commons dan Log4J. Begitu kita melakukan kompilasi, Ivy akan terlebih dulu mengunduh semua dependensi dari internet, melakukan setting CLASSPATH, baru melakukan kompilasi. 
+
+Ivy juga memiliki fitur configuration. Dengan fitur ini, kita bisa membedakan dependensi untuk kompilasi, melakukan test, atau mendeploy aplikasi ke production. 
+
+Contohnya, bila kita menggunakan database, kita tidak perlu mendownload *.jar apapun untuk melakukan kompilasi. Pada saat kita test di IDE sendiri, kita gunakan database HSQLDB supaya ringan dan cepat. Untuk test oleh tim tester, kita gunakan database MySQL. Akhirnya, untuk UAT dan production, kita gunakan database Oracle. 
+
+Contoh lain, kita bisa mendefinisikan konfigurasi deployment dan delivery. Untuk deployment, kita menginstal aplikasi di tempat client. Tentunya kita hanya butuh *.jar saja. Lain halnya dengan delivery. Selain *.jar, kita juga harus memuat source code, javadoc, manual penggunaan, dan lainnya ke dalam DVD untuk diserah-terimakan dengan client. 
+
+Dengan menggunakan fitur configuration Ivy, kita dapat mendefinisikan berbagai kombinasi artifak yang dibutuhkan untuk berbagai situasi.
+
+Pada [artikel selanjutnya](http://endy.artivisi.com/blog/java/ant-ivy-3/), kita akan mulai membuat modul Domain Model. Seluruh modul yang dibuat dalam rangkaian artikel ini bisa dibuat dengan Text Editor biasa. Tidak perlu IDE canggih semacam Netbeans, Eclipse, atau IDEA. 
+
+Stay tuned.

@@ -1,0 +1,202 @@
+---
+comments: true
+date: 2008-10-05 07:30:53
+layout: post
+slug: ant-ivy-8
+title: Membuat Mirror Repository Ivy
+wordpress_id: 398
+categories:
+- java
+---
+
+Pada rangkaian artikel sebelumnya, kita telah membahas tentang: 
+
+
+
+
+  1. [Instalasi Ivy](http://endy.artivisi.com/blog/java/ant-ivy-1)
+
+
+  2. [Build Management dengan Ivy](http://endy.artivisi.com/blog/java/ant-ivy-2)
+
+
+  3. [Otomasi Build Process dengan Ant](http://endy.artivisi.com/blog/java/ant-ivy-3)
+
+
+  4. [Publish Modul ke Repository](http://endy.artivisi.com/blog/java/ant-ivy-4)
+
+
+  5. [Deklarasi internal dependency](http://endy.artivisi.com/blog/java/ant-ivy-5)
+
+
+  6. [Deklarasi external dependency](http://endy.artivisi.com/blog/java/ant-ivy-6)
+
+
+  7. [Ivy Configuration](http://endy.artivisi.com/blog/java/ant-ivy-7)
+
+
+
+Semua konsep dan pengetahuan di atas memungkinkan kita untuk menggunakan Ivy secara efektif untuk mengelola pembuatan aplikasi. Tetapi ada sedikit hal yang masih mengganjal, yaitu borosnya bandwidth yang digunakan selama build process dilakukan. 
+
+Pada artikel kali ini, kita akan membahas cara membuat mirror repository, sehingga pengambilan artifak dapat dilakukan dari server internal maupun harddisk lokal, sehingga tidak memboroskan bandwidth. 
+
+
+
+Di artikel sebelumnya, kita telah membahas tentang deklarasi resolver. Resolver adalah konfigurasi yang menyatakan lokasi repository. Ada beberapa jenis resolver yang disediakan Ivy: 
+
+
+  * Filesystem : repository Ivy di harddisk lokal
+
+
+  * URL : repository Ivy yang diakses melalui protokol http
+
+
+  * SSH : repository Ivy yang diakses melalui protokol scp/ssh
+
+
+  * SFTP : repository Ivy, diakses melalui protokol sftp
+
+
+  * VFS : repository Ivy, kompatibel dengan file system yang didukung oleh [Apache Commons VFS](http://jakarta.apache.org/commons/vfs/), diantaranya WebDAV, FTP, ZIP, [dan sebagainya](http://jakarta.apache.org/commons/vfs/filesystems.html)
+
+
+  * Ibiblio : repository Maven 2, diakses melalui protokol http
+
+
+
+Sebagai contoh kasus, kita akan membuat mirror dari repository ivy milik SpringSource dan repository Maven2 di Ibiblio. 
+
+Pertama, kita deklarasikan dulu resolver untuk kedua repository sumber. 
+Konfigurasi ini dibuat dalam ivysettings.xml. 
+
+SpringSource memiliki dua repo berbeda, untuk artifak yang dihasilkannya sendiri (Spring Portfolio) disebut dengan release, dan untuk pustaka external (Hibernate, JSF, dsb; disebut dengan external. Berikut konfigurasi untuk kedua repo SpringSource, sesuai dengan [dokumentasinya](http://www.springsource.com/repository/app/faq#q7): 
+
+
+    
+    
+    <url name="springsource.release.repo.resolver">
+    	<ivy pattern="http://repository.springsource.com/ivy/bundles/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    	<artifact pattern="http://repository.springsource.com/ivy/bundles/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    </url>
+    
+    <url name="springsource.external.repo.resolver">
+    	<ivy pattern="http://repository.springsource.com/ivy/bundles/external/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    	<artifact pattern="http://repository.springsource.com/ivy/bundles/external/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    </url>
+    
+
+
+
+
+Dan ini adalah resolver untuk Ibiblio. 
+
+
+    
+    
+    <ibiblio name="maven2" m2compatible="true" />
+    
+
+
+
+Repository SpringSource akan kita mirror di `http://repo.artivisi.com/ivy/springsource/` dengan struktur folder `nama-organisasi/nama-modul/nomer-revisi/[artifak]-[revisi].[extension]`. Folder tersebut berada di mesin `repo.artivisi.com` dalam folder `/var/www/repo.artivisi.com/ivy/springsource`. Berikut konfigurasi repo mirror-springsource. 
+
+
+    
+    
+    <ssh name="springsource.mirror.resolver" keyFile="${user.home}/.ssh/id_rsa" host="repo.artivisi.com" user="${mirror.host.user}">
+    	<ivy pattern="/var/www/repo.artivisi.com/ivy/springsource/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    	<artifact pattern="/var/www/repo.artivisi.com/ivy/springsource/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+    </ssh>
+    
+
+
+
+Repository Ibiblio akan kita mirror di `http://repo.artivisi.com/ibiblio` dengan struktur folder berbeda, untuk metadata sebagai berikut: `[nama-organisasi]/[nama-modul]/ivys/ivy-[nomer-revisi].xml`, dan untuk artifak sebagai berikut: `[nama-organisasi]/[nama-modul]/[jenis]s/[artifak]-[nomer-revisi].[extension]`. Folder tersebut berada di mesin `repo.artivisi.com` dalam folder `/var/www/repo.artivisi.com/ibiblio`. Berikut konfigurasinya: 
+		
+
+    
+    		
+    <ssh name="ibiblio.mirror.resolver" keyFile="${user.home}/.ssh/id_rsa" host="repo.artivisi.com" user="${mirror.host.user}">
+    	<ivy pattern="/var/www/repo.artivisi.com/ibiblio/[organisation]/[module]/ivys/ivy-[revision].xml"/>
+    	<artifact pattern="/var/www/repo.artivisi.com/ibiblio/[organisation]/[module]/[type]s/[artifact]-[revision].[ext]"/>
+    </ssh>
+    
+
+
+
+Setelah kita memiliki dua repository sumber dan dua repository tujuan, kita buat target untuk melakukan mirroring. Di Ivy, kegiatan mirroring ini disebut dengan istilah install. Kita memiliki tiga target install, untuk ibiblio, SpringSource release, dan SpringSource external. Berikut deklarasi targetnya, kita masukkan di `ivybuilder.xml` bersama dengan target untuk resolve dan publish. 
+
+
+    
+    
+    <target name="install-springsource-release" description="--> install dependency from springsource repo">
+    	<ivy:install 
+    		organisation="${organisation}" 
+    		module="${module}" 
+    		revision="${revision}"
+    		from="${springsource.release.repo.resolver}" 
+    		to="${springsource.mirror.resolver}" 
+    		transitive="true"
+    		overwrite="true"
+    	/>	
+    </target>
+    
+    <target name="install-springsource-external" description="--> install dependency from springsource repo">
+    	<ivy:install
+    		organisation="${organisation}" 
+    		module="${module}" 
+    		revision="${revision}"
+    		from="${springsource.external.repo.resolver}" 
+    		to="${springsource.mirror.resolver}" 
+    		transitive="true"
+    		overwrite="true"
+    	/>
+    
+    </target>
+    
+    <target name="install-ibiblio" description="--> install dependency from ibiblio maven2 repo">
+    	<ivy:install 
+    		organisation="${organisation}" 
+    		module="${module}" 
+    		revision="${revision}"
+    		from="${ibiblio.repo.resolver}" 
+    		to="${ibiblio.mirror.resolver}" 
+    		transitive="true"
+    		overwrite="true"
+    	/>
+    </target>
+    
+
+
+
+Seperti kita lihat di atas, deklarasi target install cukup generik, dengan menggunakan variabel yang bisa di-override pada saat runtime. Untuk target `install-springsource-external`, kita gunakan repo external SpringSource sebagai sumber, dan mirror-springsource sebagai tujuan. Target `install-springsource-release` dan `install-ibiblio` juga mirip. 
+
+Sekarang saatnya kita coba. Mari kita install Hibernate Annotations versi 3.3.1.GA. Modul ini ada di repository SpringSource external. 
+
+Langkah pertama, cari dulu modul yang kita inginkan. Kita bisa gunakan [halaman search yang telah disediakan](http://www.springsource.com/repository). Dari [hasil pencarian](http://www.springsource.com/repository/app/bundle/version/detail?name=com.springsource.org.hibernate.annotations&version=3.3.1.ga), kita menemukan modul yang diinginkan, berikut dengan deklarasi dependensinya. Sekarang kita telah mengetahui nama organisasi, nama modul, dan nomer revisinya. 
+
+
+    
+    
+    ant install-springsource-external -Dorganisation="org.hibernate" -Dmodule="com.springsource.org.hibernate.annotations" -Drevision="3.3.1.ga"
+    
+
+
+
+Ivy akan melakukan resolve dan melihat semua dependensi dari Hibernate Annotations versi 3.3.1.GA. Setelah itu, Ivy akan mendonlodnya ke cache lokal, untuk kemudian diupload melalui scp ke lokasi mirror. 
+
+Terakhir, tentunya mirror repository ini akan diakses orang menggunakan http, bukan ssh. Jadi kita harus buatkan resolver untuk mengakses `http://repo.artivisi.com/ivy/springsource` dan `http://repo.artivisi.com/ibiblio`. Berikut konfigurasinya, kita satukan menggunakan chain-resolver. 
+
+Demikianlah rangkaian tutorial tentang penggunaan Ivy. Mungkin banyak pembaca yang membatin, 
+
+
+> Buat apa repot-repot, pakai Netbeans atau Eclipse kan juga bisa bikin jar/war.
+
+
+
+Biar saya kasih bocoran sedikit tentang dapur ArtiVisi. Kami akan mengadopsi SOA (Service Oriented Architecture) dalam semua produk dan project kami. Adopsi ini dilakukan di level mikro dengan menggunakan platform OSGi. Karakteristik utama aplikasi SOA dengan OSGi adalah aplikasi akan terdiri dari banyak modul-modul kecil yang saling berinteraksi. Contohnya bisa dilihat di diagram modul yang disajikan di awal artikel. 
+
+Memecah aplikasi besar menjadi modul-modul kecil tidak terlalu sulit. Siapapun yang mengenal keyword `import` dan konsep CLASSPATH di Java bisa melakukannya. Yang sulit adalah mengelola kegiatan development dan integrasi antar modul. Oleh karena itu, penggunaan dependency management seperti Ivy atau Maven2 adalah hal yang wajib. 
+
+Pembaca bisa memilih apakah akan menggunakan Maven2 ataupun Ivy. Konsep dasarnya mirip, tapi implementasinya berbeda. Jadi, kalau sudah menguasai Ivy, Maven2 tidak sulit. Demikian juga sebaliknya. Silahkan mencari yang sesuai dengan kebutuhan tim Anda.
+

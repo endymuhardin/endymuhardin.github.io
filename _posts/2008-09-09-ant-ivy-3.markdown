@@ -1,0 +1,202 @@
+---
+comments: true
+date: 2008-09-09 09:48:30
+layout: post
+slug: ant-ivy-3
+title: Otomasi Build Process dengan Ant
+wordpress_id: 376
+categories:
+- java
+---
+
+Setelah pada artikel sebelumnya kita memahami [mengapa dan kapan kita butuh Ivy](http://endy.artivisi.com/blog/java/ant-ivy-2), mulai dari artikel ini, kita akan menjalani langkah demi langkah supaya kegiatan build kita benar-benar terintegrasi dan efisien. 
+
+Pada artikel ini, kita akan membuat satu modul dulu, yang sama sekali tidak memiliki dependensi, yaitu modul `person-model`.
+Kita akan mengotomasi proses build untuk modul ini, kemudian menyiapkan infrastruktur lainnya sehingga siap untuk digunakan oleh modul lainnya. 
+
+Tiap modul yang kita buat, setara dengan satu project dalam IDE. Dalam IDE kita dapat mendaftarkan (membuat referensi ke) project lain dalam build-path sehingga tidak muncul peringatan compile error.
+
+
+
+Berikut struktur folder modul `person-model`. 
+
+![ ](/images/uploads/2008/09/01-project-person-model.png)
+
+Tidak ada yang istimewa, kita memiliki build.xml disertai dengan folder `src` yang berisi source code java. Kita ingin agar struktur folder kita seragam di semua modul, jadi untuk seluruh modul nantinya strukturnya akan sama.
+
+Kita hanya memiliki satu file source code sederhana, `Person.java` sebagai berikut. 
+
+
+    
+    
+    package com.artivisi.tutorial.ivy.model;
+    
+    import java.util.Date;
+    
+    public class Person {
+    	private Integer id;
+    	private String name;
+    	private Date birthdate;
+    	
+    	public Integer getId() {
+    		return id;
+    	}
+    	public void setId(Integer id) {
+    		this.id = id;
+    	}
+    	public String getName() {
+    		return name;
+    	}
+    	public void setName(String name) {
+    		this.name = name;
+    	}
+    	public Date getBirthdate() {
+    		return birthdate;
+    	}
+    	public void setBirthdate(Date birthdate) {
+    		this.birthdate = birthdate;
+    	}	
+    }
+    
+
+
+
+Sebagai rangkaian build, kita akan melakukan kegiatan sebagai berikut: 
+
+
+
+	
+  * Bersihkan hasil kompilasi sebelumnya (clean)
+
+	
+  * Kompilasi (compile)
+
+	
+  * Distribusi, membuat file *.jar dari hasil kompilasi (build)
+
+
+
+Rangkaian kegiatan tersebut kita tuliskan dalam file `build.xml`, sebagai berikut
+
+
+    
+    
+    <project name="person-model">
+    	
+    	<property name="src.java.dir" value="src/java" />
+    	<property name="compile.dir" value="build/bin" />
+    	<property name="dist.dir" value="build/dist" />
+    
+    	<path id="compile.classpath">
+    		<pathelement location="${src.java.dir}" />
+    		<fileset dir="lib" includes="**/*.jar" />
+    	</path>
+    
+    	<target name="prepare">
+    		<mkdir dir="lib" />
+    		<mkdir dir="build" />
+    		<mkdir dir="${compile.dir}" />
+    		<mkdir dir="${dist.dir}" />
+    	</target>
+    
+    	<target name="clean">
+    		<delete dir="build" />
+    		<delete dir="lib" />
+    	</target>
+    
+    	<target name="compile" depends="prepare">
+    		<javac srcdir="${src.java.dir}" destdir="${compile.dir}" classpathref="compile.classpath" />
+    	</target>
+    
+    	<target name="build" depends="compile">
+    		<!-- binary distribution -->
+    		<jar destfile="${dist.dir}/${ant.project.name}.jar">
+    			<fileset dir="${compile.dir}">
+    				<exclude name="**/*Test.class"/>
+    			</fileset>
+    		</jar>
+    		
+    		<!-- source distribution -->
+    		<jar destfile="${dist.dir}/${ant.project.name}-sources.jar">
+    			<fileset dir="${src.java.dir}">
+    				<exclude name="**/*Test.java"/>
+    			</fileset>
+    		</jar>
+    	</target>
+    </project>
+    
+
+
+
+Selanjutnya, kita bisa coba melakukan build. 
+
+    
+    
+    ant build
+    
+
+
+Nanti Ant akan menghasilkan file `person-model.jar` dan `person-model-sources.jar` dalam folder dist.
+
+File `build.xml` ini nantinya akan kita gunakan di seluruh modul. Seluruh modul tentunya butuh kegiatan kompilasi dan membuat jar. Untuk menghindari perulangan dan copy-paste, kita simpan `build.xml` ini di folder bersama, kita beri nama saja person-build. 
+
+Karena digunakan di banyak modul, kita perlu melakukan penyesuaian sedikit, yaitu namanya kita ganti menjadi `default.xml`. Deklarasi nama project juga diganti, dari seperti ini: 
+
+
+    
+    
+    <project name="person-model">
+    
+
+
+
+menjadi seperti ini: 
+
+
+    
+    
+    <project name="default-build">
+    
+
+
+
+
+Struktur foldernya menjadi seperti ini
+
+![ ](/images/uploads/2008/09/02-project-person-build.png)
+
+Selanjutnya, dalam build.xml di project person-model, kita hanya perlu melakukan import saja. Isi `build.xml` menjadi seperti ini: 
+
+
+    
+    
+    <project name="person-model" default="build">
+    	
+    	<import file="${basedir}/../person-build/build.xml"/>
+    
+    </project>
+    
+
+
+
+Silahkan coba lakukan build di dalam folder `person-model`. Seharusnya modul ini bisa dibuild tanpa error, sama seperti sebelumnya. 
+
+Bila modul person-model sudah lancar, kita bisa mulai mereplikasi modul-modul yang lainnya. Dengan semua modul sudah dibuatkan sesuai template, berikut struktur foldernya. 
+
+
+![ ](/images/uploads/2008/09/03-project-all.png)
+
+
+File `build.xml` di masing-masing project mirip dengan person-model, hanya dibedakan di baris pertama saja. 
+
+
+    
+    
+    <project name="person-model">
+    
+
+
+
+Sesuaikan dengan nama modul masing-masing. 
+
+Persiapan template project kita sudah selesai. Sampai tahap ini, kita hanya memiliki satu source-code java, yaitu Person.java. Source-code ini akan dipaket menjadi file distribusi `person-model.jar` (binary) dan `person-model-sources.jar` (source-code). Pada [artikel selanjutnya](http://endy.artivisi.com/blog/java/ant-ivy-4/), kita akan mempublikasikan distribusi ini agar bisa digunakan oleh modul lain.

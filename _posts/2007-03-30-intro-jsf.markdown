@@ -1,0 +1,303 @@
+---
+comments: true
+date: 2007-03-30 17:05:58
+layout: post
+slug: intro-jsf
+title: Intro JSF
+wordpress_id: 209
+categories:
+- java
+---
+
+Pada [postingan kemarin](http://endy.artivisi.com/blog/java/intro-icefaces/), kita telah melihat bagaimana membuat aplikasi web dengan ICEFaces, yang notabene dijalankan di atas framework JSF. Tapi JSF sendiri itu apa?
+
+Java Server Faces (JSF) adalah salah satu teknologi terbaru dalam pengembangan aplikasi web. Teknologi ini distandarisasi oleh Sun sehingga dukungan terhadapnya akan disediakan para vendor server. 
+
+Sebenarnya apa itu JSF? Berdasarkan [penjelasan dari Sun](http://java.sun.com/j2ee/1.4/docs/tutorial/doc/JSFIntro3.html), JSF terdiri dari: 
+
+
+
+	
+  * Kumpulan komponen UI (tentunya berbasis web)
+
+	
+  * Pengaturan flow navigasi
+
+	
+  * Mekanisme event handling (seperti layaknya aplikasi desktop)
+
+	
+  * Halaman web
+
+	
+  * Server side objects
+
+
+
+Karena sifatnya yang merupakan spesifikasi resmi dari Sun, di masa depan akan banyak vendor yang menyediakan dukungan terhadap framework ini, sehingga kita bisa mengharapkan adanya:
+
+	
+  * Visual Editor untuk halaman web
+
+	
+  * Visual Editor untuk mengatur aliran navigasi
+
+	
+  * Komponen siap pakai yang sudah AJAX-enabled
+
+
+
+Saat tulisan ini dibuat, sepertinya editor visual yang terbaik untuk JSF masih dipegang Netbeans. Sayangnya berdasarkan pengalaman sekilas saya, editor visual ini sangat 'menjajah'. Agar kita bisa mengedit halaman web dan navigasi secara visual, kita harus banyak _extends_ class Netbeans. 
+
+Mudah-mudahan di masa depan dukungan tools akan semakin banyak, terutama dari Eclipse atau IDEA. 
+
+Baiklah, para pembaca tentunya sudah tidak sabar ingin melihat, seperti apa kodenya. Pada artikel ini, kita hanya akan membahas tentang: 
+
+
+
+	
+  1. konfigurasi awal
+
+	
+  2. membuat dua halaman, dan
+
+	
+  3. menghubungkan keduanya dengan konfigurasi navigasi
+
+
+Kita akan menggunakan [implementasi JSF yang disediakan Sun](https://javaserverfaces.dev.java.net/), saat artikel ini ditulis, rilis terbaru adalah 1.2. 
+
+Selain hasil karya Sun, kita juga bisa menggunakan [JSF terbitan Apache](http://myfaces.apache.org). 
+
+
+Mari langsung coding. 
+
+Kita akan hanya akan membuat dua halaman: 
+
+
+
+	
+  1. Registrasi User
+
+	
+  2. Konfirmasi Registrasi
+
+
+tanpa business logic sama sekali. Halaman pertama berisi form registrasi, yang bila di-klik tombol Register-nya, user akan diarahkan ke halaman kedua. Untuk validasi dan akses database akan dibahas dalam artikel terpisah. 
+
+
+Halaman pertama tampak seperti ini. 
+
+![Halaman Registrasi ](/images/uploads/2007/03/jsf-register.png)
+
+Sedangkan halaman kedua tampak seperti ini. 
+
+![Halaman Konfirmasi ](/images/uploads/2007/03/jsf-confirm.png)
+
+Kode untuk halaman pertama adalah sebagai berikut. 
+
+
+
+### register.jsp
+
+
+
+    
+    <code><%@page contentType="text/html"%>
+    <%@page pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd">
+    
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>:: Pendaftaran User ::</title>
+        </head>
+        <body>
+    
+        <h1>Silahkan masukkan data Anda di sini</h1>
+        <h:form>
+        <table border="0">        
+            <tbody>
+                <tr>
+                    <td>Nama Lengkap</td>
+                    <td><h:inputText value="name" /></td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td><h:inputText value="name" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><h:inputText value="name" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><h:inputSecret value="password"/></td>
+                </tr>
+                <tr>
+                    <td>Password (ulangi)</td>
+                    <td><h:inputSecret value="password2"/></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td><h:commandButton type="submit" value="Daftar" action="register"/></td>
+                </tr>
+            </tbody>
+        </table>
+        </h:form>
+        
+        </body>
+    </html>
+    </code>
+
+
+
+Perhatikan kode program untuk menampilkan tombol. Di sana ada atribut `action` yang bernilai `register`. Atribut `action` ini nantinya akan digunakan di konfigurasi navigasi di bawah. 
+
+Sedangkan halaman kedua isinya HTML biasa, sebagai berikut. 
+
+
+
+### confirmation.jsp
+
+
+
+    
+    <code><%@page contentType="text/html"%>
+    <%@page pageEncoding="UTF-8"%>
+    
+    
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd">
+    
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>:: Konfirmasi Pendaftaran ::</title>
+        </head>
+        <body>
+    
+        <h1>Registrasi Berhasil !!</h1>
+        
+        </body>
+    </html>
+    </code>
+
+
+
+Kedua halaman tersebut akan diakses dengan URL : 
+
+
+
+	
+  1. http://localhost:8080/HelloJSF/register.jsf
+
+	
+  2. http://localhost:8080/HelloJSF/confirmation.jsf
+
+
+Perhatikan bahwa kita mengakses halaman tersebut dengan URL *.jsf, padahal nama file sebenarnya adalah *.jsp. 
+
+Jadi, yang terjadi di sini adalah, kita menyerahkan pemrosesan semua URL berakhiran jsf kepada servlet JSF. 
+
+Oleh karena itu, kita perlu mendefinisikan Servlet JSF dan URL Mapping tersebut pada `web.xml`. 
+
+
+
+### web.xml
+
+
+
+    
+    <code><?xml version="1.0" encoding="UTF-8"?>
+    <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+        <context-param>
+            <param-name>com.sun.faces.verifyObjects</param-name>
+            <param-value>true</param-value>
+        </context-param>
+        <context-param>
+            <param-name>com.sun.faces.validateXml</param-name>
+            <param-value>true</param-value>
+        </context-param>
+        <context-param>
+            <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+            <param-value>client</param-value>
+        </context-param>
+        <servlet>
+            <servlet-name>Faces Servlet</servlet-name>
+            <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+            <load-on-startup>1</load-on-startup>
+            </servlet>
+        <servlet-mapping>
+            <servlet-name>Faces Servlet</servlet-name>
+            <url-pattern>*.jsf</url-pattern>
+        </servlet-mapping>
+        <session-config>
+            <session-timeout>
+                30
+            </session-timeout>
+        </session-config>
+    </web-app>
+    </code>
+
+
+
+
+Isi `web.xml` sudah dijelaskan pada [artikel sebelumnya tentang ICEFaces](http://endy.artivisi.com/blog/java/intro-icefaces/). 
+
+Selanjutnya, mari kita lihat konfigurasi navigasinya, yang menyatakan: 
+
+
+> bila tombol Daftar ditekan, bukalah halaman `confirmation.jsp`
+
+
+
+Konfigurasi tersebut ditulis di dalam file `faces-config.xml` sebagai berikut. 
+
+
+
+### faces-config.xml
+
+
+
+    
+    <code><?xml version='1.0' encoding='UTF-8'?>
+    
+    <faces-config version="1.2" 
+        xmlns="http://java.sun.com/xml/ns/javaee" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+            <navigation-rule>            
+                <from-view-id>/register.jsp</from-view-id>
+                <navigation-case>
+                    <from-outcome>register</from-outcome>
+                    <to-view-id>/confirmation.jsp</to-view-id>
+                </navigation-case>
+            </navigation-rule>
+    </faces-config>
+    </code>
+
+
+
+Pada konfigurasi di atas, kita mendefinisikan view bernama `register.jsp`, yaitu halaman registrasi kita. Kemudian ada navigation case, yang merupakan aturan navigasi untuk halaman `register.jsp` tersebut. Bila dihasilkan action `register`, tampilkan halaman `confirmation.jsp`. 
+
+Action register ini didapat dari nilai atribut action pada komponen tombol Daftar di dalam file `register.jsp`. 
+
+Di masa yang akan datang, nantinya konfigurasi navigasi ini akan diedit dengan visual editor. Sehingga kita bisa langsung drag-and-drop halaman, kemudian menggambar panah dari halaman `register.jsp` ke `confirmation.jsp` dengan tulisan 'register'. 
+
+Aplikasi HelloJSF siap dideploy. Struktur folder lengkapnya tampak seperti ini. 
+
+![Struktur Folder Aplikasi HelloJSF ](/images/uploads/2007/03/hellojsf-folder.png)
+
+Pembaca yang teliti akan segera bertanya, 
+
+
+> Apa tidak kurang? Mana *.jar nya? Tidak ada *.jar apa-apa di sana!
+
+
+
+Itu karena saya mendeploy ke Sun Application Server yang terbundle bersama Netbeans Enterprise Pack. Kalau saja kita deploy ke Tomcat atau Jetty, tentu lain ceritanya. Kita harus melihat dokumentasi masing-masing merek server. 
+
+Demikian perkenalan kita dengan JSF. Lain waktu kita akan sambung dengan kemampuan JSF yang lainnya. 
