@@ -35,7 +35,7 @@ Sebelum kita bahas lebih lanjut, kita jelaskan dulu. Apa itu waterfall?
 
 Yang senang nonton Youtube, silahkan langsung simak video berikut
 
-{% youtube X1c2--sP3o0 %}
+<div class="video"><figure><iframe width="640" height="480" src="//www.youtube.com/embed/X1c2--sP3o0?rel=0" frameborder="0" allowfullscreen></iframe></figure></div>
 
 Buat yang gak paham bahasa bule, baiklah saya ceritakan saja.
 
