@@ -6,9 +6,9 @@ sharing: false
 footer: false
 ---
 
-Endy Muhardin  
+## Endy Muhardin ##
 
-Software Developer, based in Jakarta, live in Bogor.   
+Software Developer, based in Jakarta, live in Bogor.
 
 [Download resume [PDF]](https://dl.dropbox.com/u/162740/resume-endy-en.pdf)
 
@@ -17,8 +17,7 @@ Software Developer, based in Jakarta, live in Bogor.
 
   * Office : [Jalan Pangkalan Jati 2, Jakarta Timur](http://goo.gl/maps/np9gj)
   * Mobile : +62 812 98000 468
-  * Email : endy [at] artivisi [dot] com
-  * YM : [endymuhardin](ymsgr:sendIM?endymuhardin)
+  * Email : [endy.muhardin@gmail.com](mailto:endy.muhardin@gmail.com)
   * Twitter : [endymuhardin](http://twitter.com/endymuhardin)
   * Facebook : [http://www.facebook.com/endy.muhardin](http://www.facebook.com/endy.muhardin)
   * LinkedIn : [http://id.linkedin.com/pub/endy-muhardin/3/940/1bb](http://id.linkedin.com/pub/endy-muhardin/3/940/1bb)
