@@ -93,16 +93,19 @@ Dan mengedit environment variable bernama `PATH`. Tambahkan:
 
 * `ANDROID_HOME/tools` dan `ANDROID_HOME/platform-tools`
 
-Di Ubuntu, edit file `/etc/environment` sehingga isinya menjadi seperti ini
+Di Ubuntu, buat file `/etc/profile.d/java-env.sh` yang isinya seperti ini
 
-```
-JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-M2_HOME=/opt/apache-maven-3.1.1
-ANDROID_HOME=/home/endy/Coding/adt-bundle-linux-x86_64-20131030/sdk
-PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/apache-maven-3.1.1/bin:/home/endy/Coding/adt-bundle-linux-x86_64-20131030/sdk/tools:/home/endy/Coding/adt-bundle-linux-x86_64-20131030/sdk/platform-tools"
+```sh
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export M2_HOME=/opt/apache-maven-3.2.3
+export ANDROID_HOME=/home/endy/Apps/android-sdk-linux
+
+export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 ```
 
-Setelah `/etc/environment` diedit, restart komputer supaya isi file tersebut dibaca semua aplikasi.
+Ganti isi `JAVA_HOME`, `M2_HOME`, dan `ANDROID_HOME` sesuai dengan lokasi di komputer Anda masing-masing.
+
+Setelah itu, restart komputer supaya isi file tersebut dibaca semua aplikasi.
 
 Sekarang kita bahas untuk Windows. Cara mengedit environment variable sama seperti yang dijelaskan di sini.
 

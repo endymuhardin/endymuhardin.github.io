@@ -40,15 +40,17 @@ Berikut caranya di Ubuntu dan Windows 8.
 
 Di Ubuntu tidak sulit, tinggal install saja paket `openjdk-7-jdk`. Terserah mau pakai GUI atau command line. Setelah itu kita extract [Maven](http://maven.apache.org) di folder manapun yang kita suka. Biasanya saya extract di folder `/opt`.
 
-Untuk menambahkan environment variable kita edit file `/etc/environment` sehingga isinya menjadi seperti ini
+Untuk menambahkan environment variable, kita buat file `/etc/profile.d/java-env.sh` yang isinya seperti ini
 
-```
-JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-M2_HOME=/opt/apache-maven-3.1.1
-PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/apache-maven-3.1.1/bin"
+```sh
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export M2_HOME=/opt/apache-maven-3.2.3
+export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin
 ```
 
-Setelah `/etc/environment` diedit, restart komputer supaya isi file tersebut dibaca semua aplikasi.
+Ganti isi `JAVA_HOME` dan `M2_HOME` sesuai dengan lokasi di komputer Anda masing-masing.
+
+File yang ada di dalam folder `/etc/profile.d` akan dijalankan oleh Ubuntu pada waktu komputer dijalankan. Cobalah restart komputer untuk melihat hasilnya.
 
 Mudah bukan? Bandingkan panjang penjelasannya dengan Windows di bawah ini ;p
 
