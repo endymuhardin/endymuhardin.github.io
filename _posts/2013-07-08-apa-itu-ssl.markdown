@@ -54,6 +54,7 @@ Manapun cara yang kita gunakan, ada satu kesamaan. Kita akan memeriksa informasi
 Website yang kita akses ditaruh di server. Tentunya server tidak memiliki anggota tubuh yang bisa dipastikan keunikannya. Untuk itu, kita membuat padanan sidik jari, yaitu suatu file yang disebut `private key`. File ini bisa kita buat di server itu sendiri, ataupun bisa kita buat di laptop dan kemudian dipasang (copy-paste/upload) ke server tersebut. Private key ini harus kita lindungi dengan baik. Karena bila orang lain sampai bisa mendapatkannya, sama saja dengan kita menyerahkan jari kita ke orang lain ataupun mengajari orang membuat tanda tangan kita. 
 
 Private key bentuknya adalah file text biasa yang isinya seperti ini
+
 ```
 -----BEGIN RSA PRIVATE KEY-----
 Proc-Type: 4,ENCRYPTED
