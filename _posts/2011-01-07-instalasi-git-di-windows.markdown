@@ -36,73 +36,65 @@ Dan selesailah sudah. Seperti saya bilang sebelumnya, singkat dan sama sekali ga
 
 Nah, mari kita bahas instalasi di Windows. 
 
-Pada intinya, langkah-langkahnya adalah sebagai berikut : 
-
-
-
-	
-  1. Instalasi Putty : Ini kita perlukan untuk membuat public key. Public key digunakan untuk berinteraksi dengan repository git di server. Apa itu public key dan apa manfaatnya sedikit banyak sudah dibahas [di artikel ini](http://endy.artivisi.com/blog/linux/login-ssh-dengan-private-key/). 
-
-	
-  2. Instalasi Git : Ini adalah aplikasi Git nya sendiri. Ada dua varian, Cygwin dan MSysGit. Kita akan gunakan yang lebih populer, yaitu MSysGit.
-
-	
-  3. Instalasi TortoiseGit : Seperti TortoiseSVN, ini adalah aplikasi GUI yang terintegrasi dengan Windows Explorer, sehingga pengelolaan repository dapat dilakukan di Windows Explorer seperti manipulasi file/folder biasa.
-
- 
-
-
-
-
-
-## Instalasi Putty
-
-
-Putty bisa diunduh [di sini](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). Pilih saja versi installer, supaya tidak pusing. 
-
-Putty ini akan kita gunakan untuk membuat pasangan public key dan private key. Caranya adalah menggunakan aplikasi PuttyGen. Jalankan PuttyGen, dan klik tombol Generate. 
-![Generate keypair ](/images/uploads/2011/01/01-ssh-generate-keypair-300x290.png)
-
-PuttyGen akan membuatkan public key dan private key. Save private keynya. Kita akan membutuhkan ini nanti. Klik tombol Save Private Key, dan simpan di folder mana saja. 
-![ ](/images/uploads/2011/01/02-ssh-save-keypair-300x210.png)
-
-Terakhir, copy-paste text public keynya. Ini akan kita perlukan untuk dipasang di server supaya kita bisa mengakses repository di server, misalnya Github atau repository kantor. 
-![ ](/images/uploads/2011/01/03-ssh-export-public-key-300x236.png)
-
-
-
-## Instalasi Git
-
-
-Pertama, [unduh dulu MSysGit](http://code.google.com/p/msysgit/). Di websitenya ada banyak file yang bisa diunduh. Kita perlu yang Git, bukan msysgit. Nama filenya diawali Git, seperti ini: Git-1.7.3.1-preview20101002.exe. Ambil saja versi yang terbaru. 
+Pertama, [unduh Git dari websitenya](http://git-scm.com/download/win). Pastikan kita mengambil yang sesuai dengan arsitektur komputer kita (32 bit atau 64 bit). 
 
 Setelah diunduh, tentu kita jalankan. Berikut screenshot next-next seperti biasa. 
 
-![ ](/images/uploads/2011/01/01-msysgit-install-welcome-300x230.png)
+![Dobel klik installer](https://lh3.googleusercontent.com/smXWv3F_rNxbpGk_Y0usTJhcuhf1ARfVHBzOInbWI87hJN5NUvXanKRniFLWhq1QusMJzHXA7sQ7ZBuxzYFkb2DG8K2ll61VzRL9rcyJ94KvWCSSFVnc0DKRSzr23cv9P2tFIfxnEmwr9eSu_3TcHnOEKEuYSAtmUij0XQVzTXoWxA5G4qRA_Rlew8YvLSa0tks0ygkMN-QJv-6ITK0S0-dHUEu4OJh0FI22N-d32GRq6fhra-b3HZ2w9d0NmdZZ3O6xD4PEyVkW7oHw37OuCVb9PpRJq-6Db_zzSuwUDUgH5UwqBRXsNKzNiNBZq5ZPVGkZVQuzrl9gjfRyyry2SHJHoFzh3IF7UC164Fy0lgTzqJFxruX0D22wUrWZD9dQuk2FXYhEQr5fWAu1qXVsL3vh5rWy7XFFpI0z838ViO8HxwUxRRoMs3IlJPSE-FeZO6cBZWx4ofO1HggJJnBwErxdnPiOX0tXVyWJ8KBxtsBGDnJMXqtZlVw0ftTdyFB_8y92BMWd1gnQ9f9TJgBL24HdR1tnO1MzSL8ncacfURQ=w688-h629-no)
 
-![ ](/images/uploads/2011/01/02-msysgit-install-component-300x233.png)
+![Allow instalasi](https://lh3.googleusercontent.com/k9fNsCKt6SHUGv8AdWWjMFBgGEZWC4crcekLQWJZq_uFu7iBshYGx_i4cmo7mSfPyXdQ_AAKH7PNFkyJlq2OJX1-E7WpUdRacpJo_yaOFHC09z3xCuAXySZMYOSy4n1h4Rv45LjE55R1MU2P4Rri5h_qZza2pfUCgulc5TW4x0jfyZLPDwzsxAT7QpK7RhcWLw8UpinLfU0yyoJs4BrjKaMlorTJpsVeddvVmnGKglXPbLSW1OFfOwZP5FQyEuYLjv4jNtc9QUotCRF-uOmqwqSOrV0QkSQBU5d7C7Eb3h28kH1Zl29C5fZs5Je-MJG5xGJcxSCjaDWzJjFuiKtcF5hkB_AFqsecy4exu6A5DghfZiiXICqe3HoYCbo6Y_wVm-fAQZxuYjlvKjILO8R-VllCtO3nSuV06KF7WyTDhiGibzpcVDfX7QhAnxBWjhBK7PbM9bj-Pa-D2O5mxXSTSBZD31AmDckG_xXbOgzU_lZnRaYnJUuMr-qSOpFME1Eq3D9nDtbQeMLDeCs8drlPnJ_hWl8bJ5qSYnn1hwbOOZ8=w470-h281-no)
+
+![ ](https://lh3.googleusercontent.com/Zw-GsIEUflCJPgJTcGY-9k5U8t1trWRDtMKi48fcudym2WhnnrR9PhZtPCqGPFX5ZEQuwuvIT_Lr9YE1dXLQ4_HRTfU1zYh554RunngG-jxiAjRlfLWoD-1bjaxpSArK84uTmM-nLAqlxCPl4T5sDStAVWr44OqRqi88sqEC39nchAFn9YQuzxt058y3lKr-Krzk5Zp0MsC0Paa1qxc08OqNohPeMLQvQhYTVfuDEBT6a1IBlQilMhQStUKfRY2OhxiZqRJkmVSweieIZCQr74Oee5QKmXa_EiAv1dnOabtJn51nbUeIuKvkoFhdHHruRPhQdMReqb_fsQD85C175gH5XpgkK9uyBsGSMTGElhzVaqyr11SKRYeIGTf818J8dZ6B1H_mXETYysM7XP2CdmYf-y7x1lpV2UxlU9fQIgx6NhOrgMI8g3Hw5_YANxB5aupyCEkhEYbxh5CxPo_gutjYNFx2NSpyMxZm3QXxBH11leDJJJOa_Jiu7cSg8KZm3K13WaG_yZQF43v9mp1e1YKQsdRtMLJVl19DemQFTYw=w504-h392-no)
+
+![Welcome](https://lh3.googleusercontent.com/iOGhMjFDWm7bcswGrKT6WcIt6nqv-3hchWBxn7AZT4q8LgO0m0xWauQanQGc8m3xaso4YX7LZ6P3uj9SirxDeCIOX8kdhHfcXXEyTKauqANDq_R60sTqlKTbV4g6qSwnnL5-zxc0up5-Gf-Fd7frv3bg0TRLDCGvtuUajsyVkvb1euRXIimOCwXa42URnDuITlvlqXTEASkZaIPXJMVWm5i0U9eSQcg6JXkhoi4iw1UBvjnxTpr8uw6V36sWVgeXBpIqSev-jPkNjXO8BpheMnAASdB6Ch5w0cUei_O9iP7KhnbxSLD2AxquEQkBbhUCrbb32srr7ayGbOwP46-Bb18e98eJQUouvkQktYNj_Gkg9IGRxkhvX1dAOhMw56WFTef9Db-AW6n9KybuTd2bCQHDaEddBJw35FPsMz_kp3sRocLr43r5kC93iofcu1mfNaQKLoWBAujriYNNhTkHcPh0sCDwRKFQ95C82OuBx0xUKwWkrWG55azrUw7k43lgmWYh47L-eI6DooxPnGM-bZlAx0p1l1mtlvrRmvujPdw=w506-h386-no)
+
+![License](https://lh3.googleusercontent.com/iOGhMjFDWm7bcswGrKT6WcIt6nqv-3hchWBxn7AZT4q8LgO0m0xWauQanQGc8m3xaso4YX7LZ6P3uj9SirxDeCIOX8kdhHfcXXEyTKauqANDq_R60sTqlKTbV4g6qSwnnL5-zxc0up5-Gf-Fd7frv3bg0TRLDCGvtuUajsyVkvb1euRXIimOCwXa42URnDuITlvlqXTEASkZaIPXJMVWm5i0U9eSQcg6JXkhoi4iw1UBvjnxTpr8uw6V36sWVgeXBpIqSev-jPkNjXO8BpheMnAASdB6Ch5w0cUei_O9iP7KhnbxSLD2AxquEQkBbhUCrbb32srr7ayGbOwP46-Bb18e98eJQUouvkQktYNj_Gkg9IGRxkhvX1dAOhMw56WFTef9Db-AW6n9KybuTd2bCQHDaEddBJw35FPsMz_kp3sRocLr43r5kC93iofcu1mfNaQKLoWBAujriYNNhTkHcPh0sCDwRKFQ95C82OuBx0xUKwWkrWG55azrUw7k43lgmWYh47L-eI6DooxPnGM-bZlAx0p1l1mtlvrRmvujPdw=w506-h386-no)
+
+![Lokasi Instalasi](https://lh3.googleusercontent.com/ARdqdf3oUDeNtRuEcccYFfz09OTs2yn79-lhiZGnKV8SpcnnECxOFvH_sVf8tW0NQ6iGiJFdg8F96blkheBpacDSrQZ7R6VOuYGloneRj30mb4kKC_YLVDFxkC8YJlprhavlE6CuVMHeGURCFXt7rTK_HL3MfU-uTyGlI0IYARn8J_xq0G2IRYwMCkGus9EcHe9SYnNM4ocEi1aVd1jB2TFmvdCu0WgSGRAKofrIk0AAraZ_S3yuLvl75AMT7h1Cb8kFaCgL8btq2Q_2hRWXKkipVnmVBCHJNx6SFclyOxIrQ0ekAgu398qwju5zr6Q-GOGcW5NV3CnPMkQBcZ9hKLZiSuHovUb_dbsTjsq70J4RSlrQTaOth83FVhDn-aaIVFd3hNsdfF4BGt4KXKqrVVRzN7qqPE4KaB493LMO_vXXGRvackrzs6B4ldXvPBtGQVcvgg_3lMCkyoZr068JQMCN00zo_weLKv8Jfw2tFx0dnuIcpLz-jkUfQTUZjfWbQa2sGfNshNPO1LC_dUYaYfrjOaJ9lbhsM-Knph2szWU=w507-h392-no)
+
+![Components](https://lh3.googleusercontent.com/kIWQdvfmDsmH6VuVYSJ3l8p87C0O33FBZyzsb89nWebvlrx-uMSCFXNGLpjb1DO8FoNeXrzxRH9PP7y7ngKb6M2cEUatKvkY3EDpLxX80lhDJlbBt2aEf1SbAaTIILp_CdWD8hKxD2zZc0Hf7R6L5ptzDbU0z0SyyrW99d1XElvtXvo7Guk37GSi0SprtKXLg_TiPeShybTIByiXpqKJVbbZH0dWs_zZtMHD1Iz9-mjNKKHIAKM0gItHlStvm9De0t28SYJI9LnYvWjnS5ZeoyyNMbwHHOkl5JP-6TUco4j0r73qFEkY9-Kv48qu_kFXSumneWSYdr16I3cvBHm5eQbHq8kOMe21IakAnjQtLupsF2nIihGEVKcWfsQOTjGxyvGvMMSkxv5c71Ui05-AOX7xAMMRNmlNra1ql3sMVFtpM9PjBlXYu9EeqmhZFKwGICIe51Wpv6QxrS9B8SIU5GjA5v6W5emrRAbcma7qvVk12h4bv87w9-jOExZU3YF756n2h0FOQI81szEK8nZhIHbOV7N_uUvbq4ov6idKbkc=w504-h389-no)
+
+![Menu Folder](https://lh3.googleusercontent.com/sKT-YNauPhfSI52JU41qSVXsgHONhYN9h2H_A2Jlz8DviK-CZQeyo5LCmlxpqKmCK9M-pcFNMpZpSQviA1AHDTBEQpmOFQZlO7fvgo2g3BhFBcHdywSHwTrLiPvT8o1_MezeMyKRZTEmH6BNYCVNofMrqzYRfKciyTlhSUjmrr1pRifv-CgjiiPyBTbECNRJlM-jhGf29V3-dxnJKsOtQIjEchxA3_jNdxhrpidkup3l7vNz1PBNvZep7UKYcg_cLz0kS59p1nMlJiqzKqxc0RERKXbRolivBT9ZkUwYN1AnyKV9t9lKUEfNdkABVcDTA70DGozGplhtsOrnLgv41G7RqGfdzc8mj3Vxzu8BVjXWj1b_smohXjTDD10UI19zKuv2p48azpVvuWyQE5T_V5jHCXjvG3YxMwXvESS_0SdOcyXlMsWPyJbsiWheEnniWhEsDt-xadMDAmXhrM6FJs8T9kiL0FHDdeFk94mot56AFZ5e7lmYnhl3DNpoA5YVtWdF1eKsJ_FS_FR5m3EUD0BS7y6aL0HnYEMJkoUbskM=w504-h392-no)
+
+Perhatikan, untuk langkah selanjutnya, kita perlu mengganti opsi default menjadi pilihan yang kedua.
+
+![Path](https://lh3.googleusercontent.com/ubPzgIwg9ylfTS-g79sla1slM7R4GrwQO6sB_y4ZTGilaiMZPwtGEcMCSL9dThm6R6Zt2QObklb5hFOLk65YuMtVu9bghDFbi--nEyP0HWhI11zkWI7tIqbGo6NRjfbDDY7rvZgfBjbuI3aVHGVwPSxe1nV7USVlZ4qz-Uh4bpkgwaN7hXIdU2PHom6ii4NJV5q7YH2f1Var9lL6h9_gRbaIEwXhE9YPN5mH08O6V7xDLjyCCf5TNNj73n_o5xN938-QFkigsKvdovqmHsyyGOOelmK2gS2r7pBaIiSeXceG30kCjVuDJMWBeAX4mUBP0gBqb0IRhgfSpmGEeQPlP88SdtERW-_nyntdlq4Xqi6GTi6tIAzqv83R6BdJ20OZNq_ea6END0zuNastZnUvOjoqaf0ynhj4xCsCAsavLdIza9x_FtTfw-K05-NoNW7aX_jGlSzRccRhegEv1gkI_ebCWbHlXhcCPFFjGq5Jb_KUKlWbZ4qMton3ZSIPnaEP7W7odfKg-LevEXUooX61VqjCh88dGfhMJC4lkWHjIq4=w506-h393-no)
+
+![Line Endings](https://lh3.googleusercontent.com/W6zL37LSxwQlvtDzpsaJ6zH1M-CDyLltDWYHeq_LD6br335iOdi5RkgJFyu0Kz-7Ie0UsAQyh_8vxlClIgMNxF0xe2iKGhsungYERVSw-ZlYLB_O3XLoQMDX-g25j34ivbr9lGmbbZPmyKssXvVoZHkofMGTlv848l1n7UwXjHhfDA0FYNiHd3R4t3y8cz2KBkxRrTo7c4sFIYmJMoHDja75fN3V_ILGnfhoX3UZdJ9YLqIC4ZhDYMo0XfGuEqbb8a3JwhesMxJOv0kfnDN6bBtdGIBlN2ixFl1hrj_dp1pSgc8OB4hzHEJt6sb31LpGB0Cy3Atk7maBoV2FBTYa5tABpQL2_kAfRJtiICKlD7V2pchLl5er6uATs7OJzk5-G1jYX5PeIPiMtpRxjJzBMSbk2Sy3C-nl8-Qv2Hk6rnIZB1KBMqImCzyxse8p3Y2KYPXElFDzXDI-v4vw4zY78CwFqE3zSnPSddHDnjr2Svww2hTSUY_185TNvVb6GXIhCyPPe8hGU5A3kGYbJNatoXDM7S2qdUrphRDJKWdedRY=w505-h391-no)
+
+![Terminal Emulator](https://lh3.googleusercontent.com/5X6VwjAYuY3Bz65NRdzknWZzB5HcXtq9Qn79-xXrvjuRF0G4qKQ_HEkKxeSF_1r9_o0KMYodKR7PY3rxGiFvc9aqk0maWBnFP_cjrsG8vrLjBhf0__9VX35NbQXEP_PMN8frd90SC0SMXuKlUaH8rGlXXDVrxJ4aOVI3Huov3iS4IKy5BCjjBlO80S8Nu9J0xM87hgoGzquzufRHQjS7llL56DUcvEqEh_79bxPXmWZBLvMXc-rfnmXf3sRz-z9z1nGjHrlrTkSUBBfBiwRbxst0S3Yxsf9_3QgCxJtFKrculko95Sqe_El18I-_ScUF15RSNqxwOzBgE8lndtIliri6QB8_npmXogjdfpTi4Qw85BhQ7qV2VzBOWbDiYUAZF1wJtE2Ayclu1oxpYtv-l7BbPLVb8ZAcAgVh4G3ggt5jpLC-kIBGUBrP33Of359PEt9E-fG8xo6K6zuxVQhJmmH1kgpRYdT4l2FCdmbARQmYYn_zNoH8qmyQ0KYs_6bl_HMRFW28gN_80M6s4iCIOlQB4W9uqDiZTUh2dH_p1Ps=w507-h392-no)
+
+![File Cache](https://lh3.googleusercontent.com/2bUKaHYAtkkYeiSMBWZ28iKH-8m2KdQoqIj8KtMMpzRgwX51kWDHyfpnRfQrfuyJ3z1nM21aOghz0pcLM5DLXS-TFC5MzplhvRtYNFiPsOKINgzEPf90QhMyzOHymUQSjk-8efu1Cjw2FU_L47B0GmG2zXEb2M-tgNgkEqLNlHF9OqgWwmOjMJzjX-H6yEUHXF9Bqljj9B5LVZt83fgnQQR9asQ1LhiuamONAyen-8XqlbFUnRfccy_88tMT1CeExIzk5Ssudtehua5HlKbOWoVw4qYmwUKZwRa-KnAJlz9dW0dVT2nUAJZDAg9PCLh0V24Z9QctWt7qncDhhhf8wytKKho-A8QJp9lO5F2IDU6lPn1Dz8Pb3ZgE0-Ctc7Ns6n51njFl9i1MjhcwihTLLn3NLFDr4Kl1d_m_4o_JPnL9UYjIHVWAW1x3nIu1bbk2zEb5Mk13VjBtY-NpnUEWm_h3Hsy2Lqp28bcWov5mcD5CY-W4VJGPiQKYWI9BwQLIA63_Yye6MzLVR9BfJ2NIQ4emtbwsd29hKC0GvdYfFr0=w504-h392-no)
+
+![Proses Instalasi](https://lh3.googleusercontent.com/jP_dIgQNFaqsdr3AIPVAIaVx88yAZg4RlkdsSm2P25Yp1BysGikuF2gVfOYktqHaeLASYocPUQJD4idBrWxLOdA6K1LcBVDO_YLD1XBDlOxr1jmxpC3ZRJfKly_zx0enSQ_om0OqVl4yR7Yme3RxmfuP9mnNP2jVAKr85452QLiMnVAzvE0vg1w7KAQTqBnL33RJt6eeFdsXiK8CnO_dv1JIRHAqX39vYv7caJsTf5DLU0gTOYwlSMc8gEtPjnEOD7POE1_8m5w6uhXVbxFFTq_laaOjOk64wnOXUDK_HF9v_oc-pe-fqyhHqBu-wN5WAWYg1RkxwN_IXlTZ8FngqVQuG6nSCpVY5YcyaUpPlOOa-qNp6k-RZ8gQacDagVBlBnNCWS3Rofo7ml-Z4DAANGcOJsXFUNuHGcbhPvZAFniYqa9D2Y7Afek9iACzqeKWIUvuKemzaZY1yu4Iye8dyztyq833l0Ww7mGQOaFol5Nuz9KiI5SJSB53yi0btMk8PLcWxBzgVOJAHpECoX47Cmv3ruim5IweDRYKMp3nDhk=w509-h390-no)
+
+![Selesai](https://lh3.googleusercontent.com/OuEs6hdM9KDKBxKHNHt_UOtUiXLQWmWU0nxGTZKBnmD87onTM6BrPTPv03TwzY0llz2QRtwhf5TH-Ftao042eeeWsDwWdKamfp7QdBecfPl_eN2D8_wbV5QP-vcFW_Stw0lXwEKntFhNhIiMNTZSRjYqgSrPW7io3hU6IjUajjI8hpoIk4MyEKyPKWKXMQa3QKHPVjDiglzYbIxOFa7ZYmIgRik5ruIvu-9QrtvzHb4rzXvJu09FWG07laH9gSO7Osg1UUqOriEZgKfvNyEXrDCP-H4Yn2rnbkPskEKh7hQURjfnfP8pJxBYZkUzDMZLWxOP1dZ3F9sK803Q4R8brRWGkXAIIMk3w6re1PexEyGXcbniJbOnq-c4z0t2gIxv_n8SZCu5UYWwI0CsyawOi2qGTxIWZWaoTBzUSBCvHPVOkogkv5Ka1f1p7g7Wvg5SYWv_U0eupy27giNCjzW-fTo5WvLOqmnMeQP2PAVItbg8OLZa_x7puujt_03bsoAI9Pn9W743HXNYhMZwLVjoEyASEcRGpT3ViETYsRuqHsw=w506-h385-no)
+
+Sampai di sini, instalasi Git sebetulnya sudah selesai. Tapi kita perlu membuat pasangan public dan private key supaya bisa mengakses Github, Bitbucket, atau provider lain melalui protokol SSH. Dengan menggunakan protokol SSH, kita tidak perlu mengetik username/password setiap melakukan sinkronisasi dengan remote repository.
 
 
-![ ](/images/uploads/2011/01/03-msysgit-install-path-300x232.png)
+### Membuat Key Pair ###
+
+Pertama, kita jalankan dulu Git Bash. Ini akan membuka command prompt khusus yang disediakan Git. 
+
+![Menu Git Bash](https://lh3.googleusercontent.com/pa5U80HlXvvEfbO8MVF_lu4P4Rk9shKbqjQYVS-JSZmfTb2iGRl79b1uRhQWWAQFOE7w8xCrmFXEAZC4qqR60bqpSLJzDkWHQFs-osdBjtBRyC8BvTKTwRMMvQoV2aht3iPBuPqosdQJe34Gb0uUK0tFGswJah70Fq29upDd9k6GOB7VuM1FRL9yiRMR5hFNL9BFmnBM4DGIEsSDZbR0SqgCYkBba48ZP1jwdye7N9TmMVx5hkgF7itHifzTFyIiKFEhz3MTYOaPk3hIwRIKuG5ip39aNne05y92HKxIJ5yaXNfTU92P4gHE7vjx80RxV9MGOYgPIcaF64wAGV8Jz8v9yC72-Ysj7fwskEJNa9V_hAgrEDztiwdNMiyxF-E8IHadWYzvhlejzZxMAV_-pC_XhWUOw2zXAfYy6TP0frptk4nb6ZantQuKgR58pS9klCwZeu6CxQ6mlR_AYEI_p8mBJORRSJmXhPXww_LcAEk8oD7i5dJIlSZY2t7OWPH9QlukliVLti0l4-1-u82KTXOnzfw3WOHI5uqpX8W2puQ=w412-h526-no)
+
+Selanjutnya, jalankan perintah `ssh-keygen`. Kita akan ditanyai nama file yang akan dibuat. Ikuti saja defaultnya, yaitu `id_rsa` untuk private key, dan `id_rsa.pub` untuk public key. 
+
+Kita juga akan dimintai password untuk membuka private key. Tekan `Enter` bila tidak mau pakai password. 
+
+![Generate public dan private key](https://lh3.googleusercontent.com/09whf_RJXX4AEtq89gdeRNhBQLPkjREzi66J4cCRjwL16trH893IU8wIvNwlyNAQXXmAcqhs8-3cavgncnq4up5A-nDTKZ6vFWCwrS7smTrj1R8Kj0MrkYjpHrUltCi30XW-Hj2vyZw0d7_yuyWWvyGzh2UZoihsuJYhESTlslwbhPEVYv2a68A2IVrORm77o0Jjlxx3WqaPiP4q0vmEjEhdtzTdNaKjCov8SBrcSOELmfZ_pb1lQ3OIOCUjej2vjuo3qx-twFHb-KFdAdR37vmhQ7HNS62_tigXg8r3b9ZDJk-Tb22bPBDqARiRXY8H7F_KgsHcRwm-XuCXRZi4jnTcBz8w1oSB4UW4HzXb6wtUyZsq4Pqlk68WsoDxuzG2aAJxwFgNqHHzhSpa42ZtQm0BtWx3DK7anfWBLZJTkyVI3Rser8GNbQ5otZTT0c2Yn0gDp7r4BD7KeSykKLLmUWQSe7QAkd3Yq5MPJL1AXNM79jlzeASLxcOffYYOd9mF2lgx35JFKs23fg9V8n_3irqvsX5bjzHUs_MPX8ylTik=w597-h401-no)
+
+Selanjutnya, kita akan menemui kedua file private dan public key di folder `C:\Users\namauser\.ssh` seperti ini.
+
+![Lokasi file public dan private key](https://lh3.googleusercontent.com/DmSVC2raFeIldhAQhrHh8dcLHvb5eS4k1xb3pfh7w_3KGqhx0bMebWmsI76AKV6-wCerMrHo-FJ1TXIjyIP5XB6ZymDiB5D3I5cEzItJjZBeAeIxdACWfZGKy_Gjjp9ZfVVd5z-nKn4tx-p8oQSqEq8zSSH6EqfW3k5YVAj5OfHZnp68KsFiBJqnVObGAQLSR7ByUgut9cq1KhKNNBebeZJ6FioXVq9F2lg-hDt4wmwpHjitIoiJawpQ9HWA64PNg_boo6GqHJy7JAcCP7usGy0ljA5BJk5mjALa4R22ojGXp_1LvfnwWVO8G4cuJ33s6m7xf6Qp99vDRkmhCdC3tKKseN_qNBvSgHbr2XDxKkQZBUUqowWREZEIdMMBKQpLOBYZ-jg-XBKJDrd2ZLt0oVoctqfoGKW86V1vZhNhdvfZ4rSP_VwG19CAqW-FY_KKmR1Y-MNf1ftLyHEh3fRpPoADJTf_X2inWS2-rghwcDKupCFhrNSr1VVMxkarfySNrrxLutrrcLnnu-VMoIU3fvZRszShbhGY00gIG2Mwqt4=w839-h628-no)
 
 
-![ ](/images/uploads/2011/01/04-msysgit-install-crlf-300x232.png)
+Kedua file bisa dibuka dengan text editor. Yang perlu kita buka hanyalah public key saja.
 
+![Public key dibuka dengan Notepad](https://lh3.googleusercontent.com/4Pg1agaUjzkwr9h3FY40qtrujTjanF7XZW_TOnjf5DbZf97DnJ7PHMS-V7lBWC_AMtY125uTaADt3P4VO1KhOJR6BAuGZQjnfoTGwV_dQLWmm2-82pyxJ66XXiqVGF8OiFf7jaCS_l1hEdCItXNSnvtYSfOZVwptoOZcfQtiMaIuoDnqhuJteCf6T7UvecIafzUXcMs50xGnvz_Ej6miy9PkDJpl_INANQnxJfAcceRzFJywoCsTpAE1v5JGDT4JMEbyIkecYlTBkaJI7X9ehT34lnp-Jhg6J9kvMlWixueha2qbmOR_vgD1_J_8vuRqXbnQJO5sgaeB6qvCI74xWL8sZBiTNB3Tv17a97VssACLVlvP8EoC4B9WtQytfs8k1bqRjHoR4BTv6rIEQZWe1NR-4ZPV5a8QF3UDVeLPC37AaycaJIscqqBea7es-fO1V4zy_0mT4RCXryuLUvMDjkOdrA7JY6rk7i41Xia0v0MdwCQ65jcAOJ1EAEgIFOKOCiqidsauJ_udwd9t5BLnqRpw5ZSCkqb3LrOCg8HyRpo=w505-h472-no)
 
-
-## Instalasi TortoiseGit
-
-
-
-TortoiseGit bisa [diunduh di sini](http://code.google.com/p/tortoisegit/). 
-Setelah selesai mengunduh, lagi-lagi klik next-next. 
-
-![ ](/images/uploads/2011/01/01-tortoisegit-install-welcome-300x233.png)
-
-![ ](/images/uploads/2011/01/02-tortoisegit-install-sshclient-300x231.png)
-
-Sampai di sini, instalasi Git sudah selesai. Tapi masih ada langkah tambahan supaya kita bisa melakukan clone dari repository server (misalnya Github). 
-
+Isi public key ini nantinya akan kita pasang di Github
 
 
 ## Clone dari Github
@@ -118,7 +110,7 @@ Klik account setting, dan masuk ke menu SSH Public Keys
 
 ![ ](/images/uploads/2011/01/02-github-add-pubkey-300x206.png)
 
-Pastekan public key yang sudah kita export menggunakan PuttyGen di atas. Setelah diadd, public key kita akan terdaftar. Kita boleh pasang public key banyak-banyak, karena biasanya satu public key mencerminkan satu komputer. Bisa saja kita punya PC dan juga Laptop. 
+Pastekan public key yang sudah kita generate pada langkah sebelumnya. Setelah diadd, public key kita akan terdaftar. Kita boleh pasang public key banyak-banyak, karena biasanya satu public key mencerminkan satu komputer. Bisa saja kita punya PC dan juga Laptop. 
 ![ ](/images/uploads/2011/01/03-github-add-pubkey-completed-300x201.png)
 
 Setelah public key didaftarkan, selanjutnya kita lihat repository yang kita punya. 
@@ -127,22 +119,11 @@ Setelah public key didaftarkan, selanjutnya kita lihat repository yang kita puny
 
 Kalau belum punya repository, Anda bisa fork [repository belajarGit punya saya](https://github.com/endymuhardin/belajarGit), sehingga nanti Anda punya repo belajarGit sendiri. 
 
-Setiap repository punya URL untuk melakukan clone. Copy paste URL clone repository. 
-![ ](/images/uploads/2011/01/05-github-repo-belajarGit-300x208.png)
+Perintahnya adalah sebagai berikut (jalankan dari command line)
 
-Untuk melakukan clone, buka Windows Explorer, klik kanan, dan pilih Git Clone. 
-![ ](/images/uploads/2011/01/03-tortoisegit-use-clone-300x208.png)
-
-Masukkan URL yang tadi kita copy dari Github, dan load private key yang kita buat dengan PuttyGen. 
-
-![ ](/images/uploads/2011/01/04-tortoisegit-clone-info-300x200.png)
-
-Putty akan melakukan komunikasi dengan Github. Kalau kita belum pernah clone dari Github sebelumnya, Putty akan menanyakan apakah kita ingin menerima koneksi dari Github. Jawab saja Yes. 
-![ ](/images/uploads/2011/01/05-tortoisegit-clone-save-host-key-300x210.png)
-
-Setelah kita jawab Yes, TortoiseGit akan mendownload repository dari Github untuk kita pakai di local, yang lebih dikenal dengan istilah clone. Ini ditunjukkan dengan progress bar kura-kura salto. Jumlah kura-kura yang salto tergantung dari ukuran repository kita. Semakin besar repositorynya, semakin banyak kura-kura yang salto. Bersabarlah, dan tunggu sampai semua kura-kura selesai melakukan aksinya. 
-
-![ ](/images/uploads/2011/01/06-tortoisegit-clone-complete-300x211.png)
+```
+git clone git@github.com:endymuhardin/belajarGit.git
+```
 
 Sekarang repository sudah ada di local, dan siap digunakan. Bagaimana cara menggunakannya, stay tuned. Akan dibahas di posting berikutnya. 
 
