@@ -235,6 +235,7 @@ gpg --delete-secret-key endy.muhardin@gmail.com
 
 Kita bisa mengedit key yang tersimpan dalam keyring. Beberapa hal yang sering diedit antara lain:
 
+* trust key yang baru saja kita import
 * password private key
 * masa kadaluarsa (expire) public key
 
