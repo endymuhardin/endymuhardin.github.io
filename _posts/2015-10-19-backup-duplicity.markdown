@@ -566,6 +566,10 @@ Ulangi hal yang sama untuk semua folder backup
 
 ![Rule Glacier](https://lh3.googleusercontent.com/W4Z7gZNNlj2OhuflZJK_iIuf11VwhhYYmo8x-GyWl8uA57taEFk=w935-h669-no)
 
+Lihat lagi besoknya, dan file kita sudah dipindahkan dari S3 ke Glacier.
+
+![Storage Class
+Glacier](https://lh3.googleusercontent.com/ghj7nOi-9LXzGnNePC2TDvfbxu4vIsuNi8s_g7pEL-Nu7j0PyfU=w1016-h600-no)
 
 ## Kesimpulan ##
 
