@@ -94,6 +94,27 @@ Isi `pom.xml`:
   * test : digunakan (diimport) dalam test source, tapi tidak digunakan di main source. Tidak diinclude dalam produk akhir. Contoh: library JUnit.
   * provided : digunakan (diimport) dalam main source, tapi tidak disertakan dalam produk akhir. Biasanya karena sudah disediakan oleh container tempat aplikasi dijalankan. Contoh: library `javax.servlet`.
 
+Untuk memulai, kita bisa copy paste `pom.xml` minimalis berikut
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.muhardin.endy.belajar</groupId>
+  <artifactId>belajar-maven</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+</project>
+```
+
+Jangan lupa mengganti:
+
+* groupId
+* artifactId
+
+sesuai dengan project kita.
 
 ## Struktur Folder Project Maven ##
 
