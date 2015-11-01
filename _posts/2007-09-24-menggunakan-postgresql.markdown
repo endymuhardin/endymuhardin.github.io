@@ -20,7 +20,7 @@ Agar lain kali tidak lupa lagi, baiklah saya tulis di sini saja. Mudah-mudahan b
 
 
 Saya menggunakan Ubuntu, jadi instalasi tidak sulit. Cukup lakukan:
-`sudo apt-get install postgresql-8.2 `
+`sudo apt-get install postgresql`
 Beres .. :D
 
 
@@ -32,7 +32,6 @@ Beres .. :D
 Selanjutnya, konfigurasi Postgre agar meminta password setiap ada koneksi masuk, termasuk dari localhost. Ini dilakukan agar konfigurasi JDBCnya tidak terlalu berbeda dengan konfigurasi sebelumnya yang menggunakan MySQL.
 
 Ganti otentikasi dalam `pg_hba.conf` menjadi 
-
     
 ```
 local   all         all                           password
@@ -40,18 +39,11 @@ host    all         all         127.0.0.1/32      password
 host    all         all         ::1/128           password
 ```
 
-
-
-Konfigurasi di atas artinya, koneksi ke semua database, dari local maupun remote, mintalah password. File `pg_hba.conf` ini lokasinya tergantung distro yang digunakan. Di tempat saya, ada di folder `/etc/postgresql/8.2/main`. Jangan lupa merestart PostgreSQL setelah memodifikasi file ini. 
-
+Konfigurasi di atas artinya, koneksi ke semua database, dari local maupun remote, mintalah password. File `pg_hba.conf` ini lokasinya tergantung distro yang digunakan. Di tempat saya, ada di folder `/etc/postgresql/9.3/main`. Jangan lupa merestart PostgreSQL setelah memodifikasi file ini. 
     
 ```
 sudo /etc/init.d/postgresql restart
 ```
-
-
-
-
 
 ### Menambahkan User
 
@@ -59,22 +51,17 @@ sudo /etc/init.d/postgresql restart
 Untuk menambahkan user, kita perlu _menyamar_ sebagai user `postgres`.  Gunakan `su`. 
 `sudo su - postgres`
 
-Selanjutnya, jalankan perintah `createuser` dengan argumen P untuk meminta password.
-
-
+Selanjutnya, jalankan perintah `createuser` dengan argumen `--interactive` agar diberikan form isian dan argumen `-P` agar kita bisa mengisi password.
     
-```
-createuser -P
+```c
+reateuser --interactive -P
 Enter name of role to add: belajar
-Enter password for new role: 
-Enter it again: 
+Enter password for new role:
+Enter it again:
 Shall the new role be a superuser? (y/n) n
 Shall the new role be allowed to create databases? (y/n) y
-Shall the new role be allowed to create more new roles? (y/n) n
-CREATE ROLE
+Shall the new role be allowed to create more new roles? (y/n) n 
 ```
-
-
 
 Perintah di atas menambahkan user dengan username `belajar` yang memiliki ijin untuk membuat database baru. 
 
@@ -87,7 +74,6 @@ Selanjutnya, keluar dari user postgres dengan menggunakan perintah `exit`.
 
 Agar bisa menyimpan data, kita harus punya database. Mari kita buat database yang namanya `buku_tamu`. Gunakan perintah `createdb` dengan argumen U untuk menyebutkan username. 
 
-
     
 ```
 createdb -U belajar buku_tamu
@@ -95,13 +81,9 @@ Password:
 CREATE DATABASE
 ```
 
-
-
 Setelah selesai, coba koneksi ke database tersebut. 
 
 `psql -U belajar -d buku_tamu`
-
-
 
 ### Konfigurasi JDBC
 
@@ -147,9 +129,5 @@ jdbc.username    = belajar
 jdbc.password    = java
 hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 ```
-
-
-
-Oh iya, jangan lupa [unduh dulu driver JDBC untuk PostgreSQL](http://jdbc.postgresql.org/download.html). Saya menggunakan versi **8.2-506 JDBC 4**.
 
 Demikian setup PostgreSQL agar bisa diakses dari Java.
