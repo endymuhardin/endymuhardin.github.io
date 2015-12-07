@@ -4,7 +4,6 @@ date: 2011-02-01 13:21:35
 layout: post
 slug: project-setup-dengan-gradle
 title: Project Setup dengan Gradle
-wordpress_id: 632
 categories:
 - java
 ---
@@ -44,12 +43,13 @@ Sebagai ketentuan lain, biasanya nama package selalu kita awali dengan com.artiv
 
 Mari kita mulai, berikut rangkaian perintah di linux untuk membuat struktur awal project. 
 
-{% gist 794650 folder-structure.sh %}
+```
+mkdir -p project-contoh/com.artivisi.contoh.{config,domain,service.impl,ui.springmvc,ui.web}/src/{main,test}/{java,resources}
+mkdir -p project-contoh/com.artivisi.contoh.ui.web/src/main/webapp/WEB-INF
+```
+
 
 Outputnya bisa kita lihat sebagai berikut 
-
-
-    
     
     find . 
     .
@@ -101,11 +101,115 @@ Outputnya bisa kita lihat sebagai berikut
 Berikutnya, kita lengkapi dengan dependensi jar. Di ArtiVisi, kita menggunakan Gradle. 
 Gradle meminta kita untuk mendaftarkan project yang terlibat dalam settings.gradle
 
-{% gist 794650 settings.gradle %}
+```
+include "com.artivisi.contoh.config"
+include "com.artivisi.contoh.domain"
+include "com.artivisi.contoh.service.impl"
+include "com.artivisi.contoh.ui.springmvc"
+include "com.artivisi.contoh.ui.web"
+```
 
 Dan ini build file Gradle.
 
-{% gist 794650 build.gradle %}
+```
+
+springVersion = "3.0.5.RELEASE"
+springSecurityVersion = "3.0.5.RELEASE"
+slf4jVersion = "1.6.1"
+logbackVersion = "0.9.27"
+jodaTimeVersion = "1.6.2"
+sourceCompatibility = 1.6
+ 
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+ 
+    configurations {
+        all*.exclude group: "commons-logging", module: "commons-logging"
+    }
+ 
+    repositories {
+        mavenCentral()
+    }
+ 
+    dependencies {
+        compile "org.slf4j:jcl-over-slf4j:$slf4jVersion",
+                "org.slf4j:jul-to-slf4j:$slf4jVersion"
+                
+        runtime "joda-time:joda-time:$jodaTimeVersion"        
+                
+        runtime "ch.qos.logback:logback-classic:$logbackVersion"
+  
+        testCompile 'junit:junit:4.7'
+    }
+ 
+    group = 'com.artivisi.contoh'
+    version = '1.0-SNAPSHOT'
+    sourceCompatibility = 1.6
+    
+    task wrapper(type: Wrapper) {
+        gradleVersion = '0.9.1'
+        jarFile = 'wrapper/wrapper.jar'
+    }
+}
+
+project('com.artivisi.contoh.domain') {
+    dependencies { 
+        compile "org.hibernate:hibernate-entitymanager:3.4.0.GA"
+     
+        compile "org.springframework:spring-tx:$springVersion",
+                "org.springframework:spring-orm:$springVersion",
+                "org.springframework:spring-jdbc:$springVersion"
+                
+     
+    }
+}
+
+project('com.artivisi.contoh.service.impl') {
+    dependencies { 
+        compile project(':com.artivisi.contoh.domain')
+        compile "org.hibernate:hibernate-entitymanager:3.4.0.GA"
+     
+        compile "org.springframework:spring-tx:$springVersion",
+                "org.springframework:spring-orm:$springVersion",
+                "org.springframework:spring-jdbc:$springVersion"
+                
+     
+    }
+}
+
+project('com.artivisi.contoh.ui.springmvc') {
+    dependencies {
+        compile project(':com.artivisi.contoh.service.impl')
+     
+        compile "org.springframework:spring-webmvc:$springVersion",
+                "org.springframework:spring-aop:$springVersion"
+     
+        compile "org.springframework.security:spring-security-web:$springSecurityVersion",
+                "org.springframework.security:spring-security-config:$springSecurityVersion"
+     
+        compile "javax.validation:validation-api:1.0.0.GA",
+                "org.hibernate:hibernate-validator:4.0.2.GA"
+     
+    }
+}
+
+project('com.artivisi.contoh.ui.web') {
+    apply plugin: 'war'
+    apply plugin: 'jetty'
+     
+    dependencies {
+        compile project(':com.artivisi.contoh.ui.springmvc')
+        runtime project(':com.artivisi.contoh.config')
+      
+        runtime "javax.servlet:jstl:1.1.2",
+                "taglibs:standard:1.1.2",
+                "opensymphony:sitemesh:2.4.2"
+     
+        providedCompile "javax.servlet:servlet-api:2.5"
+    }
+}
+```
 
 Build file ini sudah mendeskripsikan semua sub-projectnya. Sebetulnya kita bisa membuat buildfile di masing-masing project, tapi saya lebih suka terpusat seperti ini supaya terlihat keterkaitan antar project. 
 
@@ -121,7 +225,9 @@ Karena saya menggunakan Eclipse, saya menambahkan metadata supaya projectnya bis
 
 dalam masing-masing folder project. Tapi karena terlalu malas, saya gunakan satu baris perintah ini. 
 
-{% gist 794650 export-eclipse.sh %} 
+```
+for d in */; do cd "$d"; gradle eclipse; cd ..; done
+```
 
 Untung saja pakai linux, jadi bisa coding di command prompt :D 
 
@@ -166,11 +272,97 @@ Di situ ada link menuju aplikasi kita. Silahkan diklik.
 
 Folder WEB-INF masih terlihat, karena kita belum membuat web.xml. Berikut isi web.xml, masukkan dalam folder com.artivisi.contoh.ui.web/src/main/webapp/WEB-INF
 
-{% gist 794650 web.xml %}
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- Reads request input using UTF-8 encoding -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- Handles all requests into the application -->
+	<servlet>
+		<servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/springmvc-context.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+```
 
 Sekalian saja kita konfigurasi Spring MVC. Pasang file springmvc-context.xml ini di sebelahnya web.xml
 
-{% gist 794650 springmvc-context.xml %}
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- Scans the classpath of this application for @Components to deploy as beans -->
+	<context:component-scan base-package="com.artivisi.contoh.ui.web" />
+
+	<!-- Configures the @Controller programming model -->
+	<mvc:annotation-driven />
+	
+	<!-- mengganti default servletnya Tomcat dan Jetty -->
+	<!-- ini diperlukan kalau kita mapping DispatcherServlet ke / -->
+	<!-- sehingga tetap bisa mengakses folder selain WEB-INF, misalnya img, css, js -->
+	<mvc:default-servlet-handler/>
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources/ directory -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Application Message Bundle -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="/WEB-INF/messages/messages" />
+		<property name="cacheSeconds" value="0" />
+	</bean>
+
+	<!-- Resolves view names to protected .jsp resources within the /WEB-INF/views directory -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/templates/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<!-- Forwards requests to the "/" resource to the "hello" view -->
+	<mvc:view-controller path="/" view-name="hello"/>
+
+</beans>
+```
 
 Kita cek juga apakah projectnya sudah bisa dibuka di Eclipse. Mari kita import. 
 

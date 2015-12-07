@@ -4,7 +4,6 @@ date: 2011-06-27 18:03:23
 layout: post
 slug: membuat-screencast
 title: Membuat Screencast
-wordpress_id: 709
 categories:
 - aplikasi
 - linux
@@ -57,24 +56,38 @@ Ada beberapa script yang bisa digunakan, misalnya [ini](https://github.com/kwili
 Atau, kita juga bisa menjalankan commandnya satu persatu di command line. Berikut adalah command yang saya jalankan : 
 
 Konversi dari ogv menjadi mp4 
-{% gist 1048657 ogv-to-mp4.sh %}
+
+```sh
+ffmpeg -vcodec libx264 -vpre lossless_medium -i file-input.ogv file-output.mp4
+```
 
 Konversi dari ogv menjadi webm 
-{% gist 1048657 ogv-to-webm.sh %}
+
+```sh
+ffmpeg -pass 1 -passlogfile file-input.ogv -threads 16  -keyint_min 0 -g 250 -skip_threshold 0 -qmin 1 -qmax 51 -i file-input.ogv -vcodec libvpx -b 614400 -s 640x480 -aspect 4:3 -an -y tmp.webm
+
+rm tmp.webm
+
+ffmpeg -pass 2 -passlogfile file-input.ogv -threads 16  -keyint_min 0 -g 250 -skip_threshold 0 -qmin 1 -qmax 51 -i file-input.ogv -vcodec libvpx -b 614400 -s 640x480 -aspect 4:3 -an -y file-output.webm
+```
 
 Command di atas mungkin berbeda bila file asli kita formatnya adalah mpeg seperti yang dihasilkan oleh XVidcap. 
 
 Membuat poster 
-{% gist 1048657 create-poster.sh %}
 
+```sh
+ffmpeg -r 1 -t 1 -vframes 1 -i input-file.mp4  output-file.png
+```
 
 
 ## Upload
 
 
 Setelah semua file(ogv,mp4,png) terkumpul di satu folder, kita upload menggunakan rsync
-{% gist 1048657 upload-to-server.sh %}
 
+```
+rsync -avz /path/to/video/folder user@example.com:/home/user/public_html/videos
+```
 
 
 ## Tampilkan di blog

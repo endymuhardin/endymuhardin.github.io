@@ -4,7 +4,6 @@ date: 2011-08-16 08:57:35
 layout: post
 slug: staged-deployment
 title: Staged Deployment
-wordpress_id: 764
 categories:
 - java
 ---
@@ -47,11 +46,15 @@ Manajemen konfigurasi ini bisa kita lakukan dengan dua pendekatan, yaitu dikelol
 
 Jika kita menggunakan Maven Profile, kita menambahkan opsi pada saat melakukan build, kira-kira seperti ini :
 
-{% gist 1134126 maven-profile.sh %}
+```
+mvn -P production clean install
+```
 
 atau
 
-{% gist 1134126 maven-env-var.sh %}
+```
+mvn -Denv=production clean install
+```
 
 Dalam konfigurasi profile, kita bisa memilih file mana yang akan diinclude di dalam hasil build. Hasilnya, kita bisa menghasilkan artifact yang berbeda tergantung dari opsi yang kita berikan pada saat build.
 
@@ -82,25 +85,94 @@ Konfigurasi yang biasanya berbeda adalah informasi koneksi database. Untuk membe
 
 
 Berikut contoh isi jdbc.properties, yaitu konfigurasi koneksi database di laptop saya :
-{% gist 1134126 jdbc.properties %}
+
+```
+hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+jdbc.driver = com.mysql.jdbc.Driver
+jdbc.url = jdbc:mysql://localhost/kasbon?zeroDateTimeBehavior=convertToNull
+jdbc.username = kasbon
+jdbc.password = kasbon
+```
 
 Kemudian, ini file jdbc.testing.properties :
 
-{% gist 1134126 jdbc.testing.properties %}
+```
+hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+jdbc.driver = com.mysql.jdbc.Driver
+jdbc.url = jdbc:mysql://localhost/kasbon_testing?zeroDateTimeBehavior=convertToNull
+jdbc.username = root
+jdbc.password = admin
+```
 
 Perhatikan bahwa informasi nama database, username, dan password databasenya berbeda dengan yang ada di konfigurasi laptop.
 
 Terakhir, jdbc.production.properties
 
-{% gist 1134126 jdbc.production.properties %}
-
+```
+hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+jdbc.driver = com.mysql.jdbc.Driver
+jdbc.url = jdbc:mysql://localhost/kasbon_live?zeroDateTimeBehavior=convertToNull
+jdbc.username = root
+jdbc.password = admin
+```
 Ketiga file konfigurasi ini akan dibaca oleh konfigurasi Spring, yaitu di file applicationContext.xml. Isi lengkap dari file ini adalah sebagai berikut.
 
-{% gist 1134126 applicationContext.xml %}
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:property-placeholder location="
+	classpath*:jdbc.properties,
+	classpath*:jdbc.${stage}.properties
+	" />
+
+	<tx:annotation-driven />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="${jdbc.driver}" p:url="${jdbc.url}"
+		p:username="${jdbc.username}" p:password="${jdbc.password}" p:maxWait="40000"
+		p:maxActive="80" p:maxIdle="20" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+		p:sessionFactory-ref="sessionFactory" />
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:configLocations="classpath*:com/artivisi/**/hibernate.cfg.xml">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>
+```
 
 Untuk lebih spesifik, konfigurasinya ada di baris berikut
 
-{% gist 1134126 context-loading.xml %}
+```xml
+<context:property-placeholder location="
+	classpath*:jdbc.properties, 
+	classpath*:jdbc.${stage}.properties
+" />
+```
 
 Di sana kita melihat ada variabel ${stage}.
 Variabel ${stage} ini akan dicari dari [beberapa tempat, diantaranya environment variabel yang bisa diset di JVM ataupun di sistem operasi](http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/beans.html#beans-factory-xml-import). Cara mengeset variabel ${stage} akan kita bahas sebentar lagi.
@@ -128,18 +200,21 @@ Behavior seperti inilah yang kita inginkan. Selanjutnya, tinggal kita isi nilai 
 
 Variabel stage bisa diset dengan berbagai cara. Bila kita menggunakan [Apache Tomcat](http://tomcat.apache.org), maka kita mengedit file startup.sh atau startup.bat. Modifikasi baris yang berisi CATALINA_OPTS menjadi seperti ini :
 
-{% gist 1134126 startup.sh %}
+```
+export CATALINA_OPTS="-Dstage=production"
+```
 
 Atau, kita bisa jalankan dengan Jetty melalui Maven
 
-{% gist 1134126 mvn-jetty-run.sh %}
+```
+mvn jetty:run -Dstage=testing
+```
 
 Bisa juga melalui environment variabel sistem operasi, di Linux kita set seperti ini.
 
-{% gist 1134126 linux-env-var.sh %}
-
-
-
+```
+EXPORT stage=production
+```
 
 ## Konfigurasi Logger
 
@@ -181,12 +256,34 @@ Kita di ArtiVisi menggunakan SLF4J dan Logback. Cara konfigurasinya mirip dengan
 
 Berikut isi file logback.xml.
 
-{% gist 1134126 logback.xml %}
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d %-5level %logger{35} - %msg %n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>${catalina.home:-.}/logs/kasbon-${stage:-development}.log</file>
+		<encoder>
+			<pattern>%d %-5level %logger{35} - %msg %n</pattern>
+		</encoder>
+	</appender>
+
+	<include resource="logback-${stage:-development}.xml"/>
+
+</configuration>
+```
 
 Seperti kita lihat, file ini berisi konfigurasi yang berlaku umum, seperti appender yang digunakan. Di file ini kita menulis variabel seperti ini
 
-{% gist 1134126 logback-variable.txt %}
-
+```
+${stage:-development}
+```
 Yang artinya adalah, [isi dengan variabel stage, kalau variabel tersebut tidak diset, defaultnya adalah development](http://logback.qos.ch/manual/configuration.html). Ini sesuai dengan keinginan kita seperti pada waktu mengkonfigurasi Spring di atas.
 
 Isi file logback-development.xml dan teman-temannya dapat dilihat [di Github](https://github.com/artivisi/aplikasi-kasbon/tree/master/aplikasi-kasbon-config/src/main/resources).
