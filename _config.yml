@@ -1,5 +1,5 @@
 # Dependencies
-#markdown:         redcarpet
+markdown:         redcarpet
 
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "superscript", "with_toc_data"]
@@ -33,9 +33,3 @@ google_analytics_tracking_id: UA-36102948-1
 
 # Facebook Comments
 facebook_appid: 269506799827290
-
-# Additional Libs
-gems:
-  - jekyll-paginate
-  - jekyll-gist
-
