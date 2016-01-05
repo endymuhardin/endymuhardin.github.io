@@ -1,0 +1,147 @@
+---
+layout: post
+title: "JavaScript 2015"
+date: 2016-01-05 13:37
+comments: true
+categories: 
+- javascript
+---
+
+Beberapa minggu yang lalu, tim AngularJS merilis versi Beta dari AngularJS versi 2. Masih belum rilis Stable, tapi mereka menjanjikan bahwa versi ini cukup stabil untuk dipakai di production.
+
+Seperti pada [tulisan saya sebelumnya](http://software.endy.muhardin.com/life/otodidak/), seorang programmer harus selalu siap mempelajari teknologi baru. Setelah melihat tutorial Angular 2, kembali tulisan saya tadi terbukti. Banyak sekali teknologi baru yang belum saya pahami sejak terakhir [eksplorasi teknologi di tahun 2014](http://software.endy.muhardin.com/java/development-stack-2014/), padahal baru 2 tahun berlalu.
+
+> Apa saja teknologi baru tersebut?
+
+Pada artikel ini, kita hanya akan bahas di sisi front-end saja, yaitu client-side JavaScript. Pada lain waktu kita akan bahas di sisi server-side.
+
+Beberapa teknologi yang baru saya pelajari dengan rilisnya Angular 2 Beta ini adalah:
+
+* Berbagai varian JavaScript : ES5, ES6, CoffeeScript, TypeScript
+* Berbagai sistem modul untuk JavaScript, misalnya : CommonJS, RequireJS, AMD, dan ESM (fitur standar dari ES6)
+* Berbagai library untuk melakukan loading modul, misalnya: browserify, webpack, SystemJS
+* Berbagai framework untuk membuat aplikasi, misalnya: AngularJS, EmberJS, React, Flux
+
+> Wah banyak sekali?
+
+Jangan khawatir, pada tulisan ini, kita akan kupas tuntas garis besarnya.
+
+> Kenapa judul artikelnya 2015? Kan sekarang sudah 2016.
+
+Semua yang dibahas di sini adalah kondisi existing di tahun 2015. Di tahun 2016 ini, tentunya akan banyak perkembangan yang lebih canggih lagi.
+
+<!--more-->
+
+## Varian bahasa JavaScript ##
+
+JavaScript di jaman sekarang pada umumnya dibedakan menjadi dua jenis : server-side dan client-side. Server-side maksudnya yang dijalankan tanpa browser, mirip dengan bahasa pemrograman lain seperti Ruby, Python, PHP, Java, dan sebagainya. Sedangkan client-side maksudnya yang berjalan di dalam browser pada saat kita membuka halaman web.
+
+Karena dia berjalan di browser, maka apa saja fitur dari bahasa pemrograman tersebut haruslah disepakati oleh para pembuat browser. Jadi, programmer Chrome, Firefox, Opera, Edge, dan lainnya, membentuk [suatu perkumpulan yang disebut ECMA International](http://www.ecma-international.org/memento/index.html) yang membahas fitur apa yang akan didukung oleh browser. Hasilnya disebut dengan spesifikasi ECMA Script. Pada saat artikel ini ditulis, versi terbaru yang sudah dirilis oleh mereka disebut dengan [ES6 atau ES2015](http://www.ecma-international.org/publications/standards/Ecma-262.htm), dirilis pada tanggal 17 Juni 2015.
+
+Akan tetapi, namanya perkumpulan dengan banyak anggota, sulit untuk mencapai keputusan, apalagi menjalankannya. ES2015 saja yang sudah dirilis, belum juga tayang di semua browser. Daftar lengkap kompatibilitas browser bisa dilihat [di sini](https://kangax.github.io/compat-table/es6/). Bentuknya kira-kira seperti gambar berikut
+
+![Dukungan ES6 di berbagai browser](https://lh3.googleusercontent.com/PrREqYij3dnzI5UijLBeuqqFNN4WbkVO-znIbtKrwuHN7VvWC4pXjxmeYyRbsy4WUOZ8VuunK07Y=w1366-h677-no)
+
+Jadi, yang sekarang bisa dijalankan di semua browser adalah ECMA Script versi 5 (ES5).
+
+Karena lambatnya kemajuan di ECMA, akhirnya para programmer tidak sabaran dan membuat bahasa sendiri-sendiri dengan fitur suka-suka sendiri. Agar bisa dijalankan di browser, mereka lalu membuat _transpiler_ untuk mengkonversi kode programnya menjadi ES5.
+
+Ini juga berlaku buat mereka yang tidak sabar ingin menggunakan ES6, diantaranya Google. Mereka membuat transpiler dari ES6 menjadi ES5 yang disebut dengan [traceur](https://github.com/google/traceur-compiler). Selain `traceur`, ada juga transpiler lain buatan komunitas yang bernama [babel](https://babeljs.io/).
+
+Beberapa bahasa yang berusaha menambahkan fungsi JavaScript diantaranya:
+
+* [CoffeeScript](http://coffeescript.org/)
+* [Dart](https://www.dartlang.org/) : saat ini tidak lagi direkomendasikan karena fitur-fiturnya sudah diakomodasi di ES6.
+* [AtScript](https://en.wikipedia.org/wiki/AtScript) : pengembangan dari JavaScript yang dibuat oleh Google. Saat ini tidak dilanjutkan lagi, karena digabungkan dengan TypeScript
+* [TypeScript](http://www.typescriptlang.org/) : pengembangan JavaScript yang dibuat oleh Anders Hejlsberg (pembuat Turbo Pascal dan Delphi) yang sekarang bekerja di Microsoft dan didukung Google.
+* Selain itu, ada [250an lagi bahasa pemrograman yang bisa dikonversi jadi JavaScript](https://github.com/jashkenas/coffeescript/wiki/List-of-languages-that-compile-to-JS) ;)
+
+Perbedaan ES6 dengan ES5 bisa [dibaca di sini](https://babeljs.io/docs/learn-es2015/). 
+
+Yang saat ini sedang naik daun adalah TypeScript, karena dia digunakan untuk mengembangkan AngularJS versi 2 dan [Ionic Framework](http://ionicframework.com/). Perbandingannya dengan ES6 dan CoffeeScript bisa dilihat pada [slide presentasi ini](http://www.slideshare.net/NeilGreen1/type-script-vs-coffeescript-vs-es6) atau [video presentasi ini](https://www.youtube.com/watch?v=Ae4h9GC9cCg).
+
+Inti perbedaan antara ES6 dan TypeScript pada dasarnya adalah sistem tipe data. Contohnya, bila kita membuat class Produk, kita buat dalam ES6 seperti ini
+
+```js
+class Produk {
+  constructor(kode, nama, harga){
+    this.kode = kode;
+    this.nama = nama;
+    this.harga = harga;
+  }
+
+  getKode(){
+    return kode;
+  }
+
+  setHarga(harga){
+    this.harga = harga;
+  }
+
+  // getter setter lainnya
+}
+```
+
+dan kita buat dalam TypeScript seperti ini
+
+```js
+class Produk {
+  constructor(kode: string, nama: string, harga: number){
+    this.kode = kode;
+    this.nama = nama;
+    this.harga = harga;
+  }
+
+  getKode() : string {
+    return kode;
+  }
+
+  setKode(kode: string){
+    this.kode = kode;
+  }
+
+  // getter dan setter lainnya
+}
+```
+
+Seperti kita lihat pada contoh kode program di atas, perbedaannya hanyalah pada deklarasi tipe data yang ada di TypeScript.
+
+## Sistem Modul ##
+
+Bila suatu bahasa pemrograman ingin digunakan untuk membuat aplikasi besar, maka bahasa tersebut harus memiliki sistem modul. Aplikasi besar terdiri dari ratusan ribu bahkan jutaan baris kode program. ribuan function, ratusan class dan file. Tanpa sistem modul yang mumpuni, kita akan mengalami kesulitan untuk menggunakan (reuse) fungsi-fungsi yang sudah pernah dibuat, baik oleh kita sendiri maupun oleh orang lain (library). Selain itu, kita juga akan mengalami kesulitan untuk memberikan nama untuk class dan function, karena besar kemungkinan terjadi kesamaan nama dengan kode program dari library orang lain. Sebagai contoh, nama-nama class yang pasaran seperti User, Application, Role, dan sejenisnya pastilah sudah ada yang menggunakannya. 
+
+Sayangnya JavaScript sampai ke versi ES5 belum memiliki sistem modul. Oleh karena itu, orang-orang kemudian membuat sistem modul sendiri. Ada beberapa sistem modul yang populer, diantaranya:
+
+* [CommonJS](http://www.commonjs.org/) : ini adalah sistem modul yang digunakan oleh NodeJS. Biasanya ini jarang digunakan di aplikasi client-side, karena dia cuma bisa melakukan loading secara synchronous (blocking sampai modul berhasil diload). Ini kurang cocok digunakan di browser yang umumnya melakukan loading secara asynchronous (loading beberapa modul secara berbarengan).
+* [AMD](https://github.com/amdjs/amdjs-api/blob/master/AMD.md) : singkatan dari Asynchronous Module Definition, ini merupakan spesifikasi cara membuat dan menggunakan modul di JavaScript.
+* ES6 Module (ESM) : ini adalah sistem modul yang telah disediakan pada ECMA Script versi 6. Walaupun sudah rilis, tapi masih harus menunggu sampai diadopsi oleh seluruh browser.
+
+Pembahasan lengkap mengenai perbandingan sistem modul tersebut bisa dibaca di [artikel Addy Osmani](https://addyosmani.com/writing-modular-js/). Saat ini, tentu yang paling memungkinkan untuk kita adopsi adalah ESM, karena di masa depan dia akan didukung secara native oleh browser tanpa kita perlu menambah library lagi.
+
+Untuk aplikasi yang terlanjur dibuat dengan CommonJS atau AMD, tidak perlu khawatir karena berbagai loader yang ada saat ini mendukung semua format populer di atas.
+
+## Module Loader ##
+
+Setelah kita mempartisi kode program kita menjadi modul-modul, tentunya harus ada suatu mekanisme supaya modul tersebut bisa bekerja sama dengan baik. Mekanisme ini disebut dengan istilah Module Loader. Bila kita menggunakan format modul CommonJS, kita bisa menggunakan implementasi loader [Webpack](http://webpack.github.io/) dan [Browserify](http://browserify.org/). Sedangkan bila kita menggunakan format modul AMD, kita bisa memprosesnya dengan loader [RequireJS](http://requirejs.org/) atau [Almond](https://github.com/jrburke/almond).
+
+Ada juga loader yang bisa memproses berbagai format, baik CommonJS, AMD, ataupun EMS. Loader semacam ini contohnya [SystemJS](https://github.com/systemjs/systemjs), [UMD](https://github.com/umdjs/umd), dan [uRequire](http://urequire.org/).
+
+Penjelasan dan contoh yang lebih detail dari module loader ini dapat dibaca di [tulisan Tiago Romero Garcia](https://www.airpair.com/javascript/posts/the-mind-boggling-universe-of-javascript-modules). 
+
+## Framework ##
+
+Terakhir adalah framework. Bila kita ingin membuat aplikasi yang full JavaScript, atau lebih dikenal dengan Single Page Application, maka kita harus menggunakan framework. Tanpa framework, kita akan mengalami kesulitan dan membuang waktu percuma untuk:
+
+* memikirkan dan mengimplementasikan struktur / arsitektur aplikasi
+* memikirkan cara terbaik untuk memodifikasi elemen-elemen HTML / DOM
+* mengatur lalu lintas event
+* mengatur scope variabel
+* mengatur navigasi aplikasi (routing)
+
+Saat ini, framework di dunia JavaScript client-side sudah cukup mature dan stabil. [AngularJS versi 1](http://angularjs.org/) banyak digunakan orang di aplikasi production berskala besar. Segala kesalahan dan kekurangan yang bersifat fundamental di AngularJS versi 1 sudah diperbaiki di [AngularJS versi 2](http://angular.io/). AngularJS versi 2 ini, walaupun masih berstatus Beta, tapi sudah digunakan di aplikasi besar oleh tim internal Google. AngularJS versi 2 ini dibuat dengan bahasa pemrograman TypeScript yang dikembangkan Microsoft.
+
+Kompetitor utama AngularJS, yaitu [EmberJS](http://emberjs.com/) saat ini juga sudah mencapai versi 2.2.0. Dia sudah digunakan di aplikasi besar seperti Discourse (forum diskusi), Groupon (diskon), LivingSocial (sharing pengalaman di suatu kota). Dengan track record seperti itu, kita tidak perlu ragu lagi dengan keandalannya.
+
+Tidak mau kalah dengan kolaborasi Google dan Microsoft, Facebook juga merilis frameworknya menjadi opensource sehingga bisa kita pakai. Namanya [ReactJS](https://facebook.github.io/react/). Agak berbeda dengan AngularJS dan EmberJS yang merupakan framework komplit, ReactJS hanya mengurus masalah tampilan (View dalam MVC). Untuk bisa membuat aplikasi yang utuh, kita perlu tambahkan dengan framework [Flux](https://facebook.github.io/flux/).
+
+
