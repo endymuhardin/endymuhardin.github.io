@@ -92,7 +92,7 @@ Selanjutnya, kita akan menemui kedua file private dan public key di folder `C:\U
 
 Kedua file bisa dibuka dengan text editor. Yang perlu kita buka hanyalah public key saja.
 
-![Public key dibuka dengan Notepad](https://lh3.googleusercontent.com/4Pg1agaUjzkwr9h3FY40qtrujTjanF7XZW_TOnjf5DbZf97DnJ7PHMS-V7lBWC_AMtY125uTaADt3P4VO1KhOJR6BAuGZQjnfoTGwV_dQLWmm2-82pyxJ66XXiqVGF8OiFf7jaCS_l1hEdCItXNSnvtYSfOZVwptoOZcfQtiMaIuoDnqhuJteCf6T7UvecIafzUXcMs50xGnvz_Ej6miy9PkDJpl_INANQnxJfAcceRzFJywoCsTpAE1v5JGDT4JMEbyIkecYlTBkaJI7X9ehT34lnp-Jhg6J9kvMlWixueha2qbmOR_vgD1_J_8vuRqXbnQJO5sgaeB6qvCI74xWL8sZBiTNB3Tv17a97VssACLVlvP8EoC4B9WtQytfs8k1bqRjHoR4BTv6rIEQZWe1NR-4ZPV5a8QF3UDVeLPC37AaycaJIscqqBea7es-fO1V4zy_0mT4RCXryuLUvMDjkOdrA7JY6rk7i41Xia0v0MdwCQ65jcAOJ1EAEgIFOKOCiqidsauJ_udwd9t5BLnqRpw5ZSCkqb3LrOCg8HyRpo=w505-h472-no)
+![Public key dibuka dengan Notepad](https://lh3.googleusercontent.com/4VkMJu88-Cqdoyv28P29M3i4pn5CABQrm9pvq4xDTgucFAvemvvfirjZmz-NbNGb1XJdqVcIZyuN=w793-h522-no)
 
 Isi public key ini nantinya akan kita pasang di Github
 
