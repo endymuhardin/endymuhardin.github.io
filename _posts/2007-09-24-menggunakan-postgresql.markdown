@@ -53,8 +53,8 @@ Untuk menambahkan user, kita perlu _menyamar_ sebagai user `postgres`.  Gunakan 
 
 Selanjutnya, jalankan perintah `createuser` dengan argumen `--interactive` agar diberikan form isian dan argumen `-P` agar kita bisa mengisi password.
     
-```c
-reateuser --interactive -P
+```
+createuser --interactive -P
 Enter name of role to add: belajar
 Enter password for new role:
 Enter it again:
