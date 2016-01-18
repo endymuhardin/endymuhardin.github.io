@@ -51,6 +51,6 @@ Software Developer, based in Jakarta, live in Bogor.
 #### Bank Niaga
 
   * KCS Pondok Gede
-  * Acc# 517 01217131 16
+  * Acc# 760350297300 
   * Acc Name: Endy Muhardin
 
