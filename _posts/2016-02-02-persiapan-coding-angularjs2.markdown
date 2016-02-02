@@ -7,7 +7,7 @@ categories:
 - javascript
 ---
 
-Saat ini, framework front end yang kami gunakan di ArtiVisi, [AngularJS, sudah merilis versi 2](https://angular.io/). Walaupun saat ini masih berstatus Beta, tapi menurut developernya [sudah bisa digunakan untuk aplikasi berskala besar](http://angularjs.blogspot.co.id/2015/12/angular-2-beta.html).
+Saat ini, framework front end yang kami gunakan di ArtiVisi, AngularJS, [sudah merilis versi 2](https://angular.io/). Walaupun saat ini masih berstatus Beta, tapi menurut developernya [sudah bisa digunakan untuk aplikasi berskala besar](http://angularjs.blogspot.co.id/2015/12/angular-2-beta.html).
 
 Menurut kabar berita, AngularJS versi 2 ini berbeda 180 derajat dengan versi 1 yang kami gunakan. Sekilas lihat, ternyata memang benar. AngularJS versi 2 ini menggunakan bahasa TypeScript, bukan JavaScript. Kode programnya malah lebih mirip Java daripada JavaScript.
 
