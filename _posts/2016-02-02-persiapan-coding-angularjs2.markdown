@@ -23,9 +23,11 @@ Bagaimana perbandingannya?
 
 Tentunya urusan membandingkan framework ini tidak ada habisnya diperdebatkan orang. Oleh karena itu saya juga tidak berpanjang lebar membahasnya. Silahkan baca beberapa artikel ini untuk lebih jelasnya:
 
-* Angular 2 vs Ember JS
-* Ember JS vs React
-* Angular 2 vs React
+* [Angular 2 vs Ember JS](https://www.quora.com/What-are-the-pros-and-cons-of-Angular-2-0-and-Ember-2-0)
+* [Ember JS vs React](http://www.creativebloq.com/web-design/react-goes-head-head-emberjs-31514361)
+* [Angular 2 vs React](https://medium.freecodecamp.com/angular-2-versus-react-there-will-be-blood-66595faafd51)
+* [Membandingkan ketiganya](http://smashingboxes.com/blog/choosing-a-front-end-framework-angular-ember-react)
+
 
 Pada akhirnya, saya berkesimpulan Angular 2 masih merupakan pilihan paling optimal dengan dua pertimbangan berikut:
 

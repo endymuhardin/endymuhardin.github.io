@@ -21,6 +21,8 @@ Beberapa teknologi yang baru saya pelajari dengan rilisnya Angular 2 Beta ini ad
 * Berbagai sistem modul untuk JavaScript, misalnya : CommonJS, RequireJS, AMD, dan ESM (fitur standar dari ES6)
 * Berbagai library untuk melakukan loading modul, misalnya: browserify, webpack, SystemJS
 * Berbagai framework untuk membuat aplikasi, misalnya: AngularJS, EmberJS, React, Flux
+* Berbagai tools untuk melakukan test, misalnya: Karma, Jasmine, PhantomJS
+* Berbagai tools untuk melakukan proses build dan otomasi, misalnya: Gulp, Grunt, Brunch, Broccoli, Jake, dsb
 
 > Wah banyak sekali?
 
@@ -130,7 +132,7 @@ Penjelasan dan contoh yang lebih detail dari module loader ini dapat dibaca di [
 
 ## Framework ##
 
-Terakhir adalah framework. Bila kita ingin membuat aplikasi yang full JavaScript, atau lebih dikenal dengan Single Page Application, maka kita harus menggunakan framework. Tanpa framework, kita akan mengalami kesulitan dan membuang waktu percuma untuk:
+Sekarang, mari kita bahas framework. Bila kita ingin membuat aplikasi yang full JavaScript, atau lebih dikenal dengan Single Page Application, maka kita harus menggunakan framework. Tanpa framework, kita akan mengalami kesulitan dan membuang waktu percuma untuk:
 
 * memikirkan dan mengimplementasikan struktur / arsitektur aplikasi
 * memikirkan cara terbaik untuk memodifikasi elemen-elemen HTML / DOM
@@ -143,5 +145,9 @@ Saat ini, framework di dunia JavaScript client-side sudah cukup mature dan stabi
 Kompetitor utama AngularJS, yaitu [EmberJS](http://emberjs.com/) saat ini juga sudah mencapai versi 2.2.0. Dia sudah digunakan di aplikasi besar seperti Discourse (forum diskusi), Groupon (diskon), LivingSocial (sharing pengalaman di suatu kota). Dengan track record seperti itu, kita tidak perlu ragu lagi dengan keandalannya.
 
 Tidak mau kalah dengan kolaborasi Google dan Microsoft, Facebook juga merilis frameworknya menjadi opensource sehingga bisa kita pakai. Namanya [ReactJS](https://facebook.github.io/react/). Agak berbeda dengan AngularJS dan EmberJS yang merupakan framework komplit, ReactJS hanya mengurus masalah tampilan (View dalam MVC). Untuk bisa membuat aplikasi yang utuh, kita perlu tambahkan dengan framework [Flux](https://facebook.github.io/flux/).
+
+## Testing Tools ##
+
+## Build Tools
 
 
