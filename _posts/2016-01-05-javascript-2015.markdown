@@ -24,6 +24,8 @@ Beberapa teknologi yang baru saya pelajari dengan rilisnya Angular 2 Beta ini ad
 * Berbagai tools untuk melakukan test, misalnya: Karma, Jasmine, PhantomJS
 * Berbagai tools untuk melakukan proses build dan otomasi, misalnya: Gulp, Grunt, Brunch, Broccoli, Jake, dsb
 
+![JavaScript Stack 2015](https://lh3.googleusercontent.com/XwoAQ_6PsevoJ6Q8SqV6PzQTTg0toHYgPkjvv4aQXh8Cjb3WzkCPf6kbwJCoFhREpNgt0Zo2iZPJ=w1027-h726-no)
+
 > Wah banyak sekali?
 
 Jangan khawatir, pada tulisan ini, kita akan kupas tuntas garis besarnya.
@@ -148,6 +150,23 @@ Tidak mau kalah dengan kolaborasi Google dan Microsoft, Facebook juga merilis fr
 
 ## Testing Tools ##
 
+Ada dua tools yang umum digunakan untuk melakukan pengetesan:
+
+* [Jasmine](http://jasmine.github.io/)
+* [Karma]()
+
+Jasmine adalah framework untuk menulis kode program test. Untuk menjalankannya di browser, kita menggunakan Karma. Karma ini bisa mengaktifkan berbagai browser seperti misalnya Chrome atau Firefox. Dia juga bisa menjalankan browser yang headless (tanpa tampilan) seperti PhantomJS.
+
 ## Build Tools
 
+Build tools di dunia JavaScript berlimpah ruah, sampai kita pusing mau pilih yang mana. Trend popularitasnya juga naik turun. Sebagai ilustrasi, dulu Grunt sangat populer. Kemudian setelah banyak orang yang pakai, mulai banyak yang mengeluhkan buildfile yang terlalu panjang (kadang bisa ratusan baris). Kemudian orang pindah ke Gulp yang dianggap lebih baik. Ini juga ternyata banyak masalahnya. Bila ingin mengikuti perkembangannya, silahkan baca beberapa artikel berikut:
 
+* [Perbandingan berbagai build tools](http://walkercoderanger.com/blog/2015/06/state-of-js-build-tools-2015/)
+* [Memilih build tools](http://jamesknelson.com/which-build-system-should-i-use-for-my-javascript-app/)
+
+Dan akhirnya orang memutuskan [tidak pakai satupun](http://blog.keithcirkel.co.uk/why-we-should-stop-using-grunt/) ;)
+
+
+## Kesimpulan ##
+
+Demikianlah dinamika yang terjadi di dunia pemrograman JavaScript. Ini kita baru bicara di sisi client, yaitu yang berjalan di browser. Belum lagi kita bicarakan di sisi server. Sebagai programmer, sudah resiko profesi untuk selalu belajar hal yang baru. Apapun pengetahuan teknis yang kita kuasai sekarang, akan kadaluarsa dalam tiga sampai lima tahun ke depan. Jadi, jangan pelit ilmu. Buat apa merahasiakan sesuatu yang akan basi tahun depan ???
