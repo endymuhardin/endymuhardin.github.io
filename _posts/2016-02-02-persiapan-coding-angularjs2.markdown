@@ -32,7 +32,7 @@ Tentunya urusan membandingkan framework ini tidak ada habisnya diperdebatkan ora
 Pada akhirnya, saya berkesimpulan Angular 2 masih merupakan pilihan paling optimal dengan dua pertimbangan berikut:
 
 * migrasi dari Angular 1 ke React justru lebih sulit daripada Angular 1 ke Angular 2
-* Ember JS masih menggunakan syntax dan model pemrograman ES5. Jadi masih ada kemungkinan dia akan mengalami perubahan signifikan untuk mengadopsi fitur-fitur baru di ES6 dan selanjutnya.
+* Ember JS dan React masih menggunakan syntax dan model pemrograman ES5. Jadi masih ada kemungkinan dia akan mengalami perubahan signifikan untuk mengadopsi fitur-fitur baru di ES6 dan selanjutnya.
 
 Sebagai contoh, berikut kode program Ember JS (diambil dari websitenya)
 
@@ -57,6 +57,18 @@ import {Component} from 'Ember';
 export class GravatarImageComponent extends Component {
 
 }
+```
+
+Dan berikut contoh kode program React yang juga diambil dari websitenya. Sama saja bukan?
+
+```js
+var HelloMessage = React.createClass({
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
+});
+
+ReactDOM.render(<HelloMessage name="John" />, mountNode);
 ```
 
 Nah, tinggal tunggu waktu saja perubahan ini terjadi. Maka lebih baik AngularJS sudah melakukannya sekarang.
