@@ -1,10 +1,9 @@
-# Dependencies
-markdown:         redcarpet
+# Conversion
+markdown: kramdown
 
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "superscript", "with_toc_data"]
-
-highlighter:      pygments
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 # Permalinks
 permalink:        /:categories/:title
@@ -25,6 +24,8 @@ author:
   url:            http://endy.muhardin.com
   email_md5:      a3c8a6a973fc0c0fa3d89cb69c103ad0
   bio:            Software Developer berdomisili di Jabodetabek, berkutat di lingkungan open source, terutama Java dan Linux.
+
+gems: ['jekyll-paginate']
 
 paginate:         5
 
