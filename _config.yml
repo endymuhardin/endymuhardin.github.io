@@ -6,7 +6,7 @@ kramdown:
   syntax_highlighter: rouge
 
 # Permalinks
-permalink:        /:categories/:title
+permalink:        /:categories/:title/
 
 # Setup
 title:            'Living life and Make it Better'
