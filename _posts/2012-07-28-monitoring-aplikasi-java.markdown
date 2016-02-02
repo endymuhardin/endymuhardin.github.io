@@ -178,15 +178,54 @@ Untuk mengaktifkan monitoring menggunakan JavaMelody, ada beberapa langkah yang 
 
 Karena projectnya menggunakan Maven, maka menambahkan jar sangat mudah, cukup dengan menambahkan dependency sebagai berikut : 
 
-{% gist 3192086 pom.xml %}
+```xml
+<dependency>
+	<groupId>net.bull.javamelody</groupId>
+	<artifactId>javamelody-core</artifactId>
+	<version>1.39.0</version>
+</dependency>
+```
 
 Selanjutnya, kita memasang interceptor supaya object yang kita buat dimonitor oleh JavaMelody. Biasanya kita memonitor implementasi proses bisnis. Berikut konfigurasi applicationContext.xml
 
-{% gist 3192086 applicationContext.xml %}
+```xml
+<bean id="facadeMonitoringAdvisor" 
+      class="net.bull.javamelody.MonitoringSpringAdvisor">
+	<property name="pointcut">
+		<bean class="net.bull.javamelody.MonitoredWithInterfacePointcut">
+			<property name="interfaceName"
+			          value="com.artivisi.belajar.restful.service.MonitoredService" 
+	                />
+		</bean>
+	</property>
+</bean>
+```
 
 Terakhir, kita aktifkan JavaMelody. Karena aplikasinya adalah aplikasi web, maka inisialisasi dilakukan di dalam file web.xml sebagai berikut 
 
-{% gist 3192086 web.xml %}
+```xml
+<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>
+		classpath:net/bull/javamelody/monitoring-spring.xml
+        classpath*:com/artivisi/**/applicationContext.xml
+    </param-value>
+</context-param>
+
+<listener>
+	<listener-class>net.bull.javamelody.SessionListener</listener-class>
+</listener>
+
+<!-- Monitor aplikasi menggunakan javamelody -->
+<filter>
+	<filter-name>monitoring</filter-name>
+	<filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>monitoring</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
+```
 
 Setelah selesai, kita bisa jalankan aplikasi seperti biasa. Untuk mengakses hasil monitoring, kita dapat mengakses url http://host:port/context-aplikasi/monitoring. 
 
@@ -207,17 +246,44 @@ Selain menggunakan JavaMelody, kita juga bisa melakukan monitoring menggunakan J
 
 Aktifasi fitur statistik dalam Hibernate dilakukan dengan mengisi nilai true pada variabel konfigurasi hibernate.generate_statistics, sebagai berikut : 
 
-{% gist 3192099 hibernate-statistics.xml %}
+```xml
+<bean id="sessionFactory"
+	class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+	p:dataSource-ref="dataSource">
+	<property name="hibernateProperties">
+		<props>
+			<prop key="hibernate.generate_statistics">true</prop>
+		</props>
+	</property>
+	<property name="packagesToScan" value="com.artivisi.belajar.restful.domain" />
+</bean>
+```
 
 Selanjutnya, statistik yang telah dihitung ini dipublish menggunakan MBean. 
 
-{% gist 3192099 hibernateMBean.xml %}
+```xml
+<bean id="hibernateStatisticsMBean" class="org.hibernate.jmx.StatisticsService">
+	<property name="sessionFactory" ref="sessionFactory" />
+</bean>
+```
 
-{% gist 3192099 mbeanExporter.xml %}
+```xml
+<bean id="mbeanExporter" class="org.springframework.jmx.export.MBeanExporter">
+  <property name="beans">
+    <map>
+      <entry 
+        key="SpringBeans:name=hibernateStatisticsMBean" 
+        value-ref="hibernateStatisticsMBean" />
+    </map>
+  </property>
+</bean>
+```
 
 Terakhir, kita sediakan MBean Server untuk menjalankan MBean yang sudah kita deklarasikan di atas. Spring sudah memudahkan konfigurasinya dengan namespace yang baru
 
-{% gist 3192099 mbean-server.xml %}
+```xml
+<context:mbean-server/>
+```
 
 Selanjutnya, jalankan aplikasi kita seperti biasa di Tomcat, Jetty, dsb. 
 Setelah aplikasi berjalan, kita dapat melihatnya menggunakan JConsole. 

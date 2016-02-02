@@ -4,7 +4,6 @@ date: 2012-07-30 13:59:00
 layout: post
 slug: konsep-dasar-log4
 title: Konsep Dasar Log4j
-wordpress_id: 813
 categories:
 - java
 ---
@@ -59,6 +58,21 @@ Semua log message ditampilkan ke terminal, supaya mudah diamati.
 
 Contoh kasus di atas, bila kita menggunakan log4j akan dikonfigurasi sebagai berikut : 
 
-{% gist 3205393 %}
+```
+# by default, levelnya adalah INFO, tampilkan ke System.out
+log4j.rootLogger=INFO,Konsole 
+
+# untuk package com.artivisi, tampilkan level DEBUG ke System.out
+log4j.logger.com.artivisi=DEBUG,Konsole
+
+# untuk spring, error saja yang ditampilkan
+log4j.logger.org.springframework=ERROR,Konsole
+
+# Appender Konsole adalah System.out
+log4j.appender.Konsole=org.apache.log4j.ConsoleAppender 
+log4j.appender.Konsole.layout=org.apache.log4j.PatternLayout 
+# Format tanggal menurut ISO­8601 : %d 
+log4j.appender.Konsole.layout.ConversionPattern=%d [%t] %­5p %c ­ %m%n
+```
 
 Konfigurasi di atas harus dibuat dengan nama log4j.properties, dan diletakkan di dalam classpath. Kalau namanya tidak sama atau lokasinya salah, maka tidak akan dibaca oleh Log4J.
