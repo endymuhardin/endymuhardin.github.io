@@ -71,7 +71,7 @@ var HelloMessage = React.createClass({
 ReactDOM.render(<HelloMessage name="John" />, mountNode);
 ```
 
-Nah, tinggal tunggu waktu saja perubahan ini terjadi. Maka lebih baik AngularJS sudah melakukannya sekarang.
+Nah, tinggal tunggu waktu saja perubahan ini terjadi. Maka lebih baik kita adopsi Angular 2 yang sudah mengadopsi syntax baru.
 
 Selanjutnya, mari kita bahas cara menyiapkan project AngularJS 2. Kita asumsikan NodeJS dan `npm` sudah terinstal. Kita juga akan menggunakan package manager [JSPM](http://jspm.io/). Kita tidak menggunakan Grunt, Gulp, dan sejenisnya karena terlalu kompleks. Setup yang akan saya jelaskan di sini sejauh ini sudah yang paling sederhana.
 
