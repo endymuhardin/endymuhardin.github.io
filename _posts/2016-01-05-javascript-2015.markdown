@@ -164,7 +164,7 @@ Build tools di dunia JavaScript berlimpah ruah, sampai kita pusing mau pilih yan
 * [Perbandingan berbagai build tools](http://walkercoderanger.com/blog/2015/06/state-of-js-build-tools-2015/)
 * [Memilih build tools](http://jamesknelson.com/which-build-system-should-i-use-for-my-javascript-app/)
 
-Dan akhirnya orang memutuskan [tidak pakai satupun](http://blog.keithcirkel.co.uk/why-we-should-stop-using-grunt/) ;)
+Dan akhirnya orang memutuskan [tidak pakai satupun](http://blog.keithcirkel.co.uk/why-we-should-stop-using-grunt/) :laughing:
 
 
 ## Kesimpulan ##
