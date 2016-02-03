@@ -541,7 +541,7 @@ Beberapa hal yang dilakukan dalam kode program tersebut
 Komponen di atas membutuhkan template HTML. Berikut isinya
 
 ```html
-<h2>Halo {{nama}}</h2>
+<h2>Halo {% raw %}{{nama}}{% endraw %}</h2>
 ```
 
 Dalam file HTML di atas, kita menampilkan isi variabel `nama` di dalam elemen `<h2>`.
