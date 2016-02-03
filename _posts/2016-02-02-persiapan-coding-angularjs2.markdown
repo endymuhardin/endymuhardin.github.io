@@ -589,6 +589,38 @@ Kita bisa lihat hasilnya dengan membuka `http://localhost:8080` di browser. Jang
 
 ![Browser Output](https://github.com/endymuhardin/belajar-angular2/raw/master/img/angular2-jspm-output.png)
 
+## Menggunakan Twitter Bootstrap ##
+
+JSPM juga memiliki kemampuan untuk menambahkan paket-paket populer dalam aplikasi kita. Sebagai contoh, bila kita ingin menggunakan framework CSS [Twitter Bootstrap](http://getbootstrap.com/), kita cari dulu nama paketnya di [registry JSPM](https://github.com/jspm/registry/blob/master/registry.json). Dari situ kita bisa mendapatkan bahwa nama paketnya adalah `bootstrap`.
+
+Selanjutnya, kita install paketnya dalam konfigurasi dependensi
+
+```
+jspm install bootstrap
+```
+
+Jangan lupa install juga plugin SystemJS agar dia bisa memproses file CSS
+
+```
+jspm install css
+```
+
+Selanjutnya, kita tinggal import saja menggunakan sintaks modul ES6 di `boot.ts`
+
+```ts
+import 'bootstrap/css/bootstrap.css!';
+```
+
+Kita menggunakan tanda seru `!` di akhir import untuk menunjukkan bahwa import tersebut harus diproses menggunakan plugin. Nama plugin yang menanganinya diambil dari ekstensi filenya (yaitu `css`).
+
+Selain CSS yang sudah jadi seperti Bootstrap, kita juga bisa import file CSS kita sendiri sesuai modul yang membutuhkannya. Caranya sama, misalnya
+
+```
+import './halo/halo.css';
+```
+
+Dengan demikian, kita bisa membuat file CSS yang modular, diload sesuai modul/komponen yang membutuhkannya.
+
 ## Production Build ##
 
 Kalau kita lihat di Network Tab pada Developer Tools, kita akan melihat banyak sekali file yang diload. Untuk production deployment, ini kurang optimal karena banyak terjadi bolak-balik request ke server. Solusinya, kita perlu menggabungkan semua kode program kita dan library yang digunakan menjadi satu file.
@@ -622,6 +654,68 @@ Hasilnya, 200an request tadi menjadi 3 request saja
 
 ![Production build dan minify](https://github.com/endymuhardin/belajar-angular2/raw/master/img/3-request.png)
 
+Khusus untuk file CSS, kita membutuhkan plugin tambahan, yaitu `clean-css`. Tanpa plugin ini, maka kita akan mendapatkan error
+
+```
+Building the single-file sfx bundle for aplikasi/boot.ts...
+
+err  Error: Install Clean CSS via jspm install npm:clean-css --dev for CSS build support. Set System.buildCSS = false to skip CSS builds.
+         at file:///Users/endymuhardin/workspace/belajar/belajar-angular2/angular2-jspm/jspm_packages/github/systemjs/plugin-css@0.1.20/css-builder.js:95:13
+```
+
+Untuk itu, kita install dulu plugin `clean-css` sesuai instruksi di atas
+
+```
+jspm install npm:clean-css --dev
+```
+
+Setelah plugin tersebut terinstall, maka proses build bisa berjalan dengan lancar.
+
+Kita juga bisa menambahkan konfigurasi agar file CSS dibuat terpisah dengan file JS, dengan cara menambahkan baris berikut pada `config.js`
+
+```js
+separateCSS: true
+```
+
+Berikut posisi baris tersebut dalam file `config.js`
+
+```js
+System.config({
+  baseURL: "/",
+  defaultJSExtensions: true,
+  transpiler: "typescript",
+  typescriptOptions: {
+    "tsconfig": true
+  },
+  paths: {
+    "npm:*": "jspm_packages/npm/*",
+    "github:*": "jspm_packages/github/*"
+  },
+  separateCSS: true,
+
+  packages: {
+    "aplikasi": {
+      "main": "boot",
+      "defaultExtension": "ts",
+      "meta": {
+        "*.ts": {
+          "loader": "ts"
+        }
+      }
+    }
+  },
+
+  map: {
+    // isi map hasil generate JSPM
+  }
+});
+```
+
+Dengan konfigurasi tersebut, kode program CSS akan dibuat dalam file `aplikasi.css` dan `aplikasi.css.map`. Kita tinggal memasangnya di `index.html` seperti biasa
+
+```html
+<link href="aplikasi.css" rel="stylesheet">
+```
 
 ## Portability Project ##
 
