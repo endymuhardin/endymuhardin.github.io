@@ -436,6 +436,11 @@ Selanjutnya, kita edit `config.js` untuk mengkonfigurasi project kita dan mengak
   }, 
 ```
 
+File di atas berisi:
+
+* gunakan konfigurasi yang tertulis di `tsconfig`
+* konfigurasi aplikasi yang akan diload, terdiri dari satu modul bernama `aplikasi` dengan titik awal file `boot.ts`. Modul ini akan diload menggunakan plugin `ts`
+
 ## Konfigurasi TypeScript Compiler ##
 
 TypeScript compiler dikonfigurasi dengan file `tsconfig.json`. File ini akan dibaca oleh compiler dan digunakan oleh editor untuk menyediakan autocomplete dan error-checking. Berikut isi filenya
@@ -457,6 +462,16 @@ TypeScript compiler dikonfigurasi dengan file `tsconfig.json`. File ini akan dib
     ]
 }
 ```
+
+Berikut adalah hal-hal yang dikonfigurasi dalam file di atas:
+
+* kode program yang ditulis dalam bahasa TypeScript akan dikompilasi menjadi kode program JavaScript dengan versi ES5
+* sistem modul yang digunakan adalah formatnya `SystemJS`. Lihat [artikel sebelumnya](http://software.endy.muhardin.com/javascript/javascript-2015/) mengenai berbagai format modul
+* buat source map, supaya bila ada error bisa ditelusuri ke baris kode program yang menyebabkannya
+* proses decorator `@Component`, `@Injectable`, dan decorator Angular lainnya
+* jangan hilangkan komentar dalam source code
+* secara default, bila kita tidak menyebutkan tipe data, maka akan diset menjadi tipe data `any`
+* jangan lakukan kompilasi (exclude) di folder `node_modules` dan `jspm_packages`
 
 ## Membuat Aplikasi ##
 
