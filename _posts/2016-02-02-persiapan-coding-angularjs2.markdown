@@ -616,7 +616,7 @@ Kita menggunakan tanda seru `!` di akhir import untuk menunjukkan bahwa import t
 Selain CSS yang sudah jadi seperti Bootstrap, kita juga bisa import file CSS kita sendiri sesuai modul yang membutuhkannya. Caranya sama, misalnya
 
 ```
-import './halo/halo.css';
+import './halo/halo.css!';
 ```
 
 Dengan demikian, kita bisa membuat file CSS yang modular, diload sesuai modul/komponen yang membutuhkannya.
