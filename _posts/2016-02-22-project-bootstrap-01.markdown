@@ -19,7 +19,7 @@ Bila kita ingin memulai pembuatan suatu aplikasi, tentu ada hal-hal yang harus d
 Karena langkahnya cukup banyak, maka artikel ini kita bagi menjadi 3 bagian:
 
 * Setup Project
-* Setup Continuous Integration
+* [Setup Continuous Integration](http://software.endy.muhardin.com/java/project-bootstrap-02/)
 * Setup Continuous Deployment
 
 Kita mulai dengan Setup Project
@@ -548,4 +548,4 @@ Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
 
 Demikianlah project kita sudah selesai disetup. Selanjutnya semua anggota tim bisa mulai ikut terlibat dengan cara clone repositorynya dan mulai menambahkan kode program sesuai fitur yang akan dibuat. Kode program selengkapnya bisa didapatkan [di Github](https://github.com/endymuhardin/belajar-ci)
 
-Pada bagian selanjutnya, kita akan mengotomasi proses pengetesan ini dengan menggunakan berbagai tools Continuous Integration. Stay tuned ...
+Pada [bagian selanjutnya](http://software.endy.muhardin.com/java/project-bootstrap-02/), kita akan mengotomasi proses pengetesan ini dengan menggunakan berbagai tools Continuous Integration. Stay tuned ...
