@@ -16,10 +16,11 @@ Bila kita ingin memulai pembuatan suatu aplikasi, tentu ada hal-hal yang harus d
 * Setup continuous integration agar aplikasi dites secara otomatis dan berkala
 * Setup continuous deployment agar setelah lulus tes otomatis, aplikasi langsung dideploy dan siap dites oleh tester
 
-Karena langkahnya cukup banyak, maka artikel ini kita bagi menjadi 3 bagian:
+Karena langkahnya cukup banyak, maka artikel ini kita bagi menjadi beberapa bagian:
 
 * Setup Project
 * [Setup Continuous Integration](http://software.endy.muhardin.com/java/project-bootstrap-02/)
+* [Setup Deployment ke PaaS](http://software.endy.muhardin.com/java/project-bootstrap-03/)
 * Setup Continuous Deployment
 
 Kita mulai dengan Setup Project
