@@ -342,7 +342,7 @@ Bila semuanya lancar, kita dapat mengakses aplikasi kita dengan URL yang tercant
 
 ## Penutup ##
 
-Demikianlah cara deployment aplikasi ke penyedia layanan PaaS di cloud. Setelah kita bisa melakukannya secara manual, pada artikel berikutnya kita akan otomasi deployment ini menggunakan Travis CI. Stay tuned ......
+Demikianlah cara deployment aplikasi ke penyedia layanan PaaS di cloud. Setelah kita bisa melakukannya secara manual, pada [artikel berikutnya kita akan otomasi deployment ini menggunakan Travis CI](http://software.endy.muhardin.com/java/project-bootstrap-04/). Stay tuned ......
 
 
 

@@ -21,7 +21,7 @@ Karena langkahnya cukup banyak, maka artikel ini kita bagi menjadi beberapa bagi
 * Setup Project
 * [Setup Continuous Integration](http://software.endy.muhardin.com/java/project-bootstrap-02/)
 * [Setup Deployment ke PaaS](http://software.endy.muhardin.com/java/project-bootstrap-03/)
-* Setup Continuous Deployment
+* [Setup Continuous Deployment](http://software.endy.muhardin.com/java/project-bootstrap-04/)
 
 Kita mulai dengan Setup Project
 
