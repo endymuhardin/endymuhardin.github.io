@@ -132,7 +132,7 @@ Kita juga bisa lihat detail coverage per file source code
 
 dan bahkan kalau kita klik, kita bisa lihat baris per baris apakah sudah dijalankan oleh test.
 
-[![Line Coverage](https://lh3.googleusercontent.com/Sjl1xIQnokrCTqYPqlWR8t37zrb5LuGnY1qZ5BeVRJI_FoMdSGzKBIOyJygFCLlrl8MfTcW_lBaM=s315-no)](https://lh3.googleusercontent.com/Sjl1xIQnokrCTqYPqlWR8t37zrb5LuGnY1qZ5BeVRJI_FoMdSGzKBIOyJygFCLlrl8MfTcW_lBaM=s315-no)
+[![Line Coverage](https://lh3.googleusercontent.com/Sjl1xIQnokrCTqYPqlWR8t37zrb5LuGnY1qZ5BeVRJI_FoMdSGzKBIOyJygFCLlrl8MfTcW_lBaM=w1280-no)](https://lh3.googleusercontent.com/Sjl1xIQnokrCTqYPqlWR8t37zrb5LuGnY1qZ5BeVRJI_FoMdSGzKBIOyJygFCLlrl8MfTcW_lBaM=w1280-no)
 
 ## Build Badge ##
 
