@@ -35,11 +35,11 @@ Untuk mudahnya, kita akan membuat project open source dan disimpan di Github. Un
 
 Registrasi dan instalasi Git [sudah pernah dibahas pada artikel terdahulu](http://software.endy.muhardin.com/aplikasi/instalasi-git-di-windows/), sehingga sekarang kita langsung lanjut ke pembuatan repository. Login ke Github, kemudian klik New Repository
 
-[![Setup Git Repo](https://lh3.googleusercontent.com/Y0AGdPncs5HEt2zWr2TAwNwfciv3MFCWR6lUAuhEEn3gmKpBrF-4KnJaMUvox_hG1LkfmBoxorbI=w1010-h656-no)](https://lh3.googleusercontent.com/Y0AGdPncs5HEt2zWr2TAwNwfciv3MFCWR6lUAuhEEn3gmKpBrF-4KnJaMUvox_hG1LkfmBoxorbI=w1010-h656-no)
+[![Setup Git Repo](https://lh3.googleusercontent.com/Y0AGdPncs5HEt2zWr2TAwNwfciv3MFCWR6lUAuhEEn3gmKpBrF-4KnJaMUvox_hG1LkfmBoxorbI=w1280-no)](https://lh3.googleusercontent.com/Y0AGdPncs5HEt2zWr2TAwNwfciv3MFCWR6lUAuhEEn3gmKpBrF-4KnJaMUvox_hG1LkfmBoxorbI=w1280-no)
 
 Isikan nama project dan keterangan yang dibutuhkan. Setelah selesai, clone project tersebut ke komputer kita
 
-[![Clone Git Repo](https://lh3.googleusercontent.com/cwGwMq-IQCfKB72UmPZfgkbsYfHdd0j6QxShB1zCbCT_cyNuwSqghp-57UTAxnpZIBnO8vnziOkj=w698-h249-no)](https://lh3.googleusercontent.com/cwGwMq-IQCfKB72UmPZfgkbsYfHdd0j6QxShB1zCbCT_cyNuwSqghp-57UTAxnpZIBnO8vnziOkj=w698-h249-no)
+[![Clone Git Repo](https://lh3.googleusercontent.com/cwGwMq-IQCfKB72UmPZfgkbsYfHdd0j6QxShB1zCbCT_cyNuwSqghp-57UTAxnpZIBnO8vnziOkj=w1280-no)](https://lh3.googleusercontent.com/cwGwMq-IQCfKB72UmPZfgkbsYfHdd0j6QxShB1zCbCT_cyNuwSqghp-57UTAxnpZIBnO8vnziOkj=w1280-no)
 
 Repository git kita siap digunakan.
 
@@ -47,7 +47,7 @@ Repository git kita siap digunakan.
 
 Kita akan membuat project Java dengan Spring Boot. Spring sudah menyediakan halaman khusus untuk memudahkan setup project. Langsung buka [halaman tersebut](http://start.spring.io).
 
-[![Create Starter Project Spring](https://lh3.googleusercontent.com/nw-1lSZAdHkJHcQmFIvs1LdAfgXFIaCQIzw3hWAocS7UyKXe4c8XQmalL1M72ODCqa1stFXmWZfR=w1209-h718-no)](https://lh3.googleusercontent.com/nw-1lSZAdHkJHcQmFIvs1LdAfgXFIaCQIzw3hWAocS7UyKXe4c8XQmalL1M72ODCqa1stFXmWZfR=w1209-h718-no)
+[![Create Starter Project Spring](https://lh3.googleusercontent.com/nw-1lSZAdHkJHcQmFIvs1LdAfgXFIaCQIzw3hWAocS7UyKXe4c8XQmalL1M72ODCqa1stFXmWZfR=w1280-no)](https://lh3.googleusercontent.com/nw-1lSZAdHkJHcQmFIvs1LdAfgXFIaCQIzw3hWAocS7UyKXe4c8XQmalL1M72ODCqa1stFXmWZfR=w1280-no)
 
 Isikan nama package, nama project, dan modul-modul Spring yang akan kita gunakan. Biasanya yang selalu saya gunakan:
 
@@ -59,7 +59,7 @@ Ada juga modul Security, tapi biasanya tidak saya tambahkan pada awal pembuatan.
 
 Begitu kita klik Create Project, browser akan mendownload file `zip` yang berisi file-file project. Extract file tersebut, dan masukkan isinya ke folder hasil clone kita. Setelah itu, commit dan push.
 
-[![Commit n Push](https://lh3.googleusercontent.com/_ePewNHtEsOPC-roG_atpHiOLX4o8Ol9kw8tBiCFGzTjdI8fiHWTuSMNob02PyFD7kw6dnB6OGQ9=w739-h363-no)](https://lh3.googleusercontent.com/_ePewNHtEsOPC-roG_atpHiOLX4o8Ol9kw8tBiCFGzTjdI8fiHWTuSMNob02PyFD7kw6dnB6OGQ9=w739-h363-no)
+[![Commit n Push](https://lh3.googleusercontent.com/_ePewNHtEsOPC-roG_atpHiOLX4o8Ol9kw8tBiCFGzTjdI8fiHWTuSMNob02PyFD7kw6dnB6OGQ9=w1280-no)](https://lh3.googleusercontent.com/_ePewNHtEsOPC-roG_atpHiOLX4o8Ol9kw8tBiCFGzTjdI8fiHWTuSMNob02PyFD7kw6dnB6OGQ9=w1280-no)
 
 ## Setup Database ##
 

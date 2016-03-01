@@ -260,7 +260,7 @@ Penggunaan dialog tidak terbatas hanya untuk entri detail. Dialog juga sebaiknya
 
 Pola header-detail ini berlaku untuk sebagian besar fitur transaksi. Mari kita ambil contoh lain, transaksi belanja di minimarket misalnya. Screennya seperti ini
 
-[![Foto](https://lh3.googleusercontent.com/LQsOccTBJ6_nHzLHirLdybAv8CMZ_gl6lw3WGIEfpX8=w820-h623-no)](https://lh3.googleusercontent.com/LQsOccTBJ6_nHzLHirLdybAv8CMZ_gl6lw3WGIEfpX8=w820-h623-no)
+[![Foto](https://lh3.googleusercontent.com/LQsOccTBJ6_nHzLHirLdybAv8CMZ_gl6lw3WGIEfpX8=w1280-no)](https://lh3.googleusercontent.com/LQsOccTBJ6_nHzLHirLdybAv8CMZ_gl6lw3WGIEfpX8=w1280-no)
 
 Pada transaksi minimarket, ada tambahan data yaitu `quantity` untuk mengakomodasi orang beli permen 5 buah. Dialog tambah detailnya juga harus memiliki input field untuk `quantity`. Dan karena jumlah produknya ribuan, kita juga harus sediakan lookup dialog sekali lagi untuk memilih produk. 
 

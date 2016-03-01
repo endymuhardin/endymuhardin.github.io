@@ -11,7 +11,7 @@ Backup itu penting, semua orang tentu setuju. Akan tetapi, berapa orang yang ben
 
 Pada artikel ini, kita akan membahas tentang seluk beluk backup. Apa yang harus diperhatikan, bagaimana cara melakukannya, seberapa sering, dan apa aplikasi yang digunakan.
 
-[![Backup Station](https://lh3.googleusercontent.com/QL9x5aS1BuhPkM7xGBHY0QPZMf8noCaYDJ1ahL7QUGem5z0dVHQ=w1010-h669-no)](https://lh3.googleusercontent.com/QL9x5aS1BuhPkM7xGBHY0QPZMf8noCaYDJ1ahL7QUGem5z0dVHQ=w1010-h669-no)
+[![Backup Station](https://lh3.googleusercontent.com/QL9x5aS1BuhPkM7xGBHY0QPZMf8noCaYDJ1ahL7QUGem5z0dVHQ=w1280-no)](https://lh3.googleusercontent.com/QL9x5aS1BuhPkM7xGBHY0QPZMf8noCaYDJ1ahL7QUGem5z0dVHQ=w1280-no)
 
 Foto di atas menunjukkan meja makan yang sedang dikudeta untuk menjalankan prosedur backup ;)
 
@@ -147,11 +147,11 @@ Dari sisi tarif, pada waktu artikel ini ditulis, paling murah adalah Amazon Glac
 
 Berikut tarif penyimpanan data
 
-[![Tarif Penyimpanan Glacier ](https://lh3.googleusercontent.com/J4JxEIBvpagQV3b5cM5qx69Vj6RjSwZlbOFauoWCNbSdL7MBQ7M=w1130-h669-no)](https://lh3.googleusercontent.com/J4JxEIBvpagQV3b5cM5qx69Vj6RjSwZlbOFauoWCNbSdL7MBQ7M=w1130-h669-no)
+[![Tarif Penyimpanan Glacier ](https://lh3.googleusercontent.com/J4JxEIBvpagQV3b5cM5qx69Vj6RjSwZlbOFauoWCNbSdL7MBQ7M=w1280-no)](https://lh3.googleusercontent.com/J4JxEIBvpagQV3b5cM5qx69Vj6RjSwZlbOFauoWCNbSdL7MBQ7M=w1280-no)
 
 dan tarif untuk mengambil data
 
-[![Tarif Mengambil Data dari Glacier](https://lh3.googleusercontent.com/6OCYS73HU9iqROLLpFYYeS3xtIpl-FwGtGBTf9iskUEhVXX55Gk=w1165-h669-no)](https://lh3.googleusercontent.com/6OCYS73HU9iqROLLpFYYeS3xtIpl-FwGtGBTf9iskUEhVXX55Gk=w1165-h669-no)
+[![Tarif Mengambil Data dari Glacier](https://lh3.googleusercontent.com/6OCYS73HU9iqROLLpFYYeS3xtIpl-FwGtGBTf9iskUEhVXX55Gk=w1280-no)](https://lh3.googleusercontent.com/6OCYS73HU9iqROLLpFYYeS3xtIpl-FwGtGBTf9iskUEhVXX55Gk=w1280-no)
 
 Sengaja saya tidak pasang tarif di sini, karena harganya bisa berubah sewaktu-waktu. Tapi mari kita ambil contoh saja, saat ini harga Amazon Glacier $0.007/GB/bulan. Sebagai ilustrasi, seluruh koleksi foto keluarga saya besarnya hampir 200GB. Dengan demikian, kalau disimpan di Amazon Glacier, tarifnya *hanya* $1.4/bulan. Kalikan Rp. 15.000, hasilnya Rp. 21.000 per bulan. Kalikan 12, Rp. 252.000 setahun. Coba pertimbangkan, apakah koleksi kenangan indah masa lalu kita senilai harga tersebut?
 
@@ -383,7 +383,7 @@ Errors 0
 
 Bila kita buka di file explorer, hasilnya akan tampil seperti ini
 
-[![Hasil Backup](https://lh3.googleusercontent.com/u3K2tQbik_dcMuQJ7XWsuSAOvhhEHciUROoMvPF1SmQkxD2kMpc=w773-h590-no)](https://lh3.googleusercontent.com/u3K2tQbik_dcMuQJ7XWsuSAOvhhEHciUROoMvPF1SmQkxD2kMpc=w773-h590-no)
+[![Hasil Backup](https://lh3.googleusercontent.com/u3K2tQbik_dcMuQJ7XWsuSAOvhhEHciUROoMvPF1SmQkxD2kMpc=w1280-no)](https://lh3.googleusercontent.com/u3K2tQbik_dcMuQJ7XWsuSAOvhhEHciUROoMvPF1SmQkxD2kMpc=w1280-no)
 
 Kalau kita lihat di screenshot di atas, tidak ada file yang bisa kita lihat. Ini karena file dan foldernya dienkripsi. Untuk melihat isinya, kita harus mendekripsi dulu dan menampilkan isi folder sebagai berikut
 
@@ -534,42 +534,42 @@ Dia juga akan melihat daftar folder yang ingin dibackup berikut tujuannya dalam 
 
 Di kolom tujuan, formatnya adalah `namabucket/namafolder`. Sebelum dijalankan, pastikan kita sudah membuat bucket bernama `endy-backup` di Amazon S3.
 
-[![Bucket kosong](https://lh3.googleusercontent.com/0yX6Emtzj0ewaSpezMoQGJ9sfsNLEZDhrYJ9vSXYofMzNW02U7U=w933-h669-no)](https://lh3.googleusercontent.com/0yX6Emtzj0ewaSpezMoQGJ9sfsNLEZDhrYJ9vSXYofMzNW02U7U=w933-h669-no)
+[![Bucket kosong](https://lh3.googleusercontent.com/0yX6Emtzj0ewaSpezMoQGJ9sfsNLEZDhrYJ9vSXYofMzNW02U7U=w1280-no)](https://lh3.googleusercontent.com/0yX6Emtzj0ewaSpezMoQGJ9sfsNLEZDhrYJ9vSXYofMzNW02U7U=w1280-no)
 
 Setelah script dijalankan, dia akan membuat folder dalam bucket
 
-[![Bucket sudah terisi](https://lh3.googleusercontent.com/yoUO1yCyFjEFn0B3Bx2bcG7JLrjzdPUa0zFw4v51CI2lIpMYgVA=w941-h669-no)](https://lh3.googleusercontent.com/yoUO1yCyFjEFn0B3Bx2bcG7JLrjzdPUa0zFw4v51CI2lIpMYgVA=w941-h669-no)
+[![Bucket sudah terisi](https://lh3.googleusercontent.com/yoUO1yCyFjEFn0B3Bx2bcG7JLrjzdPUa0zFw4v51CI2lIpMYgVA=w1280-no)](https://lh3.googleusercontent.com/yoUO1yCyFjEFn0B3Bx2bcG7JLrjzdPUa0zFw4v51CI2lIpMYgVA=w1280-no)
 
 Kita bisa melihat isi foldernya, mirip dengan yang kita hasilkan di external harddisk
 
-[![Backup Content](https://lh3.googleusercontent.com/-mcz-0Zlvn9klUBA7uMMR-R5uhGgMUBaWvSjWIi8aKsxv__AoSM=w929-h669-no)](https://lh3.googleusercontent.com/-mcz-0Zlvn9klUBA7uMMR-R5uhGgMUBaWvSjWIi8aKsxv__AoSM=w929-h669-no)
+[![Backup Content](https://lh3.googleusercontent.com/-mcz-0Zlvn9klUBA7uMMR-R5uhGgMUBaWvSjWIi8aKsxv__AoSM=w1280-no)](https://lh3.googleusercontent.com/-mcz-0Zlvn9klUBA7uMMR-R5uhGgMUBaWvSjWIi8aKsxv__AoSM=w1280-no)
 
 Dari gambar di atas, kita ambil dua variabel : nama folder dan prefix untuk file difftar seperti sudah dijelaskan di atas. Nilainya adalah `backup-documents` dan `data-`
 
 Selanjutnya, kembali ke halaman bucket, buka tab Properties, dan klik tab Lifecycle
 
-[![Konfigurasi Lifecycle](https://lh3.googleusercontent.com/HMhpK8EXbf95SU9SCPtsEO3U-QDGMu1TzHXLMpEZ-pa0hZGcPUQ=w934-h669-no)](https://lh3.googleusercontent.com/HMhpK8EXbf95SU9SCPtsEO3U-QDGMu1TzHXLMpEZ-pa0hZGcPUQ=w934-h669-no)
+[![Konfigurasi Lifecycle](https://lh3.googleusercontent.com/HMhpK8EXbf95SU9SCPtsEO3U-QDGMu1TzHXLMpEZ-pa0hZGcPUQ=w1280-no)](https://lh3.googleusercontent.com/HMhpK8EXbf95SU9SCPtsEO3U-QDGMu1TzHXLMpEZ-pa0hZGcPUQ=w1280-no)
 
 Tambahkan Rule untuk memfilter prefix `backup-documents/data-`. Sebagai catatan, prefix ini tidak mendukung regex. Jadi isilah apa adanya.
 
-[![Rule Prefix](https://lh3.googleusercontent.com/O7TPqC0wCP3WSBOEXeViw1vNNOrXHN80Encxr1q42WN6qO0KLvU=w939-h669-no)](https://lh3.googleusercontent.com/O7TPqC0wCP3WSBOEXeViw1vNNOrXHN80Encxr1q42WN6qO0KLvU=w939-h669-no)
+[![Rule Prefix](https://lh3.googleusercontent.com/O7TPqC0wCP3WSBOEXeViw1vNNOrXHN80Encxr1q42WN6qO0KLvU=w1280-no)](https://lh3.googleusercontent.com/O7TPqC0wCP3WSBOEXeViw1vNNOrXHN80Encxr1q42WN6qO0KLvU=w1280-no)
 
 Selanjutnya, kita atur supaya file difftar langsung dipindah ke Glacier hari itu juga.
 
-[![Langsung pindah ke Glacier](https://lh3.googleusercontent.com/olF9mLlwiUQcLv0GKCKactqISXVgjdpYT1tpBefp1zoWEHd-12M=w937-h669-no)](https://lh3.googleusercontent.com/olF9mLlwiUQcLv0GKCKactqISXVgjdpYT1tpBefp1zoWEHd-12M=w937-h669-no)
+[![Langsung pindah ke Glacier](https://lh3.googleusercontent.com/olF9mLlwiUQcLv0GKCKactqISXVgjdpYT1tpBefp1zoWEHd-12M=w1280-no)](https://lh3.googleusercontent.com/olF9mLlwiUQcLv0GKCKactqISXVgjdpYT1tpBefp1zoWEHd-12M=w1280-no)
 
 Berikan nama supaya jelas
 
-[![Nama Rule](https://lh3.googleusercontent.com/ZLisCTGy1MRTX3QzZf7pKH2gvmga_wsk0Thy1_6KTiPy_c6G2WU=w935-h669-no)](https://lh3.googleusercontent.com/ZLisCTGy1MRTX3QzZf7pKH2gvmga_wsk0Thy1_6KTiPy_c6G2WU=w935-h669-no)
+[![Nama Rule](https://lh3.googleusercontent.com/ZLisCTGy1MRTX3QzZf7pKH2gvmga_wsk0Thy1_6KTiPy_c6G2WU=w1280-no)](https://lh3.googleusercontent.com/ZLisCTGy1MRTX3QzZf7pKH2gvmga_wsk0Thy1_6KTiPy_c6G2WU=w1280-no)
 
 Ulangi hal yang sama untuk semua folder backup
 
-[![Rule Glacier](https://lh3.googleusercontent.com/W4Z7gZNNlj2OhuflZJK_iIuf11VwhhYYmo8x-GyWl8uA57taEFk=w935-h669-no)](https://lh3.googleusercontent.com/W4Z7gZNNlj2OhuflZJK_iIuf11VwhhYYmo8x-GyWl8uA57taEFk=w935-h669-no)
+[![Rule Glacier](https://lh3.googleusercontent.com/W4Z7gZNNlj2OhuflZJK_iIuf11VwhhYYmo8x-GyWl8uA57taEFk=w1280-no)](https://lh3.googleusercontent.com/W4Z7gZNNlj2OhuflZJK_iIuf11VwhhYYmo8x-GyWl8uA57taEFk=w1280-no)
 
 Lihat lagi besoknya, dan file kita sudah dipindahkan dari S3 ke Glacier.
 
 ![Storage Class
-Glacier](https://lh3.googleusercontent.com/ghj7nOi-9LXzGnNePC2TDvfbxu4vIsuNi8s_g7pEL-Nu7j0PyfU=w1016-h600-no)
+Glacier](https://lh3.googleusercontent.com/ghj7nOi-9LXzGnNePC2TDvfbxu4vIsuNi8s_g7pEL-Nu7j0PyfU=w1280-no)
 
 ## Kesimpulan ##
 

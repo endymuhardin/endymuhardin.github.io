@@ -24,7 +24,7 @@ Beberapa teknologi yang baru saya pelajari dengan rilisnya Angular 2 Beta ini ad
 * Berbagai tools untuk melakukan test, misalnya: Karma, Jasmine, PhantomJS
 * Berbagai tools untuk melakukan proses build dan otomasi, misalnya: Gulp, Grunt, Brunch, Broccoli, Jake, dsb
 
-[![JavaScript Stack 2015](https://lh3.googleusercontent.com/XwoAQ_6PsevoJ6Q8SqV6PzQTTg0toHYgPkjvv4aQXh8Cjb3WzkCPf6kbwJCoFhREpNgt0Zo2iZPJ=w1027-h726-no)](https://lh3.googleusercontent.com/XwoAQ_6PsevoJ6Q8SqV6PzQTTg0toHYgPkjvv4aQXh8Cjb3WzkCPf6kbwJCoFhREpNgt0Zo2iZPJ=w1027-h726-no)
+[![JavaScript Stack 2015](https://lh3.googleusercontent.com/XwoAQ_6PsevoJ6Q8SqV6PzQTTg0toHYgPkjvv4aQXh8Cjb3WzkCPf6kbwJCoFhREpNgt0Zo2iZPJ=w1280-no)](https://lh3.googleusercontent.com/XwoAQ_6PsevoJ6Q8SqV6PzQTTg0toHYgPkjvv4aQXh8Cjb3WzkCPf6kbwJCoFhREpNgt0Zo2iZPJ=w1280-no)
 
 > Wah banyak sekali?
 
@@ -44,7 +44,7 @@ Karena dia berjalan di browser, maka apa saja fitur dari bahasa pemrograman ters
 
 Akan tetapi, namanya perkumpulan dengan banyak anggota, sulit untuk mencapai keputusan, apalagi menjalankannya. ES2015 saja yang sudah dirilis, belum juga tayang di semua browser. Daftar lengkap kompatibilitas browser bisa dilihat [di sini](https://kangax.github.io/compat-table/es6/). Bentuknya kira-kira seperti gambar berikut
 
-[![Dukungan ES6 di berbagai browser](https://lh3.googleusercontent.com/PrREqYij3dnzI5UijLBeuqqFNN4WbkVO-znIbtKrwuHN7VvWC4pXjxmeYyRbsy4WUOZ8VuunK07Y=w1366-h677-no)](https://lh3.googleusercontent.com/PrREqYij3dnzI5UijLBeuqqFNN4WbkVO-znIbtKrwuHN7VvWC4pXjxmeYyRbsy4WUOZ8VuunK07Y=w1366-h677-no)
+[![Dukungan ES6 di berbagai browser](https://lh3.googleusercontent.com/PrREqYij3dnzI5UijLBeuqqFNN4WbkVO-znIbtKrwuHN7VvWC4pXjxmeYyRbsy4WUOZ8VuunK07Y=w1280-no)](https://lh3.googleusercontent.com/PrREqYij3dnzI5UijLBeuqqFNN4WbkVO-znIbtKrwuHN7VvWC4pXjxmeYyRbsy4WUOZ8VuunK07Y=w1280-no)
 
 Jadi, yang sekarang bisa dijalankan di semua browser adalah ECMA Script versi 5 (ES5).
 
