@@ -22,6 +22,6 @@ Di Ubuntu, OpenOffice yang terinstal adalah versi 2.0. Sekilas tidak ada perbeda
 Layout sudah selesai. Tinggal mencoba hasil printnya. Karena di rumah tidak ada printer, saya export ke PDF untuk diprint di kantor atau di rumah tetangga. Di sinilah baru terlihat kecanggihan OpenOffice 2.0. 
 
 PDF yang dihasilkan lengkap dengan Table Of Content. Lihat screenshot, sebelah kiri. Sudah ada Table of Contents yang bisa diklik. Output seperti ini belum bisa dihasilkan oleh OpenOffice 1.1.3.
-![Screenshot Acrobat Reader with Bookmarks ](/images/outputoo2.png)
+[![Screenshot Acrobat Reader with Bookmarks ](/images/outputoo2.png)](/images/outputoo2.png)
 
 Hmm... saya jadi ingin segera upgrade ke 2.0. Ada yang tau caranya instal 2.0 untuk Sarge?

@@ -37,7 +37,7 @@ menjadi abu-abu. Biru artinya aktif, abu-abu artinya tidak aktif.
 
 Lebih jelasnya bisa dilihat pada gambar berikut:
 
-![messenger-location](/images/uploads/2013/02/04/messenger-location.png)
+[![messenger-location](/images/uploads/2013/02/04/messenger-location.png)](/images/uploads/2013/02/04/messenger-location.png)
 
 Biasanya, sekali dimatikan akan tetap mati sampai kita nyalakan lagi. 
 Tapi untuk amannya, jangan lupa dicek sebelum kirim tombol `Send`.
@@ -47,16 +47,16 @@ Tapi untuk amannya, jangan lupa dicek sebelum kirim tombol `Send`.
 Nah untuk menu posting status, Facebook lebih rewel. Pertama, kita lihat dulu screenshot aplikasi 
 pada saat kita ingin memposting sesuatu.
 
-![posting-location](/images/uploads/2013/02/04/posting-location.png)
+[![posting-location](/images/uploads/2013/02/04/posting-location.png)](/images/uploads/2013/02/04/posting-location.png)
 
 Kita bisa lihat bahwa lokasi kita tercantum di sana. Untuk mematikannya, kita tekan icon bola dunia. 
 Aplikasi akan menampilkan menu pemilihan lokasi. Kita klik tanda silang di pojok kanan bawah seperti pada screenshot berikut.
 
-![location-menu](/images/uploads/2013/02/04/location-menu.png)
+[![location-menu](/images/uploads/2013/02/04/location-menu.png)](/images/uploads/2013/02/04/location-menu.png)
 
 Selanjutnya, layar akan kembali ke menu posting. Kita bisa lihat bahwa informasi lokasi sudah tidak ada.
 
-![after-disable](/images/uploads/2013/02/04/after-disable.png)
+[![after-disable](/images/uploads/2013/02/04/after-disable.png)](/images/uploads/2013/02/04/after-disable.png)
 
 Yang menyebalkan, informasi lokasi ini akan kembali aktif pada waktu kita mau posting lagi. 
 Sehingga kita harus mematikannya tiap kali mau posting. 

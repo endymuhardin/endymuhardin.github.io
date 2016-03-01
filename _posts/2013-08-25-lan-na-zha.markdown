@@ -21,7 +21,7 @@ Untuk masalah nomer #3 dan #4, menurut saya lebih terkait pada masalah ambisi, a
 
 Seperti di artikel sebelumnya, kali ini kita juga akan mengambil teladan dari seorang tokoh di luar dunia IT. Siapa dia?
 
-![Li Shu Wen ](/images/uploads/2013/08/lan-na-zha/li-shu-wen.jpg)
+[![Li Shu Wen ](/images/uploads/2013/08/lan-na-zha/li-shu-wen.jpg)](/images/uploads/2013/08/lan-na-zha/li-shu-wen.jpg)
 
 _gambar diambil dari [MangaFox](http://mangafox.me/manga/kenji/v21/c003/3.html)_
 
@@ -54,7 +54,7 @@ Kuncinya ada di legenda kungfu jaman dulu, [Li Shu Wen](http://kenji.mangawiki.o
 
 > Untuk menjadi master di aliran kungfu Delapan Mata Angin, Li Shu Wen harus menguasai dua teknik, yaitu pukulan pamungkas dan teknik tombak. Dia menguasai pukulan pamungkas secara otodidak dengan mempertaruhkan nyawa. Baca ceritanya [di bab dua Kenji volume 21](http://mangafox.me/manga/kenji/v21/c002/2.html). Setelah itu, dia mendapat pengajaran dasar-dasar ilmu tombak di perguruannya. Karena sering berkelahi, maka Li Shu Wen hanya boleh menonton, tidak boleh mencoba. Gurunya mendemokan tiga gerakan dasar ilmu tombak, yaitu Lan (memutar ke luar), Na (memutar ke dalam), dan Zha (menusuk).
 
-![Lan Na Zha ](/images/uploads/2013/08/lan-na-zha/lan-na-zha.jpg)
+[![Lan Na Zha ](/images/uploads/2013/08/lan-na-zha/lan-na-zha.jpg)](/images/uploads/2013/08/lan-na-zha/lan-na-zha.jpg)
 
 _gambar diambil dari [MangaFox](http://mangafox.me/manga/kenji/v21/c003/8.html)_
 
@@ -62,7 +62,7 @@ _gambar diambil dari [MangaFox](http://mangafox.me/manga/kenji/v21/c003/8.html)_
 
 Sedemikian universalnya teknik dasar ini, sehingga bisa kita temukan juga di komik lain, yaitu [Legenda Naga]().
 
-![Lan Na Zha Legenda Naga ](/images/uploads/2013/08/lan-na-zha/lan-na-zha-gongfu.jpg)
+[![Lan Na Zha Legenda Naga ](/images/uploads/2013/08/lan-na-zha/lan-na-zha-gongfu.jpg)](/images/uploads/2013/08/lan-na-zha/lan-na-zha-gongfu.jpg)
 
 _gambar diambil dari [MangaFox](http://mangafox.me/manga/ryuurouden/v07/c024/16.html)_
 
@@ -195,7 +195,7 @@ Walaupun kode programnya berubah sama sekali, konsepnya tidak berubah dalam kuru
 
 Kalau kita baca terus kisah Li Shu Wen sampai [bab 5](http://mangafox.me/manga/kenji/v21/c005/10.html), kita akan mendapat pelajaran penting lainnya, yaitu `gongfu`. Gongfu artinya adalah `hasil yang didapat dari latihan`. Kita melakukan satu hal berulang-ulang, sehingga hal tersebut menjadi refleks dan bisa kita lakukan tanpa harus berpikir lagi. 
 
-![Gong Fu ](/images/uploads/2013/08/lan-na-zha/gongfu.jpg)
+[![Gong Fu ](/images/uploads/2013/08/lan-na-zha/gongfu.jpg)](/images/uploads/2013/08/lan-na-zha/gongfu.jpg)
 
 _gambar diambil dari [MangaFox](http://mangafox.me/manga/kenji/v21/c005/21.html)_
 
@@ -219,13 +219,13 @@ Terakhir, untuk mendapatkan hasil maksimal, kombinasikan artikel ini dengan [art
 
 Juga jangan bosan bila kita tidak cepat memahami/menguasai sesuatu. Menguasai suatu konsep dan teknik dasar seringkali butuh waktu lama. Dalam komik Legenda Naga, Lan Na Zha dilatih selama enam bulan
 
-![Lan Na Zha Legenda Naga ](/images/uploads/2013/08/lan-na-zha/lan-na-zha-gongfu.jpg)
+[![Lan Na Zha Legenda Naga ](/images/uploads/2013/08/lan-na-zha/lan-na-zha-gongfu.jpg)](/images/uploads/2013/08/lan-na-zha/lan-na-zha-gongfu.jpg)
 
 _gambar diambil dari [MangaFox](http://mangafox.me/manga/ryuurouden/v07/c024/16.html)_
 
 Dalam komik Kenji, Li Shu Wen melatih kuda-kuda dasar selama 3 bulan. Tidak seperti aliran lain, selama periode tersebut siswa belum belajar memukul sama sekali.
 
-![Latihan Kuda-kuda ](/images/uploads/2013/08/lan-na-zha/horse-stance-training.jpg)
+[![Latihan Kuda-kuda ](/images/uploads/2013/08/lan-na-zha/horse-stance-training.jpg)](/images/uploads/2013/08/lan-na-zha/horse-stance-training.jpg)
 
 _gambar diambil dari [MangaFox](http://mangafox.me/manga/kenji/v21/c007/6.html)_
 

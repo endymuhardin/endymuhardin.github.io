@@ -62,15 +62,15 @@ Sekarang kita akan menginstal HermesJMS. Inipun instalasinya tidak sulit, cukup 
 Nantinya akan muncul layar instalasi. Klik saja Next ... Next ... seperti biasa sampai selesai.
 
 Setelah Hermes berhasil diinstal, jalankan Hermes. Berikut adalah tampilan awalnya. 
-![Hello Hermes ](/images/uploads/2007/09/hello-hermes.png)
+[![Hello Hermes ](/images/uploads/2007/09/hello-hermes.png)](/images/uploads/2007/09/hello-hermes.png)
 
 Selanjutnya, kita akan menambahkan koneksi ke server ActiveMQ kita. 
 Buka menu Options - Preferences, kemudian pilih tab Classpath di sisi bawah panel.
-![Belum ada classpath group ](/images/uploads/2007/09/no-classpath.png)
+[![Belum ada classpath group ](/images/uploads/2007/09/no-classpath.png)](/images/uploads/2007/09/no-classpath.png)
 
 Selanjutnya, klik kanan di panel kosong tersebut 
 dan masukkan classpath group baru bernama ActiveMQ. 
-![Tambah Classpath Group ](/images/uploads/2007/09/add-classpath.png)
+[![Tambah Classpath Group ](/images/uploads/2007/09/add-classpath.png)](/images/uploads/2007/09/add-classpath.png)
 
 Nanti akan muncul entri ActiveMQ dengan tab dibawahnya yang bertulisan Library. 
 Klik kanan **tepat pada tulisan Library** dan pilih Add Jar. 
@@ -92,7 +92,7 @@ Kita harus menambahkan beberapa jar berikut:
 Semua file tersebut dapat ditemukan di lokasi instalasi ActiveMQ.
 
 Setelah konfigurasi dilakukan, layar tampilannya akan tampak seperti ini: 
-![Classpath ActiveMQ ](/images/uploads/2007/09/classpath-activemq.png)
+[![Classpath ActiveMQ ](/images/uploads/2007/09/classpath-activemq.png)](/images/uploads/2007/09/classpath-activemq.png)
 
 Tutup layar Preference, dan buka lagi. 
 Entah kenapa kalau tidak ditutup dulu, pilihan ActiveMQ tidak akan keluar.
@@ -103,24 +103,24 @@ Jawab saja, "Ya, ini adalah session baru".
 
 Selanjutnya, ganti pilihan Loader menjadi ActiveMQ, dan pilih ActiveMQ Connection Factory pada pilihan Class.
 Hasilnya akan nampak seperti ini: 
-![Session Baru ActiveMQ ](/images/uploads/2007/09/session-activemq.png)
+[![Session Baru ActiveMQ ](/images/uploads/2007/09/session-activemq.png)](/images/uploads/2007/09/session-activemq.png)
 
 Setelah selesai, session ActiveMQ akan muncul di panel sebelah kiri. 
-![Konfigurasi Session ActiveMQ ](/images/uploads/2007/09/session-activemq-configured.png)
+[![Konfigurasi Session ActiveMQ ](/images/uploads/2007/09/session-activemq-configured.png)](/images/uploads/2007/09/session-activemq-configured.png)
 
 Kita bisa membuat queue baru di session tersebut. Gunakan tombol Create New Queue.
-![Membuat Queue ](/images/uploads/2007/09/queue-new.png)
+[![Membuat Queue ](/images/uploads/2007/09/queue-new.png)](/images/uploads/2007/09/queue-new.png)
 
 Pembuatan queue pada layar ini bersifat sementara. Artinya, bila HermesJMS dimatikan, Queuenya akan hilang. Untuk membuat Queue yang permanen, kita dapat mendefinisikannya pada layar konfigurasi session.
 
 Queue yang sudah dibuat dapat dilihat di panel sebelah kiri.
-![Queue Browser ](/images/uploads/2007/09/queue-browse.png)
+[![Queue Browser ](/images/uploads/2007/09/queue-browse.png)](/images/uploads/2007/09/queue-browse.png)
 
 Pada queue yang sudah terbentuk, kita bisa mengirim Text Message. 
 Gunakan menu Messages - Send TextMessages. Kita harus memilih satu text file untuk dikirim.
 
 Setelah pengiriman selesai dilakukan, refresh tampilan sehingga message baru tersebut muncul. 
-![Browse Message ](/images/uploads/2007/09/queue-browse-message.png)
+[![Browse Message ](/images/uploads/2007/09/queue-browse-message.png)](/images/uploads/2007/09/queue-browse-message.png)
 
 Kita dapat mengambil message tersebut dengan menggunakan kode program Java sebagai berikut. 
 

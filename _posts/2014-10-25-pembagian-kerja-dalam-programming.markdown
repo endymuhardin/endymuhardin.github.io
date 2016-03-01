@@ -9,7 +9,7 @@ categories:
 
 Ada pertanyaan bagus di Forum Java Programmer Indonesia di Facebook
 
-![Foto](https://lh6.googleusercontent.com/-WwcyvgyzpyI/VEsOaOMQ3pI/AAAAAAAAG9Q/z_KHGG79bUY/w560-h174-no/Selection_023.png)
+[![Foto](https://lh6.googleusercontent.com/-WwcyvgyzpyI/VEsOaOMQ3pI/AAAAAAAAG9Q/z_KHGG79bUY/w560-h174-no/Selection_023.png)](https://lh6.googleusercontent.com/-WwcyvgyzpyI/VEsOaOMQ3pI/AAAAAAAAG9Q/z_KHGG79bUY/w560-h174-no/Selection_023.png)
 
 > Bagaimana cara pembagian tugas kalau mengerjakan aplikasi dengan tim?
 

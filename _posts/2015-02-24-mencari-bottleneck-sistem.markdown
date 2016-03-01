@@ -13,7 +13,7 @@ Sudah sebulan ini laptop saya lemot.
 
 Pada waktu kuliah dulu, di tahun 1999, komputer saya spesifikasinya Pentium 233 MMX dengan RAM 32 MB (Mega, bukan Giga). Dia berjalan cukup responsif dengan sistem operasi Windows 98 SE. Di tahun 2000, Microsoft merilis Windows 2000 Professional. Saya instal di komputer saya tersebut, dan dia langsung lemot seperti bekicot.
 
-![Gary the Snail](https://lh3.googleusercontent.com/-lYF4E2oWQvU/VOyUY1ZEmbI/AAAAAAAAH90/Tomn_Tcatw4/w640-h480-no/Gary_bored_again..png)
+[![Gary the Snail](https://lh3.googleusercontent.com/-lYF4E2oWQvU/VOyUY1ZEmbI/AAAAAAAAH90/Tomn_Tcatw4/w640-h480-no/Gary_bored_again..png)](https://lh3.googleusercontent.com/-lYF4E2oWQvU/VOyUY1ZEmbI/AAAAAAAAH90/Tomn_Tcatw4/w640-h480-no/Gary_bored_again..png)
 
 Gambar diambil dari [sini](http://spongebob.wikia.com/wiki/Gary_the_Snail/gallery)
 
@@ -100,7 +100,7 @@ Pada titik ini, tentunya Anda tidak perlu menyarankan saya untuk [mencari di Goo
 
 Akhirnya, titik terang ditemukan dengan keyword `ubuntu vga intel bug`. Salah satu link yang diberikan google mengarah ke [diskusi di AskUbuntu ini](http://askubuntu.com/questions/186387/laptop-slows-down-while-charging-battery). 
 
-![Screenshot AskUbuntu](https://lh6.googleusercontent.com/-9w3o3-cb5uA/VOyR5GuGRUI/AAAAAAAAH9c/p1ncooIqOaA/w884-h552-no/01.%2BAskUbuntu%2BLaptop%2BSlow.png)
+[![Screenshot AskUbuntu](https://lh6.googleusercontent.com/-9w3o3-cb5uA/VOyR5GuGRUI/AAAAAAAAH9c/p1ncooIqOaA/w884-h552-no/01.%2BAskUbuntu%2BLaptop%2BSlow.png)](https://lh6.googleusercontent.com/-9w3o3-cb5uA/VOyR5GuGRUI/AAAAAAAAH9c/p1ncooIqOaA/w884-h552-no/01.%2BAskUbuntu%2BLaptop%2BSlow.png)
 
 Dari artikel di atas, saya dapat keyword, yaitu `ubuntu slow when charging`.
 
@@ -122,7 +122,7 @@ Sudah dicoba, tetap lemot. Pantang menyerah, google lagi masih dengan keyword `u
 
 Penjelasan tentang pengaruh charger terhadap performance ada di komentar paling bawah
 
-![Screenshot solusi](https://lh6.googleusercontent.com/-qgsN3cgs2X4/VOyR5A7CztI/AAAAAAAAH9g/TkUVkKK8nxo/w698-h586-no/02.%2BSolusi%2B-%2BCharger%2Bsoak.png)
+[![Screenshot solusi](https://lh6.googleusercontent.com/-qgsN3cgs2X4/VOyR5A7CztI/AAAAAAAAH9g/TkUVkKK8nxo/w698-h586-no/02.%2BSolusi%2B-%2BCharger%2Bsoak.png)](https://lh6.googleusercontent.com/-qgsN3cgs2X4/VOyR5A7CztI/AAAAAAAAH9g/TkUVkKK8nxo/w698-h586-no/02.%2BSolusi%2B-%2BCharger%2Bsoak.png)
 
 Charger saya ternyata sudah lemah, sehingga dia mengeluarkan daya listrik yang kecil. Mendeteksi arus listrik yang tidak memadai, laptop saya menurunkan kemampuan sistem supaya tidak boros energi.
 

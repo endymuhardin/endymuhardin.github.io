@@ -15,7 +15,7 @@ Pada artikel ini, kita akan bahas tips singkat untuk memudahkan kita mengupgrade
 
 Sebagai contoh, berikut [panduan upgrade library CSS Twitter Bootstrap](http://getbootstrap.com/getting-started/#migration). Di halaman itu dituliskan hal-hal yang berubah.
 
-![Foto](http://lh6.googleusercontent.com/-Pf2d8nhVky0/UorYq5A-OGI/AAAAAAAACQE/PGb8mXDC890/panduan-upgrade-bootstrap.png)
+[![Foto](http://lh6.googleusercontent.com/-Pf2d8nhVky0/UorYq5A-OGI/AAAAAAAACQE/PGb8mXDC890/panduan-upgrade-bootstrap.png)](http://lh6.googleusercontent.com/-Pf2d8nhVky0/UorYq5A-OGI/AAAAAAAACQE/PGb8mXDC890/panduan-upgrade-bootstrap.png)
 
 Di situ dijelaskan bahwa kita harus mengganti class CSS
 

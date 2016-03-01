@@ -178,6 +178,6 @@ Di dunia IT, banyak sekali pilihan. Mulai dari bahasa pemrograman, framework, me
 
 Jadi kalau lain kali ada yang menganjurkan dua programmer komputernya satu aja gantian, renungkan dengan akal sehat. Apakah gak sebaiknya sekalian dibeliin perlengkapan fitness? Jadi pas project selesai, programmernya punya perut sixpack.
 
-![Foto](https://lh3.googleusercontent.com/-kWEJAXJQqiY/U01NMQkQ7_I/AAAAAAAAFp0/099uScfrhP0/w768-h576-no/rambo-wallpaper-800x600.jpg)
+[![Foto](https://lh3.googleusercontent.com/-kWEJAXJQqiY/U01NMQkQ7_I/AAAAAAAAFp0/099uScfrhP0/w768-h576-no/rambo-wallpaper-800x600.jpg)](https://lh3.googleusercontent.com/-kWEJAXJQqiY/U01NMQkQ7_I/AAAAAAAAFp0/099uScfrhP0/w768-h576-no/rambo-wallpaper-800x600.jpg)
 
 _Fotonya Rambo diambil [dari sini](http://wallpaperswide.com/rambo-wallpapers.html)_

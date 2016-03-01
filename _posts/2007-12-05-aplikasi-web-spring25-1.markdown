@@ -21,7 +21,7 @@ Fiturnya tidak terlalu sulit, dari tabel T_PERSON kemarin kita akan buatkan bebe
 
 Sebelum kita mulai, ada baiknya kita mengetahui cara kerja Spring dalam mengelola aplikasi web. Sequence diagram berikut akan memudahkan pemahaman kita.
 
-![Alur kerja Spring MVC ](/images/uploads/2007/12/spring-mvc-sequence.png)
+[![Alur kerja Spring MVC ](/images/uploads/2007/12/spring-mvc-sequence.png)](/images/uploads/2007/12/spring-mvc-sequence.png)
 
 Seperti kita lihat pada gambar, semua request akan diterima oleh DispatcherServlet. Mereka yang pernah membaca buku Core J2EE Pattern akan segera mengenali jurus ini, yang sering disebut dengan istilah FrontController. DispatcherServlet akan menyuruh handler mapping untuk memilih class yang akan menangani request. Ada beberapa implementasi handler mapping, diantaranya: 
 

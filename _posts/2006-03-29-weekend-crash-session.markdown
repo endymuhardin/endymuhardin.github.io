@@ -16,7 +16,7 @@ Jadi, dari beberapa kali ngantor di hari libur dan beberapa kali terpaksa melewa
 Lho, katanya kejar tayang, lalu tunggu apa lagi? Mari segera mulai.
 Salah besar. Hal pertama yang harus dilakukan adalah membuat daftar tugas yang harus diselesaikan. Setelah itu, susun prioritas dan tentukan PIC (_person in charge_, alias oknum yang harus melakukan). [Aplikasi spreadsheet](http://www.openoffice.org/product/calc.html) adalah tools yang paling tepat untuk ini. Kita bisa sort, filter, dan melakukan perhitungan dengan cepat.
 
-![Khalisa In Action ](/images/uploads/2006/03/dsc02995.jpg)
+[![Khalisa In Action ](/images/uploads/2006/03/dsc02995.jpg)](/images/uploads/2006/03/dsc02995.jpg)
 
 **2. Tentukan load masing-masing orang**
 Ada kalanya, tugas tertentu tergantung pada orang tertentu. Temukan ketergantungan ini, dan hitung dengan teliti. Bisa jadi pembagian tugasnya sudah rata, tapi ternyata pembagian ketergantungan tidak dilakukan, sehingga akan terjadi bottleneck pada orang tertentu.
@@ -41,4 +41,4 @@ Perusahaan yang mengharuskan karyawannya kerja lembur biasanya tidak keberatan u
 
 Semoga lembur Anda menyenangkan
 
-![Khalisa Gigit Jari ](/images/uploads/2006/03/dsc03125.jpg)
+[![Khalisa Gigit Jari ](/images/uploads/2006/03/dsc03125.jpg)](/images/uploads/2006/03/dsc03125.jpg)

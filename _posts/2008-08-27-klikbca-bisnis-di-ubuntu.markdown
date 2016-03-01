@@ -48,24 +48,24 @@ Ketiga, instal dulu VPN Client dan interface Network Managernya.
 
 Keempat, kita konfigurasi Network Manager Applet. Network Manager Applet adalah icon kecil di taskbar atas, sebelah kanan. Berikut contohnya. 
 
-![ ](/images/uploads/2008/08/netman-applet.png)
+[![ ](/images/uploads/2008/08/netman-applet.png)](/images/uploads/2008/08/netman-applet.png)
 _Gambar diambil dari [sini](http://www.gnome.org/projects/NetworkManager/)_. 
 
 Pilih VPN Connections - Configure VPN. Nanti akan tampil daftar jaringan VPN yang sudah ada. Karena kita belum mengkonfigurasi, tentunya ini masih kosong. 
 
-![ ](/images/uploads/2008/08/add-vpn.png)
+[![ ](/images/uploads/2008/08/add-vpn.png)](/images/uploads/2008/08/add-vpn.png)
 
 Selanjutnya, klik Add untuk menambah jaringan VPN baru. Wizardnya akan muncul. 
 
-![ ](/images/uploads/2008/08/01-create-vpn.png)
+[![ ](/images/uploads/2008/08/01-create-vpn.png)](/images/uploads/2008/08/01-create-vpn.png)
 
 Kita akan disajikan pilihan VPN client yang tersedia. Pilih Cisco compatible. 
 
-![ ](/images/uploads/2008/08/02-choose-protocol.png)
+[![ ](/images/uploads/2008/08/02-choose-protocol.png)](/images/uploads/2008/08/02-choose-protocol.png)
 
 Masukkan data-data sesuai dengan isi file `KlikBCA Bisnis.pcf`. 
 
-![ ](/images/uploads/2008/08/02a-gateway.png)
+[![ ](/images/uploads/2008/08/02a-gateway.png)](/images/uploads/2008/08/02a-gateway.png)
 
 Dalam tab pertama, isikan: 
 
@@ -84,13 +84,13 @@ Dalam tab pertama, isikan:
 
 
 Klik tab Optional, lalu centang Override user name. 
-![ ](/images/uploads/2008/08/02b-username.png)
+[![ ](/images/uploads/2008/08/02b-username.png)](/images/uploads/2008/08/02b-username.png)
 
 Isikan Corporate Id + User Id yang diberikan BCA pada Anda. Kedua ID digabungkan tanpa spasi dan diisikan di textfield Override user name. 
 
 Selesai konfigurasi, sekarang jika ingin connect, klik pada network manager applet : VPN Connections - KlikBCA Bisnis. Nanti akan muncul pertanyaan password dan group password. 
 
-![ ](/images/uploads/2008/08/04-authenticate-vpn.png)
+[![ ](/images/uploads/2008/08/04-authenticate-vpn.png)](/images/uploads/2008/08/04-authenticate-vpn.png)
 
 Password diisi dengan respon dari KeyBCA APPLI 1. Group password diisi dengan hasil dekripsi Group Password. Group password boleh disimpan di keyring, karena nilainya tidak berubah-ubah. Tapi password tidak perlu disimpan, karena nilainya berubah sesuai KeyBCA APPLI 1.
 

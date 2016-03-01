@@ -202,4 +202,4 @@ menghapus branch di remote									| git push nama-remote :nama-branch-remote
 
 Demikianlah perintah-perintah Git yang kita gunakan sehari-hari. Melengkapi daftar perintah di atas, diagram berikut dapat membantu pemahaman kita tentang konsep dan operasi di Git. 
 
-![ ](/images/uploads/2011/01/git-300x284.png)
+[![ ](/images/uploads/2011/01/git-300x284.png)](/images/uploads/2011/01/git-300x284.png)

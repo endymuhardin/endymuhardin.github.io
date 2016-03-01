@@ -111,7 +111,7 @@ Sekarang kita bahas untuk Windows. Cara mengedit environment variable sama seper
 
 Buat variabel baru di System Variable untuk `ANDROID_HOME`.
 
-![Foto](http://lh4.googleusercontent.com/-O7f60nY5hdg/UpVtYN-9DGI/AAAAAAAACe8/sKR8b7FLBqE/s600/07.+ANDROID_HOME.png)
+[![Foto](http://lh4.googleusercontent.com/-O7f60nY5hdg/UpVtYN-9DGI/AAAAAAAACe8/sKR8b7FLBqE/s600/07.+ANDROID_HOME.png)](http://lh4.googleusercontent.com/-O7f60nY5hdg/UpVtYN-9DGI/AAAAAAAACe8/sKR8b7FLBqE/s600/07.+ANDROID_HOME.png)
 
 Kemudian edit variabel `PATH`. Tambahkan:
 
@@ -121,14 +121,14 @@ whatever-isi-path-yang-lama;%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools
 
 Klik OK untuk menutup semua dialog. Setelah itu kita test. Buka command prompt baru. Kalau sebelumnya sudah membuka command prompt, harus ditutup dulu dan buka yang baru. Jika konfigurasinya benar, kita bisa menjalankan Android SDK Manager dari command prompt seperti ini
 
-![Foto](http://lh6.googleusercontent.com/-rij7T-pjn68/UpVtZ4POW-I/AAAAAAAACfQ/djaLB5KDbwo/s600/10.+Test+Android+SDK.png)
+[![Foto](http://lh6.googleusercontent.com/-rij7T-pjn68/UpVtZ4POW-I/AAAAAAAACfQ/djaLB5KDbwo/s600/10.+Test+Android+SDK.png)](http://lh6.googleusercontent.com/-rij7T-pjn68/UpVtZ4POW-I/AAAAAAAACfQ/djaLB5KDbwo/s600/10.+Test+Android+SDK.png)
 
 <a name="update-android-sdk"></a>
 ## Update Android SDK ##
 
 Secara default, Android SDK yang baru saja kita extract hanya menyertakan library terbaru saja, pada waktu artikel ini ditulis versinya `4.4` atau _Kitkat_. 
 
-![Foto](http://lh5.googleusercontent.com/-vczCzhCpYws/UpVjYYmGRKI/AAAAAAAACdg/5p0aXCK_j0k/s600/01.+Android+SDK+Default.png)
+[![Foto](http://lh5.googleusercontent.com/-vczCzhCpYws/UpVjYYmGRKI/AAAAAAAACdg/5p0aXCK_j0k/s600/01.+Android+SDK+Default.png)](http://lh5.googleusercontent.com/-vczCzhCpYws/UpVjYYmGRKI/AAAAAAAACdg/5p0aXCK_j0k/s600/01.+Android+SDK+Default.png)
 
 Seperti kita lihat pada screenshot, yang statusnya `Installed` cuma versi terakhir saja.
 
@@ -149,7 +149,7 @@ Kalau kita mau mendukung perangkat mulai dari Honeycomb sampai Kitkat, maka kita
 
 Selanjutnya, kita centang `API` yang ingin kita instal, kemudian tekan tombol Install Package
 
-![Foto](http://lh3.googleusercontent.com/-fUnAXSB8xes/UpVjYe8lu4I/AAAAAAAACdk/8i7PtYMkJI4/s600/02.+Additional+Package.png)
+[![Foto](http://lh3.googleusercontent.com/-fUnAXSB8xes/UpVjYe8lu4I/AAAAAAAACdk/8i7PtYMkJI4/s600/02.+Additional+Package.png)](http://lh3.googleusercontent.com/-fUnAXSB8xes/UpVjYe8lu4I/AAAAAAAACdk/8i7PtYMkJI4/s600/02.+Additional+Package.png)
 
 Paket yang diinstal cukup besar. Dengan koneksi internet saya yang berkecepatan 60 KB/s, butuh waktu 60-90 menit untuk mengunduh versi Honeycomb.
 
@@ -216,7 +216,7 @@ Agar bisa dijalankan dengan baik, Maven Android SDK Deployer membutuhkan:
 
 Coba perhatikan apa-apa yang saya centang untuk diinstal di screenshot ini
 
-![Foto](http://lh3.googleusercontent.com/-fUnAXSB8xes/UpVjYe8lu4I/AAAAAAAACdk/8i7PtYMkJI4/s600/02.+Additional+Package.png)
+[![Foto](http://lh3.googleusercontent.com/-fUnAXSB8xes/UpVjYe8lu4I/AAAAAAAACdk/8i7PtYMkJI4/s600/02.+Additional+Package.png)](http://lh3.googleusercontent.com/-fUnAXSB8xes/UpVjYe8lu4I/AAAAAAAACdk/8i7PtYMkJI4/s600/02.+Additional+Package.png)
 
 Selanjutnya, kita deploy juga Maven artifact untuk versi `3.0` (Honeycomb)
 
@@ -388,11 +388,11 @@ Project kita sudah siap dibuka di IDE. Silahkan dicoba edit dan build lagi.
 
 Supaya bisa dideploy di emulator, terlebih dulu kita buat emulatornya di Android SDK. Kita bisa pilih versi Android dan juga ukuran layar yang diinginkan. Jalankan Android SDK, kemudian klik menu `Tools > Manage AVD`
 
-![Foto](http://lh5.googleusercontent.com/-Qv1lsyVMLOY/UpWhzrsreXI/AAAAAAAACfs/BSJ91bvXiI0/s600/03.+Konfigurasi+AVD.png)
+[![Foto](http://lh5.googleusercontent.com/-Qv1lsyVMLOY/UpWhzrsreXI/AAAAAAAACfs/BSJ91bvXiI0/s600/03.+Konfigurasi+AVD.png)](http://lh5.googleusercontent.com/-Qv1lsyVMLOY/UpWhzrsreXI/AAAAAAAACfs/BSJ91bvXiI0/s600/03.+Konfigurasi+AVD.png)
 
 Hasilnya bisa dilihat di AVD Manager
 
-![Foto](http://lh4.googleusercontent.com/-0ZCzrMJ58HE/UpWhzuL1sYI/AAAAAAAACfw/uZLHOeki2Kk/s600/04.+AVD+Manager.png)
+[![Foto](http://lh4.googleusercontent.com/-0ZCzrMJ58HE/UpWhzuL1sYI/AAAAAAAACfw/uZLHOeki2Kk/s600/04.+AVD+Manager.png)](http://lh4.googleusercontent.com/-0ZCzrMJ58HE/UpWhzuL1sYI/AAAAAAAACfw/uZLHOeki2Kk/s600/04.+AVD+Manager.png)
 
 Pada screenshot di atas, nama emulatornya adalah `Nexus4`. Pemilihan nama bebas saja.
 
@@ -442,7 +442,7 @@ Selanjutnya, kita bisa jalankan emulator dari Maven dengan perintah `mvn android
 
 Emulator segera aktif. Tunggu sampai dia siap.
 
-![Foto](http://lh4.googleusercontent.com/-2Wg4lTl5IvM/UpWjpNoCAsI/AAAAAAAACgA/9qD6wVry2BQ/s600/05.+Android+Emulator.png)
+[![Foto](http://lh4.googleusercontent.com/-2Wg4lTl5IvM/UpWjpNoCAsI/AAAAAAAACgA/9qD6wVry2BQ/s600/05.+Android+Emulator.png)](http://lh4.googleusercontent.com/-2Wg4lTl5IvM/UpWjpNoCAsI/AAAAAAAACgA/9qD6wVry2BQ/s600/05.+Android+Emulator.png)
 
 Kemudian kita bisa deploy menggunakan perintah `mvn android:deploy`. Berikut outputnya
 
@@ -470,7 +470,7 @@ Kemudian kita bisa deploy menggunakan perintah `mvn android:deploy`. Berikut out
 
 Aplikasi kita sudah terdeploy dengan sukses di emulator.
 
-![Foto](http://lh3.googleusercontent.com/-EM44OK6A32Y/UpWkehULp1I/AAAAAAAACgQ/TUMZ2MM0XLs/s600/06.+Aplikasi+Terdeploy.png)
+[![Foto](http://lh3.googleusercontent.com/-EM44OK6A32Y/UpWkehULp1I/AAAAAAAACgQ/TUMZ2MM0XLs/s600/06.+Aplikasi+Terdeploy.png)](http://lh3.googleusercontent.com/-EM44OK6A32Y/UpWkehULp1I/AAAAAAAACgQ/TUMZ2MM0XLs/s600/06.+Aplikasi+Terdeploy.png)
 
 Selanjutnya, mari kita coba di handset.
 
@@ -506,11 +506,11 @@ Setelah itu, cukup tancapkan handset melalui USB, lalu jalankan lagi `mvn androi
 
 Aplikasipun terpasang di handset.
 
-![Foto](http://lh6.googleusercontent.com/-74yIG4jiS8U/UpWnVDIWZ1I/AAAAAAAACgo/Gzsz4YGGOLo/s600/07.+Deploy+Handset.png)
+[![Foto](http://lh6.googleusercontent.com/-74yIG4jiS8U/UpWnVDIWZ1I/AAAAAAAACgo/Gzsz4YGGOLo/s600/07.+Deploy+Handset.png)](http://lh6.googleusercontent.com/-74yIG4jiS8U/UpWnVDIWZ1I/AAAAAAAACgo/Gzsz4YGGOLo/s600/07.+Deploy+Handset.png)
 
 Kita bisa klik icon-nya untuk menjalankan
 
-![Foto](http://lh3.googleusercontent.com/-0evtaY9zktE/UpWnRhqFiAI/AAAAAAAACgg/pYaTd__syOY/s600/08.+Run+Application.png)
+[![Foto](http://lh3.googleusercontent.com/-0evtaY9zktE/UpWnRhqFiAI/AAAAAAAACgg/pYaTd__syOY/s600/08.+Run+Application.png)](http://lh3.googleusercontent.com/-0evtaY9zktE/UpWnRhqFiAI/AAAAAAAACgg/pYaTd__syOY/s600/08.+Run+Application.png)
 
 ## Kesimpulan ##
 

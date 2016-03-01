@@ -45,23 +45,23 @@ Lalu buat repository untuk percobaan, sebagai contoh saya akan membuat repositor
 Selanjutnya, kita akan mengkonfigurasi Apache agar membaca folder tersebut dan memetakannya ke URL /svn. Jadi, bila kita mengakses `http://localhost/svn/repo-percobaan` di browser, Apache akan menampilkan isi repository kita. 
 
 Caranya, buka Yast, kemudian masuk ke Network Services > HTTP Server. 
-![Yast Control Panel ](/images/uploads/2007/06/yast-http-server.png)
+[![Yast Control Panel ](/images/uploads/2007/06/yast-http-server.png)](/images/uploads/2007/06/yast-http-server.png)
 
 Ikuti wizard tanpa perubahan sampai layar terakhir. Setelah itu, klik Expert Configuration. 
 
-![Expert Configuration ](/images/uploads/2007/06/yast-http-server5.png)
+[![Expert Configuration ](/images/uploads/2007/06/yast-http-server5.png)](/images/uploads/2007/06/yast-http-server5.png)
 
 Layar pertama adalah pilihan port yang dilayani Apache. Tambahkan port 443 untuk mengaktifkan SSL. 
 
-![Port SSL ](/images/uploads/2007/06/yast-http-server7.png)
+[![Port SSL ](/images/uploads/2007/06/yast-http-server7.png)](/images/uploads/2007/06/yast-http-server7.png)
 
 Setelah itu, masuk ke tab Server Modules. Aktifkan module `dav`, `dav_fs`. 
 
-![Apache Module ](/images/uploads/2007/06/yast-http-server8.png)
+[![Apache Module ](/images/uploads/2007/06/yast-http-server8.png)](/images/uploads/2007/06/yast-http-server8.png)
 
 Kita juga butuh modul tambahan untuk Subversion. Klik Add Module, tambahkan modul `dav_svn` dan `authz_svn`. 
 
-![Add Subversion Module ](/images/uploads/2007/06/yast-http-server9.png)
+[![Add Subversion Module ](/images/uploads/2007/06/yast-http-server9.png)](/images/uploads/2007/06/yast-http-server9.png)
 
 Selesai dengan Yast. Klik OK untuk menyimpan perubahan. Sekarang kita akan mengedit konfigurasi modul Subversion agar membaca folder repository kita. 
 
@@ -83,7 +83,7 @@ Server ini akan digunakan untuk beberapa project sekaligus. Untuk setiap reposit
 
 Save file tersebut, dan restart Apache melalui Yast. Repository sudah bisa dibaca. Arahkan browser Anda ke `http://localhost/svn/repo-percobaan`. Instalasi yang sukses akan menghasilkan tampilan seperti ini.
 
-![Browse Repository Content ](/images/uploads/2007/06/yast-http-server11.png)
+[![Browse Repository Content ](/images/uploads/2007/06/yast-http-server11.png)](/images/uploads/2007/06/yast-http-server11.png)
 
 
 Silahkan baca [artikel ini](http://endy.artivisi.com/blog/aplikasi/otentikasi-apache-menggunakan-ldap/) untuk mengaktifkan otentikasi melalui OpenLDAP. 

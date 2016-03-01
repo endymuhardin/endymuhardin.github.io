@@ -57,6 +57,6 @@ Edit file config.php sehingga menjadi seperti ini.
 
 
 Selanjutnya, browse ke http://localhost/vnstat. Kita akan mendapati data penggunaan jaringan kita seperti gambar di bawah. 
-![vnStat Front End Screenshot ](/images/uploads/2007/04/vnstat.png)
+[![vnStat Front End Screenshot ](/images/uploads/2007/04/vnstat.png)](/images/uploads/2007/04/vnstat.png)
 
 Selamat mencoba

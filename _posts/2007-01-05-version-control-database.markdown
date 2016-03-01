@@ -81,7 +81,7 @@ Berikut adalah contoh konfigurasinya
 
 Setelah konfigurasi selesai dibuat, jalankan ScriptDB4SVN.exe. Hasilnya seperti ini. 
 
-![Screenshot ScriptDB4SVN ](/images/uploads/2007/01/scriptdb4svn.png)
+[![Screenshot ScriptDB4SVN ](/images/uploads/2007/01/scriptdb4svn.png)](/images/uploads/2007/01/scriptdb4svn.png)
 
 Setiap kali ada perubahan di database, dobel-klik ScriptDB4SVN dan commit file yang berubah. Harus diperhatikan, ScriptDB4SVN tidak otomatis menjalankan svn add. Jadi kalau ada Store Procedure baru, kita harus jalankan svn add secara manual. 
 

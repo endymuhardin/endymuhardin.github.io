@@ -105,15 +105,15 @@ Sekarang kita beranjak ke tabel untuk menyimpan data transaksi.
 
 Pola yang umum dipakai adalah relasi `master-detail-header` seperti ini
 
-![Foto](https://lh3.googleusercontent.com/-B_icVAf77dg/U2b9zeQw8FI/AAAAAAAAFvk/D7q35jK7U7Y/w915-h221-no/skema-master-header-detail.png)
+[![Foto](https://lh3.googleusercontent.com/-B_icVAf77dg/U2b9zeQw8FI/AAAAAAAAFvk/D7q35jK7U7Y/w915-h221-no/skema-master-header-detail.png)](https://lh3.googleusercontent.com/-B_icVAf77dg/U2b9zeQw8FI/AAAAAAAAFvk/D7q35jK7U7Y/w915-h221-no/skema-master-header-detail.png)
 
 Pola ini bisa kita gunakan untuk aplikasi perpustakaan seperti ini
 
-![Foto](https://lh6.googleusercontent.com/-k1DUCU0X4K8/U2b9zUQq0yI/AAAAAAAAFvo/7saKCOClC0U/w876-h484-no/skema-perpustakaan.png)
+[![Foto](https://lh6.googleusercontent.com/-k1DUCU0X4K8/U2b9zUQq0yI/AAAAAAAAFvo/7saKCOClC0U/w876-h484-no/skema-perpustakaan.png)](https://lh6.googleusercontent.com/-k1DUCU0X4K8/U2b9zUQq0yI/AAAAAAAAFvo/7saKCOClC0U/w876-h484-no/skema-perpustakaan.png)
 
 Ataupun untuk aplikasi bengkel, dimana detailnya ada dua (part dan jasa)
 
-![Foto](https://lh6.googleusercontent.com/-GDtsnS1_9gE/U2b9zQlqgII/AAAAAAAAFvs/afAswqUErzg/w873-h500-no/skema-bengkel.png)
+[![Foto](https://lh6.googleusercontent.com/-GDtsnS1_9gE/U2b9zQlqgII/AAAAAAAAFvs/afAswqUErzg/w873-h500-no/skema-bengkel.png)](https://lh6.googleusercontent.com/-GDtsnS1_9gE/U2b9zQlqgII/AAAAAAAAFvs/afAswqUErzg/w873-h500-no/skema-bengkel.png)
 
 Pola yang sama bisa digunakan dalam pencatatan transaksi lain, misalnya:
 
@@ -138,7 +138,7 @@ Tanpa tabel akumulasi, kita harus mencari dulu saldo awalnya, kemudian kita mela
 
 Untuk mengatasinya, kita buat tabel untuk akumulasi. Berikut skemanya 
 
-![Foto](https://lh6.googleusercontent.com/-ZKiD_6GBDig/U2hUO-HearI/AAAAAAAAFwM/SJgzkIeJU9E/w619-h625-no/skema-akumulasi.png)
+[![Foto](https://lh6.googleusercontent.com/-ZKiD_6GBDig/U2hUO-HearI/AAAAAAAAFwM/SJgzkIeJU9E/w619-h625-no/skema-akumulasi.png)](https://lh6.googleusercontent.com/-ZKiD_6GBDig/U2hUO-HearI/AAAAAAAAFwM/SJgzkIeJU9E/w619-h625-no/skema-akumulasi.png)
 
 Penjelasan kolomnya sebagai berikut:
 

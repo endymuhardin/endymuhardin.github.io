@@ -13,7 +13,7 @@ Jaman sekarang banyak sekali perangkat-perangkat aneh yang menarik untuk dioprek
 
 Di mayoritas jaringan WiFi yang ada, alamat IP diberikan secara otomatis (DHCP), sehingga kita tidak tahu berapa alamat IP untuk perangkat yang ingin kita akses. Tambahan lagi, beberapa router wifi juga kurang bagus antarmukanya seperti pada gambar berikut
 
-![Foto](https://lh5.googleusercontent.com/-nZMqJy94dy8/U0OD8iwCKAI/AAAAAAAAFjg/sxw8F4pe2XI/w917-h429-no/bolt-dhcp-client-list.png)
+[![Foto](https://lh5.googleusercontent.com/-nZMqJy94dy8/U0OD8iwCKAI/AAAAAAAAFjg/sxw8F4pe2XI/w917-h429-no/bolt-dhcp-client-list.png)](https://lh5.googleusercontent.com/-nZMqJy94dy8/U0OD8iwCKAI/AAAAAAAAFjg/sxw8F4pe2XI/w917-h429-no/bolt-dhcp-client-list.png)
 
 Masa yang dicantumkan cuma MAC Address saja? Hostnamenya juga `Unknown` lagi -_-
 

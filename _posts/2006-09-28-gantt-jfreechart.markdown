@@ -16,7 +16,7 @@ Pada artikel ini, kita akan mencoba membuat Gantt Chart. Gantt chart adalah diag
 
 
 Berikut output yang kita inginkan
-![Gantt Chart ](/images/uploads/2006/09/gantt.png)
+[![Gantt Chart ](/images/uploads/2006/09/gantt.png)](/images/uploads/2006/09/gantt.png)
 
 Diagram di atas dihasilkan dari sumber data sebagai berikut
 

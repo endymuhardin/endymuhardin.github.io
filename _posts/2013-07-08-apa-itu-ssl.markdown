@@ -151,11 +151,11 @@ Untuk protokol email (SMTP, IMAP, POP3) mekanismenya sama. Cukup gantikan kata `
 
 Berikut contoh sertifikat SSL yang dipercayai browser, perhatikan gambar gemboknya.
 
-![Menu SSL Firefox ](/images/uploads/2013/07/ssl/04-tomcat-https-green.png)
+[![Menu SSL Firefox ](/images/uploads/2013/07/ssl/04-tomcat-https-green.png)](/images/uploads/2013/07/ssl/04-tomcat-https-green.png)
 
 Dan ini sertifikat SSL yang tidak dipercayai karena CA tidak terdaftar di browser
 
-![Menu SSL Firefox ](/images/uploads/2013/07/ssl/05-tomcat-https-red.png)
+[![Menu SSL Firefox ](/images/uploads/2013/07/ssl/05-tomcat-https-red.png)](/images/uploads/2013/07/ssl/05-tomcat-https-red.png)
 
 
 ### Daftar CA Terpercaya ###
@@ -163,24 +163,24 @@ Dan ini sertifikat SSL yang tidak dipercayai karena CA tidak terdaftar di browse
 Berbagai aplikasi yang menggunakan SSL menyimpan daftar CA yang dipercayai oleh aplikasi tersebut. Daftar CA ini langsung ditanam di aplikasi (hardcode) sehingga hanya bisa ditambah dan dikurangi oleh pembuat aplikasi. Contohnya, kita bisa melihat daftar CA yang dipercayai Firefox melalui menu `Preferences > Advanced > Encryption` pada layar di bawah
 
 
-![Menu SSL Firefox ](/images/uploads/2013/07/ssl/01-firefox-certificate.png)
+[![Menu SSL Firefox ](/images/uploads/2013/07/ssl/01-firefox-certificate.png)](/images/uploads/2013/07/ssl/01-firefox-certificate.png)
 
 Kita bisa lihat daftar CA dengan menekan tombol View Certificates
 
-![Daftar CA Firefox ](/images/uploads/2013/07/ssl/02-firefox-ca-list.png)
+[![Daftar CA Firefox ](/images/uploads/2013/07/ssl/02-firefox-ca-list.png)](/images/uploads/2013/07/ssl/02-firefox-ca-list.png)
 
 
 Demikian juga dengan browser Chrome yang ada di menu Settings, kemudian tekan Advanced.
 
-![Menu SSL Chrome ](/images/uploads/2013/07/ssl/03-chrome-certificate.png)
+[![Menu SSL Chrome ](/images/uploads/2013/07/ssl/03-chrome-certificate.png)](/images/uploads/2013/07/ssl/03-chrome-certificate.png)
 
 Daftar sertifikat bisa dilihat dengan menekan tombol `Manage Certificates`
 
-![Daftar CA Chrome ](/images/uploads/2013/07/ssl/04-chrome-ca-list.png)
+[![Daftar CA Chrome ](/images/uploads/2013/07/ssl/04-chrome-ca-list.png)](/images/uploads/2013/07/ssl/04-chrome-ca-list.png)
 
 Sistem operasi yang kita gunakan juga menyimpan daftar CA terpercaya. Untuk Ubuntu, lihat di folder `/etc/ssl/certs`
 
-![Daftar CA Ubuntu ](/images/uploads/2013/07/ssl/05-ubuntu-ca-list.png)
+[![Daftar CA Ubuntu ](/images/uploads/2013/07/ssl/05-ubuntu-ca-list.png)](/images/uploads/2013/07/ssl/05-ubuntu-ca-list.png)
 
 Bila terjadi sesuatu pada CA sehingga tidak bisa lagi dipercaya, maka para programmer Firefox, Chrome, Ubuntu, Microsoft, dan sebagainya akan menghapus CA bermasalah tersebut dari daftar CAnya, [seperti yang dilakukan Firefox](http://blog.mozilla.org/security/2011/09/02/diginotar-removal-follow-up/) dan [Ubuntu](http://www.danielveazey.com/linux/diginotar-certificate-fix-released-for-ubuntu/). Biasanya penghapusan ini akan diikuti dengan pengumuman security update di internet sehingga semua user bisa melakukan update terhadap aplikasi yang terinstal di komputernya masing-masing.
 

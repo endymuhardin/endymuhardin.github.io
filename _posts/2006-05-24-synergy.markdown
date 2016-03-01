@@ -9,7 +9,7 @@ categories:
 - aplikasi
 ---
 
-![Synergy Screenshot ](/images/uploads/2006/05/synergy.gif)
+[![Synergy Screenshot ](/images/uploads/2006/05/synergy.gif)](/images/uploads/2006/05/synergy.gif)
 
 Perhatikan gambar di atas. 
 
@@ -84,7 +84,7 @@ Baiklah, mari kita lihat saja screenshotnya:
 
 
 Begitu Synergy dijalankan, kita akan melihat tampilan berikut: 
-![Synergy Start Up ](/images/uploads/2006/08/sinergi1.JPG)
+[![Synergy Start Up ](/images/uploads/2006/08/sinergi1.JPG)](/images/uploads/2006/08/sinergi1.JPG)
 
 Dari sini, kita kemudian memilih setting Synergy sebagai server. Lalu klik configure, sehingga kita masuk ke halaman selanjutnya. 
 
@@ -96,16 +96,16 @@ Dari sini, kita kemudian memilih setting Synergy sebagai server. Lalu klik confi
 Screen, atau layar, memberitahukan Synergy berapa komputer yang terlibat dalam jaringan, dan nama masing-masing komputer. Sebagai ilustrasi, kita akan menggunakan dua komputer, kita beri nama **komputerkiri** dan **komputerkanan**. Dengan layout (seperti dari namanya) komputerkiri berada di sebelah kiri komputerkanan. 
 
 Berikut adalah tampilan untuk menambah screen: 
-![Konfigurasi Screen ](/images/uploads/2006/08/sinergi2.JPG)
+[![Konfigurasi Screen ](/images/uploads/2006/08/sinergi2.JPG)](/images/uploads/2006/08/sinergi2.JPG)
 
 Setelah dikonfigurasi, komputerkiri muncul di layar sebagai berikut: 
-![KomputerKiri sudah dikonfigurasi ](/images/uploads/2006/08/sinergi3.JPG)
+[![KomputerKiri sudah dikonfigurasi ](/images/uploads/2006/08/sinergi3.JPG)](/images/uploads/2006/08/sinergi3.JPG)
 
 Lanjutkan dengan konfigurasi komputerkanan. 
-![Konfigurasi KomputerKanan ](/images/uploads/2006/08/sinergi4.JPG)
+[![Konfigurasi KomputerKanan ](/images/uploads/2006/08/sinergi4.JPG)](/images/uploads/2006/08/sinergi4.JPG)
 
 Layar setelah konfigurasi terlihat seperti ini: 
-![Setelah konfigurasi dua screen ](/images/uploads/2006/08/sinergi5.JPG)
+[![Setelah konfigurasi dua screen ](/images/uploads/2006/08/sinergi5.JPG)](/images/uploads/2006/08/sinergi5.JPG)
 
 
 
@@ -119,13 +119,13 @@ Jawabannya adalah, karena Synergy belum tau seperti apa layoutnya. Bagaimana sus
 Baiklah, sekarang kita akan memberi tahu layoutnya kepada Synergy. Lihat panel Link di bawah? Nah di situlah letak konfigurasinya. 
 Isikan nilai yang diinginkan, yaitu di 0-100% sisi layar kiri dari **komputerkanan** adalah **komputerkiri**. Setelah diisi, klik tombol +. 
 Berikut adalah layar konfigurasinya adalah sebagai berikut: 
-![Link komputer kiri ke kanan ](/images/uploads/2006/08/sinergi7.JPG)
+[![Link komputer kiri ke kanan ](/images/uploads/2006/08/sinergi7.JPG)](/images/uploads/2006/08/sinergi7.JPG)
 
 Lakukan hal yang sama dengan komputer kanan. Ini supaya mouse yang sudah **menyeberang** ke komputer kiri bisa kembali lagi ke komputerkanan. Kalau cuma satu link, dia bisa pindah ke kiri, tapi tidak bisa kembali lagi. Jangan lupa membalik nilainya, isinya adalah: 
 0-100% sisi layar kanan dari **komputerkiri** adalah **komputerkanan**.
 
 Berikut layar konfigurasi setelah diisi: 
-![Layar konfigurasi akhir ](/images/uploads/2006/08/sinergi8.JPG)
+[![Layar konfigurasi akhir ](/images/uploads/2006/08/sinergi8.JPG)](/images/uploads/2006/08/sinergi8.JPG)
 
 Selanjutnya, jalankan servernya, dan coba connect dari client. 
 

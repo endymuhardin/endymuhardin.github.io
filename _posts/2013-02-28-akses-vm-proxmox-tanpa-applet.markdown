@@ -59,7 +59,7 @@ nc -l -p 10166 -c "qm vncproxy 166 abc321"
 
 Setelah itu, kita bisa mengakses VM tersebut menggunakan VNC client seperti pada screenshot.
 
-![Konfigurasi VNC Client ](/images/uploads/2013/02/28/vnc-kvm.png)
+[![Konfigurasi VNC Client ](/images/uploads/2013/02/28/vnc-kvm.png)](/images/uploads/2013/02/28/vnc-kvm.png)
 
 Kosongkan saja username dan password, nanti kita akan dimintai password oleh aplikasinya.
 

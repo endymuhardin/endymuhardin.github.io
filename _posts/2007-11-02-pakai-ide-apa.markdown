@@ -21,7 +21,7 @@ Dari keseluruhan hasil karyanya, perkiraan saya paling tidak 75% dibuat dengan e
 
 Editor Midnight Commander, kalau ingin tau, terlihat seperti ini: 
 
-![Tampilan Editor MC ](/images/uploads/2007/11/mcedit.png)
+[![Tampilan Editor MC ](/images/uploads/2007/11/mcedit.png)](/images/uploads/2007/11/mcedit.png)
 
 Tidak ada autocomplete, tidak bisa mouse over terus keluar JavaDoc, tidak bisa klik kanan - Deploy in Tomcat.
 

@@ -42,7 +42,7 @@ Selanjutnya, mari kita langsung saja menggunakan Redmine.
 
 Setelah Redmine terinstal, kita dapat langsung membuka browser dan melihat halaman depan Redmine. Segera klik tombol Login untuk masuk ke dalam sistem.
 
-![Login Screen ](/images/uploads/2007/11/redmine-login.png)
+[![Login Screen ](/images/uploads/2007/11/redmine-login.png)](/images/uploads/2007/11/redmine-login.png)
 
 Default username dan passwordnya adalah admin/admin. Segera masuk ke halaman My Account untuk mengganti password administrator.
 
@@ -53,11 +53,11 @@ Default username dan passwordnya adalah admin/admin. Segera masuk ke halaman My 
 
 Buat user baru melalui menu Administration > Users > New. 
 
-![Menu New User ](/images/uploads/2007/11/new-user.png)
+[![Menu New User ](/images/uploads/2007/11/new-user.png)](/images/uploads/2007/11/new-user.png)
 
 Isi informasi yang sesuai di halaman form user baru. 
 
-![Form User ](/images/uploads/2007/11/new-user-form.png)
+[![Form User ](/images/uploads/2007/11/new-user-form.png)](/images/uploads/2007/11/new-user-form.png)
 
 Jangan lupa untuk membuat beberapa user, agar bisa digunakan di 
 
@@ -69,17 +69,17 @@ Jangan lupa untuk membuat beberapa user, agar bisa digunakan di
 Selanjutnya, kita mendefinisikan project. Buat project baru melalui menu Administration > Projects > New. 
 Isi informasi tentang project. 
 
-![Project Summary ](/images/uploads/2007/11/new-project-summary.png)
+[![Project Summary ](/images/uploads/2007/11/new-project-summary.png)](/images/uploads/2007/11/new-project-summary.png)
 
 Isikan juga informasi tentang version control bila ada. 
 
 Berikutnya, tentukan anggota project. Tentu saja saja anggota ini sudah harus didaftarkan dulu seperti pada langkah sebelumnya.
 
-![Assign Member ](/images/uploads/2007/11/project-member.png)
+[![Assign Member ](/images/uploads/2007/11/project-member.png)](/images/uploads/2007/11/project-member.png)
 
 Setelah itu, kita tentukan Version dalam proyek. Version ini bisa iterasi, atau fase, tergantung dari siklus pengembangan yang kita gunakan dalam proyek. Version ini nantinya digunakan sebagai target penyelesaian suatu issue.
 
-![Project Version ](/images/uploads/2007/11/version.png)
+[![Project Version ](/images/uploads/2007/11/version.png)](/images/uploads/2007/11/version.png)
 
 Di halaman selanjutnya, kita akan menentukan kategori untuk issue. Semua tugas di dalam Redmine disebut Issue. Ada tiga jenis issue: 
 
@@ -137,19 +137,19 @@ Saya menggunakan kategori berikut untuk issue:
 
 Persiapan project selesai. Sekarang kita bisa langsung membuat daftar pekerjaan. Melalui menu, klik Nama Project > New Issue > Feature. 
 
-![New Feature ](/images/uploads/2007/11/new-feature.png)
+[![New Feature ](/images/uploads/2007/11/new-feature.png)](/images/uploads/2007/11/new-feature.png)
 
 Kita bisa daftarkan tugas yang harus dilakukan dengan mengisi informasi pada formnya. Setelah diisi, tekan Save dan lihat hasilnya pada tampilan daftar issue.
 
-![List of Issue ](/images/uploads/2007/11/list-issue.png)
+[![List of Issue ](/images/uploads/2007/11/list-issue.png)](/images/uploads/2007/11/list-issue.png)
 
 Issue yang sudah didaftarkan dapat dilacak pengerjaannya. Dari tampilan daftar issue, klik nama issue sehingga muncul tampilan detailnya. 
 
-![Detail Issue ](/images/uploads/2007/11/detail-issue.png)
+[![Detail Issue ](/images/uploads/2007/11/detail-issue.png)](/images/uploads/2007/11/detail-issue.png)
 
 Kita bisa klik Log Time untuk memasukkan waktu yang sudah kita gunakan untuk menyelesaikan issue tersebut.
 
-![Log Time ](/images/uploads/2007/11/log-time.png)
+[![Log Time ](/images/uploads/2007/11/log-time.png)](/images/uploads/2007/11/log-time.png)
 
 Isikan jumlah jam yang digunakan, misalnya 2 jam, lalu klik Save. Selanjutnya kita akan diarahkan ke halaman Spent Time. Halaman ini menunjukkan jumlah waktu yang sudah digunakan untuk berbagai task dalam project. Kita bisa melihat jumlah waktu untuk satu task saja ataupun keseluruhan project. 
 
@@ -159,35 +159,35 @@ Sekarang kita sudah memiliki beberapa issue yang terdaftar. Data tersebut ditamp
 #### Calendar
 
 
-![Calendar ](/images/uploads/2007/11/calendar.png)
+[![Calendar ](/images/uploads/2007/11/calendar.png)](/images/uploads/2007/11/calendar.png)
 
 
 
 #### Gantt Chart
 
 
-![Gantt Chart ](/images/uploads/2007/11/gantt.png)
+[![Gantt Chart ](/images/uploads/2007/11/gantt.png)](/images/uploads/2007/11/gantt.png)
 
 
 
 #### Report
 
 
-![Report ](/images/uploads/2007/11/report.png)
+[![Report ](/images/uploads/2007/11/report.png)](/images/uploads/2007/11/report.png)
 
 
 
 #### Activity
 
 
-![Activity ](/images/uploads/2007/11/activity.png)
+[![Activity ](/images/uploads/2007/11/activity.png)](/images/uploads/2007/11/activity.png)
 
 
 
 #### Roadmap
 
 
-![Roadmap ](/images/uploads/2007/11/roadmap.png)
+[![Roadmap ](/images/uploads/2007/11/roadmap.png)](/images/uploads/2007/11/roadmap.png)
 
 
 Untuk tampilan Activity dan Roadmap mirip sekali dengan Trac. Activity di Trac disebut dengan Timeline. Entah disengaja atau tidak, dari tampilan sampai cara kerjanya tidak dapat dibedakan. Silahkan lihat sendiri. 
@@ -197,7 +197,7 @@ Untuk tampilan Activity dan Roadmap mirip sekali dengan Trac. Activity di Trac d
 #### Timeline Trac
 
 
-![Timeline ala Trac ](/images/uploads/2007/11/timeline-trac.png)
+[![Timeline ala Trac ](/images/uploads/2007/11/timeline-trac.png)](/images/uploads/2007/11/timeline-trac.png)
 
 
 
@@ -205,18 +205,18 @@ Untuk tampilan Activity dan Roadmap mirip sekali dengan Trac. Activity di Trac d
 #### Roadmap Trac
 
 
-![Roadmap ala Trac ](/images/uploads/2007/11/roadmap-trac.png)
+[![Roadmap ala Trac ](/images/uploads/2007/11/roadmap-trac.png)](/images/uploads/2007/11/roadmap-trac.png)
 
 
 Kita juga bisa melihat isi repository Subversion kita. 
-![Repo Browser ](/images/uploads/2007/11/repo-browser.png)
+[![Repo Browser ](/images/uploads/2007/11/repo-browser.png)](/images/uploads/2007/11/repo-browser.png)
 
 Seperti repo browser lainnya, kita bisa melihat perbandingan antara dua versi file yang berbeda. 
-![Inline Diff ](/images/uploads/2007/11/diff-inline.png)
+[![Inline Diff ](/images/uploads/2007/11/diff-inline.png)](/images/uploads/2007/11/diff-inline.png)
 
 Perbedaan ini bisa ditampilkan secara inline seperti gambar di atas, atau secara berdampingan seperti ini. 
 
-![Side by Side Diff ](/images/uploads/2007/11/diff-byside.png)
+[![Side by Side Diff ](/images/uploads/2007/11/diff-byside.png)](/images/uploads/2007/11/diff-byside.png)
 
 Demikianlah sekilas tentang aplikasi Redmine. Masih banyak fitur Redmine yang belum dieksplorasi, misalnya wiki, document management, dan file management. Mengingat umurnya yang masih muda, besar harapan Redmine akan semakin canggih di masa yang akan datang. 
 

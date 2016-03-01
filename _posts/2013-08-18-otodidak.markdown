@@ -9,7 +9,7 @@ categories:
 
 Sebagai programmer, ada banyak tokoh yang bisa kita teladani, seperti Linus Torvalds, Bill Gates, Richard Stallman, Eric Raymond, Brian Kernighan, Dennis Ritchie, Erich Gamma, dan banyak lainnya. Tetapi di dunia modern seperti sekarang ini, dimana teknologi baru bermunculan lebih cepat dari kemampuan kita untuk bisa menggunakannya (apalagi bisa mempelajarinya), ada satu tokoh yang wajib kita teladani, bukan berasal dari dunia IT. Siapa dia?
 
-![Hatake Kakashi ](/images/uploads/2013/08/otodidak/hatake-kakashi.jpg)
+[![Hatake Kakashi ](/images/uploads/2013/08/otodidak/hatake-kakashi.jpg)](/images/uploads/2013/08/otodidak/hatake-kakashi.jpg)
 
 Gambar diambil dari [Fanpop](http://www.fanpop.com/clubs/kakashi/images/18899114/title/kakashi-hatake-screencap)
 
@@ -28,7 +28,7 @@ Ini disebabkan karena pengetahuan teknis dalam pemrograman bisa kadaluarsa dalam
 
 Saya sendiri belajar banyak hal secara otodidak, diantaranya adalah pemrograman, fotografi, membaca Al Qur'an, bahkan kerajinan membuat gelang ;)
 
-![Camera Strap buatan sendiri ](/images/uploads/2013/08/otodidak/camera-strap.jpg)
+[![Camera Strap buatan sendiri ](/images/uploads/2013/08/otodidak/camera-strap.jpg)](/images/uploads/2013/08/otodidak/camera-strap.jpg)
 
 Saking sering mempelajari segala sesuatu secara otodidak, saya seringkali malas diajari orang lain. Belum tentu cara mengajar dan cara berpikirnya sesuai dengan kebutuhan saya. Orang lain biasanya tidak tahu _modal awal_ kita, sehingga bisa jadi terlalu banyak memberikan materi pemula, atau sebaliknya mengasumsikan saya sudah tau banyak hal dan langsung saja ke topik advanced.
 

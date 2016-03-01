@@ -165,7 +165,7 @@ File Pencil dari UI Mockup di artikel ini bisa diunduh [di sini](../../downloads
 
 Berikut adalah tampilan screen entri anggota.
 
-![Foto](https://lh4.googleusercontent.com/-1hcFb859pOI/U1acWK5Y8YI/AAAAAAAAFqw/KxhM_jXmybE/w771-h474-no/entri_anggota.png)
+[![Foto](https://lh4.googleusercontent.com/-1hcFb859pOI/U1acWK5Y8YI/AAAAAAAAFqw/KxhM_jXmybE/w771-h474-no/entri_anggota.png)](https://lh4.googleusercontent.com/-1hcFb859pOI/U1acWK5Y8YI/AAAAAAAAFqw/KxhM_jXmybE/w771-h474-no/entri_anggota.png)
 
 Ada beberapa hal yang harus kita perhatikan di sini, yaitu:
 
@@ -243,7 +243,7 @@ Seperti kita lihat pada tabel di atas, ketiga record berelasi ke record `p001` d
 
 Untuk memasukkan data header dan detail, berikut adalah screen entri transaksinya:
 
-![Foto](https://lh5.googleusercontent.com/-X3QeTFVgI04/U1adOQ65DlI/AAAAAAAAFrw/whTHBn110mw/w774-h588-no/entri_peminjaman.png)
+[![Foto](https://lh5.googleusercontent.com/-X3QeTFVgI04/U1adOQ65DlI/AAAAAAAAFrw/whTHBn110mw/w774-h588-no/entri_peminjaman.png)](https://lh5.googleusercontent.com/-X3QeTFVgI04/U1adOQ65DlI/AAAAAAAAFrw/whTHBn110mw/w774-h588-no/entri_peminjaman.png)
 
 Berbeda dengan form input sederhana, form entri header-detail memiliki tabel di dalamnya. Tabel inilah yang memuat data detail, sedangkan form inputnya menampung data header.
 
@@ -251,26 +251,26 @@ Karena adanya input ke dalam tabel ini, maka kita membutuhkan screen tambahan, y
 
 Berikut tampilan dialog untuk memilih buku yang akan dipinjam. Karena yang dipinjam bisa banyak buku, maka kita sediakan checkbox agar user tidak perlu membuka dialog berkali-kali.
 
-![Foto](https://lh3.googleusercontent.com/-lPHMx7VATXM/U1acVTFCtYI/AAAAAAAAFqg/xQYotfMd4Ns/w804-h420-no/dialog_tambah_buku.png)
+[![Foto](https://lh3.googleusercontent.com/-lPHMx7VATXM/U1acVTFCtYI/AAAAAAAAFqg/xQYotfMd4Ns/w804-h420-no/dialog_tambah_buku.png)](https://lh3.googleusercontent.com/-lPHMx7VATXM/U1acVTFCtYI/AAAAAAAAFqg/xQYotfMd4Ns/w804-h420-no/dialog_tambah_buku.png)
 
 Penggunaan dialog tidak terbatas hanya untuk entri detail. Dialog juga sebaiknya kita gunakan untuk data yang bersifat pilihan, kalau jumlah pilihannya lebih dari sepuluh record. Sebagai contoh, pada saat memilih anggota yang akan meminjam buku, tidak mungkin kita gunakan dropdown combo. Kalau anggotanya ada ribuan, usernya pasti kesulitan memilihnya. Apalagi dalam dropdown combo, informasi yang bisa ditampilkan terbatas. Paling hanya nama saja. Akan lebih mudah kalau kita sediakan dialog seperti ini
 
-![Foto](https://lh5.googleusercontent.com/-ZgeS9pGZH-Y/U1acVOVr9HI/AAAAAAAAFqc/5hmU6uXWMAY/w768-h414-no/dialog_cari_anggota.png)
+[![Foto](https://lh5.googleusercontent.com/-ZgeS9pGZH-Y/U1acVOVr9HI/AAAAAAAAFqc/5hmU6uXWMAY/w768-h414-no/dialog_cari_anggota.png)](https://lh5.googleusercontent.com/-ZgeS9pGZH-Y/U1acVOVr9HI/AAAAAAAAFqc/5hmU6uXWMAY/w768-h414-no/dialog_cari_anggota.png)
 
 
 Pola header-detail ini berlaku untuk sebagian besar fitur transaksi. Mari kita ambil contoh lain, transaksi belanja di minimarket misalnya. Screennya seperti ini
 
-![Foto](https://lh3.googleusercontent.com/LQsOccTBJ6_nHzLHirLdybAv8CMZ_gl6lw3WGIEfpX8=w820-h623-no)
+[![Foto](https://lh3.googleusercontent.com/LQsOccTBJ6_nHzLHirLdybAv8CMZ_gl6lw3WGIEfpX8=w820-h623-no)](https://lh3.googleusercontent.com/LQsOccTBJ6_nHzLHirLdybAv8CMZ_gl6lw3WGIEfpX8=w820-h623-no)
 
 Pada transaksi minimarket, ada tambahan data yaitu `quantity` untuk mengakomodasi orang beli permen 5 buah. Dialog tambah detailnya juga harus memiliki input field untuk `quantity`. Dan karena jumlah produknya ribuan, kita juga harus sediakan lookup dialog sekali lagi untuk memilih produk. 
 
 Dialog tambah detail seperti ini bentuknya
 
-![Foto](https://lh5.googleusercontent.com/-fBQUV0F944w/U1acX5wjQ2I/AAAAAAAAFrM/5ZatJYsudL8/w666-h285-no/tambah_detail_minimarket.png)
+[![Foto](https://lh5.googleusercontent.com/-fBQUV0F944w/U1acX5wjQ2I/AAAAAAAAFrM/5ZatJYsudL8/w666-h285-no/tambah_detail_minimarket.png)](https://lh5.googleusercontent.com/-fBQUV0F944w/U1acX5wjQ2I/AAAAAAAAFrM/5ZatJYsudL8/w666-h285-no/tambah_detail_minimarket.png)
 
 Di situ ada tombol `Cari` yang bila diklik akan menampilkan dialog pilih produk seperti ini
 
-![Foto](https://lh6.googleusercontent.com/-lmToPoVQHZ0/U1acWmCjTsI/AAAAAAAAFq4/3mFYG1Cpz1o/w762-h402-no/dialog_cari_produk.png)
+[![Foto](https://lh6.googleusercontent.com/-lmToPoVQHZ0/U1acWmCjTsI/AAAAAAAAFq4/3mFYG1Cpz1o/w762-h402-no/dialog_cari_produk.png)](https://lh6.googleusercontent.com/-lmToPoVQHZ0/U1acWmCjTsI/AAAAAAAAFq4/3mFYG1Cpz1o/w762-h402-no/dialog_cari_produk.png)
 
 Jadi, untuk mengentri satu detail, user akan membuka dialog dua tingkat: dialog entri quantity dan dialog pilih produk. 
 
@@ -285,7 +285,7 @@ pd003 | p001      | b100      |  12
 
 Bisa juga detailnya lebih dari satu, seperti screen transaksi servis motor/mobil. Ada komponen sparepart dan ada komponen jasa. Begini bentuknya
 
-![Foto](https://lh5.googleusercontent.com/-AFCYrZEZlWE/U1acY31B9wI/AAAAAAAAFrY/W3O2-B4mtyY/w598-h623-no/transaksi_servis_motor.png)
+[![Foto](https://lh5.googleusercontent.com/-AFCYrZEZlWE/U1acY31B9wI/AAAAAAAAFrY/W3O2-B4mtyY/w598-h623-no/transaksi_servis_motor.png)](https://lh5.googleusercontent.com/-AFCYrZEZlWE/U1acY31B9wI/AAAAAAAAFrY/W3O2-B4mtyY/w598-h623-no/transaksi_servis_motor.png)
 
 Skema databasenya berarti terdiri dari 3 tabel: `servis_header`, `servis_detail_sparepart`, dan `servis_detail_jasa`.
 
@@ -295,7 +295,7 @@ Selanjutnya, kita buat screen untuk rekap/laporan.
 
 Di screen laporan, inputan yang paling sering dipakai adalah periode. Inputannya berupa tanggal mulai dan tanggal sampai. Contohnya, kita ingin menampilkan histori peminjaman buku salah satu anggota untuk 3 bulan terakhir, screennya seperti ini
 
-![Foto](https://lh5.googleusercontent.com/-UPULY4jYmVo/U1acXrfIiJI/AAAAAAAAFrE/IOenvvN8AzM/w867-h486-no/rekap_peminjaman.png)
+[![Foto](https://lh5.googleusercontent.com/-UPULY4jYmVo/U1acXrfIiJI/AAAAAAAAFrE/IOenvvN8AzM/w867-h486-no/rekap_peminjaman.png)](https://lh5.googleusercontent.com/-UPULY4jYmVo/U1acXrfIiJI/AAAAAAAAFrE/IOenvvN8AzM/w867-h486-no/rekap_peminjaman.png)
 
 Di situ kita lihat juga tombol `Cari`. Itu berfungsi untuk menampilkan dialog pencarian anggota, sama seperti pada screen transaksi peminjaman di atas.
 

@@ -250,23 +250,23 @@ Setelah semua selesai dikonfigurasi, Nginx bisa dites dengan mengakses `https://
 
 Bila kita menggunakan sertifikat dari CA resmi, walaupun gratis kita akan mendapatkan warna hijau di address bar
 
-![Tomcat HTTPS Green ](/images/uploads/2013/07/ssl/04-tomcat-https-green.png)
+[![Tomcat HTTPS Green ](/images/uploads/2013/07/ssl/04-tomcat-https-green.png)](/images/uploads/2013/07/ssl/04-tomcat-https-green.png)
 
 Namun bila kita menggunakan CA buatan sendiri (self-signed), maka pada waktu pertama diakses, kita akan diberikan peringatan.
 
-![Peringatan SSL Self Signed ](/images/uploads/2013/07/ssl/01-ssl-warning.png)
+[![Peringatan SSL Self Signed ](/images/uploads/2013/07/ssl/01-ssl-warning.png)](/images/uploads/2013/07/ssl/01-ssl-warning.png)
 
 Agar bisa tetap diakses, kita bisa klik Add Exception. Kita akan diperlihatkan informasi tentang sertifikat SSL
 
-![Add Exception ](/images/uploads/2013/07/ssl/02-add-exception.png)
+[![Add Exception ](/images/uploads/2013/07/ssl/02-add-exception.png)](/images/uploads/2013/07/ssl/02-add-exception.png)
 
 Kita bisa melihat detail informasi dari sertifikat tersebut, siapa pemilik server dan siapa yang menandatangani sertifikatnya
 
-![Detail Informasi Sertifikat ](/images/uploads/2013/07/ssl/03-certificate-info.png)
+[![Detail Informasi Sertifikat ](/images/uploads/2013/07/ssl/03-certificate-info.png)](/images/uploads/2013/07/ssl/03-certificate-info.png)
 
 Bila kita klik Confirm Security Exception, barulah halaman web kita ditampilkan. Tapi masih ada warna merah di address bar.
 
-![Tomcat HTTPS Red  ](/images/uploads/2013/07/ssl/05-tomcat-https-red.png)
+[![Tomcat HTTPS Red  ](/images/uploads/2013/07/ssl/05-tomcat-https-red.png)](/images/uploads/2013/07/ssl/05-tomcat-https-red.png)
 
 
 ## Error yang umum terjadi ##

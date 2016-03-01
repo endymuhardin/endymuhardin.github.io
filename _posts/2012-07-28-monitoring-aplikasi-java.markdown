@@ -231,7 +231,7 @@ Setelah selesai, kita bisa jalankan aplikasi seperti biasa. Untuk mengakses hasi
 
 Berikut adalah screenshotnya.
 
-![JavaMelody-Charts](/images/uploads/2012/07/JavaMelody-Charts.png)
+[![JavaMelody-Charts](/images/uploads/2012/07/JavaMelody-Charts.png)](/images/uploads/2012/07/JavaMelody-Charts.png)
 
 
 
@@ -290,17 +290,17 @@ Setelah aplikasi berjalan, kita dapat melihatnya menggunakan JConsole.
 
 Jalankan JConsole, dan pilih proses yang akan dimonitor.
 
-![jconsole-select-pid](/images/uploads/2012/07/jconsole-select-pid.png)
+[![jconsole-select-pid](/images/uploads/2012/07/jconsole-select-pid.png)](/images/uploads/2012/07/jconsole-select-pid.png)
 
 Tampilkan MBean Hibernate Statistics
 
-![jconsole-hibernate-statistics](/images/uploads/2012/07/jconsole-hibernate-statistics.png)
+[![jconsole-hibernate-statistics](/images/uploads/2012/07/jconsole-hibernate-statistics.png)](/images/uploads/2012/07/jconsole-hibernate-statistics.png)
 
 Kita bisa lihat bahwa statistik Hibernate sudah dapat diakses. Informasi ini juga bisa ditampilkan di aplikasi monitoring seperti OpenNMS, Hyperic, dan aplikasi lain yang support JMX. 
 
 Selain itu, kalau kita sudah mengaktifkan JavaMelody seperti dijelaskan di atas, MBean ini juga bisa ditampilkan di url yang sama seperti screenshot di bawah 
 
-![javamelody-mbeans](/images/uploads/2012/07/javamelody-mbeans.png)
+[![javamelody-mbeans](/images/uploads/2012/07/javamelody-mbeans.png)](/images/uploads/2012/07/javamelody-mbeans.png)
 
 
 

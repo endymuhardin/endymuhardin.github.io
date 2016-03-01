@@ -61,14 +61,14 @@ Kemudian jalankan installernya.
 
 Tampilan instalasi Luntbuild akan segera tampil. Klik saja Next untuk melewati Release Note dan License Agreement, 
 sampai pada pertanyaan lokasi instalasi. 
-![Lokasi Instalasi Luntbuild ](/images/uploads/2007/08/luntbuild-install-dir.png)
+[![Lokasi Instalasi Luntbuild ](/images/uploads/2007/08/luntbuild-install-dir.png)](/images/uploads/2007/08/luntbuild-install-dir.png)
 
 Di komputer saya, saya pilih lokasi `/opt/luntbuild-1.4.2` sebagai lokasi instalasi. 
 Klik Next, dan lanjutkan ke konfigurasi database. 
-![Instalasi Database ](/images/uploads/2007/08/luntbuild-install-db.png)
+[![Instalasi Database ](/images/uploads/2007/08/luntbuild-install-db.png)](/images/uploads/2007/08/luntbuild-install-db.png)
 
 Di sini saya tidak mengubah setting apa-apa. Langsung saja lanjutkan sampai menemui pertanyaan username dan password administrator. 
-![Setup Administrator Password ](/images/uploads/2007/08/luntbuild-install-password.png)
+[![Setup Administrator Password ](/images/uploads/2007/08/luntbuild-install-password.png)](/images/uploads/2007/08/luntbuild-install-password.png)
 
 Saya masukkan `luntbuild123` sebagai passwordnya.
 Kita juga akan ditanyai lokasi instalasi Tomcat agar Luntbuild bisa segera menginstal aplikasi webnya di sana.
@@ -78,12 +78,12 @@ dan mengkopi semua isi `[LUNTBUILD_INSTALL]/web` ke dalamnya.
 
 Setelah semua layar berhasil dilalui, instalasi selesai. Kita bisa langsung jalankan Tomcat, dan browse ke http://localhost:8080/luntbuild. 
 Jika instalasi berjalan benar, maka kita akan disambut oleh Luntbuild
-![Halaman Depan Luntbuild ](/images/uploads/2007/08/luntbuild-frontpage.png)
+[![Halaman Depan Luntbuild ](/images/uploads/2007/08/luntbuild-frontpage.png)](/images/uploads/2007/08/luntbuild-frontpage.png)
 
 Secara default, kita login secara anonymous. Untuk bisa mengkonfigurasi project, kita harus logout dulu. 
 Kita akan segera melihat halaman login.
 
-![Login Page ](/images/uploads/2007/08/luntbuild-login.png)
+[![Login Page ](/images/uploads/2007/08/luntbuild-login.png)](/images/uploads/2007/08/luntbuild-login.png)
 
 Masukkan username luntbuild dan password luntbuild123, sesuai yang kita isikan pada waktu instalasi.
 Kita akan melihat daftar builder yang masih kosong.
@@ -92,19 +92,19 @@ Segera klik tab Project, dan klik tombol New Project di kanan atas.
 User interface Luntbuild kurang intuitif, sehingga saya harus berusaha keras mencari tombol tersebut. 
 Halaman New Project segera tampil. 
 
-![Create New Project ](/images/uploads/2007/08/luntbuild-new-project.png)
+[![Create New Project ](/images/uploads/2007/08/luntbuild-new-project.png)](/images/uploads/2007/08/luntbuild-new-project.png)
 
 Masukkan nama project dan berikan keterangan, lalu Save. 
 
 Selanjutnya, kita klik tab VCS. 
 
-![No VCS Yet ](/images/uploads/2007/08/luntbuild-no-vc.png)
+[![No VCS Yet ](/images/uploads/2007/08/luntbuild-no-vc.png)](/images/uploads/2007/08/luntbuild-no-vc.png)
 
 Di tab ini kita melakukan konfigurasi untuk version control. 
 Luntbuild mendukung berbagai merek version control. 
 Pilih Subversion pada drop down yang tersedia.
 
-![Add New Subversion Repo ](/images/uploads/2007/08/luntbuild-vcs-svn.png)
+[![Add New Subversion Repo ](/images/uploads/2007/08/luntbuild-vcs-svn.png)](/images/uploads/2007/08/luntbuild-vcs-svn.png)
 
 Untuk konfigurasi di komputer saya, isinya adalah sebagai berikut: 
 
@@ -140,11 +140,11 @@ Oleh karena itu, kita klik New Module, lalu langsung saja save tanpa mengisi apa
 
 Hasil akhir dari tab VCS kita akan nampak seperti ini. 
 
-![VCS Subversion ](/images/uploads/2007/08/luntbuild-vcs-svn-summary.png)
+[![VCS Subversion ](/images/uploads/2007/08/luntbuild-vcs-svn-summary.png)](/images/uploads/2007/08/luntbuild-vcs-svn-summary.png)
 
 Berikutnya, kita masuk ke tab berikutnya untuk konfigurasi Builder. 
 
-![No Builder Yet ](/images/uploads/2007/08/luntbuild-no-builders.png)
+[![No Builder Yet ](/images/uploads/2007/08/luntbuild-no-builders.png)](/images/uploads/2007/08/luntbuild-no-builders.png)
 
 Satu project bisa memiliki banyak builder. 
 Dengan builder, kita bisa mengatur sejauh mana kita ingin melakukan build. 
@@ -166,7 +166,7 @@ Jenis build ini biasanya dikonfigurasi untuk menghasilkan tag di version control
 
 Klik tombol New Builder untuk mengkonfigurasi build. Karena kita menggunakan Ant, pilih Ant pada dropdown yang tersedia.
 
-![Ant Builder ](/images/uploads/2007/08/luntbuild-ant-builder.png)
+[![Ant Builder ](/images/uploads/2007/08/luntbuild-ant-builder.png)](/images/uploads/2007/08/luntbuild-ant-builder.png)
 
 Pada contoh ini, kita akan mengkonfigurasi Build Jar. 
 Sekali sudah paham konsepnya, tidak sulit untuk mengkonfigurasi jenis build yang lain.
@@ -243,25 +243,25 @@ Demikian sebagian nilai yang harus diisikan. Untuk field yang tidak saya jelaska
 Setelah semua konfigurasi selesai, kembali ke halaman depan untuk menyaksikan hasil pekerjaan kita. 
 Di sana akan terpampang semua build yang sudah dikonfigurasi. 
 
-![Daftar build ](/images/uploads/2007/08/luntbuild-builds.png)
+[![Daftar build ](/images/uploads/2007/08/luntbuild-builds.png)](/images/uploads/2007/08/luntbuild-builds.png)
 
 Kita bisa menjalankan build tersebut secara manual tanpa harus 
 menunggu jatuh temponya. Biasanya kita lakukan build manual untuk mengetes konfigurasi. 
 Build yang sedang berjalan ditandai dengan ikon roda gigi. 
 
-![Building ](/images/uploads/2007/08/luntbuild-building.png)
+[![Building ](/images/uploads/2007/08/luntbuild-building.png)](/images/uploads/2007/08/luntbuild-building.png)
 
 Build yang gagal akan ditandai dengan warna merah, sedangkan build yang berhasil diwarnai hijau. 
 
-![Build Successful ](/images/uploads/2007/08/luntbuild-build-success.png)
+[![Build Successful ](/images/uploads/2007/08/luntbuild-build-success.png)](/images/uploads/2007/08/luntbuild-build-success.png)
 
 Bila build gagal, tentunya kita ingin melihat apa yang terjadi. Klik build info untuk menampilkan informasinya. 
 
-![Build Info ](/images/uploads/2007/08/luntbuild-build-info.png)
+[![Build Info ](/images/uploads/2007/08/luntbuild-build-info.png)](/images/uploads/2007/08/luntbuild-build-info.png)
 
 Kurang detail? Buka saja lognya. Di sini akan terlihat di langkah yang mana build tersebut berhenti. 
 
-![Build Log ](/images/uploads/2007/08/luntbuild-build-log.png)
+[![Build Log ](/images/uploads/2007/08/luntbuild-build-log.png)](/images/uploads/2007/08/luntbuild-build-log.png)
 
 Demikianlah cara penggunaan Luntbuild. 
 Mudah-mudahan dengan menggunakan perangkat ini proyek software Anda bisa dikelola dengan baik dan teratur. 

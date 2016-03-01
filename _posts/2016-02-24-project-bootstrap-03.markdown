@@ -28,31 +28,31 @@ Untuk bisa mendeploy ke Openshift, terlebih dulu kita harus mendaftar. Cara pend
 
 Setelah login, kita akan melihat daftar aplikasi yang kita miliki. 
 
-![Daftar Aplikasi](https://lh3.googleusercontent.com/1aqd3dM7DQXOCgBEqPGnsrzk5UluU2kwtU5CGBpC6xxaK1Nt0Mjw2OLujqfZQXjuE8j4KuN3PZBQ=w1216-h457-no)
+[![Daftar Aplikasi](https://lh3.googleusercontent.com/1aqd3dM7DQXOCgBEqPGnsrzk5UluU2kwtU5CGBpC6xxaK1Nt0Mjw2OLujqfZQXjuE8j4KuN3PZBQ=w1216-h457-no)](https://lh3.googleusercontent.com/1aqd3dM7DQXOCgBEqPGnsrzk5UluU2kwtU5CGBpC6xxaK1Nt0Mjw2OLujqfZQXjuE8j4KuN3PZBQ=w1216-h457-no)
 
 Ada tombol `Add Application` untuk menambah aplikasi baru. Klik tombol tersebut. Kita akan mendapati daftar cartridge (template aplikasi) yang disediakan Openshift untuk mendeploy aplikasi kita. Aplikasi web java biasanya menggunakan cartridge Tomcat, JBoss, atau application server lainnya. Akan tetapi, karena Spring Boot sudah menyertakan (embedded) Tomcat, kita tidak perlu lagi menggunakan cartridge yang sudah ada. Gunakan cartridge `DIY` (Do It Yourself), karena kita akan mengkonfigurasi aplikasi kita secara manual.
 
-![Pilih DIY](https://lh3.googleusercontent.com/6c0LMSjOeahK8ekWm3s8FEFezIeBCFxORwx9bQEfYL5pKbYrHlCZMQ1aITY12ltqDdscFtEBZGkz=w537-h315-no)
+[![Pilih DIY](https://lh3.googleusercontent.com/6c0LMSjOeahK8ekWm3s8FEFezIeBCFxORwx9bQEfYL5pKbYrHlCZMQ1aITY12ltqDdscFtEBZGkz=w537-h315-no)](https://lh3.googleusercontent.com/6c0LMSjOeahK8ekWm3s8FEFezIeBCFxORwx9bQEfYL5pKbYrHlCZMQ1aITY12ltqDdscFtEBZGkz=w537-h315-no)
 
 Selanjutnya, kita akan melihat form pembuatan aplikasi. Cukup isikan saja nama aplikasi yang akan dibuat, misalnya `belajar`.
 
-![Nama Aplikasi](https://lh3.googleusercontent.com/uDCwC_KCzpBD8YKeuqbek4rKcBAyZ2Ou2izqfsZmPk5QuZveMEZdct8bmm0_OETvJ8p_grO3FWbv=w533-h315-no)
+[![Nama Aplikasi](https://lh3.googleusercontent.com/uDCwC_KCzpBD8YKeuqbek4rKcBAyZ2Ou2izqfsZmPk5QuZveMEZdct8bmm0_OETvJ8p_grO3FWbv=w533-h315-no)](https://lh3.googleusercontent.com/uDCwC_KCzpBD8YKeuqbek4rKcBAyZ2Ou2izqfsZmPk5QuZveMEZdct8bmm0_OETvJ8p_grO3FWbv=w533-h315-no)
 
 Klik OK di bagian paling bawah, dan aplikasi kita akan sukses dibuat.
 
-![Sukses](https://lh3.googleusercontent.com/f1kOBThw_3YwCBH8ainqOk_tS-MUwKXM1gRBw9vJ3RptffOvqp4b1iNb4NaEKV9KZHEVa6RfESpj=w558-h315-no)
+[![Sukses](https://lh3.googleusercontent.com/f1kOBThw_3YwCBH8ainqOk_tS-MUwKXM1gRBw9vJ3RptffOvqp4b1iNb4NaEKV9KZHEVa6RfESpj=w558-h315-no)](https://lh3.googleusercontent.com/f1kOBThw_3YwCBH8ainqOk_tS-MUwKXM1gRBw9vJ3RptffOvqp4b1iNb4NaEKV9KZHEVa6RfESpj=w558-h315-no)
 
 Kita bisa klik ke halaman Application Overview untuk melihat setting aplikasi kita.
 
-![Halaman Settings](https://lh3.googleusercontent.com/doaPkBpvFUULJYTjnNyG4uwSpm3RmgFvktmkoZbs--fj_I7TMpo0TyCUnqbufIoLVRp4RvTgAnjj=w1174-h508-no)
+[![Halaman Settings](https://lh3.googleusercontent.com/doaPkBpvFUULJYTjnNyG4uwSpm3RmgFvktmkoZbs--fj_I7TMpo0TyCUnqbufIoLVRp4RvTgAnjj=w1174-h508-no)](https://lh3.googleusercontent.com/doaPkBpvFUULJYTjnNyG4uwSpm3RmgFvktmkoZbs--fj_I7TMpo0TyCUnqbufIoLVRp4RvTgAnjj=w1174-h508-no)
 
 Karena aplikasi kita membutuhkan database, tambahkan cartridge MySQL dengan cara klik tombol 'Add MySQL 5.5'. Kita akan disajikan halaman konfirmasi.
 
-![Menambahkan MySQL Cartridge](https://lh3.googleusercontent.com/DEltdcKmAuKm3wJDHfmLv0QVMPGJTcn96WXvSBQEhdMC2vQvTPiGimh_GZO-s_sjrj3I1gTa1-Ic=w741-h512-no)
+[![Menambahkan MySQL Cartridge](https://lh3.googleusercontent.com/DEltdcKmAuKm3wJDHfmLv0QVMPGJTcn96WXvSBQEhdMC2vQvTPiGimh_GZO-s_sjrj3I1gTa1-Ic=w741-h512-no)](https://lh3.googleusercontent.com/DEltdcKmAuKm3wJDHfmLv0QVMPGJTcn96WXvSBQEhdMC2vQvTPiGimh_GZO-s_sjrj3I1gTa1-Ic=w741-h512-no)
 
 Klik Add Cartridge
 
-![Konfigurasi MySQL](https://lh3.googleusercontent.com/gBr5F6fz0OXHchd6tW5AQAdOqZsHWHi_uYyVskAJgnrkk9HaUKdKODtQcQ21hstuiC9nq9XG5-4R=w758-h659-no)
+[![Konfigurasi MySQL](https://lh3.googleusercontent.com/gBr5F6fz0OXHchd6tW5AQAdOqZsHWHi_uYyVskAJgnrkk9HaUKdKODtQcQ21hstuiC9nq9XG5-4R=w758-h659-no)](https://lh3.googleusercontent.com/gBr5F6fz0OXHchd6tW5AQAdOqZsHWHi_uYyVskAJgnrkk9HaUKdKODtQcQ21hstuiC9nq9XG5-4R=w758-h659-no)
 
 Database kita sudah dibuatkan oleh Openshift. Tidak perlu menghafalkan nilai konfigurasinya, karena kita nanti akan menggunakan variabel yang sudah disediakan oleh openshift, yaitu `OPENSHIFT_MYSQL_DB_HOST`, `OPENSHIFT_MYSQL_DB_PORT`, `OPENSHIFT_APP_NAME`, `OPENSHIFT_MYSQL_DB_USERNAME`, dan `OPENSHIFT_MYSQL_DB_PASSWORD`.
 
@@ -176,7 +176,7 @@ spring.datasource.password=${OPENSHIFT_MYSQL_DB_PASSWORD}
 
 Deployment dilakukan dengan cara `git push`. Untuk itu kita perlu mendapatkan alamat repository git yang berada di Openshift. Informasinya ada di halaman setting aplikasi kita di Openshift.
 
-![Openshift Git URL](https://lh3.googleusercontent.com/vlFQG6Z2d3hdAhKOO7SfdHmTvidcWvVhVPAjIT9In_VucK03ouipIc8NB7AryuuhI1GbrTkmSWRw=w1174-h508-no)
+[![Openshift Git URL](https://lh3.googleusercontent.com/vlFQG6Z2d3hdAhKOO7SfdHmTvidcWvVhVPAjIT9In_VucK03ouipIc8NB7AryuuhI1GbrTkmSWRw=w1174-h508-no)](https://lh3.googleusercontent.com/vlFQG6Z2d3hdAhKOO7SfdHmTvidcWvVhVPAjIT9In_VucK03ouipIc8NB7AryuuhI1GbrTkmSWRw=w1174-h508-no)
 
 Copy alamat repository tersebut, kemudian daftarkan sebagai remote repository di project kita.
 
@@ -192,11 +192,11 @@ git push openshift master
 
 Aplikasi kita bisa diakses di alamat yang sudah disediakan Openshift
 
-![Alamat Aplikasi](https://lh3.googleusercontent.com/33GT-WK5AaVFKzpOGpdhlUVlwZsKc_gdj9Wsed8s2y4m88270eHVJ9HMRCrceqlL_pyQza9pQ0Fe=w1174-h508-no)
+[![Alamat Aplikasi](https://lh3.googleusercontent.com/33GT-WK5AaVFKzpOGpdhlUVlwZsKc_gdj9Wsed8s2y4m88270eHVJ9HMRCrceqlL_pyQza9pQ0Fe=w1174-h508-no)](https://lh3.googleusercontent.com/33GT-WK5AaVFKzpOGpdhlUVlwZsKc_gdj9Wsed8s2y4m88270eHVJ9HMRCrceqlL_pyQza9pQ0Fe=w1174-h508-no)
 
 Bila kita coba mengaksesnya, kita akan mendapatkan response JSON.
 
-![Output](https://lh3.googleusercontent.com/Ej-1LQGRaOPc4eH7kvNmIt6KNyBpRoyyjmhDRl1OjMYxcd8Hi6_wDHgCCbiWc6MhslhyMu2Hrw1b=w456-h233-no)
+[![Output](https://lh3.googleusercontent.com/Ej-1LQGRaOPc4eH7kvNmIt6KNyBpRoyyjmhDRl1OjMYxcd8Hi6_wDHgCCbiWc6MhslhyMu2Hrw1b=w456-h233-no)](https://lh3.googleusercontent.com/Ej-1LQGRaOPc4eH7kvNmIt6KNyBpRoyyjmhDRl1OjMYxcd8Hi6_wDHgCCbiWc6MhslhyMu2Hrw1b=w456-h233-no)
 
 
 ## Heroku ##
@@ -207,7 +207,7 @@ Pada dasarnya, deployment ke Heroku tidak jauh berbeda caranya dengan Openshift.
 
 Kita kerjakan dulu script migrasi database. Struktur folder kita yang asli hanyak mengakomodasi satu jenis database. Karena kita ingin ada dua script yang berbeda, kita perlu mengubah foldernya menjadi seperti ini
 
-![Struktur Folder Migrasi](https://lh3.googleusercontent.com/KuXfp03PAiMLbH5616hUTa0XC9ljmjV0Sq5tsgFyGoh_IgdR76SC2K27HqVpMtDCfFX-eIsqiK0a=w395-h268-no)
+[![Struktur Folder Migrasi](https://lh3.googleusercontent.com/KuXfp03PAiMLbH5616hUTa0XC9ljmjV0Sq5tsgFyGoh_IgdR76SC2K27HqVpMtDCfFX-eIsqiK0a=w395-h268-no)](https://lh3.googleusercontent.com/KuXfp03PAiMLbH5616hUTa0XC9ljmjV0Sq5tsgFyGoh_IgdR76SC2K27HqVpMtDCfFX-eIsqiK0a=w395-h268-no)
 
 Karena perubahan tersebut, kita harus memberi tahu Flyway di mana harus mencari scriptnya. Tambahkan konfigurasi berikut pada file `src/main/resources/application.properties`
 
@@ -222,37 +222,37 @@ Dengan demikian, lokasi default script ada di folder `src/main/resources/db/migr
 
 Selanjutnya, kita buat aplikasi di Heroku. Login dulu ke Heroku sehingga dapat membuka management console seperti ini
 
-![Heroku Dashboard](https://lh3.googleusercontent.com/vJIL0M5lHm_zXw9wBqhHFURVRs_aS92ZhL0Hr3yHiYRiRjDqHPNPp0FyG5k2Fhiojf7N5Mx6hvrt=w579-h315-no)
+[![Heroku Dashboard](https://lh3.googleusercontent.com/vJIL0M5lHm_zXw9wBqhHFURVRs_aS92ZhL0Hr3yHiYRiRjDqHPNPp0FyG5k2Fhiojf7N5Mx6hvrt=w579-h315-no)](https://lh3.googleusercontent.com/vJIL0M5lHm_zXw9wBqhHFURVRs_aS92ZhL0Hr3yHiYRiRjDqHPNPp0FyG5k2Fhiojf7N5Mx6hvrt=w579-h315-no)
 
 Klik `New App` di pojok kanan atas untuk membuat aplikasi baru
 
-![New App](https://lh3.googleusercontent.com/7S3Ou3h7xF44D52vWwCzZAxS8L5FOfkc9YR5IcTmVIkZADmxozhd8VNsXa3yC3ITRnA3vZrWAWdw=w625-h315-no)
+[![New App](https://lh3.googleusercontent.com/7S3Ou3h7xF44D52vWwCzZAxS8L5FOfkc9YR5IcTmVIkZADmxozhd8VNsXa3yC3ITRnA3vZrWAWdw=w625-h315-no)](https://lh3.googleusercontent.com/7S3Ou3h7xF44D52vWwCzZAxS8L5FOfkc9YR5IcTmVIkZADmxozhd8VNsXa3yC3ITRnA3vZrWAWdw=w625-h315-no)
 
 Isikan nama aplikasi yang ingin kita buat, misalya `aplikasibelajar`. Setelah klik OK, kita akan mendapati halaman administrasi aplikasi kita.
 
-![Settings](https://lh3.googleusercontent.com/DNLuwV09DmIc5-cmY9MPbthkvVUgLTLSN0_zJRsK_nipgsOMiQ1TX3algAx1dETnqC9sJ9zlD9i7=w378-h315-no)
+[![Settings](https://lh3.googleusercontent.com/DNLuwV09DmIc5-cmY9MPbthkvVUgLTLSN0_zJRsK_nipgsOMiQ1TX3algAx1dETnqC9sJ9zlD9i7=w378-h315-no)](https://lh3.googleusercontent.com/DNLuwV09DmIc5-cmY9MPbthkvVUgLTLSN0_zJRsK_nipgsOMiQ1TX3algAx1dETnqC9sJ9zlD9i7=w378-h315-no)
 
 Perhatikan nilai `Git URL` pada tab `Settings`. Kita akan membutuhkan nilainya untuk melakukan deployment nanti.
 
 Klik tab `Resources`, dan tambahkan add-ons PostgreSQL
 
-![Add PostgreSQL](https://lh3.googleusercontent.com/gCR_yDwsszVcWwT8BgqT_Zyb8rAMui3NYzbYMVRGlHW4qBKzloY8ROTMSDiLrr_TgG-7D_lM4V0P=w543-h315-no)
+[![Add PostgreSQL](https://lh3.googleusercontent.com/gCR_yDwsszVcWwT8BgqT_Zyb8rAMui3NYzbYMVRGlHW4qBKzloY8ROTMSDiLrr_TgG-7D_lM4V0P=w543-h315-no)](https://lh3.googleusercontent.com/gCR_yDwsszVcWwT8BgqT_Zyb8rAMui3NYzbYMVRGlHW4qBKzloY8ROTMSDiLrr_TgG-7D_lM4V0P=w543-h315-no)
 
 Pilih saja paket Hobby yang gratis
 
-![Pilih paket](https://lh3.googleusercontent.com/U2QFH7vZHoQDfUvBN4AQsbytOaJ7VWqwD5a8n8V2ow2J6Rje8bn2AFiWtndaj7ZCRXoAmdnQu2gw=w567-h315-no)
+[![Pilih paket](https://lh3.googleusercontent.com/U2QFH7vZHoQDfUvBN4AQsbytOaJ7VWqwD5a8n8V2ow2J6Rje8bn2AFiWtndaj7ZCRXoAmdnQu2gw=w567-h315-no)](https://lh3.googleusercontent.com/U2QFH7vZHoQDfUvBN4AQsbytOaJ7VWqwD5a8n8V2ow2J6Rje8bn2AFiWtndaj7ZCRXoAmdnQu2gw=w567-h315-no)
 
 Database PostgreSQL sudah berhasil ditambahkan. 
 
-![Database PostgreSQL](https://lh3.googleusercontent.com/t-vug3Drj-_hSp_Y6uMn857e1jjbg2YEn5geqDwOOA4fxj2t1dCNhyFNaZSG_nv3Ow2lgmDNXe4S=w1189-h594-no)
+[![Database PostgreSQL](https://lh3.googleusercontent.com/t-vug3Drj-_hSp_Y6uMn857e1jjbg2YEn5geqDwOOA4fxj2t1dCNhyFNaZSG_nv3Ow2lgmDNXe4S=w1189-h594-no)](https://lh3.googleusercontent.com/t-vug3Drj-_hSp_Y6uMn857e1jjbg2YEn5geqDwOOA4fxj2t1dCNhyFNaZSG_nv3Ow2lgmDNXe4S=w1189-h594-no)
 
 Klik titik tiga di kanannya untuk mengetahui detail konfigurasinya agar bisa kita pasang di aplikasi.
 
-![Daftar Database](https://lh3.googleusercontent.com/gTQ0-E-whswg7BM3deNaW4HVijl5l5L1NUJRos2hBiobkq8OJAKmvOI67xmZopYJOumx5nL6fho1=w1189-h412-no)
+[![Daftar Database](https://lh3.googleusercontent.com/gTQ0-E-whswg7BM3deNaW4HVijl5l5L1NUJRos2hBiobkq8OJAKmvOI67xmZopYJOumx5nL6fho1=w1189-h412-no)](https://lh3.googleusercontent.com/gTQ0-E-whswg7BM3deNaW4HVijl5l5L1NUJRos2hBiobkq8OJAKmvOI67xmZopYJOumx5nL6fho1=w1189-h412-no)
 
 Pada halaman di atas terlihat daftar database yang kita miliki, hanya ada satu di sana. Klik nama databasenya untuk melihat detail konfigurasinya
 
-![Database Setting](https://lh3.googleusercontent.com/3ihLGkqas3LezBYpsCr-J0zJ-JbsRh1BymgIHT7bZsGXrCiZQ4iyF-Kt147pgHyLDFYtCL582kYG=w880-h726-no)
+[![Database Setting](https://lh3.googleusercontent.com/3ihLGkqas3LezBYpsCr-J0zJ-JbsRh1BymgIHT7bZsGXrCiZQ4iyF-Kt147pgHyLDFYtCL582kYG=w880-h726-no)](https://lh3.googleusercontent.com/3ihLGkqas3LezBYpsCr-J0zJ-JbsRh1BymgIHT7bZsGXrCiZQ4iyF-Kt147pgHyLDFYtCL582kYG=w880-h726-no)
 
 Di situ kita bisa melihat informasi koneksi database. Informasi ini akan kita pasang di konfigurasi aplikasi.
 
@@ -329,15 +329,15 @@ git push heroku master
 
 Untuk memantau apakah aplikasi kita berhasil terdeploy dengan baik, kita bisa menampilkan log aplikasi dengan cara mengklik tombol titik tiga di kanan atas laman administrasi
 
-![View Log Button](https://lh3.googleusercontent.com/pXk4gPwG1cWjPkPXEDpnQg0mX1zPo6qx7HYerrWpuZikO_MxCYY89XMqOa2zKOPmj0yA1LjdaB_V=w633-h315-no)
+[![View Log Button](https://lh3.googleusercontent.com/pXk4gPwG1cWjPkPXEDpnQg0mX1zPo6qx7HYerrWpuZikO_MxCYY89XMqOa2zKOPmj0yA1LjdaB_V=w633-h315-no)](https://lh3.googleusercontent.com/pXk4gPwG1cWjPkPXEDpnQg0mX1zPo6qx7HYerrWpuZikO_MxCYY89XMqOa2zKOPmj0yA1LjdaB_V=w633-h315-no)
 
 Selanjutnya, kita bisa lihat apakah ada error yang terjadi di log aplikasi
 
-![Log Aplikasi](https://lh3.googleusercontent.com/53eCLZjK12alrsbu8fyeZ4qq3hFMpuE3omVDGd3BupHlSDJbPv0IW1ecQL7msdmLqaHyY0AlBcuC=w1192-h517-no)
+[![Log Aplikasi](https://lh3.googleusercontent.com/53eCLZjK12alrsbu8fyeZ4qq3hFMpuE3omVDGd3BupHlSDJbPv0IW1ecQL7msdmLqaHyY0AlBcuC=w1192-h517-no)](https://lh3.googleusercontent.com/53eCLZjK12alrsbu8fyeZ4qq3hFMpuE3omVDGd3BupHlSDJbPv0IW1ecQL7msdmLqaHyY0AlBcuC=w1192-h517-no)
 
 Bila semuanya lancar, kita dapat mengakses aplikasi kita dengan URL yang tercantum di laman administrasi
 
-![Output Heroku](https://lh3.googleusercontent.com/kHtUIutukivieFArVdrsOLZcbSOFeiPq4nFpiksILhvWTRCQsZYNcXet-MIb63bZrLB6kpnewPXS=w455-h226-no)
+[![Output Heroku](https://lh3.googleusercontent.com/kHtUIutukivieFArVdrsOLZcbSOFeiPq4nFpiksILhvWTRCQsZYNcXet-MIb63bZrLB6kpnewPXS=w455-h226-no)](https://lh3.googleusercontent.com/kHtUIutukivieFArVdrsOLZcbSOFeiPq4nFpiksILhvWTRCQsZYNcXet-MIb63bZrLB6kpnewPXS=w455-h226-no)
 
 
 ## Penutup ##

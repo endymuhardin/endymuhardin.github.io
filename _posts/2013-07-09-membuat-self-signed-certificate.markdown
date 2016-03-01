@@ -13,11 +13,11 @@ Sertifikat yang disetujui CA memiliki batas waktu pemakaian. Setelah waktu terse
 
 Kondisi ini tentu kurang menyenangkan pada waktu kita ada di fase development. Untuk itu kita ingin membuat sertifikat sendiri, dan kemudian menyetujuinya sendiri juga. Ini disebut dengan istilah `self-signed certificate`. Bila diakses di browser, `self-signed certificate` ini akan menimbulkan peringatan seperti screenshot dibawah. 
 
-![Halaman Warning ](/images/uploads/2013/07/ssl/01-ssl-warning.png)
+[![Halaman Warning ](/images/uploads/2013/07/ssl/01-ssl-warning.png)](/images/uploads/2013/07/ssl/01-ssl-warning.png)
 
 Agar bisa mengakses halaman tersebut, kita perlu menambahkan exception. Kita akan dikonfirmasi seperti pada layar berikut
 
-![Add Exception ](/images/uploads/2013/07/ssl/02-add-exception.png)
+[![Add Exception ](/images/uploads/2013/07/ssl/02-add-exception.png)](/images/uploads/2013/07/ssl/02-add-exception.png)
 
 Tapi tidak masalah, karena pada fase development yang pakai aplikasi/website ini hanya kita sendiri, bukan end-user. Nantinya sebelum dipublish untuk umum, belilah sertifikat yang benar.
 

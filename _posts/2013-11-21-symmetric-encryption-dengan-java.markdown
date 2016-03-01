@@ -66,7 +66,7 @@ Pertama, kita bagi dulu data menjadi blok-blok. Satu blok ukurannya berbeda-beda
 
 Masing-masing blok lalu dienkripsi secara terpisah, seperti ilustrasi berikut yang [diambil dari Wikipedia](http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation)
 
-![Foto](https://lh3.googleusercontent.com/-4-C-V41PDlM/Uo2LxRnUjOI/AAAAAAAACSw/JzcKfGUMsAQ/w600-h245-no/Ecb_encryption.png)
+[![Foto](https://lh3.googleusercontent.com/-4-C-V41PDlM/Uo2LxRnUjOI/AAAAAAAACSw/JzcKfGUMsAQ/w600-h245-no/Ecb_encryption.png)](https://lh3.googleusercontent.com/-4-C-V41PDlM/Uo2LxRnUjOI/AAAAAAAACSw/JzcKfGUMsAQ/w600-h245-no/Ecb_encryption.png)
 
 Ada berbagai metode dalam mengenkripsi blok-blok data ini. Gambar di atas menunjukkan metode Electronic Codebook yang paling sederhana. Banyak metode lain dengan berbagai plus dan minusnya. Kita tidak akan bahas di sini, silahkan lihat penjelasannya [di Wikipedia](http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation) atau [di Stack Overflow](http://stackoverflow.com/a/1220869).
 

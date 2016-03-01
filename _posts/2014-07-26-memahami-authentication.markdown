@@ -56,7 +56,7 @@ Ini kalau principalnya manusia. Bagaimana kalau principalnya aplikasi lain? Ada 
 
 Bahkan walaupun usernya manusia, credential tidak cuma password. Bisa juga random number yang digenerate menggunakan algoritma. Dikenal juga dengan istilah [One Time Password (OTP)](http://en.wikipedia.org/wiki/One-time_password). Generatornya bisa software dan bisa juga hardware. Contoh hardwarenya seperti token internet banking yang biasa kita gunakan
 
-![Foto](https://farm4.staticflickr.com/3670/12361262404_50b4ab650e_z.jpg)
+[![Foto](https://farm4.staticflickr.com/3670/12361262404_50b4ab650e_z.jpg)](https://farm4.staticflickr.com/3670/12361262404_50b4ab650e_z.jpg)
 
 Sedangkan contoh software yang populer antara lain [Google Authenticator](http://code.google.com/p/google-authenticator/) dan [WiKiD](https://www.wikidsystems.com/community-edition)
 

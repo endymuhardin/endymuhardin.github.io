@@ -41,7 +41,7 @@ Anda mungkin berkomentar,
 
 Kenyataannya, saya beberapa kali menemui kasus seperti ini. Contohnya:
 
-![Foto](/images/uploads/2013/10/problem-solving/floating-point-problem.png)
+[![Foto](/images/uploads/2013/10/problem-solving/floating-point-problem.png)](/images/uploads/2013/10/problem-solving/floating-point-problem.png)
 
 Kenapa hasilnya tidak sama? Karena memang itu sifat dari bilangan `floating-point`.
 Begitu kita paham problemnya (yaitu karakteristik bilangan `floating-point`), fenomena di atas tidak lagi membingungkan buat kita, 

@@ -15,7 +15,7 @@ Pada [artikel sebelumny](http://endy.artivisi.com/blog/java/ant-ivy-4/)a, kita t
 
 Berikut struktur folder modul person-dao-api. 
 
-![ ](/images/uploads/2008/09/folder-person-dao-api-before-resolve.png)
+[![ ](/images/uploads/2008/09/folder-person-dao-api-before-resolve.png)](/images/uploads/2008/09/folder-person-dao-api-before-resolve.png)
 
 Kita memiliki folder src yang berisi source code class `PersonDao.java`, yang isinya sebagai berikut. 
 
@@ -106,7 +106,7 @@ Setelah `build.xml` dan `ivy.xml` selesai dibuat, kita bisa langsung melakukan b
 
 Dari output perintah di atas terlihat bahwa Ivy akan menguraikan dependensi project dengan melakukan query ke semua resolver yang terdaftar. Setelah modul yang dibutuhkan (person-model) ditemukan, Ivy akan langsung mendonlodnya ke dalam folder lib. Karena isi folder lib sudah kita daftarkan ke dalam classpath, maka proses kompilasi akan berjalan dengan mulus. Berikut struktur folder `person-dao-api` setelah melakukan proses resolve.
 
-![ ](/images/uploads/2008/09/folder-person-dao-api-after-resolve.png)
+[![ ](/images/uploads/2008/09/folder-person-dao-api-after-resolve.png)](/images/uploads/2008/09/folder-person-dao-api-after-resolve.png)
 
 Pada deklarasi dependensi di atas, terlihat bahwa modul `person-dao-api` memiliki dependensi terhadap modul `person-model` dengan revision `latest.integration`. Ini artinya Ivy akan menggunakan versi terbaru yang ada dalam repository. Untuk melihat kemampuan fitur ini, mari kita publish `person-model` dengan revision yang lebih baru. 
 

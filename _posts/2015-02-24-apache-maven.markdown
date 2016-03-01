@@ -71,7 +71,7 @@ Ada beberapa aturan dalam Maven yang perlu kita ketahui:
 
 Konfigurasi project dalam Maven ditulis dalam file `pom.xml`. 
 
-![Isi pom.xml](https://lh3.googleusercontent.com/-JRfxohp8O6Y/Uxk_HhHV4sI/AAAAAAAAFZQ/EyqbJHiOaxE/w908-h466-no/02-isi-pom-xml.png)
+[![Isi pom.xml](https://lh3.googleusercontent.com/-JRfxohp8O6Y/Uxk_HhHV4sI/AAAAAAAAFZQ/EyqbJHiOaxE/w908-h466-no/02-isi-pom-xml.png)](https://lh3.googleusercontent.com/-JRfxohp8O6Y/Uxk_HhHV4sI/AAAAAAAAFZQ/EyqbJHiOaxE/w908-h466-no/02-isi-pom-xml.png)
 
 Isi `pom.xml`:
 
@@ -118,7 +118,7 @@ sesuai dengan project kita.
 
 ## Struktur Folder Project Maven ##
 
-![Struktur Folder Maven](https://lh6.googleusercontent.com/-wsPV4myilDQ/Uxk77D4MtcI/AAAAAAAAFYg/dQlTHnnx_FQ/w243-h354-no/01-struktur-folder-maven.png)
+[![Struktur Folder Maven](https://lh6.googleusercontent.com/-wsPV4myilDQ/Uxk77D4MtcI/AAAAAAAAFYg/dQlTHnnx_FQ/w243-h354-no/01-struktur-folder-maven.png)](https://lh6.googleusercontent.com/-wsPV4myilDQ/Uxk77D4MtcI/AAAAAAAAFYg/dQlTHnnx_FQ/w243-h354-no/01-struktur-folder-maven.png)
 
 * `src/main/java` : Tempat meletakkan source code java
 * `src/main/resources` : Tempat meletakkan file konfigurasi, icon image, dan lain-lain

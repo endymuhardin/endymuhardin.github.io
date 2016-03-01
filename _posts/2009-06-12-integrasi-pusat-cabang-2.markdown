@@ -31,7 +31,7 @@ Spring Integration memiliki beberapa abstraksi utama yang perlu kita ketahui aga
 
 Ilustrasi hubungan antara message, channel, dan endpoint bisa dilihat di gambar berikut : 
 
-![Hubungan Message, Channel, dan Endpoint ](/images/uploads/2009/06/msg-channel-endpoint-300x59.png)
+[![Hubungan Message, Channel, dan Endpoint ](/images/uploads/2009/06/msg-channel-endpoint-300x59.png)](/images/uploads/2009/06/msg-channel-endpoint-300x59.png)
 
 
 
@@ -130,15 +130,15 @@ Endpoint digunakan untuk menghubungkan channel. Pemrosesan message dilakukan dal
 
 Sekarang, setelah kita memahami berbagai istilah dalam Spring Integration, kita bisa merancang implementasi dari requirement kita. Berikut adalah aliran message di sisi kantor pusat. Kantor pusat mengirim beberapa data produk baru, dan akan dikonversi menjadi JSON. 
 
-![Flow konversi data menjadi JSON ](/images/uploads/2009/06/pusat-json-300x24.png)
+[![Flow konversi data menjadi JSON ](/images/uploads/2009/06/pusat-json-300x24.png)](/images/uploads/2009/06/pusat-json-300x24.png)
 
 Setelah menjadi JSON, selanjutnya kita bisa kirim melalui berbagai transport yang disediakan. Untuk tahap development, kita kirim saja melalui file ke folder /tmp, supaya mudah didebug dan tidak butuh internet. 
 
-![Flow message JSON ke shared folder ](/images/uploads/2009/06/json-file-300x56.png)
+[![Flow message JSON ke shared folder ](/images/uploads/2009/06/json-file-300x56.png)](/images/uploads/2009/06/json-file-300x56.png)
 
 Selanjutnya, setelah transport melalui file sudah dipastikan benar, baik format data, isi data, maupun rangkaian filternya, kita bisa mengganti channel adapter untuk mengirim ke GMail. 
 
-![Flow message JSON ke Email ](/images/uploads/2009/06/json-email-300x35.png)
+[![Flow message JSON ke Email ](/images/uploads/2009/06/json-email-300x35.png)](/images/uploads/2009/06/json-email-300x35.png)
 
 Kita harus membuat beberapa file sebagai berikut : 
 
@@ -379,15 +379,15 @@ Berikut kode programnya.
 
 Di sisi kantor cabang, berikut aliran message dari transport hingga menjadi JSON. Kita mulai dengan transport file. 
 
-![Flow dari shared folder menjadi JSON ](/images/uploads/2009/06/file-json-300x35.png)
+[![Flow dari shared folder menjadi JSON ](/images/uploads/2009/06/file-json-300x35.png)](/images/uploads/2009/06/file-json-300x35.png)
 
 Bila kita menggunakan email, berikut gambarnya
 
-![Flow dari Email menjadi JSON ](/images/uploads/2009/06/email-json-300x35.png)
+[![Flow dari Email menjadi JSON ](/images/uploads/2009/06/email-json-300x35.png)](/images/uploads/2009/06/email-json-300x35.png)
 
 Setelah menjadi JSON, kita proses sampai ke CabangService
 
-![Flow pemrosesan JSON menjadi Produk ](/images/uploads/2009/06/json-cabang-300x25.png)
+[![Flow pemrosesan JSON menjadi Produk ](/images/uploads/2009/06/json-cabang-300x25.png)](/images/uploads/2009/06/json-cabang-300x25.png)
 
 Kita harus membuat beberapa file sebagai berikut : 
 

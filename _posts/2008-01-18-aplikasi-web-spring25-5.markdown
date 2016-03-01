@@ -277,6 +277,6 @@ Di framework Ruby on Rails, sudah ada dukungan untuk kegiatan ini, namanya flash
 
 Pada artikel ini kita sudah melakukan state management sederhana. Untuk kemampuan yang lebih canggih seperti pengelolaan shopping cart atau wizard, kita bisa menggunakan framework Spring Web Flow. Dengan SWF, flow aplikasi bisa diedit secara grafis. Ini akan memudahkan kita untuk mendokumentasikan flow navigasi aplikasi.
 
-![Spring Web Flow Editor ](/images/uploads/2008/01/webflow_editor.png)
+[![Spring Web Flow Editor ](/images/uploads/2008/01/webflow_editor.png)](/images/uploads/2008/01/webflow_editor.png)
 
 Gambar diambil dari [situsnya SWF](http://springide.org/project/wiki/WebFlowEditorUsage).

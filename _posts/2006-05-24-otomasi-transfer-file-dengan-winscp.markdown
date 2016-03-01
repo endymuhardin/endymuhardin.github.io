@@ -45,7 +45,7 @@ Berikut caranya. Perhatikan bahwa konfigurasi saya adalah sebagai berikut:
 
 Salah satu keunggulan WinSCP adalah, selain bisa mengelola transfer secara GUI, dia juga memiliki kemampuan scripting, sehingga bisa dipanggil dari command prompt. 
 
-![Screenshot WinSCP ](/images/uploads/2006/05/winscp.png)
+[![Screenshot WinSCP ](/images/uploads/2006/05/winscp.png)](/images/uploads/2006/05/winscp.png)
 
 Berikut adalah script untuk mengotomasi proses copy folder `C:\Backup` dari Windows ke `/home/endy/backup` di Linux. Save sebagai `c:\upload-backup.txt`
 

@@ -149,7 +149,7 @@ Setelah tidak ada lagi perubahan signifikan, semua screen dicapture, dimasukkan 
 
 Perubahan setelah sign off harus melalui prosedur change management. Ini gunanya agar progress project bisa terkendali. Sering sekali banyak project molor dan tidak selesai-selesai karena banyak perubahan ini itu yang tidak dikelola dengan baik sehingga tidak terlihat titik akhirnya. 
 
-![Prosedur Change Management ](/images/uploads/2010/02/change-procedure_id-212x300.png)
+[![Prosedur Change Management ](/images/uploads/2010/02/change-procedure_id-212x300.png)](/images/uploads/2010/02/change-procedure_id-212x300.png)
 
 
 Prosedur change management tidak rumit. Hanya terdiri dari tiga langkah saja, yaitu : 

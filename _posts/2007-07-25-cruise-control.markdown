@@ -127,13 +127,13 @@ Cruise Control membutuhkan beberapa file konfigurasi:
 Kita butuh satu folder kerja untuk CruiseControl melakukan tugasnya. Sebaiknya folder ini dipisahkan dari folder instalasi CruiseControl agar memudahkan kita pada waktu melakukan upgrade CruiseControl. Untuk kepentingan ilustrasi, folder instalasi CruiseControl akan ditulis [CC_INSTALL] dan folder kerja akan ditulis [CC_WORK]. 
 
 Berikut adalah struktur folder [CC_INSTALL]: 
-![Struktur Folder Instalasi CruiseControl ](/images/uploads/2007/07/cruise-install.png)
+[![Struktur Folder Instalasi CruiseControl ](/images/uploads/2007/07/cruise-install.png)](/images/uploads/2007/07/cruise-install.png)
 
 dan folder kerja [CC_WORK] akan berisi seperti ini: 
-![Folder Kerja CruiseControl ](/images/uploads/2007/07/cruise-work.png)
+[![Folder Kerja CruiseControl ](/images/uploads/2007/07/cruise-work.png)](/images/uploads/2007/07/cruise-work.png)
 
 Struktur folder di dalam repository Subversion kita seperti ini:
-![Struktur Folder Subversion ](/images/uploads/2007/07/repo-content.png)
+[![Struktur Folder Subversion ](/images/uploads/2007/07/repo-content.png)](/images/uploads/2007/07/repo-content.png)
 
 Pada contoh ini, kita akan menjalankan build untuk satu project "TestingTraining" dengan konfigurasi sebagai berikut: 
 
@@ -526,21 +526,21 @@ CruiseControl dijalankan melalui command prompt dengan mensuplai config.xml yang
 Bila tidak ada error, maka kita bisa browse ke http://localhost:8080
 
 Ini adalah halaman depan. Memuat status masing-masing project. 
-![Halaman Depan CruiseControl ](/images/uploads/2007/07/halaman-depan.png)
+[![Halaman Depan CruiseControl ](/images/uploads/2007/07/halaman-depan.png)](/images/uploads/2007/07/halaman-depan.png)
 
 Ini adalah halaman untuk TestingTraining. 
-![Hasil Build ](/images/uploads/2007/07/build-detail.png)
+[![Hasil Build ](/images/uploads/2007/07/build-detail.png)](/images/uploads/2007/07/build-detail.png)
 
 Seperti kita lihat, hasilnya build failed, karena database MySQL yang diperlukan untuk test belum dijalankan. Mari kita nyalakan dan buat test ini menjadi sukses. Setelah sukses, tampilannya seperti ini. 
-![Hasil Build yang sukses ](/images/uploads/2007/07/build-success.png)
+[![Hasil Build yang sukses ](/images/uploads/2007/07/build-success.png)](/images/uploads/2007/07/build-success.png)
 
 Kita bisa melihat hasil unit test di dalam tab Test Result. 
-![Hasil JUnit ](/images/uploads/2007/07/test-result.png)
+[![Hasil JUnit ](/images/uploads/2007/07/test-result.png)](/images/uploads/2007/07/test-result.png)
 
 Berapa kali gagal, berapa kali sukses? Kita bisa lihat di tab Metric.
-![Metric tentang hasil build ](/images/uploads/2007/07/metric.png)
+[![Metric tentang hasil build ](/images/uploads/2007/07/metric.png)](/images/uploads/2007/07/metric.png)
 
 Bila kita sudah menjalankan daily build ini selama beberapa waktu, di repository kita akan dihasilkan tag sesuai dengan build yang sukses. Berikut contohnya.
-![Daftar Tag yang dibuat CruiseControl ](/images/uploads/2007/07/build-result.png)
+[![Daftar Tag yang dibuat CruiseControl ](/images/uploads/2007/07/build-result.png)](/images/uploads/2007/07/build-result.png)
 
 Demikianlah penggunaan CruiseControl. Dengan menggunakan CruiseControl ini, para programmer bisa dibebaskan dari tugas membosankan, sehingga waktunya bisa digunakan untuk hal lain yang lebih bermanfaat, seperti misalnya menulis blog atau menambah teman baru di Friendster.

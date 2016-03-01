@@ -265,10 +265,10 @@ Ini juga bisa langsung dijalankan dengan plugin Jetty yang ada dalam Gradle.
 
 
 Outputnya bisa kita lihat di browser, dengan port 8080. 
-![ ](/images/uploads/2011/01/jetty-run-300x216.png)
+[![ ](/images/uploads/2011/01/jetty-run-300x216.png)](/images/uploads/2011/01/jetty-run-300x216.png)
 
 Di situ ada link menuju aplikasi kita. Silahkan diklik. 
-![ ](/images/uploads/2011/01/klik-context-path-300x214.png)
+[![ ](/images/uploads/2011/01/klik-context-path-300x214.png)](/images/uploads/2011/01/klik-context-path-300x214.png)
 
 Folder WEB-INF masih terlihat, karena kita belum membuat web.xml. Berikut isi web.xml, masukkan dalam folder com.artivisi.contoh.ui.web/src/main/webapp/WEB-INF
 
@@ -367,17 +367,17 @@ Sekalian saja kita konfigurasi Spring MVC. Pasang file springmvc-context.xml ini
 Kita cek juga apakah projectnya sudah bisa dibuka di Eclipse. Mari kita import. 
 
 Pertama, arahkan workspace ke folder project-contoh. 
-![ ](/images/uploads/2011/01/01-pilih-workspace-300x154.png)
+[![ ](/images/uploads/2011/01/01-pilih-workspace-300x154.png)](/images/uploads/2011/01/01-pilih-workspace-300x154.png)
 
 Setelah Eclipse terbuka, kita pilih menu Import Project, untuk membuka 4 project yang tadi sudah kita buat. 
-![ ](/images/uploads/2011/01/02-import-existing-300x272.png)
+[![ ](/images/uploads/2011/01/02-import-existing-300x272.png)](/images/uploads/2011/01/02-import-existing-300x272.png)
 
 Pilih folder induknya. 
-![ ](/images/uploads/2011/01/03-select-root-directory-272x300.png)
+[![ ](/images/uploads/2011/01/03-select-root-directory-272x300.png)](/images/uploads/2011/01/03-select-root-directory-272x300.png)
 
 Selesai, semua project kita bisa dibuka. Bahkan kita bisa menjalankan project ui.web dengan cara klik kanan Run in Server. Ini bisa dilihat dari icon project tersebut yang berbentuk bola dunia. 
 
-![ ](/images/uploads/2011/01/04-import-result-300x139.png)
+[![ ](/images/uploads/2011/01/04-import-result-300x139.png)](/images/uploads/2011/01/04-import-result-300x139.png)
 
 Selesai sudah, mari kita [share dengan rekan yang lain](http://endy.artivisi.com/blog/aplikasi/sharing-repository-git/). 
 

@@ -13,7 +13,7 @@ Sayangnya, secara default emulator Android sangat lemot. Sedangkan kecepatan kit
 
 Untungnya ada teknik yang tersedia untuk meningkatkan kecepatan emulator Android, yaitu dengan [menggunakan emulator berbasis Intel platform](http://software.intel.com/en-us/articles/speeding-up-the-android-emulator-on-intel-architecture). Kita akan bahas cara-caranya di artikel ini.
 
-![Foto](http://lh5.googleusercontent.com/-ynU8SU2Efd0/Uqa45WE4K_I/AAAAAAAAC7w/umEdkuO7wqA/w467-h623-no/20131210_134625.jpg)
+[![Foto](http://lh5.googleusercontent.com/-ynU8SU2Efd0/Uqa45WE4K_I/AAAAAAAAC7w/umEdkuO7wqA/w467-h623-no/20131210_134625.jpg)](http://lh5.googleusercontent.com/-ynU8SU2Efd0/Uqa45WE4K_I/AAAAAAAAC7w/umEdkuO7wqA/w467-h623-no/20131210_134625.jpg)
 
 <!--more-->
 
@@ -79,11 +79,11 @@ Selanjutnya, kita tinggal membuat Android Virtual Device (AVD) yang menggunakan 
 Instalasi Intel® HAXM dilakukan melalui Android SDK Manager. Opsinya ada di folder Extra di paling bawah.
 Jangan lupa instal juga emulator Intel sekaligus.
 
-![Foto](http://lh4.googleusercontent.com/-ZitwHacTB50/UqcZWbt1alI/AAAAAAAAC8Y/T_rChtMx4m0/w746-h576-no/haxm01.png)
+[![Foto](http://lh4.googleusercontent.com/-ZitwHacTB50/UqcZWbt1alI/AAAAAAAAC8Y/T_rChtMx4m0/w746-h576-no/haxm01.png)](http://lh4.googleusercontent.com/-ZitwHacTB50/UqcZWbt1alI/AAAAAAAAC8Y/T_rChtMx4m0/w746-h576-no/haxm01.png)
 
 Instalasi melalui Android SDK Manager ini ternyata hanya mengunduh Intel® HAXM saja. Kita tetap harus menginstalnya sendiri. Cari filenya dalam folder `extras` dalam Android SDK.
 
-![Foto](http://lh6.googleusercontent.com/-vyyFTq3bx_4/UqcZVfev3QI/AAAAAAAAC8Q/fAcHpy2KJMo/w233-h122-no/haxm02.png)
+[![Foto](http://lh6.googleusercontent.com/-vyyFTq3bx_4/UqcZVfev3QI/AAAAAAAAC8Q/fAcHpy2KJMo/w233-h122-no/haxm02.png)](http://lh6.googleusercontent.com/-vyyFTq3bx_4/UqcZVfev3QI/AAAAAAAAC8Q/fAcHpy2KJMo/w233-h122-no/haxm02.png)
 
 Jalankan saja installer seperti biasa. Klik Next sampai selesai.
 
@@ -91,7 +91,7 @@ Jalankan saja installer seperti biasa. Klik Next sampai selesai.
 
 Selanjutnya, kita tinggal membuat AVD seperti biasa. Pastikan kita pilih opsi platform Intel.
 
-![Foto](http://lh3.googleusercontent.com/-phoDzK--s64/Uqcbh-dQWzI/AAAAAAAAC8s/2WWFtnFY1TE/w572-h623-no/Edit+Android+Virtual+Device+%2528AVD%2529+_001.png)
+[![Foto](http://lh3.googleusercontent.com/-phoDzK--s64/Uqcbh-dQWzI/AAAAAAAAC8s/2WWFtnFY1TE/w572-h623-no/Edit+Android+Virtual+Device+%2528AVD%2529+_001.png)](http://lh3.googleusercontent.com/-phoDzK--s64/Uqcbh-dQWzI/AAAAAAAAC8s/2WWFtnFY1TE/w572-h623-no/Edit+Android+Virtual+Device+%2528AVD%2529+_001.png)
 
 Jangan lupa untuk mencentang juga opsi `Use Host GPU` untuk mengalihkan beban pemrosesan tampilan dari emulator ke komputer kita.
 

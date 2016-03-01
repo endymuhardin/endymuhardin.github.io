@@ -36,11 +36,11 @@ Pada artikel ini, kita akan membahas bagaimana cara mendebug aplikasi AJAX. Seba
 
 Sebagai contoh, kita akan mendebug form entri user berikut
 
-![Form Entri User ](/images/uploads/2013/05/debug-ajax/01-screen-form-user.png)
+[![Form Entri User ](/images/uploads/2013/05/debug-ajax/01-screen-form-user.png)](/images/uploads/2013/05/debug-ajax/01-screen-form-user.png)
 
 dan tampilan daftar user berikut
 
-![Daftar User ](/images/uploads/2013/05/debug-ajax/02-screen-list-user.png)
+[![Daftar User ](/images/uploads/2013/05/debug-ajax/02-screen-list-user.png)](/images/uploads/2013/05/debug-ajax/02-screen-list-user.png)
 
 
 ## Persenjataan ##
@@ -51,15 +51,15 @@ Setelah terinstal, pantau tab Network untuk melihat detail request dan response.
 
 Berikut contohnya di Firebug
 
-![Network Tab Firebug ](/images/uploads/2013/05/debug-ajax/03-network-tab-firebug.png)
+[![Network Tab Firebug ](/images/uploads/2013/05/debug-ajax/03-network-tab-firebug.png)](/images/uploads/2013/05/debug-ajax/03-network-tab-firebug.png)
 
 Dan ini tampilannya di Chrome Developer Tools
 
-![Network Tab Chrome Developer Tools ](/images/uploads/2013/05/debug-ajax/04-network-tab-chrome.png)
+[![Network Tab Chrome Developer Tools ](/images/uploads/2013/05/debug-ajax/04-network-tab-chrome.png)](/images/uploads/2013/05/debug-ajax/04-network-tab-chrome.png)
 
 Seiring waktu, tab ini bisa penuh, kita bisa bersihkan menggunakan tombol Clear.
 
-![Tombol Clear ](/images/uploads/2013/05/debug-ajax/05-clear-log.png)
+[![Tombol Clear ](/images/uploads/2013/05/debug-ajax/05-clear-log.png)](/images/uploads/2013/05/debug-ajax/05-clear-log.png)
 
 Beberapa aplikasi AJAX yang mengikuti kaidah REST mengirim data ke server dalam format JSON dengan HTTP method yang sesuai fungsi seperti GET, POST, PUT, DELETE. Seringkali kita juga perlu memanipulasi HTTP request header dan melihat isi HTTP response header. Untuk itu, kita perlu menambah plugin lagi di browser. 
 
@@ -75,12 +75,12 @@ Di aplikasi web tradisional, data form ini disubmit dalam format HTTP request pa
 Karena ada proses konversi menjadi JSON ini, selama proses development kita ingin melihat dan memeriksa apakah nama variabel dan datanya sudah benar. Untuk itu kita bisa menggunakan Chrome Developer Tools, seperti bisa dilihat di screenshot berikut.
 
 
-![Debug Request di Chrome Developer Tools ](/images/uploads/2013/05/debug-ajax/06-debug-siklus-cdt.png)
+[![Debug Request di Chrome Developer Tools ](/images/uploads/2013/05/debug-ajax/06-debug-siklus-cdt.png)](/images/uploads/2013/05/debug-ajax/06-debug-siklus-cdt.png)
 
 
 Screen debug di Firebug bentuknya seperti ini
 
-![Debug Request di Firebug ](/images/uploads/2013/05/debug-ajax/09-debug-siklus-firebug.png)
+[![Debug Request di Firebug ](/images/uploads/2013/05/debug-ajax/09-debug-siklus-firebug.png)](/images/uploads/2013/05/debug-ajax/09-debug-siklus-firebug.png)
 
 Hal-hal yang perlu kita amati adalah : 
 
@@ -100,26 +100,26 @@ Hal-hal yang perlu kita amati adalah :
 Berikut adalah data-data tersebut di Chrome Developer Tools
 
 
-![Detail Request Chrome Developer Tools ](/images/uploads/2013/05/debug-ajax/07-detail-request-cdt.png)
+[![Detail Request Chrome Developer Tools ](/images/uploads/2013/05/debug-ajax/07-detail-request-cdt.png)](/images/uploads/2013/05/debug-ajax/07-detail-request-cdt.png)
 
-![Detail Response Chrome Developer Tools ](/images/uploads/2013/05/debug-ajax/08-detail-response-cdt.png)
+[![Detail Response Chrome Developer Tools ](/images/uploads/2013/05/debug-ajax/08-detail-response-cdt.png)](/images/uploads/2013/05/debug-ajax/08-detail-response-cdt.png)
 
 
 Di Firebug, header dan data dipisahkan
 
-![Tab Header ](/images/uploads/2013/05/debug-ajax/10-detail-request-firebug.png)
+[![Tab Header ](/images/uploads/2013/05/debug-ajax/10-detail-request-firebug.png)](/images/uploads/2013/05/debug-ajax/10-detail-request-firebug.png)
 
 Request data ditampilkan di tab terpisah
 
-![Tab Request Data ](/images/uploads/2013/05/debug-ajax/11-detail-post-data-firebug.png)
+[![Tab Request Data ](/images/uploads/2013/05/debug-ajax/11-detail-post-data-firebug.png)](/images/uploads/2013/05/debug-ajax/11-detail-post-data-firebug.png)
 
 Pada waktu membaca data response, kita bisa melihat data aslinya
 
-![Detail Response Firebug ](/images/uploads/2013/05/debug-ajax/12-detail-response-firebug.png)
+[![Detail Response Firebug ](/images/uploads/2013/05/debug-ajax/12-detail-response-firebug.png)](/images/uploads/2013/05/debug-ajax/12-detail-response-firebug.png)
 
 dan bisa juga melihat yang sudah diformat dengan rapi
 
-![Detail JSON Firebug ](/images/uploads/2013/05/debug-ajax/13-detail-json-firebug.png)
+[![Detail JSON Firebug ](/images/uploads/2013/05/debug-ajax/13-detail-json-firebug.png)](/images/uploads/2013/05/debug-ajax/13-detail-json-firebug.png)
 
 ## Mendebug REST Server ##
 
@@ -136,28 +136,28 @@ Beberapa hal yang harus kita ketahui untuk mengetes proses di sisi server adalah
 
 Berikut adalah tampilan plugin Chrome, yaitu REST Console yang sudah terisi data di atas.
 
-![Request Form REST Console ](/images/uploads/2013/05/debug-ajax/14-request-form-rest-console.png)
+[![Request Form REST Console ](/images/uploads/2013/05/debug-ajax/14-request-form-rest-console.png)](/images/uploads/2013/05/debug-ajax/14-request-form-rest-console.png)
 
 Selanjutnya kita tinggal menekan tombol yang sesuai dengan HTTP Method yang dibutuhkan. Bila sukses, kita akan mendapatkan tampilan seperti ini
 
-![Response Sukses REST Console ](/images/uploads/2013/05/debug-ajax/15-response-sukses-rest-console.png)
+[![Response Sukses REST Console ](/images/uploads/2013/05/debug-ajax/15-response-sukses-rest-console.png)](/images/uploads/2013/05/debug-ajax/15-response-sukses-rest-console.png)
 
 Bila gagal, kita akan melihat tampilan seperti ini
 
-![Response Gagal REST Console ](/images/uploads/2013/05/debug-ajax/16-response-error-rest-console.png)
+[![Response Gagal REST Console ](/images/uploads/2013/05/debug-ajax/16-response-error-rest-console.png)](/images/uploads/2013/05/debug-ajax/16-response-error-rest-console.png)
 
 ### Menggunakan Firefox ###
 
 Hal yang sama bisa dilakukan dengan Poster di Firefox. Berikut adalah form yang digunakan untuk entri data.
 
-![Request Form Poster ](/images/uploads/2013/05/debug-ajax/17-request-form-poster.png)
+[![Request Form Poster ](/images/uploads/2013/05/debug-ajax/17-request-form-poster.png)](/images/uploads/2013/05/debug-ajax/17-request-form-poster.png)
 
 Bila sukses, kita mendapatkan hasil seperti ini
 
-![Response Sukses Poster ](/images/uploads/2013/05/debug-ajax/18-response-sukses-poster.png)
+[![Response Sukses Poster ](/images/uploads/2013/05/debug-ajax/18-response-sukses-poster.png)](/images/uploads/2013/05/debug-ajax/18-response-sukses-poster.png)
 
 Bila gagal berikut tampilannya 
 
-![Response Gagal Poster ](/images/uploads/2013/05/debug-ajax/19-response-error-poster.png)
+[![Response Gagal Poster ](/images/uploads/2013/05/debug-ajax/19-response-error-poster.png)](/images/uploads/2013/05/debug-ajax/19-response-error-poster.png)
 
 Dengan menggunakan REST Console dan Poster, kita dapat mengurus coding di sisi server tanpa perlu dipusingkan dengan coding di sisi client (HTML, CSS, dan JS).

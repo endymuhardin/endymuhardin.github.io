@@ -115,7 +115,7 @@ touch aplikasi/halo/halo.component.{html,ts}
 
 Perintah di atas akan menghasilkan struktur folder seperti ini
 
-![Struktur folder project AngularJS 2](https://github.com/endymuhardin/belajar-angular2/raw/master/img/struktur-folder-angular2-jspm.png)
+[![Struktur folder project AngularJS 2](https://github.com/endymuhardin/belajar-angular2/raw/master/img/struktur-folder-angular2-jspm.png)](https://github.com/endymuhardin/belajar-angular2/raw/master/img/struktur-folder-angular2-jspm.png)
 
 ## Inisialisasi Project dengan JSPM ##
 
@@ -587,7 +587,7 @@ Hit CTRL-C to stop the server
 
 Kita bisa lihat hasilnya dengan membuka `http://localhost:8080` di browser. Jangan lupa tampilkan Developer Tools agar terlihat output dari `console.log`
 
-![Browser Output](https://github.com/endymuhardin/belajar-angular2/raw/master/img/angular2-jspm-output.png)
+[![Browser Output](https://github.com/endymuhardin/belajar-angular2/raw/master/img/angular2-jspm-output.png)](https://github.com/endymuhardin/belajar-angular2/raw/master/img/angular2-jspm-output.png)
 
 ## Menggunakan Twitter Bootstrap ##
 
@@ -625,7 +625,7 @@ Dengan demikian, kita bisa membuat file CSS yang modular, diload sesuai modul/ko
 
 Kalau kita lihat di Network Tab pada Developer Tools, kita akan melihat banyak sekali file yang diload. Untuk production deployment, ini kurang optimal karena banyak terjadi bolak-balik request ke server. Solusinya, kita perlu menggabungkan semua kode program kita dan library yang digunakan menjadi satu file.
 
-![200an request](https://github.com/endymuhardin/belajar-angular2/raw/master/img/200an-request.png)
+[![200an request](https://github.com/endymuhardin/belajar-angular2/raw/master/img/200an-request.png)](https://github.com/endymuhardin/belajar-angular2/raw/master/img/200an-request.png)
 
 JSPM sudah menyediakan [prosedur untuk membuat production deployment](http://jspm.io/docs/production-workflows.html). Jalankan perintah berikut untuk menjalankannya
 
@@ -652,7 +652,7 @@ dan ganti dengan ini
 
 Hasilnya, 200an request tadi menjadi 3 request saja
 
-![Production build dan minify](https://github.com/endymuhardin/belajar-angular2/raw/master/img/3-request.png)
+[![Production build dan minify](https://github.com/endymuhardin/belajar-angular2/raw/master/img/3-request.png)](https://github.com/endymuhardin/belajar-angular2/raw/master/img/3-request.png)
 
 Khusus untuk file CSS, kita membutuhkan plugin tambahan, yaitu `clean-css`. Tanpa plugin ini, maka kita akan mendapatkan error
 

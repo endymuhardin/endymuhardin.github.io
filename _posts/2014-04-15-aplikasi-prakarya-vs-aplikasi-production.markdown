@@ -52,17 +52,17 @@ Nah kita lihat evolusi dari aplikasi prakarya menjadi aplikasi production. Kita 
 
 Inilah screen daftar user yang dipresentasikan ke saya
 
-![Foto](https://lh4.googleusercontent.com/-25Yeh5ay_RY/U01LMUEObTI/AAAAAAAAFpA/p45UmrhH9-4/w888-h408-no/tabelprakarya01.png)
+[![Foto](https://lh4.googleusercontent.com/-25Yeh5ay_RY/U01LMUEObTI/AAAAAAAAFpA/p45UmrhH9-4/w888-h408-no/tabelprakarya01.png)](https://lh4.googleusercontent.com/-25Yeh5ay_RY/U01LMUEObTI/AAAAAAAAFpA/p45UmrhH9-4/w888-h408-no/tabelprakarya01.png)
 
 > Bagaimana menurut Anda? Apakah Anda melihat ada masalah pada screen di atas? Apa masalahnya?
 
 Masalahnya ada di jumlah data. Aplikasi prakarya biasanya dites menggunakan 1 - 5 baris data saja. Tentu saja tidak ada masalah yang terlihat kalau datanya cuma 1 - 5 baris. Nah, bagaimana kalau tidak ada data? Biasanya begini jadinya.
 
-![Foto](https://lh3.googleusercontent.com/-mvMdRuXasxU/U01LNOysKkI/AAAAAAAAFpQ/wkv2gyBpzCs/w882-h363-no/tabelprakarya03.png)
+[![Foto](https://lh3.googleusercontent.com/-mvMdRuXasxU/U01LNOysKkI/AAAAAAAAFpQ/wkv2gyBpzCs/w882-h363-no/tabelprakarya03.png)](https://lh3.googleusercontent.com/-mvMdRuXasxU/U01LNOysKkI/AAAAAAAAFpQ/wkv2gyBpzCs/w882-h363-no/tabelprakarya03.png)
 
 Ini menunjukkan programmer malas. Padahal dengan menambah beberapa baris `if-else`, tampilan di atas bisa terkesan lebih _'serius'_ seperti ini
 
-![Foto](https://lh5.googleusercontent.com/-g1HzK09B3W0/U01LOCrimhI/AAAAAAAAFpg/yXw_NJX3OIQ/w654-h306-no/tabelproduction02.png)
+[![Foto](https://lh5.googleusercontent.com/-g1HzK09B3W0/U01LOCrimhI/AAAAAAAAFpg/yXw_NJX3OIQ/w654-h306-no/tabelproduction02.png)](https://lh5.googleusercontent.com/-g1HzK09B3W0/U01LOCrimhI/AAAAAAAAFpg/yXw_NJX3OIQ/w654-h306-no/tabelproduction02.png)
 
 Ok, kita sudah handle kasus tidak ada data. Nah sekarang, pada waktu dipakai di kondisi riil, berapa datanya? Misalnya kita membuat aplikasi perpustakaan untuk kampus. Berapa jumlah anggotanya? Apakah 1-5 saja? Tentu tidak mungkin. Kisaran datanya antara ratusan sampai puluhan ribu tergantung ukuran kampus. Belum lagi kalau perpustakaannya menerima anggota masyarakat umum.
 
@@ -76,13 +76,13 @@ Dengan data ratusan/ribuan, screen di atas akan mengalami masalah:
 
 Solusi pertama, paging. Kita bagi data menjadi beberapa halaman. Toh user juga tidak mungkin melihat 10 ribu data sekaligus. Bisa-bisa stres dia kayak caleg kalah pemilu.
 
-![Foto](https://lh6.googleusercontent.com/-CgyzCMA-Foc/U01LMwcZhfI/AAAAAAAAFpM/8PCtzho72xA/w852-h462-no/tabelprakarya02.png)
+[![Foto](https://lh6.googleusercontent.com/-CgyzCMA-Foc/U01LMwcZhfI/AAAAAAAAFpM/8PCtzho72xA/w852-h462-no/tabelprakarya02.png)](https://lh6.googleusercontent.com/-CgyzCMA-Foc/U01LMwcZhfI/AAAAAAAAFpM/8PCtzho72xA/w852-h462-no/tabelprakarya02.png)
 
 > Selesai?
 
 Belum. Untuk 10 ribu data, bila satu halaman isinya 20, maka ada 500 halaman. Mana ada orang mau klik satu persatu halamannya. Jadi bagaimana? Ya tentu harus bisa dicari.
 
-![Foto](https://lh3.googleusercontent.com/-OGKJDR3nnSk/U01LN9OAzmI/AAAAAAAAFpc/Z5mYYDj-O9s/w888-h465-no/tabelproduction01.png)
+[![Foto](https://lh3.googleusercontent.com/-OGKJDR3nnSk/U01LN9OAzmI/AAAAAAAAFpc/Z5mYYDj-O9s/w888-h465-no/tabelproduction01.png)](https://lh3.googleusercontent.com/-OGKJDR3nnSk/U01LN9OAzmI/AAAAAAAAFpc/Z5mYYDj-O9s/w888-h465-no/tabelproduction01.png)
 
 Nah, dari sini kita sudah bisa membedakan antara aplikasi prakarya dan aplikasi production. Aplikasi prakarya tidak dites secara menyeluruh. Dengan 1-5 data saja sudah puas, cukuplah untuk dapat A kalau dosennya murah hati. Tapi aplikasi production tidak bisa seperti itu kalau aplikasinya mau dipakai orang. Kita harus tes dengan 0 data dan 10 ribu data.
 
@@ -92,7 +92,7 @@ Selanjutnya, mari kita lihat form input data.
 
 Inilah screen iterasi pertama
 
-![Foto](https://lh4.googleusercontent.com/-gwFv3Yp1hMY/U01LKyx9OcI/AAAAAAAAFoo/pjiHEIjgRYc/w687-h510-no/formprakarya01.png)
+[![Foto](https://lh4.googleusercontent.com/-gwFv3Yp1hMY/U01LKyx9OcI/AAAAAAAAFoo/pjiHEIjgRYc/w687-h510-no/formprakarya01.png)](https://lh4.googleusercontent.com/-gwFv3Yp1hMY/U01LKyx9OcI/AAAAAAAAFoo/pjiHEIjgRYc/w687-h510-no/formprakarya01.png)
 
 > Apa masalahnya? 
 
@@ -103,11 +103,11 @@ Untuk input data, ada dua hal yang wajib dilakukan dengan benar:
 
 Mari kita perbaiki. Ini hasil revisinya
 
-![Foto](https://lh5.googleusercontent.com/-ptivii5-b3I/U01LLWa7lZI/AAAAAAAAFo0/PMTqrd83k9c/w917-h487-no/formprakarya02.png)
+[![Foto](https://lh5.googleusercontent.com/-ptivii5-b3I/U01LLWa7lZI/AAAAAAAAFo0/PMTqrd83k9c/w917-h487-no/formprakarya02.png)](https://lh5.googleusercontent.com/-ptivii5-b3I/U01LLWa7lZI/AAAAAAAAFo0/PMTqrd83k9c/w917-h487-no/formprakarya02.png)
 
 Sudah ada pesan error pada screen di atas. Tapi kalau berhenti sampai di sini, usernya bisa marah-marah, soalnya nilai yang sudah dia isikan hilang semua. Harusnya tetap ditampilkan, sehingga dia cukup edit yang salah saja. Tidak perlu entri ulang semuanya. Revisi lagi menjadi seperti ini
 
-![Foto](https://lh6.googleusercontent.com/-pzWfTxTPSaY/U01LLyVPxcI/AAAAAAAAFo4/Qo19dzxO8uM/w900-h459-no/formproduction.png)
+[![Foto](https://lh6.googleusercontent.com/-pzWfTxTPSaY/U01LLyVPxcI/AAAAAAAAFo4/Qo19dzxO8uM/w900-h459-no/formproduction.png)](https://lh6.googleusercontent.com/-pzWfTxTPSaY/U01LLyVPxcI/AAAAAAAAFo4/Qo19dzxO8uM/w900-h459-no/formproduction.png)
 
 Nah, jauh lebih baik. 
 
@@ -130,7 +130,7 @@ Pemilihan jenis komponen akan kita bahas pada artikel selanjutnya.
 
 Kita semua tentu kenal Rambo. Dia bisa survive dimanapun dia diterjunkan dan seburuk apapun perlakuan orang kepadanya. 
 
-![Foto](https://lh3.googleusercontent.com/-kWEJAXJQqiY/U01NMQkQ7_I/AAAAAAAAFp0/099uScfrhP0/w768-h576-no/rambo-wallpaper-800x600.jpg)
+[![Foto](https://lh3.googleusercontent.com/-kWEJAXJQqiY/U01NMQkQ7_I/AAAAAAAAFp0/099uScfrhP0/w768-h576-no/rambo-wallpaper-800x600.jpg)](https://lh3.googleusercontent.com/-kWEJAXJQqiY/U01NMQkQ7_I/AAAAAAAAFp0/099uScfrhP0/w768-h576-no/rambo-wallpaper-800x600.jpg)
 
 _Fotonya Rambo diambil [dari sini](http://wallpaperswide.com/rambo-wallpapers.html)_
 
@@ -143,17 +143,17 @@ Tentu tidak. Mana ada yang sempurna di dunia ini. Kita mengatasi kondisi buruk d
 
 Mari kita lihat error handling aplikasi prakarya, ketika usernya mengetikkan alamat yang tidak ada di aplikasi.
 
-![Foto](https://lh6.googleusercontent.com/-aZa_dcU50c4/U001E2SUhMI/AAAAAAAAFm4/x502FobAP3s/w614-h238-no/404-prakarya.png)
+[![Foto](https://lh6.googleusercontent.com/-aZa_dcU50c4/U001E2SUhMI/AAAAAAAAFm4/x502FobAP3s/w614-h238-no/404-prakarya.png)](https://lh6.googleusercontent.com/-aZa_dcU50c4/U001E2SUhMI/AAAAAAAAFm4/x502FobAP3s/w614-h238-no/404-prakarya.png)
 
 Nah, jelek sekali bukan? Sangat menunjukkan kemalasan programmernya. Padahal dengan beberapa baris tambahan (di Java cuma 4 baris saja), kita bisa buat yang lebih baik seperti ini
 
-![Foto](https://lh6.googleusercontent.com/-o_w5mMRrh1Q/U001mWLAvAI/AAAAAAAAFnI/lS3c42pYdWc/w616-h465-no/404-production.png)
+[![Foto](https://lh6.googleusercontent.com/-o_w5mMRrh1Q/U001mWLAvAI/AAAAAAAAFnI/lS3c42pYdWc/w616-h465-no/404-production.png)](https://lh6.googleusercontent.com/-o_w5mMRrh1Q/U001mWLAvAI/AAAAAAAAFnI/lS3c42pYdWc/w616-h465-no/404-production.png)
 
 Waktu yang dibutuhkan tidak lama. Maksimal 5 menit saja. Itupun lama karena kita bimbang apakah mau pakai gambar kucing atau Peter Parker.
 
 Nah kalau pesan error di atas hanya sebatas faktor estetika, pesan error berikut konsekuensinya lebih fatal
 
-![Foto](https://lh3.googleusercontent.com/-YbMALc355TM/U001Gd2IjAI/AAAAAAAAFnA/6tanv9Q5u8I/w621-h350-no/500-prakarya.png)
+[![Foto](https://lh3.googleusercontent.com/-YbMALc355TM/U001Gd2IjAI/AAAAAAAAFnA/6tanv9Q5u8I/w621-h350-no/500-prakarya.png)](https://lh3.googleusercontent.com/-YbMALc355TM/U001Gd2IjAI/AAAAAAAAFnA/6tanv9Q5u8I/w621-h350-no/500-prakarya.png)
 
 > Kenapa fatal?
 
@@ -173,7 +173,7 @@ Informasi di atas cukup sebagai titik awal cracker yang akan menjebol aplikasi k
 
 Nah, cukup mengerikan bukan? Padahal cukup dengan tambahan 4 baris, kita bisa ganti pesan errornya seperti ini
 
-![Foto](https://lh4.googleusercontent.com/-JoVmx6mjuNg/U00184vMCTI/AAAAAAAAFnk/PpyXQXOqAyU/w619-h372-no/500-production.png)
+[![Foto](https://lh4.googleusercontent.com/-JoVmx6mjuNg/U00184vMCTI/AAAAAAAAFnk/PpyXQXOqAyU/w619-h372-no/500-production.png)](https://lh4.googleusercontent.com/-JoVmx6mjuNg/U00184vMCTI/AAAAAAAAFnk/PpyXQXOqAyU/w619-h372-no/500-production.png)
 
 Screen di atas akan sangat mengurangi informasi yang bisa disalahgunakan orang yang berniat jahat. Lagipula pesan error `IllegalStateException` tidak ada gunanya buat user. Error 500 artinya tidak ada perbaikan yang bisa dilakukan end-user. Beda dengan error validasi input dimana user bisa memperbaiki isiannya dan kemudian mencoba submit lagi.
 

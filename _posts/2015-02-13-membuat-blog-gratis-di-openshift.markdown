@@ -29,7 +29,7 @@ Pada artikel ini, kita akan membahas cara membuat blog menggunakan Jekyll dan ke
 
 Sebetulnya ada beberapa provider yang mendukung Jekyll, selain Openshift kita juga bisa pakai Heroku atau Github. Cara deploy ke kedua provider tersebut sudah dijelaskan di dokumentasi Jekyll, sehingga tidak perlu kita bahas lagi.
 
-![Dokumentasi Deployment](https://lh5.googleusercontent.com/-0v-aweJAqUQ/VNSNiRPuxbI/AAAAAAAAH38/gzzHemMzJEY/w916-h558-no/07.%2BJekyll%2BHomepage.png)
+[![Dokumentasi Deployment](https://lh5.googleusercontent.com/-0v-aweJAqUQ/VNSNiRPuxbI/AAAAAAAAH38/gzzHemMzJEY/w916-h558-no/07.%2BJekyll%2BHomepage.png)](https://lh5.googleusercontent.com/-0v-aweJAqUQ/VNSNiRPuxbI/AAAAAAAAH38/gzzHemMzJEY/w916-h558-no/07.%2BJekyll%2BHomepage.png)
 
 Secara garis besar, berikut langkah-langkah yang akan kita kerjakan:
 
@@ -83,25 +83,25 @@ jekyll new blogsaya
 
 Tetapi, kita tentu ingin tampilan yang menarik. Untuk itu, kita cari dulu theme yang bagus untuk Jekyll. 
 
-![Mencari theme Jekyll](https://lh4.googleusercontent.com/--lDlOyCn2Tw/VNSNva-nFTI/AAAAAAAAH4c/uNvFEtLvnBA/w791-h582-no/10.%2BCari%2BTheme.png)
+[![Mencari theme Jekyll](https://lh4.googleusercontent.com/--lDlOyCn2Tw/VNSNva-nFTI/AAAAAAAAH4c/uNvFEtLvnBA/w791-h582-no/10.%2BCari%2BTheme.png)](https://lh4.googleusercontent.com/--lDlOyCn2Tw/VNSNva-nFTI/AAAAAAAAH4c/uNvFEtLvnBA/w791-h582-no/10.%2BCari%2BTheme.png)
 
 Ada banyak hasil di sana. Coba satu persatu sampai ketemu yang cocok.
 
 Baca instruksinya, dia bilang langsung saja extract.
 
-![Extract Theme](https://lh4.googleusercontent.com/-VMnzqkZ07dA/VNSNvmnMcXI/AAAAAAAAH4Y/TQ9en2RctLI/w855-h578-no/11.%2BDownload%2Bdan%2BExtract.png)
+[![Extract Theme](https://lh4.googleusercontent.com/-VMnzqkZ07dA/VNSNvmnMcXI/AAAAAAAAH4Y/TQ9en2RctLI/w855-h578-no/11.%2BDownload%2Bdan%2BExtract.png)](https://lh4.googleusercontent.com/-VMnzqkZ07dA/VNSNvmnMcXI/AAAAAAAAH4Y/TQ9en2RctLI/w855-h578-no/11.%2BDownload%2Bdan%2BExtract.png)
 
 Berikut isi folder setelah diextract.
 
-![Hasil Extract](https://lh3.googleusercontent.com/-dt0_MXF-F_E/VNSN8_MmXLI/AAAAAAAAH4k/3VLoa6em0mY/w855-h578-no/12.%2BHasil%2BExtract.png)
+[![Hasil Extract](https://lh3.googleusercontent.com/-dt0_MXF-F_E/VNSN8_MmXLI/AAAAAAAAH4k/3VLoa6em0mY/w855-h578-no/12.%2BHasil%2BExtract.png)](https://lh3.googleusercontent.com/-dt0_MXF-F_E/VNSN8_MmXLI/AAAAAAAAH4k/3VLoa6em0mY/w855-h578-no/12.%2BHasil%2BExtract.png)
 
 Coba kita jalankan dengan perintah `bundle exec jekyll serve`
 
-![Run Jekyll](https://lh5.googleusercontent.com/-w7tQ96eZQ8o/VNSOBSAWlDI/AAAAAAAAH4s/QDyxCTb-lKU/w728-h494-no/13.%2BJalankan%2Bdi%2Blocal.png)
+[![Run Jekyll](https://lh5.googleusercontent.com/-w7tQ96eZQ8o/VNSOBSAWlDI/AAAAAAAAH4s/QDyxCTb-lKU/w728-h494-no/13.%2BJalankan%2Bdi%2Blocal.png)](https://lh5.googleusercontent.com/-w7tQ96eZQ8o/VNSOBSAWlDI/AAAAAAAAH4s/QDyxCTb-lKU/w728-h494-no/13.%2BJalankan%2Bdi%2Blocal.png)
 
 Kemudian browse ke `http://localhost:4000`.
 
-![Local Deployment](https://lh5.googleusercontent.com/-4E-myZULncY/VNSOJDurMBI/AAAAAAAAH40/jiwixObwMnw/w917-h566-no/14.%2BBrowse%2BLocal.png)
+[![Local Deployment](https://lh5.googleusercontent.com/-4E-myZULncY/VNSOJDurMBI/AAAAAAAAH40/jiwixObwMnw/w917-h566-no/14.%2BBrowse%2BLocal.png)](https://lh5.googleusercontent.com/-4E-myZULncY/VNSOJDurMBI/AAAAAAAAH40/jiwixObwMnw/w917-h566-no/14.%2BBrowse%2BLocal.png)
 
 Nah, website kita sudah jalan di komputer kita sendiri. Sekarang, tinggal kita pasang di Openshift.
 
@@ -109,29 +109,29 @@ Nah, website kita sudah jalan di komputer kita sendiri. Sekarang, tinggal kita p
 
 Kita perlu membuat akun di Openshift terlebih dulu. Caranya mudah, langsung saja isi form yang disediakan di websitenya.
 
-![Website Openshift](https://lh3.googleusercontent.com/-RAP1-lNzkkk/VNSNcEHC_oI/AAAAAAAAH3Y/9hRUK_dB3CM/w916-h528-no/01.%2BOpenshift%2BWebsite.png)
+[![Website Openshift](https://lh3.googleusercontent.com/-RAP1-lNzkkk/VNSNcEHC_oI/AAAAAAAAH3Y/9hRUK_dB3CM/w916-h528-no/01.%2BOpenshift%2BWebsite.png)](https://lh3.googleusercontent.com/-RAP1-lNzkkk/VNSNcEHC_oI/AAAAAAAAH3Y/9hRUK_dB3CM/w916-h528-no/01.%2BOpenshift%2BWebsite.png)
 
 ## Membuat Aplikasi ##
 
 Setelah membuat akun dan login, kita bisa langsung klik link untuk membuat aplikasi baru.
 
-![Welcome Screen](https://lh4.googleusercontent.com/-osxSBeceqjc/VNSNbx9oc1I/AAAAAAAAH3U/vTV27OtGsLA/w916-h522-no/02.%2BOpenshift%2BWelcome.png)
+[![Welcome Screen](https://lh4.googleusercontent.com/-osxSBeceqjc/VNSNbx9oc1I/AAAAAAAAH3U/vTV27OtGsLA/w916-h522-no/02.%2BOpenshift%2BWelcome.png)](https://lh4.googleusercontent.com/-osxSBeceqjc/VNSNbx9oc1I/AAAAAAAAH3U/vTV27OtGsLA/w916-h522-no/02.%2BOpenshift%2BWelcome.png)
 
 Untuk aplikasi Jekyll, Openshift telah menyediakan starter pack khusus (cartridge dalam istilah Openshift). Langsung saja search
 
-![Search Cartridge](https://lh4.googleusercontent.com/-W_H0vkwfxS8/VNSNcNWgLLI/AAAAAAAAH3c/WR0cj05L0QQ/w876-h623-no/03.%2BJenis%2BAplikasi.png)
+[![Search Cartridge](https://lh4.googleusercontent.com/-W_H0vkwfxS8/VNSNcNWgLLI/AAAAAAAAH3c/WR0cj05L0QQ/w876-h623-no/03.%2BJenis%2BAplikasi.png)](https://lh4.googleusercontent.com/-W_H0vkwfxS8/VNSNcNWgLLI/AAAAAAAAH3c/WR0cj05L0QQ/w876-h623-no/03.%2BJenis%2BAplikasi.png)
 
 Kemudian klik
 
-![Jekyll Cartridge](https://lh4.googleusercontent.com/-sHIp8sVVCpY/VNSNfEgoYvI/AAAAAAAAH3s/57pQUsECd5A/w898-h623-no/04.%2BJekyll%2BCartridge.png)
+[![Jekyll Cartridge](https://lh4.googleusercontent.com/-sHIp8sVVCpY/VNSNfEgoYvI/AAAAAAAAH3s/57pQUsECd5A/w898-h623-no/04.%2BJekyll%2BCartridge.png)](https://lh4.googleusercontent.com/-sHIp8sVVCpY/VNSNfEgoYvI/AAAAAAAAH3s/57pQUsECd5A/w898-h623-no/04.%2BJekyll%2BCartridge.png)
 
 Isikan nama aplikasi
 
-![Nama Aplikasi](https://lh4.googleusercontent.com/-Gxc-Bkk9USk/VNSNf1PmZCI/AAAAAAAAH3w/uBq-Nux9ceY/w857-h623-no/05.%2BCukup%2Bisi%2Bnama%2Baplikasi.png)
+[![Nama Aplikasi](https://lh4.googleusercontent.com/-Gxc-Bkk9USk/VNSNf1PmZCI/AAAAAAAAH3w/uBq-Nux9ceY/w857-h623-no/05.%2BCukup%2Bisi%2Bnama%2Baplikasi.png)](https://lh4.googleusercontent.com/-Gxc-Bkk9USk/VNSNf1PmZCI/AAAAAAAAH3w/uBq-Nux9ceY/w857-h623-no/05.%2BCukup%2Bisi%2Bnama%2Baplikasi.png)
 
 Klik OK. Aplikasi sudah dibuat. Kita akan diberikan URL untuk melakukan `git clone`
 
-![Sukses](https://lh3.googleusercontent.com/-siiXJ3o4rwo/VNSNgEMQjwI/AAAAAAAAH30/E9VrPkeHglU/w868-h623-no/06.%2BAplikasi%2Bselesai%2Bdibuat.png)
+[![Sukses](https://lh3.googleusercontent.com/-siiXJ3o4rwo/VNSNgEMQjwI/AAAAAAAAH30/E9VrPkeHglU/w868-h623-no/06.%2BAplikasi%2Bselesai%2Bdibuat.png)](https://lh3.googleusercontent.com/-siiXJ3o4rwo/VNSNgEMQjwI/AAAAAAAAH30/E9VrPkeHglU/w868-h623-no/06.%2BAplikasi%2Bselesai%2Bdibuat.png)
 
 Sebetulnya ini juga bisa kita lakukan melalui command prompt.
 
@@ -284,7 +284,7 @@ To ssh://54d478d14382ec586c000058@blogbisnis-endymuhardin.rhcloud.com/~/git/blog
 
 Coba browse ke url aplikasi kita di Openshift, yaitu `http://blogbisnis-endymuhardin.rhcloud.com`
 
-![Deploy di Openshift](https://lh6.googleusercontent.com/-iY15Z743RWw/VNSORWJhavI/AAAAAAAAH5E/YgL7ibpTUOc/w874-h623-no/15.%2BDeploy%2Bke%2BOpenshift.png)
+[![Deploy di Openshift](https://lh6.googleusercontent.com/-iY15Z743RWw/VNSORWJhavI/AAAAAAAAH5E/YgL7ibpTUOc/w874-h623-no/15.%2BDeploy%2Bke%2BOpenshift.png)](https://lh6.googleusercontent.com/-iY15Z743RWw/VNSORWJhavI/AAAAAAAAH5E/YgL7ibpTUOc/w874-h623-no/15.%2BDeploy%2Bke%2BOpenshift.png)
 
 Voila, website kita sudah selesai.
 
@@ -296,17 +296,17 @@ Proses pembelian domain tidak akan saya ceritakan di sini karena amat sangat ter
 
 Cara untuk mengaktifkan custom domain di Openshift bisa dicari dengan mudah di Google
 
-![Search Custom Domain Deployment](https://lh6.googleusercontent.com/-eWzSXRQo5wI/VNSOSNew31I/AAAAAAAAH5M/1MqLL4CsW3w/w744-h623-no/16.%2BCari%2Bcara%2Buntuk%2Bcustom%2Bdomain.png)
+[![Search Custom Domain Deployment](https://lh6.googleusercontent.com/-eWzSXRQo5wI/VNSOSNew31I/AAAAAAAAH5M/1MqLL4CsW3w/w744-h623-no/16.%2BCari%2Bcara%2Buntuk%2Bcustom%2Bdomain.png)](https://lh6.googleusercontent.com/-eWzSXRQo5wI/VNSOSNew31I/AAAAAAAAH5M/1MqLL4CsW3w/w744-h623-no/16.%2BCari%2Bcara%2Buntuk%2Bcustom%2Bdomain.png)
 
 Kita akan mendapatkan tutorialnya di website Openshift sendiri
 
-![Cara setting custom domain](https://lh3.googleusercontent.com/-p8QXyZfZDEA/VNSOSPxhrtI/AAAAAAAAH5I/OT5C0HVx1EY/w891-h552-no/17.%2BCommand%2Balias.png)
+[![Cara setting custom domain](https://lh3.googleusercontent.com/-p8QXyZfZDEA/VNSOSPxhrtI/AAAAAAAAH5I/OT5C0HVx1EY/w891-h552-no/17.%2BCommand%2Balias.png)](https://lh3.googleusercontent.com/-p8QXyZfZDEA/VNSOSPxhrtI/AAAAAAAAH5I/OT5C0HVx1EY/w891-h552-no/17.%2BCommand%2Balias.png)
 
 ### Konfigurasi DNS ###
 
 Agar nama domain kita tadi mengarah ke website kita, perlu ditambahkan konfigurasi CNAME di DNS. Berikut ilustrasinya dengan menggunakan layanan ClouDNS yang saya gunakan
 
-![Edit CNAME ClouDNS](https://lh5.googleusercontent.com/-YqGp8TjNQsQ/VNSOUI7qP4I/AAAAAAAAH5g/n8U3y1YHxBQ/w917-h376-no/18.%2BDNS%2BConfig.png)
+[![Edit CNAME ClouDNS](https://lh5.googleusercontent.com/-YqGp8TjNQsQ/VNSOUI7qP4I/AAAAAAAAH5g/n8U3y1YHxBQ/w917-h376-no/18.%2BDNS%2BConfig.png)](https://lh5.googleusercontent.com/-YqGp8TjNQsQ/VNSOUI7qP4I/AAAAAAAAH5g/n8U3y1YHxBQ/w917-h376-no/18.%2BDNS%2BConfig.png)
 
 Seperti Anda lihat pada screenshot di atas, saya memiliki beberapa domain lain yang mengarah ke github dan heroku. Yaitu
 
@@ -315,12 +315,12 @@ Seperti Anda lihat pada screenshot di atas, saya memiliki beberapa domain lain y
 
 Tambahkan entri berjenis CNAME untuk nama domain `bisnis.endy.muhardin.com` dan arahkan ke `blogbisnis-endymuhardin.rhcloud.com`.
 
-![Konfigurasi CNAME](https://lh3.googleusercontent.com/-uMAGnXHALqA/VN4krEtZs3I/AAAAAAAAH6k/6-eGym0Z0hI/w917-h418-no/19.%2BCNAME%2BEntry.png)
+[![Konfigurasi CNAME](https://lh3.googleusercontent.com/-uMAGnXHALqA/VN4krEtZs3I/AAAAAAAAH6k/6-eGym0Z0hI/w917-h418-no/19.%2BCNAME%2BEntry.png)](https://lh3.googleusercontent.com/-uMAGnXHALqA/VN4krEtZs3I/AAAAAAAAH6k/6-eGym0Z0hI/w917-h418-no/19.%2BCNAME%2BEntry.png)
 
 ### VirtualHost Openshift ###
 Alamat domain kita sudah mengarah ke server Openshift. Ini bisa dibuktikan kalau kita browse ke `http://bisnis.endy.muhardin.com` akan diarahkan ke servernya Openshift.
 
-![Virtual Host Error](https://lh4.googleusercontent.com/-S8Ul3djmpWA/VNSOU26jUoI/AAAAAAAAH5k/PmtKZJDR2Zo/w917-h401-no/20.%2BBelum%2Bdibikin%2Balias.png)
+[![Virtual Host Error](https://lh4.googleusercontent.com/-S8Ul3djmpWA/VNSOU26jUoI/AAAAAAAAH5k/PmtKZJDR2Zo/w917-h401-no/20.%2BBelum%2Bdibikin%2Balias.png)](https://lh4.googleusercontent.com/-S8Ul3djmpWA/VNSOU26jUoI/AAAAAAAAH5k/PmtKZJDR2Zo/w917-h401-no/20.%2BBelum%2Bdibikin%2Balias.png)
 
 Kita bisa lihat pada screenshot di atas, Openshift sudah menerima request. Tapi muncul pesan error karena dia tidak paham bagaimana menangani request tersebut.
 
@@ -328,7 +328,7 @@ Untuk itu, kita perlu membuat konfigurasi virtual host dulu. Gunanya supaya Open
 
 Ini bisa dilakukan melalui web
 
-![Web Based Custom Domain](https://lh6.googleusercontent.com/-BK2dMIan4VM/VN4XscJhKGI/AAAAAAAAH6U/f83fyASiyK8/w663-h623-no/22.%2BCustom%2BDomain%2BWeb%2BBased.png)
+[![Web Based Custom Domain](https://lh6.googleusercontent.com/-BK2dMIan4VM/VN4XscJhKGI/AAAAAAAAH6U/f83fyASiyK8/w663-h623-no/22.%2BCustom%2BDomain%2BWeb%2BBased.png)](https://lh6.googleusercontent.com/-BK2dMIan4VM/VN4XscJhKGI/AAAAAAAAH6U/f83fyASiyK8/w663-h623-no/22.%2BCustom%2BDomain%2BWeb%2BBased.png)
 
 Atau melalui command line
 
@@ -344,7 +344,7 @@ Alias 'bisnis.endy.muhardin.com' has been added.
 
 Setelah selesai, coba kita browse `http://bisnis.endy.muhardin.com`
 
-![Custom Domain Success](https://lh6.googleusercontent.com/-8dmIdYTjdyc/VNSOdH0KxqI/AAAAAAAAH5s/nMwJOFxyJe4/w827-h623-no/21.%2BSudah%2Bdibikin%2Balias.png)
+[![Custom Domain Success](https://lh6.googleusercontent.com/-8dmIdYTjdyc/VNSOdH0KxqI/AAAAAAAAH5s/nMwJOFxyJe4/w827-h623-no/21.%2BSudah%2Bdibikin%2Balias.png)](https://lh6.googleusercontent.com/-8dmIdYTjdyc/VNSOdH0KxqI/AAAAAAAAH5s/nMwJOFxyJe4/w827-h623-no/21.%2BSudah%2Bdibikin%2Balias.png)
 
 Nah selesailah website kita. Tinggal diisi saja
 

@@ -39,7 +39,7 @@ Mari kita bahas satu persatu.
 
 Aplikasi web Java struktur foldernya harus mengikuti kaidah berikut
 
-![Struktur Folder Aplikasi Web Java](https://github.com/endymuhardin/materi-kuliah-java-web/blob/master/materi-kuliah/img/struktur-folder-web-java.png?raw=true)
+[![Struktur Folder Aplikasi Web Java](https://github.com/endymuhardin/materi-kuliah-java-web/blob/master/materi-kuliah/img/struktur-folder-web-java.png?raw=true)](https://github.com/endymuhardin/materi-kuliah-java-web/blob/master/materi-kuliah/img/struktur-folder-web-java.png?raw=true)
 
 Gambar di atas adalah struktur folder aplikasi yang siap dijalankan. Oleh karena itu kita tidak melihat adanya source code Java di sana. 
 

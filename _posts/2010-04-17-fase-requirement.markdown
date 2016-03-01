@@ -265,7 +265,7 @@ Setelah semua user story diiterasi dengan end user sampai puas, maka tiba saatny
 
 Sebelum sign off, end user bebas mengajukan perubahan apapun. Setelah sign off, semua perubahan harus melalui change procedure. Intinya adalah, perubahan diajukan secara tertulis, diestimasi penambahan durasi dan costnya, lalu diajukan ke manajemen, baik vendor maupun client. Kalau salah satu pihak tidak setuju, maka perubahan tidak akan dijalankan. 
 
-![Prosedur Change Management ](/images/uploads/2010/02/change-procedure_id-724x1024.png)
+[![Prosedur Change Management ](/images/uploads/2010/02/change-procedure_id-724x1024.png)](/images/uploads/2010/02/change-procedure_id-724x1024.png)
 
 Lebih jelas tentang informasi apa saja yang dibahas di change management, bisa melihat [template change request ArtiVisi](http://software.endy.muhardin.com/downloads/change-request.odt). 
 

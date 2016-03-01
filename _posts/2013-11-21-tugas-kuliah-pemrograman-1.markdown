@@ -40,7 +40,7 @@ Selamat mencoba.
 
 Aplikasi ini akan memproses perhitungan take home pay pegawai tiap bulannya. Tidak digunakan antarmuka pengguna (user interface) karena aplikasi bersifat `batch`, yaitu berjalan otomatis pada waktu yang ditentukan tanpa membutuhkan intervensi manusia. Input aplikasi berupa file text, dan outputnya juga berupa file text.
 
-![Foto](http://lh5.googleusercontent.com/-zREpwzUHZVs/Uo4B8sUpjdI/AAAAAAAACT4/3HgNUTbbu1s/w909-h314-no/tugas-kuliah.jpg)
+[![Foto](http://lh5.googleusercontent.com/-zREpwzUHZVs/Uo4B8sUpjdI/AAAAAAAACT4/3HgNUTbbu1s/w909-h314-no/tugas-kuliah.jpg)](http://lh5.googleusercontent.com/-zREpwzUHZVs/Uo4B8sUpjdI/AAAAAAAACT4/3HgNUTbbu1s/w909-h314-no/tugas-kuliah.jpg)
 
 Pada pemakaian sebenarnya, data tarif gaji pegawai bisa diambil dari database. Data absensi diambil dari mesin fingerprint. Hasil perhitungan take home pay akan diupload ke bank untuk proses payroll otomatis.
 

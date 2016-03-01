@@ -319,39 +319,39 @@ Solusinya, kita menginstal extension di browser. Extension ini dapat membaca pri
 
 Untuk memakainya, pertama kita search dulu extension tersebut
 
-![Search GPG Plugin](https://lh3.googleusercontent.com/6fTIWRai02DIsiM2QN4bxbCkqWOB9pA92YwnFU3zC0Y=w784-h390-no)
+[![Search GPG Plugin](https://lh3.googleusercontent.com/6fTIWRai02DIsiM2QN4bxbCkqWOB9pA92YwnFU3zC0Y=w784-h390-no)](https://lh3.googleusercontent.com/6fTIWRai02DIsiM2QN4bxbCkqWOB9pA92YwnFU3zC0Y=w784-h390-no)
 
 Kita bisa lihat ada extension untuk Firefox dan Chrome. Mari kita coba install extension Chrome
 
-![Extension Mymail Crypt](https://lh3.googleusercontent.com/MXe17kR1ml5SAf-0YQ0taBbakvp983qI1U6Dqke6Pe8=w998-h629-no)
+[![Extension Mymail Crypt](https://lh3.googleusercontent.com/MXe17kR1ml5SAf-0YQ0taBbakvp983qI1U6Dqke6Pe8=w998-h629-no)](https://lh3.googleusercontent.com/MXe17kR1ml5SAf-0YQ0taBbakvp983qI1U6Dqke6Pe8=w998-h629-no)
 
 Setelah terinstal, kita bisa lihat di menu Extension. 
 
-![Extension MyMail Crypt sudah terinstall](https://lh3.googleusercontent.com/TzETAGFvtI2oW-HGFpPop2KceKDYgcGgwP3Squmtq1M=w894-h520-no)
+[![Extension MyMail Crypt sudah terinstall](https://lh3.googleusercontent.com/TzETAGFvtI2oW-HGFpPop2KceKDYgcGgwP3Squmtq1M=w894-h520-no)](https://lh3.googleusercontent.com/TzETAGFvtI2oW-HGFpPop2KceKDYgcGgwP3Squmtq1M=w894-h520-no)
 
 Klik Option untuk mengisi private key.
 
-![Menu Option MyMail Crypt](https://lh3.googleusercontent.com/Zl-PhaBB0s3IAXYRR6ZliyTpgZNduoZ7cPD9dmaVv5E=w987-h558-no)
+[![Menu Option MyMail Crypt](https://lh3.googleusercontent.com/Zl-PhaBB0s3IAXYRR6ZliyTpgZNduoZ7cPD9dmaVv5E=w987-h558-no)](https://lh3.googleusercontent.com/Zl-PhaBB0s3IAXYRR6ZliyTpgZNduoZ7cPD9dmaVv5E=w987-h558-no)
 
 Untuk mengisi private key, tekan My Keys, kemudian klik Insert Private Key. Selanjutnya kita akan diberikan text area untuk mengisi private key
 
-![Insert Private Key](https://lh3.googleusercontent.com/6CuyuhC-j4kzGuns2z7eDwUsnyFEL0PlCyMYI6ZI5hA=w735-h597-no)
+[![Insert Private Key](https://lh3.googleusercontent.com/6CuyuhC-j4kzGuns2z7eDwUsnyFEL0PlCyMYI6ZI5hA=w735-h597-no)](https://lh3.googleusercontent.com/6CuyuhC-j4kzGuns2z7eDwUsnyFEL0PlCyMYI6ZI5hA=w735-h597-no)
 
 Export private key kita sehingga menjadi format text seperti dibahas sebelumnya. Kemudian paste isinya ke dalam text input.
 
-![Private Key terdaftar](https://lh3.googleusercontent.com/pvJ8yeni0h-NvqD9OGOcD7-LO9Eljb0qfe5shM3PE1M=w978-h446-no)
+[![Private Key terdaftar](https://lh3.googleusercontent.com/pvJ8yeni0h-NvqD9OGOcD7-LO9Eljb0qfe5shM3PE1M=w978-h446-no)](https://lh3.googleusercontent.com/pvJ8yeni0h-NvqD9OGOcD7-LO9Eljb0qfe5shM3PE1M=w978-h446-no)
 
 Hasilnya bisa kita lihat di atas, keypair kita sudah siap digunakan.
 
 Selanjutnya, restart browser, kemudian coba buka Gmail. Klik salah satu email untuk menampilkan isinya.
 
-![View Email](https://lh3.googleusercontent.com/zDW1Xu0rg0Y4YmUIj49ji3cElfcwyhK-bkxEEdz76Ro=w953-h586-no)
+[![View Email](https://lh3.googleusercontent.com/zDW1Xu0rg0Y4YmUIj49ji3cElfcwyhK-bkxEEdz76Ro=w953-h586-no)](https://lh3.googleusercontent.com/zDW1Xu0rg0Y4YmUIj49ji3cElfcwyhK-bkxEEdz76Ro=w953-h586-no)
 
 Kita bisa lihat ada tambahan menu untuk mengecek signature (verify) dan melakukan dekripsi (bila emailnya terenkripsi). Di situ ada kolom password untuk memasukkan passphrase private key kita.
 
 Fitur extension ini juga tersedia pada saat kita mau mengirim email. Kita bisa memberikan signature kita, atau melakukan enkripsi dengan public key orang lain. Langsung saja klik Compose seperti biasa.
 
-![Compose Mail](https://lh3.googleusercontent.com/T-FuRISAv3Zs9muNubuqyZSHPPH_hT7TeuISqSxLvhw=w548-h501-no)
+[![Compose Mail](https://lh3.googleusercontent.com/T-FuRISAv3Zs9muNubuqyZSHPPH_hT7TeuISqSxLvhw=w548-h501-no)](https://lh3.googleusercontent.com/T-FuRISAv3Zs9muNubuqyZSHPPH_hT7TeuISqSxLvhw=w548-h501-no)
 
 Di situ kita bisa lihat ada tambahan tombol baru Encrypt dan Sign.
 

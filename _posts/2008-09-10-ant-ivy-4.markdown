@@ -13,7 +13,7 @@ Template project sudah dibuat pada [artikel sebelumnya](http://endy.artivisi.com
 
 Seperti kita ketahui, modul `person-dao-api` mempunyai dependensi terhadap modul `person-model`. Berikut gambarnya. 
 
-![ ](/images/uploads/2008/09/dep-after.png)
+[![ ](/images/uploads/2008/09/dep-after.png)](/images/uploads/2008/09/dep-after.png)
 
 Dependensi ini terlihat di source-code `PersonDao.java`, yang melakukan import terhadap class Person, sebagai berikut. 
 
@@ -380,17 +380,17 @@ untuk mempublish ke repository shared. Bila dalam proses pembuatan private key k
 Setelah dijalankan, kita akan melihat banyak file dalam repository. Ivy akan merilis: `person-model-0.0.1.jar`, `person-sources-0.0.1.jar`, dan `ivy-0.0.1.xml` yang berisi metadata dari rilis tersebut. Setiap file disertai signature md5 dan sha1 untuk kebutuhan verifikasi keabsahan file. 
 
 Berikut struktur folder keseluruhan. 
-![ ](/images/uploads/2008/09/struktur-folder-4-all.png)
+[![ ](/images/uploads/2008/09/struktur-folder-4-all.png)](/images/uploads/2008/09/struktur-folder-4-all.png)
 
 Isi folder local repo sebagai berikut. 
 
-![ ](/images/uploads/2008/09/struktur-folder-4-local-repo.png)
+[![ ](/images/uploads/2008/09/struktur-folder-4-local-repo.png)](/images/uploads/2008/09/struktur-folder-4-local-repo.png)
 
 Isi folder person-build sebagai berikut.
 
-![ ](/images/uploads/2008/09/struktur-folder-4-person-build.png)
+[![ ](/images/uploads/2008/09/struktur-folder-4-person-build.png)](/images/uploads/2008/09/struktur-folder-4-person-build.png)
 
 Isi folder person-model sebagai berikut.
-![ ](/images/uploads/2008/09/struktur-folder-4-person-model.png)
+[![ ](/images/uploads/2008/09/struktur-folder-4-person-model.png)](/images/uploads/2008/09/struktur-folder-4-person-model.png)
 
 Pada [artikel selanjutnya](http://endy.artivisi.com/blog/java/ant-ivy-5), kita akan membahas bagaimana cara mengambil artifact yang sudah dipublish tersebut. 

@@ -90,7 +90,7 @@ Domain validation memastikan bahwa pemohon benar-benar punya akses terhadap doma
 
 2. CA akan mencari tahu siapa pemilik domain tersebut menggunakan fasilitas whois. Disana nantinya ada informasi email pemilik domain. Contoh output whois seperti ini: 
     
-    ![Output Whois ](/images/uploads/2013/07/ssl/output-whois.png)
+    [![Output Whois ](/images/uploads/2013/07/ssl/output-whois.png)](/images/uploads/2013/07/ssl/output-whois.png)
 
 3. Adakalanya orang yang membeli domain berbeda dengan orang teknis yang mengurus domain, sehingga alamat email di whois tidak bisa digunakan. Bila terjadi seperti ini, pemohon bisa minta CA menggunakan email lain, biasanya `postmaster@muhardin.com` atau `webmaster@muhardin.com`. Ini adalah alamat email standar untuk administrasi mailserver dan webserver. Jadi pastikan kedua alamat email ini dilindungi dengan baik dan hanya diberikan aksesnya pada orang yang berhak.
 
@@ -125,15 +125,15 @@ Mengingat tingkat ketelitian dalam validasinya, maka sertifikat level EV tidak b
 
 Sertifikat yang memiliki validasi EV akan terlihat berbeda di browser, ditandai dengan adanya _green bar_ seperti di Internet Banking Mandiri 
 
-![Green Bar Mandiri ](/images/uploads/2013/07/ssl/green-bar-mandiri.png)
+[![Green Bar Mandiri ](/images/uploads/2013/07/ssl/green-bar-mandiri.png)](/images/uploads/2013/07/ssl/green-bar-mandiri.png)
 
 atau di KlikBCA
 
-![Green Bar BCA ](/images/uploads/2013/07/ssl/01-green-bar.png)
+[![Green Bar BCA ](/images/uploads/2013/07/ssl/01-green-bar.png)](/images/uploads/2013/07/ssl/01-green-bar.png)
 
 Kita bisa melihat informasi detail tentang sertifikat SSL dengan cara klik green bar tersebut
 
-![Informasi Green Bar ](/images/uploads/2013/07/ssl/02-green-bar-info.png)
+[![Informasi Green Bar ](/images/uploads/2013/07/ssl/02-green-bar-info.png)](/images/uploads/2013/07/ssl/02-green-bar-info.png)
 
 Pada level validasi EV, CA memastikan identitas pemohon berupa:
 
@@ -161,11 +161,11 @@ Walaupun demikian, menurut pandangan saya pribadi, masalah kredibilitas ini tida
 
 Untuk menambah added value, beberapa CA mengeluarkan stempel (seal) yang bisa dipasang di website. Contohnya bisa dilihat di KlikBCA berikut
 
-![Green Bar BCA ](/images/uploads/2013/07/ssl/01-green-bar.png)
+[![Green Bar BCA ](/images/uploads/2013/07/ssl/01-green-bar.png)](/images/uploads/2013/07/ssl/01-green-bar.png)
 
 atau Internet Banking Mandiri berikut
 
-![Green Bar Mandiri ](/images/uploads/2013/07/ssl/stempel-ca-mandiri.png)
+[![Green Bar Mandiri ](/images/uploads/2013/07/ssl/stempel-ca-mandiri.png)](/images/uploads/2013/07/ssl/stempel-ca-mandiri.png)
 
 Tapi menurut saya, stempel inipun juga tidak menambah keyakinan pengunjung, karena siapapun bisa memasang logo tersebut dengan mudah.
 

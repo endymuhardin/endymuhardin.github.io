@@ -111,7 +111,7 @@ Microphone yang cukup baik harganya tidak mahal. Saya menggunakan mic lavalier
 (mic yang ditempel/dijepit di baju) merek Audio Technica ATR3350IS seharga 500
 ribu rupiah.
 
-![Audio Technica ATR3350IS](https://lh3.googleusercontent.com/ugrsJcUScaOyqgfQsZuCJGu_fc3HQuS-IwBz3jnrvXEWSxEtCxM=s680-no)
+[![Audio Technica ATR3350IS](https://lh3.googleusercontent.com/ugrsJcUScaOyqgfQsZuCJGu_fc3HQuS-IwBz3jnrvXEWSxEtCxM=s680-no)](https://lh3.googleusercontent.com/ugrsJcUScaOyqgfQsZuCJGu_fc3HQuS-IwBz3jnrvXEWSxEtCxM=s680-no)
 
 gambar diambil dari [websitenya Audio Technica](http://www.audio-technica.com/cms/wired_mics/55540ea6a5fbc94d/index.html)
 

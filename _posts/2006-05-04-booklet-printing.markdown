@@ -13,19 +13,19 @@ Jika Anda adalah kolektor PDF obsesif-kompulsif seperti saya, pasti cepat atau l
 
 Misalnya, kita punya [Tutorial PHP-MySQL](http://ikc.cbn.net.id/umum/endy-php.php) seperti pada gambar berikut
 
-![Modul PHP ](/images/uploads/2006/05/endy-php.png)
+[![Modul PHP ](/images/uploads/2006/05/endy-php.png)](/images/uploads/2006/05/endy-php.png)
 
 Berhubung ada 81 halaman di file tersebut, kita ingin menghemat kertas dengan cara print bolak balik. Selain itu, kita juga mau cetak 2 halaman per lembar, sehingga yang tadinya seperti ini
 
-![Normal Page Print ](/images/uploads/2006/05/normal.png)
+[![Normal Page Print ](/images/uploads/2006/05/normal.png)](/images/uploads/2006/05/normal.png)
 
 menjadi seperti ini
 
-![Two Sheet per Page ](/images/uploads/2006/05/2sheet.png)
+[![Two Sheet per Page ](/images/uploads/2006/05/2sheet.png)](/images/uploads/2006/05/2sheet.png)
 
 Tapi sebetulnya, ada lagi yang lebih optimal, yaitu teknik yang dikenal dengan nama keren "booklet printing", menjadikan susunan halaman menjadi seperti ini: 
 
-![Booklet Print ](/images/uploads/2006/05/booklet.png)
+[![Booklet Print ](/images/uploads/2006/05/booklet.png)](/images/uploads/2006/05/booklet.png)
 
 Saya pernah membuat buku dengan cetakan seperti itu menggunakan printer Canon di Windows. Driver printer Canon tersebut sudah menyertakan fasilitas untuk melakukan booklet printing. Tetapi kalau menggunakan printer selain Canon, yah kita harus cari cara lain. 
 
@@ -37,7 +37,7 @@ Setelah googling ke sana kemari, dengan menggunakan keyword "booklet printing kp
 
 
 
-![Acrobat Reader Print Dialog ](/images/uploads/2006/05/acroprint.png)
+[![Acrobat Reader Print Dialog ](/images/uploads/2006/05/acroprint.png)](/images/uploads/2006/05/acroprint.png)
 
 
 
@@ -45,7 +45,7 @@ Setelah googling ke sana kemari, dengan menggunakan keyword "booklet printing kp
 
 
 
-![KPrinter Dialog ](/images/uploads/2006/05/kprinter.png)
+[![KPrinter Dialog ](/images/uploads/2006/05/kprinter.png)](/images/uploads/2006/05/kprinter.png)
 
 
 
@@ -53,7 +53,7 @@ Setelah googling ke sana kemari, dengan menggunakan keyword "booklet printing kp
 
 
 
-![KPrinter Properties ](/images/uploads/2006/05/kprinter-properties.png)
+[![KPrinter Properties ](/images/uploads/2006/05/kprinter-properties.png)](/images/uploads/2006/05/kprinter-properties.png)
 
 
 
@@ -62,7 +62,7 @@ Setelah googling ke sana kemari, dengan menggunakan keyword "booklet printing kp
 
 Untuk tahap pertama, yang dipilih adalah Pamphlet Printing - Even Page (step 1)
 
-![Pamphlet Printing - Even Page (step 1) ](/images/uploads/2006/05/kprinter-select-filter-1.png)
+[![Pamphlet Printing - Even Page (step 1) ](/images/uploads/2006/05/kprinter-select-filter-1.png)](/images/uploads/2006/05/kprinter-select-filter-1.png)
 
 
 
@@ -78,6 +78,6 @@ Setelah hasil print keluar, balikkan susunan kertas dan letakkan kembali di prin
 
 Lakukan langkah 1-6, dengan sedikit perbedaan. Pada langkah #6, pilih Pamphlet Printing - Odd Page (step 2)
 
-![Pamphlet Printing - Odd Page (step 2) ](/images/uploads/2006/05/kprinter-select-filter-2.png)
+[![Pamphlet Printing - Odd Page (step 2) ](/images/uploads/2006/05/kprinter-select-filter-2.png)](/images/uploads/2006/05/kprinter-select-filter-2.png)
 
 Selesai. Sekarang tinggal diberikan ke tukang jilid. :D

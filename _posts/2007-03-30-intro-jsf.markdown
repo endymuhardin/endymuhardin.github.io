@@ -88,11 +88,11 @@ tanpa business logic sama sekali. Halaman pertama berisi form registrasi, yang b
 
 Halaman pertama tampak seperti ini. 
 
-![Halaman Registrasi ](/images/uploads/2007/03/jsf-register.png)
+[![Halaman Registrasi ](/images/uploads/2007/03/jsf-register.png)](/images/uploads/2007/03/jsf-register.png)
 
 Sedangkan halaman kedua tampak seperti ini. 
 
-![Halaman Konfirmasi ](/images/uploads/2007/03/jsf-confirm.png)
+[![Halaman Konfirmasi ](/images/uploads/2007/03/jsf-confirm.png)](/images/uploads/2007/03/jsf-confirm.png)
 
 Kode untuk halaman pertama adalah sebagai berikut. 
 
@@ -289,7 +289,7 @@ Di masa yang akan datang, nantinya konfigurasi navigasi ini akan diedit dengan v
 
 Aplikasi HelloJSF siap dideploy. Struktur folder lengkapnya tampak seperti ini. 
 
-![Struktur Folder Aplikasi HelloJSF ](/images/uploads/2007/03/hellojsf-folder.png)
+[![Struktur Folder Aplikasi HelloJSF ](/images/uploads/2007/03/hellojsf-folder.png)](/images/uploads/2007/03/hellojsf-folder.png)
 
 Pembaca yang teliti akan segera bertanya, 
 

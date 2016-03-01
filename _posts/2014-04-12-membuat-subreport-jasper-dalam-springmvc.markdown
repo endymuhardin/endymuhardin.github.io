@@ -124,7 +124,7 @@ Kondisi folder project pada tahap ini bisa dilihat [di sini](https://github.com/
 
 Kita harus membuat dulu template reportnya. Gunakan [iReport](http://community.jaspersoft.com/project/ireport-designer) untuk mendesain template secara visual, supaya lebih mudah. Berikut screenshot report yang saya buat
 
-![Foto](https://lh4.googleusercontent.com/-j44Qm1BUa70/U0jWOO7SwOI/AAAAAAAAFlM/vReeJlxCI3E/w916-h574-no/01-report-induk.png)
+[![Foto](https://lh4.googleusercontent.com/-j44Qm1BUa70/U0jWOO7SwOI/AAAAAAAAFlM/vReeJlxCI3E/w916-h574-no/01-report-induk.png)](https://lh4.googleusercontent.com/-j44Qm1BUa70/U0jWOO7SwOI/AAAAAAAAFlM/vReeJlxCI3E/w916-h574-no/01-report-induk.png)
 
 Semua template Jasper Report kita simpan dalam folder `src/main/webapp/WEB-INF/templates/jrxml`.
 
@@ -210,43 +210,43 @@ Satu report induk bisa menampung banyak subreport. Masing-masing subreport memil
 
 Kita mulai dari desain template induk terlebih dulu. Ini kita lakukan di iReport. Drag and drop icon subreport di Palette ke template. iReport akan menampilkan wizard untuk membantu kita. 
 
-![Foto](https://lh5.googleusercontent.com/-gqIBrrd0qeg/U0jWNjg4bSI/AAAAAAAAFk4/XzTxNcCIyOU/w667-h435-no/02-membuat-subreport.png)
+[![Foto](https://lh5.googleusercontent.com/-gqIBrrd0qeg/U0jWNjg4bSI/AAAAAAAAFk4/XzTxNcCIyOU/w667-h435-no/02-membuat-subreport.png)](https://lh5.googleusercontent.com/-gqIBrrd0qeg/U0jWNjg4bSI/AAAAAAAAFk4/XzTxNcCIyOU/w667-h435-no/02-membuat-subreport.png)
 
 Saya lebih suka membuat templatenya secara terpisah, kemudian menyatukannya secara manual. Oleh karena itu, kita pilih _Just create subreport element_.
 
 Hasilnya sebagai berikut.
 
-![Foto](https://lh5.googleusercontent.com/-3ig57Gmr68A/U0jWOcc-8hI/AAAAAAAAFlI/49LtLA6TDFk/w916-h574-no/03-layout-subreport.png)
+[![Foto](https://lh5.googleusercontent.com/-3ig57Gmr68A/U0jWOcc-8hI/AAAAAAAAFlI/49LtLA6TDFk/w916-h574-no/03-layout-subreport.png)](https://lh5.googleusercontent.com/-3ig57Gmr68A/U0jWOcc-8hI/AAAAAAAAFlI/49LtLA6TDFk/w916-h574-no/03-layout-subreport.png)
 
 Sebetulnya di dokumentasi Spring MVC ada penjelasan tentang cara menggunakan subreport. 
 
-![Foto](https://lh6.googleusercontent.com/-j7vN6jiyKIs/U0jWOktav7I/AAAAAAAAFlU/Qs8BbyjvYro/w917-h478-no/04-docs-springmvc-jasper-subreport.png)
+[![Foto](https://lh6.googleusercontent.com/-j7vN6jiyKIs/U0jWOktav7I/AAAAAAAAFlU/Qs8BbyjvYro/w917-h478-no/04-docs-springmvc-jasper-subreport.png)](https://lh6.googleusercontent.com/-j7vN6jiyKIs/U0jWOktav7I/AAAAAAAAFlU/Qs8BbyjvYro/w917-h478-no/04-docs-springmvc-jasper-subreport.png)
 
 Tapi sayangnya, isinya tidak nyambung sama penjelasan di atasnya. Penjelasan report sederhana dibuat menggunakan konfigurasi file properties, sedangkan penjelasan subreport dibuat menggunakan konfigurasi file XML. Perbedaannya bisa dilihat [di sini](https://github.com/endymuhardin/belajar-springmvc-jasperreports/commit/bce02983b044e80a97db7dc95689b643afbdea8a) atau pada gambar di bawah.
 
-![Foto](https://lh4.googleusercontent.com/-7xWAHJ6UnL0/U0jdR--3THI/AAAAAAAAFmI/1ZiMYLibtpM/w916-h617-no/09-properties-vs-xml.png)
+[![Foto](https://lh4.googleusercontent.com/-7xWAHJ6UnL0/U0jdR--3THI/AAAAAAAAFmI/1ZiMYLibtpM/w916-h617-no/09-properties-vs-xml.png)](https://lh4.googleusercontent.com/-7xWAHJ6UnL0/U0jdR--3THI/AAAAAAAAFmI/1ZiMYLibtpM/w916-h617-no/09-properties-vs-xml.png)
 
 Selanjutnya, kita tambahkan parameter di desain report induk kita. Bisa menggunakan GUI ataupun langsung edit XMLnya. Kali ini saya pakai XML saja supaya bisa copy-paste
 
-![Foto](https://lh3.googleusercontent.com/-hCvlDw6HmAE/U0jWPcwj3iI/AAAAAAAAFlc/njZlxs_0lNI/w834-h383-no/05-subreport-params.png)
+[![Foto](https://lh3.googleusercontent.com/-hCvlDw6HmAE/U0jWPcwj3iI/AAAAAAAAFlc/njZlxs_0lNI/w834-h383-no/05-subreport-params.png)](https://lh3.googleusercontent.com/-hCvlDw6HmAE/U0jWPcwj3iI/AAAAAAAAFlc/njZlxs_0lNI/w834-h383-no/05-subreport-params.png)
 
 Kita tambahkan dua parameter, yaitu `SubReportKantor` dan `dataSourceSubreport`. Kedua parameter ini kita gunakan pada deklarasi subreport yang sudah ditambahkan iReport pada waktu kita drag and drop tadi.
 
-![Foto](https://lh3.googleusercontent.com/-zqWFEblHxvo/U0jWPXhcBVI/AAAAAAAAFlk/r5q5WZw3BlI/w917-h265-no/06-subreport-declaration.png)
+[![Foto](https://lh3.googleusercontent.com/-zqWFEblHxvo/U0jWPXhcBVI/AAAAAAAAFlk/r5q5WZw3BlI/w917-h265-no/06-subreport-declaration.png)](https://lh3.googleusercontent.com/-zqWFEblHxvo/U0jWPXhcBVI/AAAAAAAAFlk/r5q5WZw3BlI/w917-h265-no/06-subreport-declaration.png)
 
 Perhatikan label `X` dan `Y`. Itu akan kita gunakan pada konfigurasi lainnya.
 
 Nama variabel `dataSourceSubreport` yang ditandai dengan label `X` kita gunakan untuk menyuplai data yang dibutuhkan subreport dari dalam kode program Java.
 
-![Foto](https://lh3.googleusercontent.com/-FE5T4GfnzBE/U0jWPTUvL7I/AAAAAAAAFlo/Rl8SG7IZjkI/w672-h217-no/07-spring-controller.png)
+[![Foto](https://lh3.googleusercontent.com/-FE5T4GfnzBE/U0jWPTUvL7I/AAAAAAAAFlo/Rl8SG7IZjkI/w672-h217-no/07-spring-controller.png)](https://lh3.googleusercontent.com/-FE5T4GfnzBE/U0jWPTUvL7I/AAAAAAAAFlo/Rl8SG7IZjkI/w672-h217-no/07-spring-controller.png)
 
 Selanjutnya kita edit konfigurasi Jasper Report di file `jasper-views.xml`. Tambahkan lokasi template subreport dan nama variabel yang digunakan untuk `dataSource`nya.
 
-![Foto](https://lh6.googleusercontent.com/-qBxNAJ_nqsU/U0jWQwV3gAI/AAAAAAAAFlw/cqnz8eiWWd0/w917-h285-no/08-konfigurasi-jasperview.png)
+[![Foto](https://lh6.googleusercontent.com/-qBxNAJ_nqsU/U0jWQwV3gAI/AAAAAAAAFlw/cqnz8eiWWd0/w917-h285-no/08-konfigurasi-jasperview.png)](https://lh6.googleusercontent.com/-qBxNAJ_nqsU/U0jWQwV3gAI/AAAAAAAAFlw/cqnz8eiWWd0/w917-h285-no/08-konfigurasi-jasperview.png)
 
 Selesai sudah. Silahkan coba akses lagi `http://localhost:8080/belajar-springmvc-jasper/anggota/export.pdf` untuk melihat hasil akhirnya.
 
-![Foto](https://lh6.googleusercontent.com/-8-GCJgtp70I/U0jgW78hxnI/AAAAAAAAFmY/2jJIFCNeB6g/w917-h485-no/10-final-result.png)
+[![Foto](https://lh6.googleusercontent.com/-8-GCJgtp70I/U0jgW78hxnI/AAAAAAAAFmY/2jJIFCNeB6g/w917-h485-no/10-final-result.png)](https://lh6.googleusercontent.com/-8-GCJgtp70I/U0jgW78hxnI/AAAAAAAAFmY/2jJIFCNeB6g/w917-h485-no/10-final-result.png)
 
 ## FAQ ##
 

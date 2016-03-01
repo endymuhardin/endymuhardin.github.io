@@ -20,7 +20,7 @@ Tiap modul yang kita buat, setara dengan satu project dalam IDE. Dalam IDE kita 
 
 Berikut struktur folder modul `person-model`. 
 
-![ ](/images/uploads/2008/09/01-project-person-model.png)
+[![ ](/images/uploads/2008/09/01-project-person-model.png)](/images/uploads/2008/09/01-project-person-model.png)
 
 Tidak ada yang istimewa, kita memiliki build.xml disertai dengan folder `src` yang berisi source code java. Kita ingin agar struktur folder kita seragam di semua modul, jadi untuk seluruh modul nantinya strukturnya akan sama.
 
@@ -163,7 +163,7 @@ menjadi seperti ini:
 
 Struktur foldernya menjadi seperti ini
 
-![ ](/images/uploads/2008/09/02-project-person-build.png)
+[![ ](/images/uploads/2008/09/02-project-person-build.png)](/images/uploads/2008/09/02-project-person-build.png)
 
 Selanjutnya, dalam build.xml di project person-model, kita hanya perlu melakukan import saja. Isi `build.xml` menjadi seperti ini: 
 
@@ -184,7 +184,7 @@ Silahkan coba lakukan build di dalam folder `person-model`. Seharusnya modul ini
 Bila modul person-model sudah lancar, kita bisa mulai mereplikasi modul-modul yang lainnya. Dengan semua modul sudah dibuatkan sesuai template, berikut struktur foldernya. 
 
 
-![ ](/images/uploads/2008/09/03-project-all.png)
+[![ ](/images/uploads/2008/09/03-project-all.png)](/images/uploads/2008/09/03-project-all.png)
 
 
 File `build.xml` di masing-masing project mirip dengan person-model, hanya dibedakan di baris pertama saja. 

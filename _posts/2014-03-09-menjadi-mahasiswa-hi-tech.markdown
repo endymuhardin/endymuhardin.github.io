@@ -154,11 +154,11 @@ Tidak juga. Ini cuma masalah prioritas dan kesungguhan aja. Coba kita hitung-hit
 
 Pertama, kita beli smartphone dulu. Untuk gampangnya, saya buka [Bhinneka.com, masuk ke menu Smart Phone Android](http://www.bhinneka.com/aspx/products/smart-phone-android.aspx), dan urutkan dari yang termurah.
 
-![Foto](https://lh3.googleusercontent.com/-6p2Qy-EfWc4/Uxx53-JnWiI/AAAAAAAAFao/tjF4qnRWTyw/w909-h533-no/01-modal-kuliah.png)
+[![Foto](https://lh3.googleusercontent.com/-6p2Qy-EfWc4/Uxx53-JnWiI/AAAAAAAAFao/tjF4qnRWTyw/w909-h533-no/01-modal-kuliah.png)](https://lh3.googleusercontent.com/-6p2Qy-EfWc4/Uxx53-JnWiI/AAAAAAAAFao/tjF4qnRWTyw/w909-h533-no/01-modal-kuliah.png)
 
 Lihat kan, dengan 800 ribu rupiah saja sudah dapat prosesor 1Ghz Dual Core, RAM 512MB, Internal Storage 4GB. Sebagai gambaran, waktu saya kuliah tahun 1997 dulu, komputer saya spec-nya 233Mhz single core, RAM 32MB, Harddisk 128MB. Smartphone? Stupidphone aja belum ada. Adanya ini nih
 
-![Pager ](/images/uploads/2013/10/teknik-menggunakan-google/pager.JPG)
+[![Pager ](/images/uploads/2013/10/teknik-menggunakan-google/pager.JPG)](/images/uploads/2013/10/teknik-menggunakan-google/pager.JPG)
 
 > Wah, saya gak punya uang 800 ribu buat beli smartphone.
 
@@ -170,11 +170,11 @@ Kalau mau pakai otak, cukup bikin selebaran les privat matematika. Bisa disebar 
 
 Awas, hati-hati otaknya nanti ngambek karena gak pernah dipake :D
 
-![Foto](https://lh6.googleusercontent.com/-vA0HTRryVCE/Uxx8AVOrXlI/AAAAAAAAFbA/8YEQrSqIm5s/w423-h597-no/utek-gak-tau-digawe.jpeg)
+[![Foto](https://lh6.googleusercontent.com/-vA0HTRryVCE/Uxx8AVOrXlI/AAAAAAAAFbA/8YEQrSqIm5s/w423-h597-no/utek-gak-tau-digawe.jpeg)](https://lh6.googleusercontent.com/-vA0HTRryVCE/Uxx8AVOrXlI/AAAAAAAAFbA/8YEQrSqIm5s/w423-h597-no/utek-gak-tau-digawe.jpeg)
 
 Anyway, ini solusi tanpa otak.
 
-![Foto](https://lh5.googleusercontent.com/-0yytZ2Tbw-Y/Uxx_OjH5OQI/AAAAAAAAFbg/Iobz_-nrmV4/w519-h300-no/whistle-blue-m.jpg)
+[![Foto](https://lh5.googleusercontent.com/-0yytZ2Tbw-Y/Uxx_OjH5OQI/AAAAAAAAFbg/Iobz_-nrmV4/w519-h300-no/whistle-blue-m.jpg)](https://lh5.googleusercontent.com/-0yytZ2Tbw-Y/Uxx_OjH5OQI/AAAAAAAAFbg/Iobz_-nrmV4/w519-h300-no/whistle-blue-m.jpg)
 
 _Gambar diambil [dari tokonya](http://www.seron.com/p38.html)_
 

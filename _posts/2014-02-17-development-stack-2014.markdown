@@ -16,7 +16,7 @@ Pilihan stack ini saya presentasikan pada pertemuan Java Meet Up (JaMU) Januari 
 
 Berikut rangkuman dari isi presentasi saya tersebut
 
-![Foto](https://lh3.googleusercontent.com/-5tGzUVc2lk4/UwFrrT20hmI/AAAAAAAAFJk/zRxIxumf_O4/w800-h566-no/restful-architecture.png)
+[![Foto](https://lh3.googleusercontent.com/-5tGzUVc2lk4/UwFrrT20hmI/AAAAAAAAFJk/zRxIxumf_O4/w800-h566-no/restful-architecture.png)](https://lh3.googleusercontent.com/-5tGzUVc2lk4/UwFrrT20hmI/AAAAAAAAFJk/zRxIxumf_O4/w800-h566-no/restful-architecture.png)
 
 <!--more-->
 
@@ -62,7 +62,7 @@ Berikut adalah tools development yang kita gunakan:
 
 Secara garis besar, berikut adalah gambaran workflow cara kerja sehari-hari di tim development kita.
 
-![Foto](https://lh3.googleusercontent.com/-Ne0pSRdBBgk/UwFrsAA5KYI/AAAAAAAAFJs/6IRdUeLGvFA/w800-h566-no/workflow.png)
+[![Foto](https://lh3.googleusercontent.com/-Ne0pSRdBBgk/UwFrsAA5KYI/AAAAAAAAFJs/6IRdUeLGvFA/w800-h566-no/workflow.png)](https://lh3.googleusercontent.com/-Ne0pSRdBBgk/UwFrsAA5KYI/AAAAAAAAFJs/6IRdUeLGvFA/w800-h566-no/workflow.png)
 
 ## Proof of Concept ##
 

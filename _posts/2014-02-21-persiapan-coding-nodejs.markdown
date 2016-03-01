@@ -149,7 +149,7 @@ node index.js
 
 Kita bisa lihat aplikasinya di browser dengan mengakses `http://localhost:5000`.
 
-![Foto](https://lh3.googleusercontent.com/-zh_cAl6EUkk/UwXFnVvVpiI/AAAAAAAAFMY/NH8Z8kdekhY/w704-h465-no/01-hello-nodejs.png)
+[![Foto](https://lh3.googleusercontent.com/-zh_cAl6EUkk/UwXFnVvVpiI/AAAAAAAAFMY/NH8Z8kdekhY/w704-h465-no/01-hello-nodejs.png)](https://lh3.googleusercontent.com/-zh_cAl6EUkk/UwXFnVvVpiI/AAAAAAAAFMY/NH8Z8kdekhY/w704-h465-no/01-hello-nodejs.png)
 
 ## Deployment ke Heroku ##
 
@@ -239,7 +239,7 @@ To git@heroku.com:ysq.git
 
 Kita bisa browse aplikasi tersebut di alamat `http://ysq.herokuapp.com` seperti ini
 
-![Foto](https://lh5.googleusercontent.com/-dTD4Lcoj2jY/UwXFnlTeAVI/AAAAAAAAFMc/qUlNM_zCBvc/w704-h465-no/02-heroku-deployment.png)
+[![Foto](https://lh5.googleusercontent.com/-dTD4Lcoj2jY/UwXFnlTeAVI/AAAAAAAAFMc/qUlNM_zCBvc/w704-h465-no/02-heroku-deployment.png)](https://lh5.googleusercontent.com/-dTD4Lcoj2jY/UwXFnlTeAVI/AAAAAAAAFMc/qUlNM_zCBvc/w704-h465-no/02-heroku-deployment.png)
 
 ## Vertical Slice ##
 
@@ -420,7 +420,7 @@ Setelah saya coba, ternyata untuk bisa menambahkan add-ons RedisToGo di Heroku k
 
 Untung ada jalan keluarnya. Kita bisa daftar langsung di [website RedisToGo](https://redistogo.com) dan memilih paket Free. Setelah itu kita akan mendapatkan satu database seperti bisa dilihat pada screenshot berikut:
 
-![Foto](https://lh6.googleusercontent.com/-lq4p7uGi63Y/UwYMOsT-95I/AAAAAAAAFNA/TpqPA7qA1Qk/w826-h330-no/03-redistogo.png)
+[![Foto](https://lh6.googleusercontent.com/-lq4p7uGi63Y/UwYMOsT-95I/AAAAAAAAFNA/TpqPA7qA1Qk/w826-h330-no/03-redistogo.png)](https://lh6.googleusercontent.com/-lq4p7uGi63Y/UwYMOsT-95I/AAAAAAAAFNA/TpqPA7qA1Qk/w826-h330-no/03-redistogo.png)
 
 Kita sebaiknya memodifikasi kode program kita agar selalu menggunakan database RedisToGo tersebut walaupun pada saat menjalankan aplikasi di lokal. Ini untuk menyederhanakan kode program kita. Namanya juga aplikasi belajaran, jadi diusahakan sesederhana mungkin.
 

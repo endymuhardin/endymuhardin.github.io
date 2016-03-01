@@ -13,11 +13,11 @@ Berkat [posting Ifnu yang berapi-api](http://www.nagasakti.or.id/roller/Ifnu/ent
 
 Ini dia gambar sampul depannya. 
 
-![Sampul Depan Buku Subversion ](/images/uploads/2007/02/cover-front.png)
+[![Sampul Depan Buku Subversion ](/images/uploads/2007/02/cover-front.png)](/images/uploads/2007/02/cover-front.png)
 
 Sedangkan ini sampul belakangnya.
 
-![Sampul Belakang Buku Subversion ](/images/uploads/2007/02/cover-back.png)
+[![Sampul Belakang Buku Subversion ](/images/uploads/2007/02/cover-back.png)](/images/uploads/2007/02/cover-back.png)
 
 Silahkan lihat dulu [daftar isinya](http://endy.artivisi.com/downloads/writings/buku-svn-daftar-isi.pdf) untuk mengetahui apa saja yang dibahas dalam buku ini. 
 

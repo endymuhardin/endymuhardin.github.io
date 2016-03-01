@@ -19,7 +19,7 @@ Pertanyaan ini diajukan salah satu member di grup [Netbeans Indonesia](https://w
 
 Berikut screenshot kode program yang sudah dia buat
 
-![Foto](https://lh4.googleusercontent.com/-5j9PxOw3oUM/VA1UZR2oPRI/AAAAAAAAGpM/FxnUMInN8ME/w660-h312-no/error-load-file.jpg)
+[![Foto](https://lh4.googleusercontent.com/-5j9PxOw3oUM/VA1UZR2oPRI/AAAAAAAAGpM/FxnUMInN8ME/w660-h312-no/error-load-file.jpg)](https://lh4.googleusercontent.com/-5j9PxOw3oUM/VA1UZR2oPRI/AAAAAAAAGpM/FxnUMInN8ME/w660-h312-no/error-load-file.jpg)
 
 <!--more-->
 

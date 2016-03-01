@@ -12,5 +12,5 @@ categories:
 Masukkan [keyword "endy" di Google Indonesia](http://www.google.co.id/search?hl=id&q=endy&meta=). Lihat hasil search paling atas ... 
 
 [
-![Google Search "endy". Klik untuk memperbesar ](/images/uploads/2007/01/endy-google-search-crop.png)
+[![Google Search "endy". Klik untuk memperbesar ](/images/uploads/2007/01/endy-google-search-crop.png)](/images/uploads/2007/01/endy-google-search-crop.png)
 ](/images/uploads/2007/01/endy-google-search.png)

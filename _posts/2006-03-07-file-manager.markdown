@@ -15,6 +15,6 @@ Pada saat seperti itu, kita dapat menggunakan [aplikasi chatting berbasis web](h
 
 Untuk file manager, saya menggunakan [File Thingie](http://www.solitude.dk/filethingie/), aplikasi PHP yang cuma terdiri dari satu file. Cukup kirim ke server, dan browse melalui browser.
 
-![File Thingie User Interface ](/images/uploads/2006/03/filethingie.png)
+[![File Thingie User Interface ](/images/uploads/2006/03/filethingie.png)](/images/uploads/2006/03/filethingie.png)
 
 Sederhana dan mudah.
