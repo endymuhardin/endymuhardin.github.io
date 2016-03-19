@@ -48,10 +48,10 @@ Software Developer, based in Jakarta, live in Bogor.
   * Acc# 025 8800 344
   * Acc Name: Endy Muhardin
 
-#### Bank Niaga
+#### Bank CIMB Niaga Syariah
 
   * KCS Pondok Gede
-  * Acc# 760350297300 
+  * Acc# 760350297300
   * Acc Name: Endy Muhardin
 
 #### Bank Syariah Mandiri
