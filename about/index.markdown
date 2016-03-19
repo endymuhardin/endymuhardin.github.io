@@ -54,3 +54,9 @@ Software Developer, based in Jakarta, live in Bogor.
   * Acc# 760350297300 
   * Acc Name: Endy Muhardin
 
+#### Bank Syariah Mandiri
+
+  * KCP Klender Jakarta Timur
+  * Acc# 7906088888
+  * Acc Name : Endy Muhardin
+
