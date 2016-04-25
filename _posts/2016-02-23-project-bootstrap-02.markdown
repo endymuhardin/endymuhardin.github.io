@@ -156,7 +156,7 @@ Bila kita ingin murah, maka kita bisa install sendiri tools CI yang tersedia gra
 * Jenkins
 * Gitlab CI
 
-Kita bisa install tools tersebut di hosting gratisan seperti Heroku atau Openshift, atau yang berbayar seperti DigitalOcean atau Linode.
+Kita bisa install tools tersebut di hosting gratisan seperti Heroku atau Openshift, atau yang berbayar seperti [DigitalOcean](https://m.do.co/c/910ad80271f7) atau Linode.
 
 Setelah project kita bisa dibuild otomatis, artikel berikutnya akan membahas tentang [deployment ke cloud provider populer](http://software.endy.muhardin.com/java/project-bootstrap-03/). Stay tuned ......
 
