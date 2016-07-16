@@ -50,7 +50,7 @@ create table karyawan (
 );
 ```
 
-Demikian juga untuk `Handphone` dan `Komponen` skemanya mirip-mirip
+Demikian juga untuk `Berita` dan `Komentar` skemanya mirip-mirip
 
 ```sql
 create table berita (
