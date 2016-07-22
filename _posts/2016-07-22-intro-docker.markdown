@@ -11,12 +11,11 @@ Beberapa tahun terakhir ini, terjadi perubahan yang cukup signifikan dalam hal d
 
 Di jaman sekarang, banyak perusahaan yang menyediakan layanan cloud. Mereka menangani segala urusan repot tadi, sehingga kita cukup memikirkan pembuatan dan pemeliharaan aplikasi kita sendiri. Tidak perlu lagi pusing memikirkan urusan hardware dan software lain yang dibutuhkan. 
 
-Salah satu teknologi yang sedang hot di tahun 2015-2016 ini adalah [Docker](https://www.docker.com/). Dalam serangkaian artikel, kita akan bahas: 
+Salah satu teknologi yang sedang hot di tahun 2015-2016 ini adalah [Docker](https://www.docker.com/). Dalam artikel ini, kita akan bahas: 
 
 * Apa itu Docker?
 * Bagaimana menjalankan aplikasi Java dalam Docker?
 * Bagaimana menjalankan proses build dalam Docker?
-* Bagaimana menjalankan proses Continuous Delivery dengan Docker?
 
 <!--more-->
 
