@@ -335,7 +335,7 @@ Pada Dockerfile di atas, ada beberapa hal yang kita lakukan:
 
 * `FROM maven:latest` : kita mulai dengan image `maven` yang sudah dibuatkan orang. Biasanya memang kita tidak membuat image dari awal, tapi menggunakan image yang sudah ada yang paling mendekati dengan keinginan kita. Selanjutnya kita customize lebih lanjut.
 * `ENV DEBIAN_FRONTEND=noninteractive` : biasanya waktu kita menginstal MySQL, kita akan ditanyakan password `root` database server. Karena proses instalasinya tidak interaktif, maka kita ingin melewati pertanyaan password tersebut dan langsung saja menggunakan nilai default. Untuk itu kita suruh `apt-get` untuk tidak bertanya-tanya.
-* `VOLUME` : todo
+* `VOLUME` : kita menandai beberapa folder dalam container menjadi volume. Nantinya volume ini bisa kita mapping ke folder di sistem host sehingga isinya bisa langsung diakses walaupun containernya sedang mati. Volume juga bisa dipakai untuk menyelamatkan file dalam container agar tidak terhapus pada saat container dihapus. Selain itu, dengan menggunakan volume, kita bisa berbagi pakai file dan folder dengan container lain. Misalnya kita ingin membuat replikasi atau clustering dimana file-file aplikasi harus bisa diakses dari semua instance/container.
 * `COPY setup-database.sh /setup-database.sh` : kita copy script inisialisasi database yang sudah kita siapkan. Kita akan lihat isinya sebentar lagi
 * `ENTRYPOINT ["/setup-database.sh"]` : kita ingin script tersebut dijalankan pada waktu docker booting
 * `CMD ["/bin/bash"]` : setelah script selesai dijalankan, jalankan `bash` agar kita mendapat command prompt
