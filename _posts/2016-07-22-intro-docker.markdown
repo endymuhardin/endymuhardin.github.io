@@ -305,7 +305,7 @@ Setelah selesai browse ke alamat IP server yang didapatkan pada waktu inisialisa
 
 Kita juga bisa membuat image custom sesuai kebutuhan kita. Misalnya aplikasi yang kita buat membutuhkan Java, Maven, dan MySQL agar berjalan dengan baik. Kita juga ingin database MySQL langsung dikonfigurasi sesuai aplikasi kita, yaitu dengan nama database tertentu dan user tertentu yang bisa mengakses database tersebut.
 
-Sebagai contoh, kita akan menggunakan aplikasi yang kita gunakan pada [seri tutorial Continuous Integration sebelumnya](http://software.endy.muhardin.com/java/project-bootstrap-01/). Source code projectnya bisa diambil di Github](https://github.com/endymuhardin/belajar-ci.git)
+Sebagai contoh, kita akan menggunakan aplikasi yang kita gunakan pada [seri tutorial Continuous Integration sebelumnya](http://software.endy.muhardin.com/java/project-bootstrap-01/). Source code projectnya bisa [diambil di Github](https://github.com/endymuhardin/belajar-ci.git)
 
 Aplikasi tersebut membutuhkan database yang disetup dengan konfigurasi:
 
