@@ -136,6 +136,16 @@ Di 0.0001% kasus sisanya, mungkin memang ada skenario yang kita mau kerjain, dan
 
 > Framework yang populer dan banyak digunakan orang, biasanya open source. Artinya source code ada, tersedia, bisa dimodif sesuka hati. Ya bikinlah solusinya.
 
+## Framework emang gampang, tapi kalo error lebih susah ditangani ##
+
+Salah gan. Framework lebih susah. Kan harus belajar aturan-aturan dia. Asumsi pembuatnya. Mau query taruh di mana, mau render HTML taruh di mana, mau pake Stored Procedure gimana caranya, dan sebagainya.
+
+Nah, abis dipelajari, udah paham, pas error ya gak susah juga ditangani. Kan udah paham. Kalo belum paham sih jangankan framework, kapan hari ada juga yang komentar gini
+
+> pake PHP susah ya, kalo error gak keluar pesan errornya
+
+Yah ... speechless dah. Pake native tuh.
+
 ## Penutup ##
 
 Ini bukan belain framework dan native jelek ya. Cuma kebanyakan yang komentar framework jelek saya liat belum cukup melihat dunia. Coba deh bikin aplikasi barang 5 biji aja. Nanti baru paham plus minusnya.
