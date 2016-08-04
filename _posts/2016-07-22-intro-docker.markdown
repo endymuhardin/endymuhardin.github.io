@@ -64,7 +64,7 @@ Masing-masing tentunya ada plus dan minusnya. Bila kita menggunakan hypervisor:
 
 Bila kita menggunakan container:
 
-* sistem operasi guest berbagai kernel dan aplikasi utama dengan host. Dengan demikian kita tidak bisa menginstal sistem operasi yang berbeda dengan host, seperti Windows di host Linux.
+* sistem operasi guest berbagi kernel dan aplikasi utama dengan host. Dengan demikian kita tidak bisa menginstal sistem operasi yang berbeda dengan host, seperti Windows di host Linux.
 * penggunaan resource hardware bisa lebih dioptimalkan. Karena host mengetahui secara detail kondisi masing-masing guest, maka dia bisa mengalokasikan resource yang menganggur kepada guest yang sedang sibuk.
 * pengaturan security menjadi lebih sulit, karena host dan guest berhubungan erat, sehingga mungkin terjadi kebocoran antar guest.
 
