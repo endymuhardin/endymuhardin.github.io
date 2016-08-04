@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: "Intro Docker"
@@ -12,12 +11,11 @@ Beberapa tahun terakhir ini, terjadi perubahan yang cukup signifikan dalam hal d
 
 Di jaman sekarang, banyak perusahaan yang menyediakan layanan cloud. Mereka menangani segala urusan repot tadi, sehingga kita cukup memikirkan pembuatan dan pemeliharaan aplikasi kita sendiri. Tidak perlu lagi pusing memikirkan urusan hardware dan software lain yang dibutuhkan. 
 
-Salah satu teknologi yang sedang hot di tahun 2015-2016 ini adalah [Docker](https://www.docker.com/). Dalam serangkaian artikel, kita akan bahas: 
+Salah satu teknologi yang sedang hot di tahun 2015-2016 ini adalah [Docker](https://www.docker.com/). Dalam artikel ini, kita akan bahas: 
 
 * Apa itu Docker?
 * Bagaimana menjalankan aplikasi Java dalam Docker?
 * Bagaimana menjalankan proses build dalam Docker?
-* Bagaimana menjalankan proses Continuous Delivery dengan Docker?
 
 <!--more-->
 
@@ -307,7 +305,7 @@ Setelah selesai browse ke alamat IP server yang didapatkan pada waktu inisialisa
 
 Kita juga bisa membuat image custom sesuai kebutuhan kita. Misalnya aplikasi yang kita buat membutuhkan Java, Maven, dan MySQL agar berjalan dengan baik. Kita juga ingin database MySQL langsung dikonfigurasi sesuai aplikasi kita, yaitu dengan nama database tertentu dan user tertentu yang bisa mengakses database tersebut.
 
-Sebagai contoh, kita akan menggunakan aplikasi yang kita gunakan pada [seri tutorial Continuous Integration sebelumnya](http://software.endy.muhardin.com/java/project-bootstrap-01/). Source code projectnya bisa diambil di Github](https://github.com/endymuhardin/belajar-ci.git)
+Sebagai contoh, kita akan menggunakan aplikasi yang kita gunakan pada [seri tutorial Continuous Integration sebelumnya](http://software.endy.muhardin.com/java/project-bootstrap-01/). Source code projectnya bisa [diambil di Github](https://github.com/endymuhardin/belajar-ci.git)
 
 Aplikasi tersebut membutuhkan database yang disetup dengan konfigurasi:
 
@@ -337,7 +335,7 @@ Pada Dockerfile di atas, ada beberapa hal yang kita lakukan:
 
 * `FROM maven:latest` : kita mulai dengan image `maven` yang sudah dibuatkan orang. Biasanya memang kita tidak membuat image dari awal, tapi menggunakan image yang sudah ada yang paling mendekati dengan keinginan kita. Selanjutnya kita customize lebih lanjut.
 * `ENV DEBIAN_FRONTEND=noninteractive` : biasanya waktu kita menginstal MySQL, kita akan ditanyakan password `root` database server. Karena proses instalasinya tidak interaktif, maka kita ingin melewati pertanyaan password tersebut dan langsung saja menggunakan nilai default. Untuk itu kita suruh `apt-get` untuk tidak bertanya-tanya.
-* `VOLUME` : todo
+* `VOLUME` : kita menandai beberapa folder dalam container menjadi volume. Nantinya volume ini bisa kita mapping ke folder di sistem host sehingga isinya bisa langsung diakses walaupun containernya sedang mati. Volume juga bisa dipakai untuk menyelamatkan file dalam container agar tidak terhapus pada saat container dihapus. Selain itu, dengan menggunakan volume, kita bisa berbagi pakai file dan folder dengan container lain. Misalnya kita ingin membuat replikasi atau clustering dimana file-file aplikasi harus bisa diakses dari semua instance/container.
 * `COPY setup-database.sh /setup-database.sh` : kita copy script inisialisasi database yang sudah kita siapkan. Kita akan lihat isinya sebentar lagi
 * `ENTRYPOINT ["/setup-database.sh"]` : kita ingin script tersebut dijalankan pada waktu docker booting
 * `CMD ["/bin/bash"]` : setelah script selesai dijalankan, jalankan `bash` agar kita mendapat command prompt
@@ -634,5 +632,7 @@ Docker adalah teknologi virtualisasi yang sedang naik daun saat ini. Dengan meng
 Image ini selanjutnya bisa kita deploy dengan mudah di berbagai layanan cloud yang disediakan berbagai perusahaan, ataupun kita setup sendiri. Dengan membuat docker image, kita tidak perlu lagi repot-repot menginstal sistem operasi, melakukan konfigurasi, dan ritual rutin lainnya *setiap kali* mendeploy aplikasi. Cukup kita buat `Dockerfile` sekali, selanjutnya tinggal kita deploy berapa kalipun kita mau. 
 
 Metode ini sangat sesuai digunakan dengan arsitektur microservice, dimana kita membuat banyak aplikasi kecil-kecil yang saling berkolaborasi. Masing-masing aplikasi bisa direplikasi sesuai load yang diterima tanpa harus mengganggu aplikasi lainnya.
+
+Seperti biasa, semua kode program yang dibahas disini bisa didapatkan [di Github](https://github.com/endymuhardin/belajar-docker).
 
 Selamat mencoba, semoga bermanfaat. 
