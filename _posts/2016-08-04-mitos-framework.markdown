@@ -7,7 +7,7 @@ categories:
 - programming
 ---
 
-Saya perhatikan, mungkin sekitar sebulan sekali, di grup facebook PHP akan muncul perdebatan berikut:
+Saya perhatikan, mungkin sekitar sebulan sekali, di [grup facebook PHP](https://web.facebook.com/groups/35688476100/) akan muncul perdebatan berikut:
 
 > Mendingan pakai framework atau tanpa framework (istilahnya di grup sana : native)
 
