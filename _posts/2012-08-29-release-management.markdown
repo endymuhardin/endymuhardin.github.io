@@ -55,7 +55,7 @@ Untuk memudahkan pemahaman tentang penamaan rilis, mari kita karang studi kasusn
 
 Berikut contoh file yang dihasilkan oleh aplikasi FCB
 
-``` xml facebook_contact.xml
+```xml
 <contacts>
     <contact>
         <name>Endy Muhardin</contact>
