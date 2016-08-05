@@ -83,7 +83,7 @@ Fix protokol komunikasi ke Facebook, karena ada perubahan di Facebook API.
 ## Rilis Ketiga ##
 Menambahkan field ulang tahun sehingga format text file menjadi sebagai berikut :
 
-``` xml facebook_contact.xml
+```xml
 <contacts>
     <contact>
         <name>Endy Muhardin</contact>
@@ -102,7 +102,7 @@ Menambahkan field ulang tahun sehingga format text file menjadi sebagai berikut 
 
 ## Rilis Keempat ##
 Ganti format xml menjadi json, mengikuti trend masa kini. 
-``` js facebook_contact.json
+```js
 [
     {
         name: "Endy Muhardin",
