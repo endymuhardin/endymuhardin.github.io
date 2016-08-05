@@ -75,12 +75,15 @@ Berikut contoh file yang dihasilkan oleh aplikasi FCB
 Aplikasi FCB dikembangkan dengan cepat sehingga menghasilkan beberapa rilis sebagai berikut:
 
 ## Rilis Pertama ##
+
 Memperbaiki format nomer handphone, sehingga semua diseragamkan menjadi format internasional. Nomer `081298000468` pada contoh di atas akan dikonversi menjadi `+6281298000468`
 
 ## Rilis Kedua ##
+
 Fix protokol komunikasi ke Facebook, karena ada perubahan di Facebook API.
 
 ## Rilis Ketiga ##
+
 Menambahkan field ulang tahun sehingga format text file menjadi sebagai berikut :
 
 ```xml
@@ -101,7 +104,9 @@ Menambahkan field ulang tahun sehingga format text file menjadi sebagai berikut 
 ```
 
 ## Rilis Keempat ##
+
 Ganti format xml menjadi json, mengikuti trend masa kini. 
+
 ```js
 [
     {
@@ -122,6 +127,7 @@ Ganti format xml menjadi json, mengikuti trend masa kini.
 Dengan studi kasus di atas, kita harus mempertimbangkan penomoran rilis untuk aplikasi FCB dengan benar, supaya aplikasi HCI bisa tahu apa yang harus dilakukan pada saat aplikasi FCB mengeluarkan rilis baru.
 
 # Kompatibilitas #
+
 Dalam mengeluarkan rilis untuk aplikasi FCB, kita harus mempertimbangkan aplikasi HCI agar tidak rusak. Pengaruh aplikasi FCB terhadap HCI dikenal dengan istilah kompatibilitas. Kompatibilitas dibedakan berdasarkan ketergantungan secara programmatic:
 
 * binary compatibility : FCB terbaru disebut binary-compatible dengan HCI bila FCB yang sudah dicompile bisa langsung ditaruh di folder dan dipakai oleh HCI.
@@ -137,6 +143,7 @@ Dan juga bisa dibedakan berdasarkan hubungannya dengan rilis terdahulu.
 Setelah kita memahami urusan kompatibilitas, kita bisa menentukan skema penamaan rilis, atau dikenal dengan istilah version numbering. 
 
 # Version Numbering #
+
 Kita akan menggunakan [aturan dari Apache Portable Runtime](http://apr.apache.org/versioning.html "Version Numbering APR") yang sudah diakui sebagai best-practices dalam version numbering. Aturan APR mengharuskan ada tiga komponen version number, yaitu :
 
 * major number
@@ -144,6 +151,8 @@ Kita akan menggunakan [aturan dari Apache Portable Runtime](http://apr.apache.or
 * patch number
 
 Contohnya, waktu pertama kita merilis FCB, kita beri nama `FCB-1.0.0`. Major numbernya 1, minor numbernya 0, patch numbernya 0. 
+
+**Update 5 Agustus 2016** : sekarang kita gunakan [Semantic Versioning](http://semver.org/). Konsepnya kira-kira sama, tapi penjelasan di website Semantic Versioning lebih detail dan komprehensif daripada APR.
 
 Untuk rilis selanjutnya, kita menaikkan major/minor/patch number sesuai dengan pengaruhnya terhadap kompatibilitas. Aturannya sebagai berikut:
 
@@ -181,6 +190,7 @@ Selain major.minor.patch, ada kalanya orang juga menambahkan satu informasi lagi
 Penomoran versi ini terlihat sepele saja. Tapi kalau kita tidak punya aturan penamaan yang jelas, maka orang lain akan bingung setiap kali ada rilis baru. Mereka tidak bisa menentukan apakah harus upgrade atau tidak, karena mereka tidak bisa tahu bagaimana kompatibilitas rilis ini dengan aplikasi lainnya. Salah satu contoh populer kekacauan yang disebabkan penomoran versi yang sembarangan [bisa dilihat di komunitas Ruby](http://news.ycombinator.com/item?id=1734936). Akibat aturan rilis Ruby tidak jelas, sehingga dibutuhkan aplikasi lain seperti RVM atau rbenv supaya antar versi Ruby tidak saling bentrok. Effort yang dikeluarkan untuk membuat dan memantain RVM dan rbenv tentu tidak sedikit. Ini semua disebabkan *hanya karena* penomoran versi belaka. Hasil akhir dari semua ini, sampai saat artikel ini ditulis, [Ruby belum bisa dipaket dengan benar di distro Debian](http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/) dan turunannya (termasuk Ubuntu).
 
 # Release Notes #
+
 Tentunya penomoran versi saja tidak bisa memuat informasi yang detail. Kita membutuhkan sarana lain untuk memberikan informasi yang detail tentang isi dari suatu rilis. Untuk keperluan ini, biasanya orang membuat dokumen yang disebut Release Notes. Beberapa hal yang biasanya dicantumkan dalam release notes antara lain:
 
 * fitur baru
@@ -193,6 +203,7 @@ Tentunya penomoran versi saja tidak bisa memuat informasi yang detail. Kita memb
 Contoh release notes bisa dilihat [di sini](/images/uploads/2012/08/RELEASE.txt "Contoh Release Notes").
 
 # Tools #
+
 Ada beberapa hal yang perlu dilakukan pada waktu kita akan melakukan rilis, yaitu:
 
 * menaikkan nomor versi di source code. Biasanya kita ada mencantumkan nomor versi di aplikasi, misalnya di halaman About.
@@ -223,4 +234,5 @@ Langkah-langkah melakukan rilis :
 5. Buat tag di Git dengan perintah `git tag -a -F RELEASE.txt 1.2.1`
 
 # Penutup #
+
 Demikianlah penjelasan tentang serba-serbi release management dalam software development. Mudah-mudahan bisa membuat project dan produk yang kita hasilkan lebih mudah dikelola.
