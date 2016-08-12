@@ -115,15 +115,15 @@ then
     rm -f *.tar.gz
 fi
 
-if [ ! -d $OPENSHIFT_DATA_DIR/apache-maven-3.3.3 ]
+if [ ! -d $OPENSHIFT_DATA_DIR/apache-maven-3.3.9 ]
 then
     cd $OPENSHIFT_DATA_DIR
-    wget http://mirror.cc.columbia.edu/pub/software/apache/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz
+    wget http://www-us.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
     tar xvf *.tar.gz
     rm -f *.tar.gz
 fi
 
-export M2=$OPENSHIFT_DATA_DIR/apache-maven-3.3.3/bin
+export M2=$OPENSHIFT_DATA_DIR/apache-maven-3.3.9/bin
 export MAVEN_OPTS="-Xms384m -Xmx412m"
 export JAVA_HOME=$OPENSHIFT_DATA_DIR/jdk1.8.0_20
 export PATH=$JAVA_HOME/bin:$M2:$PATH
@@ -132,7 +132,10 @@ cd $OPENSHIFT_REPO_DIR
 mvn -s .openshift/settings.xml clean package -DskipTests=true
 ```
 
-Pada script `build` di atas, kita mengunduh dan menginstall Java SDK versi 8 dan Maven versi 3.3.3. Setelah itu, kita mengeset environment variable. Terakhir, kita jalankan proses kompilasi tanpa menjalankan test. Hasilnya adalah file `*.jar` di dalam folder `target` yang siap dijalankan.
+Pada script `build` di atas, kita mengunduh dan menginstall Java SDK versi 8 dan Maven versi 3.3.3. Jangan lupa mengupdate URL download sesuai dengan versi terbaru yang tersedia pada waktu kita mendeploy.
+
+
+Setelah itu, kita mengeset environment variable. Terakhir, kita jalankan proses kompilasi tanpa menjalankan test. Hasilnya adalah file `*.jar` di dalam folder `target` yang siap dijalankan.
 
 Berikut isi file `start`
 
