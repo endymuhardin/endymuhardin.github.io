@@ -361,7 +361,7 @@ Bila semuanya lancar, kita dapat mengakses aplikasi kita dengan URL yang tercant
 
 Project yang kita kerjakan tidak selalu hanya terdiri dari satu aplikasi. Adakalanya project kita terdiri dari aplikasi web dan mobile yang bekerja sama. Untuk itu, biasanya di dalam repository kita akan ada dua folder untuk masing-masing aplikasi web dan aplikasi mobile, seperti terlihat pada screenshot di bawah.
 
-![Screenshot Project Multi Aplikasi](https://lh3.googleusercontent.com/fWzlT2nSNMAWTN6SMsxY189Pq_R7VHq5EK75luWrLS4elrHJ1farvhn5jQRv0BJj8qDKaSaY50Se=w305-h404-no)
+[![Screenshot Project Multi Aplikasi](https://lh3.googleusercontent.com/fWzlT2nSNMAWTN6SMsxY189Pq_R7VHq5EK75luWrLS4elrHJ1farvhn5jQRv0BJj8qDKaSaY50Se=w305-h404-no)](https://lh3.googleusercontent.com/fWzlT2nSNMAWTN6SMsxY189Pq_R7VHq5EK75luWrLS4elrHJ1farvhn5jQRv0BJj8qDKaSaY50Se=w305-h404-no)
 
 Pada situasi seperti ini, kita tidak bisa langsung push begitu saja ke Heroku dan Openshift, karena mereka mengasumsikan project kita berada di top level folder. Mereka mengharapkan ada file `pom.xml` di root folder. Sedangkan bila project kita terdiri dari aplikasi web dan mobile, `pom.xml` akan berada dalam subfolder `web` seperti pada screenshot di atas.
 
@@ -379,9 +379,9 @@ git push namaremote namabranchdilokal:namabranchdiremote --force
 
 Nama branch di lokal diganti dengan isi subfolder, kita bisa ambil dengan perintah `git subtree split --prefix belajar-ci-web`. Sedangkan di tujuan (yaitu di Openshift), nama branch tujuannya adalah `master`. Perintah yang kita jalankan menjadi seperti ini
 
-```
+<pre><code>
 git push openshift `git subtree split --prefix belajar-ci-web`:master --force
-```
+</code></pre>
 
 Untuk mendeploy subfolder ke Heroku caranya sama. Tinggal ganti saja tujuan remotenya.
 
