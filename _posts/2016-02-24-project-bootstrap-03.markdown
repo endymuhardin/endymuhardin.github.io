@@ -193,6 +193,14 @@ Terakhir, lakukan push
 git push openshift master
 ```
 
+Bila kita melakukan push di repository yang kita buat sendiri (bukan hasil clone dari Openshift), perintah di atas akan menimbulkan error. Ini disebabkan karena repository yang dibuatkan Openshift telah memiliki file di dalamnya, bukan repository kosong. File-file yang dibuatkan Openshift ini adalah file contoh/template konfigurasi untuk memudahkan deployment. Akan tetapi, karena kita sudah buat sendiri file-file tersebut (misalnya file `build`, `start`, dan `stop`), maka kita tidak membutuhkan lagi file yang dibuatkan Openshift.
+
+Untuk itu, kita bisa langsung saja menimpa repository yang dibuatkan Openshift dengan opsi `--force`. Perintahnya menjadi sebagai berikut
+
+```
+git push openshift master --force
+```
+
 Aplikasi kita bisa diakses di alamat yang sudah disediakan Openshift
 
 [![Alamat Aplikasi](https://lh3.googleusercontent.com/33GT-WK5AaVFKzpOGpdhlUVlwZsKc_gdj9Wsed8s2y4m88270eHVJ9HMRCrceqlL_pyQza9pQ0Fe=w1280-no)](https://lh3.googleusercontent.com/33GT-WK5AaVFKzpOGpdhlUVlwZsKc_gdj9Wsed8s2y4m88270eHVJ9HMRCrceqlL_pyQza9pQ0Fe=w1280-no)
@@ -330,6 +338,12 @@ Selanjutnya, kita lakukan deployment
 git push heroku master
 ```
 
+Sama dengan Openshift, Heroku juga membuatkan file-file template untuk deployment. Kita bisa menimpa repository yang dibuatkan Heroku dengan opsi `--force` sehingga perintahnya menjadi
+
+```
+git push heroku master --force
+```
+
 Untuk memantau apakah aplikasi kita berhasil terdeploy dengan baik, kita bisa menampilkan log aplikasi dengan cara mengklik tombol titik tiga di kanan atas laman administrasi
 
 [![View Log Button](https://lh3.googleusercontent.com/pXk4gPwG1cWjPkPXEDpnQg0mX1zPo6qx7HYerrWpuZikO_MxCYY89XMqOa2zKOPmj0yA1LjdaB_V=w1280-no)](https://lh3.googleusercontent.com/pXk4gPwG1cWjPkPXEDpnQg0mX1zPo6qx7HYerrWpuZikO_MxCYY89XMqOa2zKOPmj0yA1LjdaB_V=w1280-no)
@@ -342,6 +356,34 @@ Bila semuanya lancar, kita dapat mengakses aplikasi kita dengan URL yang tercant
 
 [![Output Heroku](https://lh3.googleusercontent.com/kHtUIutukivieFArVdrsOLZcbSOFeiPq4nFpiksILhvWTRCQsZYNcXet-MIb63bZrLB6kpnewPXS=w1280-no)](https://lh3.googleusercontent.com/kHtUIutukivieFArVdrsOLZcbSOFeiPq4nFpiksILhvWTRCQsZYNcXet-MIb63bZrLB6kpnewPXS=w1280-no)
 
+
+## Deployment Subfolder ##
+
+Project yang kita kerjakan tidak selalu hanya terdiri dari satu aplikasi. Adakalanya project kita terdiri dari aplikasi web dan mobile yang bekerja sama. Untuk itu, biasanya di dalam repository kita akan ada dua folder untuk masing-masing aplikasi web dan aplikasi mobile, seperti terlihat pada screenshot di bawah.
+
+![Screenshot Project Multi Aplikasi](https://lh3.googleusercontent.com/fWzlT2nSNMAWTN6SMsxY189Pq_R7VHq5EK75luWrLS4elrHJ1farvhn5jQRv0BJj8qDKaSaY50Se=w305-h404-no)
+
+Pada situasi seperti ini, kita tidak bisa langsung push begitu saja ke Heroku dan Openshift, karena mereka mengasumsikan project kita berada di top level folder. Mereka mengharapkan ada file `pom.xml` di root folder. Sedangkan bila project kita terdiri dari aplikasi web dan mobile, `pom.xml` akan berada dalam subfolder `web` seperti pada screenshot di atas.
+
+Solusinya adalah menggunakan fitur `subtree` yang ada di Git. Bila kita ingin mendeploy folder `belajar-ci-web` di screenshot di atas, perintahnya adalah sebagai berikut
+
+```
+git subtree push --prefix belajar-ci-web openshift master
+```
+
+Tentunya sebelumnya kita harus mendaftarkan dulu lokasi repository `openshift` seperti penjelasan di atas. Sama seperti penjelasan sebelumnya, repository yang dibuatkan Openshift dan Heroku biasanya sudah ada isinya, sehingga kita timpa menggunakan opsi `--force`. Akan tetapi, untuk perintah `git subtree` ini, pemakaian opsi `--force` ini agak sedikit berbeda. Kita harus menggunakan format lengkap dari push, yaitu seperti ini:
+
+```
+git push namaremote namabranchdilokal:namabranchdiremote --force
+```
+
+Nama branch di lokal diganti dengan isi subfolder, kita bisa ambil dengan perintah `git subtree split --prefix belajar-ci-web`. Sedangkan di tujuan (yaitu di Openshift), nama branch tujuannya adalah `master`. Perintah yang kita jalankan menjadi seperti ini
+
+```
+git push openshift `git subtree split --prefix belajar-ci-web`:master --force
+```
+
+Untuk mendeploy subfolder ke Heroku caranya sama. Tinggal ganti saja tujuan remotenya.
 
 ## Penutup ##
 
