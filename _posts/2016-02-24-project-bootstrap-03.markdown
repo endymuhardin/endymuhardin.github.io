@@ -379,9 +379,7 @@ git push namaremote namabranchdilokal:namabranchdiremote --force
 
 Nama branch di lokal diganti dengan isi subfolder, kita bisa ambil dengan perintah `git subtree split --prefix belajar-ci-web`. Sedangkan di tujuan (yaitu di Openshift), nama branch tujuannya adalah `master`. Perintah yang kita jalankan menjadi seperti ini
 
-<pre><code>
-git push openshift `git subtree split --prefix belajar-ci-web`:master --force
-</code></pre>
+<pre><code>git push openshift `git subtree split --prefix belajar-ci-web`:master --force</code></pre>
 
 Untuk mendeploy subfolder ke Heroku caranya sama. Tinggal ganti saja tujuan remotenya.
 
