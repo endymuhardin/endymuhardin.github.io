@@ -96,7 +96,6 @@ Kedua file bisa dibuka dengan text editor. Yang perlu kita buka hanyalah public 
 
 Isi public key ini nantinya akan kita pasang di Github
 
-
 ## Clone dari Github
 
 
@@ -113,9 +112,37 @@ Klik account setting, dan masuk ke menu SSH Public Keys
 Pastekan public key yang sudah kita generate pada langkah sebelumnya. Setelah diadd, public key kita akan terdaftar. Kita boleh pasang public key banyak-banyak, karena biasanya satu public key mencerminkan satu komputer. Bisa saja kita punya PC dan juga Laptop. 
 [![ ](/images/uploads/2011/01/03-github-add-pubkey-completed-300x201.png)](/images/uploads/2011/01/03-github-add-pubkey-completed-300x201.png)
 
+
+## Setting Public Key di Bitbucket ##
+
+Selain Github, provider lain yang juga populer adalah [Bitbucket](https://bitbucket.org). Untuk mendaftarkan public key di Bitbucket, kita bisa akses menu di kanan atas, yang ada gambar avatar kita.
+
+[![Menu Kanan Atas Bitbucket](https://lh3.googleusercontent.com/M6IG6mrZAf6wb6JGb7Yu1pkRWQa1rQSVqHRjIdkTF0gM1N2aGDm0veQ_0IgnzZbNrpJnTgRCZauL=w269-h317-no)](https://lh3.googleusercontent.com/M6IG6mrZAf6wb6JGb7Yu1pkRWQa1rQSVqHRjIdkTF0gM1N2aGDm0veQ_0IgnzZbNrpJnTgRCZauL=w269-h317-no)
+
+Pilih Bitbucket Settings, kita akan mendapatkan halaman Settings
+
+[![Bitbucket Setting](https://lh3.googleusercontent.com/CZ1FnMFZ4Yk_9tsKmYw0MGQ5DmKNNxlVqj3ZcrUiY2EIt0jImm9gAkHJJmKyRVWH7L7D55hxBozI=w714-h672-no)](https://lh3.googleusercontent.com/CZ1FnMFZ4Yk_9tsKmYw0MGQ5DmKNNxlVqj3ZcrUiY2EIt0jImm9gAkHJJmKyRVWH7L7D55hxBozI=w714-h672-no)
+
+Klik SSH Keys di kiri bawah. Kita akan mendapati halaman untuk menambah SSH Keys.
+
+[![Daftar SSH Key](https://lh3.googleusercontent.com/s3V2zo8Ccn12qgV8amcnNe65BDuGhLnhgvj92kZ8W2foI-NcV5b3HC3eKbefMNaKBnDXT_rmPLkd=w1078-h341-no)](https://lh3.googleusercontent.com/s3V2zo8Ccn12qgV8amcnNe65BDuGhLnhgvj92kZ8W2foI-NcV5b3HC3eKbefMNaKBnDXT_rmPLkd=w1078-h341-no)
+
+Klik Add Key untuk menambah public key SSH. Selanjutnya, copy dan paste isi public key kita ke kotak yang disediakan.
+
+[![Copy Paste Key](https://lh3.googleusercontent.com/yIwCYUr2bh9mLNOjudYorK-vu7PX7ZdlssLu3MKiKzi9itJ3hvwjqnlUeaw0ZFo09nLeJepwdR1T=w811-h501-no)](https://lh3.googleusercontent.com/yIwCYUr2bh9mLNOjudYorK-vu7PX7ZdlssLu3MKiKzi9itJ3hvwjqnlUeaw0ZFo09nLeJepwdR1T=w811-h501-no)
+
+Klik Save, dan public key kita sudah terdaftar
+
+[![Daftar SSH Key Baru](https://lh3.googleusercontent.com/qRNOGpqSMq2UB6bfCQi6qubgglZ8czLaDVBgXt0WsuXsXMrNMGgbofjk0eqG8dRclZYV4wZLYxrC=w1074-h346-no)](https://lh3.googleusercontent.com/qRNOGpqSMq2UB6bfCQi6qubgglZ8czLaDVBgXt0WsuXsXMrNMGgbofjk0eqG8dRclZYV4wZLYxrC=w1074-h346-no)
+
+Kita juga akan mendapatkan notifikasi lewat email bahwa ada SSH key baru yang didaftarkan
+
+[![Notifikasi Email](https://lh3.googleusercontent.com/FlHecTtZY4ZfSw0LA3QAiNu6GmN4V-oiHA_GDirwdvz3oBSEbfEhy0hmtCmQ5GbYfPcr1GVWOIl7=w878-h386-no)](https://lh3.googleusercontent.com/FlHecTtZY4ZfSw0LA3QAiNu6GmN4V-oiHA_GDirwdvz3oBSEbfEhy0hmtCmQ5GbYfPcr1GVWOIl7=w878-h386-no)
+
+## Mengunduh Isi Repository
+
 Setelah public key didaftarkan, selanjutnya kita lihat repository yang kita punya. 
 [![ ](/images/uploads/2011/01/04-github-repositories-300x183.png)](/images/uploads/2011/01/04-github-repositories-300x183.png)
-
 
 Kalau belum punya repository, Anda bisa fork [repository belajarGit punya saya](https://github.com/endymuhardin/belajarGit), sehingga nanti Anda punya repo belajarGit sendiri. 
 
