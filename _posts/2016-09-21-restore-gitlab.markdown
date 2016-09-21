@@ -261,6 +261,30 @@ Setelah kita pastikan hasil restore bekerja dengan baik, kita bisa hapus lagi dr
 tugboat destroy restoregitlab
 ```
 
+## Catatan Tambahan ##
+
+> Om, kan di artikelnya mbak Istofani katanya server dia crash di DigitalOcean, kenapa di artikel ini justru dipake buat restore?
+
+Mau dimanapun kita pasang server, Digital Ocean, Linode, Openshift, Heroku, Cloud Kilat, Amazon, pada suatu saat semuanya akan mengalami crash. Kalau mereka bisa restore sendiri, bagus. Kita tidak perlu repot. Walaupun demikian tidak seharusnya nasib kita digantungkan pada prosedur orang lain.
+
+Jadi jangan malas mengimplementasikan prosedur backup dan restore.
+
+Total waktu yang saya habiskan untuk membuat prosedur ini, mengetes, screenshot, menulis jadi blog, semuanya butuh waktu 1 hari penuh untuk backup dan 1 hari penuh untuk restore. Memang 2 mandays terasa banyak juga, apalagi kalau kita monetisasi dengan rate harian level software architect atau CTO. Tapi 2 mandays ini bisa menyelamatkan ratusan mandays yang hilang kalau kita tidak punya backup.
+
+Sebagai tambahan motivasi, prosedur 2 mandays ini tidak ada apa-apanya dibandingkan apa yang dilakukan oleh Netflix. Bukan hanya berjaga-jaga terhadap server crash, mereka dengan sengaja membuat crash server mereka sendiri secara acak. Server production, bukan server testing. 
+
+Manfaatnya:
+
+* mereka bisa tahu apa yang terjadi pada saat crash. Apakah layanan mati total, atau sekedar jadi lemot, atau lainnya
+* mereka bisa tahu, sejauh mana sistem mereka bisa bertahan terhadap kegagalan cloud provider. Bagaimana kalo Amazon mati di satu region? Bagaimana kalau Amazon mati di seluruh Amerika?
+* mereka bisa tahu, secepat apa mereka mendapatkan notifikasi terhadap error
+* dan banyak manfaat lainnya, berikut kutipannya
+
+> Failures happen and they inevitably happen when least desired or expected. If your application can't tolerate an instance failure would you rather find out by being paged at 3am or when you're in the office and have had your morning coffee? Even if you are confident that your architecture can tolerate an instance failure, are you sure it will still be able to next week? How about next month? Software is complex and dynamic and that "simple fix" you put in place last week could have undesired consequences. Do your traffic load balancers correctly detect and route requests around instances that go offline? Can you reliably rebuild your instances? Perhaps an engineer "quick patched" an instance last week and forgot to commit the changes to your source repository?
+> There are many failure scenarios that Chaos Monkey helps us detect. Over the last year Chaos Monkey has terminated over 65,000 instances running in our production and testing environments. Most of the time nobody notices, but we continue to find surprises caused by Chaos Monkey which allows us to isolate and resolve them so they don't happen again.
+
+Selengkapnya bisa [dibaca di blognya Netflix](http://techblog.netflix.com/2012/07/chaos-monkey-released-into-wild.html). Software Chaos Monkey untuk membuat error tersebut juga mereka sediakan open source, silahkan kalau mau coba pasang.
+
 ## Penutup ##
 
 Demikianlah prosedur untuk melakukan restore backup dari Amazon Glacier. Prosedur ini harus dilakukan secara berkala untuk memastikan backup kita benar-benar dapat digunakan. Percuma saja kita backup setiap hari kalau ternyata pada waktu dibutuhkan kita tidak bisa restore.
