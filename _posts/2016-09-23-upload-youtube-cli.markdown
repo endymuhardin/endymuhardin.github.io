@@ -13,6 +13,10 @@ Setelah selesai syuting dan edit, tentunya kita akan mengupload video tersebut k
 
 Saya ingin proses upload ini bisa berjalan sendiri tanpa interaksi dengan saya. Solusinya tentu saja dengan aplikasi berbasis CLI (command line interface).
 
+Secara garis besar, sistemnya nanti akan terlihat seperti ini
+
+[![Skema Sistem Upload](https://lh3.googleusercontent.com/ibDR9rIFNyJ3kx6nj_CblfW5Gngxqsb-xGoqlx9Wnu07OwqR96O48xnHfpOS_LCo5ToFTXFKknOj=w1361-h350-no)](https://lh3.googleusercontent.com/ibDR9rIFNyJ3kx6nj_CblfW5Gngxqsb-xGoqlx9Wnu07OwqR96O48xnHfpOS_LCo5ToFTXFKknOj=w1361-h350-no)
+
 <!--more-->
 
 Aplikasinya sudah dibuatkan oleh Arnau Sanchez dan disediakan cuma-cuma [di Github](https://github.com/tokland/youtube-upload). Untuk menggunakannya, berikut adalah langkah-langkahnya:
@@ -21,7 +25,6 @@ Aplikasinya sudah dibuatkan oleh Arnau Sanchez dan disediakan cuma-cuma [di Gith
 2. Instal modul `google-api-python-client` untuk bahasa pemrograman Python
 3. Setup authentication
 4. Mulai mengupload
-
 
 ## Instalasi Aplikasi ##
 
