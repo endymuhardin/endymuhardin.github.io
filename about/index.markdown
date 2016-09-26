@@ -30,22 +30,11 @@ Software Developer, based in Jakarta, live in Bogor.
 
 ## Bank Account
 
-#### Bank BCA
 
-  * KCP Dewi Sartika Jakarta Timur
-  * Acc# 273 124 336 2
-  * Acc Name: Endy Muhardin
+#### Bank BNI Syariah
 
-#### Bank Mandiri
-
-  * KCP Dewi Sartika Jakarta Timur
-  * Acc# 07 0000 4860 255
-  * Acc Name: Endy Muhardin
-
-#### Bank BNI
-
-  * KC UI Depok
-  * Acc# 025 8800 344
+  * KCP Cibinong
+  * Acc# 0465746823
   * Acc Name: Endy Muhardin
 
 #### Bank CIMB Niaga Syariah
