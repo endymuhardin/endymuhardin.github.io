@@ -312,8 +312,8 @@ Setelah proses upload selesai, kita bisa melihat hasilnya di akun Youtube kita
 Aplikasi ini memiliki beberapa opsi tambahan yang bermanfaat, misalnya:
 
 * `--category=Education` : untuk memasukkan kategori video
-* `--playlist "Belajar Pemrograman Android"` : untuk memasukkan video ke playlist
-* `--privacy private` : bila ingin videonya tidak bisa dilihat orang lain
+* `--playlist="Belajar Pemrograman Android"` : untuk memasukkan video ke playlist
+* `--privacy=private` : bila ingin videonya tidak bisa dilihat orang lain
 * dan sebagainya, bisa dilihat [di dokumentasinya](https://github.com/tokland/youtube-upload).
 
 ## Penutup ##
