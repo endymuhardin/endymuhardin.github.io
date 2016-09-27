@@ -26,4 +26,4 @@ Pada waktu rendering, KDEnlive juga punya satu fitur penting, yaitu Shutdown aft
 
 Penjelasan lebih detail tentang cara mengedit video bisa ditonton di vlog saya di Youtube.
 
-{% include youtube_embed.html id=AzVvIaWMONU %}
+{% include youtube_embed.html id="AzVvIaWMONU" %}
