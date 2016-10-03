@@ -13,7 +13,8 @@ Berikut adalah silabus perkuliahan dari Pemrograman 1 sampai Pemrograman 4. Sila
 
 <!--more-->
 <a name="pemrograman-1"></a>
-# Pemrograman 1 : Fundamental #
+
+# Pemrograman 1 : Java Fundamental #
 
 ## Tujuan ##
 - Paham dasar-dasar pemrograman dengan Java
@@ -57,6 +58,7 @@ Berikut adalah silabus perkuliahan dari Pemrograman 1 sampai Pemrograman 4. Sila
 - Presentasi Kasus
 
 <a name="pemrograman-2"></a>
+
 # Pemrograman 2 : Essential Library #
 
 ## Tujuan ##
@@ -87,7 +89,8 @@ Berikut adalah silabus perkuliahan dari Pemrograman 1 sampai Pemrograman 4. Sila
 - Studi Kasus
 
 <a name="pemrograman-3"></a>
-# Pemrograman 3 : Desktop #
+
+# Pemrograman 3 : Aplikasi Desktop #
 
 ## Tujuan ##
 - Bisa membuat aplikasi lengkap dengan UI Desktop
@@ -179,6 +182,7 @@ Berikut adalah silabus perkuliahan dari Pemrograman 1 sampai Pemrograman 4. Sila
 - Implementasi Report
 
 <a name="pemrograman-4"></a>
+
 # Pemrograman 4 : Aplikasi Web #
 
 ## Tujuan ##
