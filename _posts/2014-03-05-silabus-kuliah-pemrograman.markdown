@@ -13,28 +13,27 @@ Berikut adalah silabus perkuliahan dari Pemrograman 1 sampai Pemrograman 4. Sila
 
 <!--more-->
 <a name="pemrograman-1"></a>
+## Pemrograman 1 : Java Fundamental ##
 
-# Pemrograman 1 : Java Fundamental #
-
-## Tujuan ##
+### Tujuan ###
 - Paham dasar-dasar pemrograman dengan Java
 - Paham cara implementasi OOP dengan Java
 - Paham cara menggunakan class-class penting dalam Java SDK
 
-## Batasan ##
+### Batasan ###
 - Hanya menggunakan library standar bawaan Java SDK
 - Tidak membahas konsep OOP (karena ada mata kuliahnya sendiri)
 
-## Referensi ##
+### Referensi ###
 - [Official Java Tutorial, Oracle Corp](http://docs.oracle.com/javase/tutorial/index.html)
 - [SDK Documentation, Oracle Corp](http://docs.oracle.com/javase/7/docs/api/index.html)
 - [Java Desktop, Ifnu Bima](http://project-template.googlecode.com/files/Java%20Desktop%20-%20Ifnu%20Bima.pdf)
 
-## Kebutuhan Software Lab ##
+### Kebutuhan Software Lab ###
 - Java SDK 1.6
 - [Sublime Text 3](http://www.sublimetext.com/)
 
-## Materi Kuliah ##
+### Materi Kuliah ###
 
 - Penjelasan Silabus
 - Setup / Instalasi Java
@@ -58,22 +57,21 @@ Berikut adalah silabus perkuliahan dari Pemrograman 1 sampai Pemrograman 4. Sila
 - Presentasi Kasus
 
 <a name="pemrograman-2"></a>
+## Pemrograman 2 : Essential Library ##
 
-# Pemrograman 2 : Essential Library #
-
-## Tujuan ##
+### Tujuan ###
 * Mahir menggunakan library tambahan dari dunia open source
 * Mahir menggunakan development tools Java
 
-## Batasan ##
+### Batasan ###
 - Belum membuat user interface
 
-## Kebutuhan Software Lab ##
+### Kebutuhan Software Lab ###
 - Semua requirement dari Pemrograman 1
 - [Apache Maven 3](http://maven.apache.org/)
 - MySQL Server
 
-## Materi Kuliah ##
+### Materi Kuliah ###
 
 - Build Tools
 - Automated Test
@@ -89,24 +87,23 @@ Berikut adalah silabus perkuliahan dari Pemrograman 1 sampai Pemrograman 4. Sila
 - Studi Kasus
 
 <a name="pemrograman-3"></a>
+## Pemrograman 3 : Aplikasi Desktop ##
 
-# Pemrograman 3 : Aplikasi Desktop #
-
-## Tujuan ##
+### Tujuan ###
 - Bisa membuat aplikasi lengkap dengan UI Desktop
 
-## Batasan ##
+### Batasan ###
 - Aplikasi berjalan lokal
 - Penyimpanan data dilakukan lokal
 - Interaksi dengan server dilakukan dengan menggunakan service yang sudah tersedia (tidak membuat sendiri)
 
-## Referensi ##
+### Referensi ###
 - [Java Desktop, Ifnu Bima](http://project-template.googlecode.com/files/Java%20Desktop%20-%20Ifnu%20Bima.pdf)
 
-## Kebutuhan Software Lab ##
+### Kebutuhan Software Lab ###
 - Sama seperti Pemrograman 2
 
-## Materi Kuliah ##
+### Materi Kuliah ###
 
 - Arsitektur Aplikasi Desktop
 
@@ -183,20 +180,20 @@ Berikut adalah silabus perkuliahan dari Pemrograman 1 sampai Pemrograman 4. Sila
 
 <a name="pemrograman-4"></a>
 
-# Pemrograman 4 : Aplikasi Web #
+## Pemrograman 4 : Aplikasi Web ##
 
-## Tujuan ##
+### Tujuan ###
 - Bisa membuat aplikasi web dengan arsitektur REST
 - Bisa menggunakan penyimpanan data non-relasional
 
-## Referensi ##
+### Referensi ###
 - [Development Stack ArtiVisi](http://software.endy.muhardin.com/java/development-stack-2014/)
 
-## Kebutuhan Software Lab ##
+### Kebutuhan Software Lab ###
 - Sama seperti Pemrograman 2
 - [NodeJS dan Yeoman](http://software.endy.muhardin.com/javascript/persiapan-coding-nodejs/)
 
-## Materi Kuliah ##
+### Materi Kuliah ###
 
 - Java Web Application
 - Servlet, Filter, Listener
