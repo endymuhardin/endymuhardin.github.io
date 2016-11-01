@@ -57,15 +57,14 @@ Kita melihat ada variabel yang agak berbeda pada contoh di atas, yaitu $!person.
 
 Kalau dijadikan kode Java, kira-kira $!person sama dengan ini: 
 
-    
-    
+```java
     String personName;
     if(person != null && person.getName() != null) {
       personName = person.getName();
     } else {
       personName = "";
     }
-    
+```
 
 
 
@@ -73,8 +72,7 @@ Variabel $!person ini digunakan karena form ini menangani New Person dan juga Ed
 
 Berikut kerangka class PersonFormController. 
 
-    
-    
+```java
     package tutorial.spring25.ui.springmvc;
     
     @Controller
@@ -97,7 +95,7 @@ Berikut kerangka class PersonFormController.
     
       }
     }
-    
+```
 
 
 
@@ -109,9 +107,7 @@ Tetapi, bagaimana kita memilih kapan harus mendisplay form dan memproses form? K
 
 Sekarang mari kita isi method displayForm. Berikut isinya
 
-
-    
-    
+```java
     @RequestMapping(method = RequestMethod.GET)
     public ModelMap displayForm(@RequestParam(value = "person_id", required = false) Long id) {
       Person person = personDao.getById(id);
@@ -120,8 +116,7 @@ Sekarang mari kita isi method displayForm. Berikut isinya
     
       return new ModelMap(person);
     }
-    
-
+```
 
 
 Di sini kita melakukan binding untuk request parameter person\_id. Berbeda dengan tampilan detail pada artikel sebelumnya, di form ini parameter person\_id belum tentu ada. Bila kita membuat object Person baru, field id akan berisi null. Untuk itu, kita berikan parameter required yang bernilai false pada anotasi @RequestMapping.
@@ -132,17 +127,13 @@ Method ini bisa langsung dicoba dengan mengakses personform dengan memberikan pa
 
 Berikutnya, kita akan implementasi method untuk memproses form. Berikut isi method processForm
 
-
-    
-    
+```java
     @RequestMapping(method = RequestMethod.POST)
     public String processForm(@ModelAttribute("person") Person person) {
       personDao.save(person);
       return "redirect:personlist";
     }
-    
-
-
+```
 
 Mudah kan? Cukup gunakan personDao untuk menyimpan object ke database, kemudian redirect ke halaman personlist. 
 
@@ -154,9 +145,7 @@ Bagaimana dengan validasi? Mana ada form tanpa validasi.
 
 Baiklah, mari kita tambahkan kode validasi. Untuk itu, method processForm perlu dimodifikasi menjadi seperti ini
 
-
-    
-    
+```java
     @RequestMapping(method = RequestMethod.POST)
     public String processForm(@ModelAttribute("person") Person person, BindingResult result, SessionStatus status) {
       new PersonValidator().validate(person, result);
@@ -168,8 +157,7 @@ Baiklah, mari kita tambahkan kode validasi. Untuk itu, method processForm perlu 
         return "redirect:personlist";
       }
     }
-    
-
+```
 
 
 Tidak terlalu rumit, kan? Cukup buat class PersonValidator, kemudian jalankan method validate dengan input object person yang ingin divalidasi, dan object result untuk menampung error validasi bila ada. 
@@ -178,8 +166,7 @@ Selanjutnya, kita periksa object result. Bila ada errornya, kembali ke form. Bil
 
 Isi class PersonValidator juga tidak banyak. Berikut kodenya.
 
-    
-    
+```java
     package tutorial.spring25.validator;
     public class PersonValidator {
     
@@ -197,8 +184,7 @@ Isi class PersonValidator juga tidak banyak. Berikut kodenya.
         }
       }
     }
-    
-
+```
 
 
 Mudah bukan?

@@ -88,70 +88,65 @@ Selanjutnya masuk ke kode Java. Untuk menampilkan dan memproses form ini, kita b
 
 ### PersonUploadController.java
 
+```java
+package tutorial.spring25.ui.springmvc;
 
+@Controller
+@RequestMapping("/personuploadform")
+public class PersonUploadController {
+  private static final Log LOG = LogFactory.getLog(PersonUploadController.class);
+  private PersonCSVParser personDataParser;
+  private PersonDao personDao;
 
+  @Autowired(required=true)
+  public void setPersonDao(PersonDao personDao) {
+    this.personDao = personDao;
+  }
 
-    
-    
-    package tutorial.spring25.ui.springmvc;
-    
-    @Controller
-    @RequestMapping("/personuploadform")
-    public class PersonUploadController {
-      private static final Log LOG = LogFactory.getLog(PersonUploadController.class);
-      private PersonCSVParser personDataParser;
-      private PersonDao personDao;
-    
-      @Autowired(required=true)
-      public void setPersonDao(PersonDao personDao) {
-        this.personDao = personDao;
-      }
-    
-      @Autowired(required=true)
-      public void setPersonDataParser(PersonCSVParser personDataParser) {
-        this.personDataParser = personDataParser;
-      }
-    		
-      @RequestMapping(method=RequestMethod.GET)
-      public ModelMap displayForm(){
-        return new ModelMap();
-      }
-    	
-      @RequestMapping(method=RequestMethod.POST) 
-      public String processForm(@RequestParam("persondata") MultipartFile file) {
-        // parse file into list of strings
-        List contents = new ArrayList();
-        try {
-          BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
-          String content = reader.readLine();
-          while(content != null) {
-    					
-            if("".equals(content)) {
-              content = reader.readLine();
-              continue;
-            }
-            contents.add(content);
-            content = reader.readLine();
-          }
-          reader.close();
-        } catch (IOException e) {
-          LOG.warn(e.getMessage(), e);
+  @Autowired(required=true)
+  public void setPersonDataParser(PersonCSVParser personDataParser) {
+    this.personDataParser = personDataParser;
+  }
+		
+  @RequestMapping(method=RequestMethod.GET)
+  public ModelMap displayForm(){
+    return new ModelMap();
+  }
+	
+  @RequestMapping(method=RequestMethod.POST) 
+  public String processForm(@RequestParam("persondata") MultipartFile file) {
+    // parse file into list of strings
+    List contents = new ArrayList();
+    try {
+      BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
+      String content = reader.readLine();
+      while(content != null) {
+					
+        if("".equals(content)) {
+          content = reader.readLine();
+          continue;
         }
-    			
-        // parse list of strings into list of Persons
-        List persons = new ArrayList();
-        List errors = new ArrayList();
-        personDataParser.parse(contents, persons, errors);
-    
-        for (Person person : persons) {
-          personDao.save(person);
-        }
-        
-        return "redirect:personlist"
+        contents.add(content);
+        content = reader.readLine();
       }
+      reader.close();
+    } catch (IOException e) {
+      LOG.warn(e.getMessage(), e);
     }
-    
+			
+    // parse list of strings into list of Persons
+    List persons = new ArrayList();
+    List errors = new ArrayList();
+    personDataParser.parse(contents, persons, errors);
 
+    for (Person person : persons) {
+      personDao.save(person);
+    }
+
+    return "redirect:personlist"
+  }
+}
+```
 
 
 Logika kode di atas tidak sulit. Untuk mendisplay form, praktis tidak ada yang perlu dilakukan. Kita cukup memberikan model kosong, karena form upload tidak membutuhkan data apa-apa. 
@@ -169,15 +164,11 @@ Spring mendukung kedua library. Saya biasanya menggunakan Jakarta Commons. Untuk
 
 ### tutorial-servlet.xml
 
-
-
-    
-    
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-      <property name="maxUploadSize" value="1000000"/>
-    </bean>
-    
-
+```xml
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+  <property name="maxUploadSize" value="1000000"/>
+</bean>
+```
 
 
 Setelah file didapat, kita lalu membaca isinya. Hanya operasi I/O standar di sini. Kita membuka `InputStream` yang dibungkus dengan `BufferedReader` yang memiliki method `readLine` yang praktis. Kemudian kita looping setiap baris. Jangan lupa untuk memeriksa baris kosong. Hasil pembacaan file kita simpan ke List<String> untuk pemrosesan selanjutnya. 

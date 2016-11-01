@@ -220,19 +220,17 @@ Ini adalah decoratornya, kita beri nama main.html.
 
 Ada beberapa tag khusus yang digunakan dalam decorator kita, yaitu
 
-  * ${base}
-  * ${title}
-  * ${body}
+  * `${base}`
+  * `${title}`
+  * `${body}`
 
-Ini adalah variabel yang disediakan SiteMesh untuk kita. ${base} adalah path menuju aplikasi web kita. Kita menggunakan ${base} untuk membuat URL yang lengkap. Variabel ini sangat berguna agar aplikasi kita bisa dideploy ke berbagai context. 
+Ini adalah variabel yang disediakan SiteMesh untuk kita. `${base}` adalah path menuju aplikasi web kita. Kita menggunakan `${base}` untuk membuat URL yang lengkap. Variabel ini sangat berguna agar aplikasi kita bisa dideploy ke berbagai context. 
 
 Pada saat mendekorasi, SiteMesh akan membaca respon HTML yang dikeluarkan appserver dan mengambil isi tag title dan body, kemudian memasangnya di tempat kita menaruh tag ${title} dan ${body}. Setelah itu, barulah keseluruhan respon yang sudah didekorasi akan dikirim ke client. 
 
 Kita sudah punya halaman yang akan ditampilkan (personlist.html) dan decoratornya (main.html). Untuk menggabungkan keduanya, kita harus memasang SiteMesh sebagai Servlet Filter. Servlet Filter memiliki kemampuan untuk mencegat baik request maupun response. Kita mendaftarkan filter di web.xml. Berikut deklarasi filter SiteMesh berikut mappingnya.
 
-
-    
-    
+```xml
     <filter>
       <filter-name>sitemesh</filter-name>
       <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
@@ -243,14 +241,12 @@ Kita sudah punya halaman yang akan ditampilkan (personlist.html) dan decoratorny
       <filter-name>sitemesh</filter-name>
       <url-pattern>/*</url-pattern>
     </filter-mapping>
-    
-
-
+```    
 
 Selain itu, kita juga perlu memasang servlet SiteMesh. Servlet ini yang akan mencegat semua pemanggilan template velocity, yaitu semua file yang berakhiran *.html. Berikut adalah deklarasi servlet berikut mappingnya.
 
 
-    
+```xml    
     
     <servlet>
       <servlet-name>sitemesh-velocity</servlet-name>
@@ -262,7 +258,7 @@ Selain itu, kita juga perlu memasang servlet SiteMesh. Servlet ini yang akan men
       <url-pattern>*.html</url-pattern>
     </servlet-mapping>
     
-
+```
 
 
 Selanjutnya, kita harus memberi tahu SiteMesh di mana kita meletakkan decorator dan URL apa saja yang ingin didekorasi. Biasanya kita punya beberapa decorator yang berbeda untuk (misalnya): 
@@ -274,15 +270,13 @@ Selanjutnya, kita harus memberi tahu SiteMesh di mana kita meletakkan decorator 
 Sebagai contoh, kita cuma akan menggunakan satu decorator, yaitu main.html. Decorator ini berlaku untuk semua request. Berikut konfigurasinya. 
 
 
-    
+```xml
     <decorators defaultdir="/WEB-INF/decorators">
       <decorator name="default" page="main.html">
         <pattern>/*</pattern>
       </decorator>
     </decorators>
-    
-
-
+```
 
 File ini diletakkan di dalam folder WEB-INF, bersama-sama dengan web.xml.
 
@@ -320,7 +314,7 @@ Setelah project folder diperoleh, dibutuhkan database MySQL dengan konfigurasi s
   * username : belajar
   * password : java
 
-Tabel T_PERSON yang digunakan pada contoh ini dapat dibuat dengan menggunakan script sql yang ada di folder src/sql/mysql-schema.sql.
+Tabel `T_PERSON` yang digunakan pada contoh ini dapat dibuat dengan menggunakan script sql yang ada di folder `src/sql/mysql-schema.sql`.
 
 Untuk menjalankan aplikasi ini, dibutuhkan Ant 1.7.0 dan Java 6. Cukup ketik ant run di konsol. Kemudian browse ke http://localhost:8080/
 
