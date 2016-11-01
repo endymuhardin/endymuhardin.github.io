@@ -239,12 +239,8 @@ Teknik seperti ini sederhana, mudah, sudah teruji di lapangan, berlaku untuk ber
 
 Source code untuk rangkaian artikel ini sudah dipublish di GoogleCode. Anda bisa: 
 
-  * [Checkout project](http://code.google.com/p/hello-spring-25/source)
-  * [Download WAR](http://hello-spring-25.googlecode.com/files/tutorial-spring25.war) 
-  * [Download JAR](http://hello-spring-25.googlecode.com/files/tutorial-spring25-winstone.jar) 
-  * [ Download keseluruhan project folder](http://hello-spring-25.googlecode.com/files/tutorial-spring25.tar.bz2)
-
-Jangan lupa membaca [instruksi untuk menjalankannya](http://code.google.com/p/hello-spring-25/). 
+  * [Checkout project](https://github.com/endymuhardin/hello-spring-25.git)
+  * [Download keseluruhan project folder](https://github.com/endymuhardin/hello-spring-25/archive/master.zip)
 
 
 Demikian sekilas tentang framework Spring MVC. Semoga bermanfaat.

@@ -11,7 +11,7 @@ categories:
 
 Belajar membuat aplikasi web belum lengkap tanpa tahu caranya mengupload file dan mengelola state. Pada artikel ini kita akan belajar tentang cara menangani upload file dengan Spring MVC versi 2.5. Di artikel selanjutnya baru kita akan bahas tentang state management. 
 
-Studi kasus kita kali ini sederhana saja. Kita sudah punya aplikasi buku alamat sederhana pada rangkaian artikel sebelumnya. Kita sudah bisa [menampilkan daftar data orang](http://endy.artivisi.com/blog/java/aplikasi-web-spring25-1/), [mengedit data yang sudah ada atau menambah data baru](http://endy.artivisi.com/blog/java/aplikasi-web-spring25-2/), serta [menggunakan template untuk header dan footer](http://endy.artivisi.com/blog/java/aplikasi-web-spring25-3/). Kali ini kita akan membuat fasilitas import data berupa text file berformat Comma Separated Value (CSV). 
+Studi kasus kita kali ini sederhana saja. Kita sudah punya aplikasi buku alamat sederhana pada rangkaian artikel sebelumnya. Kita sudah bisa [menampilkan daftar data orang](http://software.endy.muhardin.com/java/aplikasi-web-spring25-1/), [mengedit data yang sudah ada atau menambah data baru](http://software.endy.muhardin.com/java/aplikasi-web-spring25-2/), serta [menggunakan template untuk header dan footer](http://software.endy.muhardin.com/java/aplikasi-web-spring25-3/). Kali ini kita akan membuat fasilitas import data berupa text file berformat Comma Separated Value (CSV). 
 
 
 
@@ -184,11 +184,11 @@ Setelah file didapat, kita lalu membaca isinya. Hanya operasi I/O standar di sin
 
 Pemrosesan String menjadi Person kita lakukan di class PersonCSVParser supaya ada pembagian tanggung jawab yang jelas. Memisahkan parser di class tersendiri akan memudahkan kita untuk mengetes kode parser tersebut. 
 
-PersonCSVParser tidak ditampilkan di sini. Bagi yang ingin melihat kode programnya dapat langsung pergi ke [GoogleCode](http://hello-spring-25.googlecode.com/svn/trunk/src/java/tutorial/spring25/helper/PersonCSVParser.java). Demikian juga kelengkapannya, seperti: 
+PersonCSVParser tidak ditampilkan di sini. Bagi yang ingin melihat kode programnya dapat langsung pergi ke [Github](https://github.com/endymuhardin/hello-spring-25/blob/master/src/java/tutorial/spring25/helper/PersonCSVParser.java). Demikian juga kelengkapannya, seperti: 
 
-  * [PersonCSVParserTest](http://hello-spring-25.googlecode.com/svn/trunk/src/java/test/spring25/helper/PersonCSVParserTest.java)
-  * [person.csv](http://hello-spring-25.googlecode.com/svn/trunk/fixtures/person.csv) : sampel data test, semua data normal
-  * [person-with-malformed-emails.csv](http://hello-spring-25.googlecode.com/svn/trunk/fixtures/person-with-malformed-emails.csv) : sampel data test, ada email yang formatnya salah
+  * [PersonCSVParserTest](https://github.com/endymuhardin/hello-spring-25/blob/master/src/java/test/spring25/helper/PersonCSVParserTest.java)
+  * [person.csv](https://github.com/endymuhardin/hello-spring-25/blob/master/fixtures/person.csv) : sampel data test, semua data normal
+  * [person-with-malformed-emails.csv](https://github.com/endymuhardin/hello-spring-25/blob/master/fixtures/person-with-malformed-emails.csv) : sampel data test, ada email yang formatnya salah
 
 Setelah data diproses menjadi kumpulan Person, kita looping lagi untuk menyimpan hasilnya ke database dengan menggunakan `personDao`.
 

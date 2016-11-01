@@ -300,16 +300,16 @@ Selesai sudah. Mudah bukan?
 
 Contoh ini sudah dipublish di GoogleCode, Anda bisa mengunduh: 
 
-  * [keseluruhan project folder](http://hello-spring-25.googlecode.com/files/hello-spring-25-sitemesh.tar.bz2)
-  * [File *.war yang siap deploy](http://hello-spring-25.googlecode.com/files/tutorial-spring25-sitemesh.war)
-  * [File *.jar yang siap dijalankan secara standalone](http://hello-spring-25.googlecode.com/files/tutorial-spring25-sitemesh-winstone.jar)
+* [Checkout project](https://github.com/endymuhardin/hello-spring-25.git)
+* [Download keseluruhan project folder](https://github.com/endymuhardin/hello-spring-25/archive/master.zip)
+
 
 Atau Anda juga bisa menggunakan Subversion untuk menarik keseluruhan project folder, dengan perintah: 
 
 
     
     
-    svn export http://hello-spring-25.googlecode.com/svn/trunk/ hello-spring-25-read-only 
+    git clone https://github.com/endymuhardin/hello-spring-25.git
     
 
 
