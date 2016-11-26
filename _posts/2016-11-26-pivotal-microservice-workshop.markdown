@@ -7,7 +7,7 @@ categories:
 - event
 ---
 
-Beberapa hari yang lalu, tepatnya 24-24 November 2016, saya dan tim ArtiVisi diundang oleh Pivotal untuk menghadiri workshop yang berjudul "Migrating a Monolith Application to Microservices".
+Beberapa hari yang lalu, tepatnya 24-24 November 2016, saya dan tim ArtiVisi diundang oleh [Pivotal](https://pivotal.io/) untuk menghadiri workshop yang berjudul "Migrating a Monolith Application to Microservices".
 
 ![[Migrating Monolith Apps to Microservices](https://lh3.googleusercontent.com/h6hgA1F5t0bAfIe0ccXbAmRFewB4n61brbFx3XfOloXFdbfB7eXfySPUoc7-RgTLhDF-uXMGe2ph=w731-h694-no)](https://lh3.googleusercontent.com/h6hgA1F5t0bAfIe0ccXbAmRFewB4n61brbFx3XfOloXFdbfB7eXfySPUoc7-RgTLhDF-uXMGe2ph=w731-h694-no)
 
