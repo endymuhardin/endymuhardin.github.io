@@ -42,8 +42,10 @@ You are disconnected at the moment. Type 'connect' to connect to the server or '
 Ketik `connect` kemudian Enter. Setelah itu lakukan pendaftaran modul baru dengan perintah berikut
 
 ```
-module add --name=org.postgres --resource=/tmp/postgresql-9.4.1212.jar --dependencies=javax.api,javax.transaction.api
+module add --name=org.postgres --resources=/tmp/postgresql-9.4.1212.jar --dependencies=javax.api,javax.transaction.api
 ```
+
+Sesuaikan lokasi `resources` dengan lokasi file `postgresql.jar` yang diunduh.
 
 Kemudian, jalankan perintah berikut
 
