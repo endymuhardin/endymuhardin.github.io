@@ -250,7 +250,7 @@ Berikut isi filenya bila kita menjalankan Maven di belakang proxy.
       <host>proxy.host.net</host>
       <port>80</port>
       <nonProxyHosts>local.net|some.host.com</nonProxyHosts>
-      <username>proxyuser</</username>
+      <username>proxyuser</username>
       <password>proxypass</password>
     </proxy>
   </proxies>
