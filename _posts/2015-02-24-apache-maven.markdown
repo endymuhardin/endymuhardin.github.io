@@ -139,7 +139,7 @@ sesuai dengan project kita.
 * Membuat project baru
 
 ```
-mvn archetype:create -DgroupId=belajar -DartifactId=belajar-maven -Dversion=1.0.0
+mvn archetype:generate -DgroupId=belajar -DartifactId=belajar-maven -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
 
