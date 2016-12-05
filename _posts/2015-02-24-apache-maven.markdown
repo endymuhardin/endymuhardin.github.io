@@ -234,6 +234,39 @@ Hello World!
 [INFO] ------------------------------------------------------------------------
 ```
 
+## Konfigurasi Tambahan ##
+
+Adakalanya kita membutuhkan setting tambahan untuk menyesuaikan penggunaan Maven, misalnya bila kita ada di belakang proxy ataupun ingin memindahkan lokasi download ke tempat lain. Untuk melakukan konfigurasi, buat file `settings.xml` di dalam folder `.m2`.
+
+### Proxy ###
+
+Berikut isi filenya bila kita menjalankan Maven di belakang proxy.
+
+```xml
+<settings>
+  <proxies>
+    <proxy>
+      <protocol>http</protocol>
+      <host>proxy.host.net</host>
+      <port>80</port>
+      <nonProxyHosts>local.net|some.host.com</nonProxyHosts>
+      <username>proxyuser</</username>
+      <password>proxypass</password>
+    </proxy>
+  </proxies>
+</settings>
+```
+
+### Lokasi Download Folder ###
+
+Setting ini saya gunakan karena komputer saya menggunakan harddisk SSD yang berkapasitas kecil, sehingga lokasi downloadnya perlu dipindah ke external harddisk.
+
+```xml
+<settings>
+    <localRepository>/Volumes/SDUF128G/m2/repository</localRepository>
+</settings>
+```
+
 ## Penutup ##
 
 Demikianlah sekilas penggunaan Maven. Untuk lebih lengkapnya, kita bisa baca [buku referensi Maven](http://books.sonatype.com/mvnref-book/reference/) yang sudah disediakan gratis oleh Sonatype. Anda juga bisa tonton video Youtube saya yang membahas lebih lanjut tentang Apache Maven ini
