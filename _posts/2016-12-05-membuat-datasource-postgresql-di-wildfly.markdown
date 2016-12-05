@@ -84,7 +84,9 @@ Untuk membuat datasource, edit file `/folder/instalasi/wildfly/standalone/config
 </datasource>
 ```
 
-Konfigurasi di atas akan membuat datasource dengan nama `KontakDS`. Selanjutnya datasource ini bisa digunakan dalam file `src/main/resources/META-INF/persistence.xml` sebagai berikut
+Konfigurasi di atas akan membuat datasource dengan nama `KontakDS`. Jangan lupa sesuaikan nama database yang ada di `connection-url`, `user-name` dan `password`.
+
+Selanjutnya datasource ini bisa digunakan dalam file `src/main/resources/META-INF/persistence.xml` sebagai berikut
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
