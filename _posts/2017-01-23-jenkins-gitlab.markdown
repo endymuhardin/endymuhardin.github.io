@@ -212,5 +212,5 @@ Stay tuned untuk bagian terakhir, yaitu deployment.
 
 ## Referensi ##
 
-* https://medium.com/@teeks99/continuous-integration-with-jenkins-and-gitlab-fa770c62e88a#.xgl4n8cbg
-* http://stackoverflow.com/a/24991433
+* [https://medium.com/@teeks99/continuous-integration-with-jenkins-and-gitlab-fa770c62e88a#.xgl4n8cbg](https://medium.com/@teeks99/continuous-integration-with-jenkins-and-gitlab-fa770c62e88a#.xgl4n8cbg)
+* [http://stackoverflow.com/a/24991433](http://stackoverflow.com/a/24991433)
