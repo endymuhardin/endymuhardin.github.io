@@ -186,5 +186,5 @@ Demikianlah rangkaian serial setup Continuous Delivery dengan Gitlab, Jenkins, d
 
 ## Referensi ##
 
-* http://www.haydonryan.com/using-jenkins-to-build-a-hello-world-spring-boot-app-and-push-to-cloud-foundry/
-* https://docs.run.pivotal.io/devguide/deploy-apps/ssh-services.html
+* [http://www.haydonryan.com/using-jenkins-to-build-a-hello-world-spring-boot-app-and-push-to-cloud-foundry/](http://www.haydonryan.com/using-jenkins-to-build-a-hello-world-spring-boot-app-and-push-to-cloud-foundry/)
+* [https://docs.run.pivotal.io/devguide/deploy-apps/ssh-services.html](https://docs.run.pivotal.io/devguide/deploy-apps/ssh-services.html)
