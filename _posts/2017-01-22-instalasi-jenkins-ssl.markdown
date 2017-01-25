@@ -343,7 +343,7 @@ Bila kita lupa, nanti Jenkins akan komplain bahwa reverse proxy belum dikonfigur
 
 ## Penutup ##
 
-Selesai sudah konfigurasi Jenkins kita lengkap dengan SSL dan custom domain. Selanjutnya, kita bisa mulai menambahkan project untuk dibuild secara otomatis dan periodik. Stay tuned.
+Selesai sudah konfigurasi Jenkins kita lengkap dengan SSL dan custom domain. Selanjutnya, kita bisa mulai [menambahkan project untuk dibuild secara otomatis dan periodik](http://software.endy.muhardin.com/java/jenkins-gitlab/). Stay tuned.
 
 ## Referensi ##
 

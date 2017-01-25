@@ -7,7 +7,7 @@ categories:
 - java
 ---
 
-Pada artikel sebelumnya, kita telah menyiapkan server Jenkins untuk melakukan build pada project kita. Di artikel ini, kita akan mengkonfigurasikan project kita yang ada di Gitlab supaya bisa terhubung dengan Jenkins. Setelah selesai konfigurasi, kita akan bisa mendapatkan workflow seperti ini:
+Pada [artikel sebelumnya](http://software.endy.muhardin.com/java/instalasi-jenkins-ssl/), kita telah menyiapkan server Jenkins untuk melakukan build pada project kita. Di artikel ini, kita akan mengkonfigurasikan project kita yang ada di Gitlab supaya bisa terhubung dengan Jenkins. Setelah selesai konfigurasi, kita akan bisa mendapatkan workflow seperti ini:
 
 1. Programmer mengedit source code di laptopnya. Kemudian mengetes di laptopnya apakah sudah berjalan dengan baik.
 2. Setelah oke, programmer commit dan push perubahan yang dia lakukan ke server Gitlab.
@@ -208,7 +208,7 @@ Pada saat kita menerima email, artinya prosesnya sudah berjalan otomatis. Begitu
 
 Kita telah berhasil menghubungkan antara Gitlab dan Jenkins. Untuk selanjutnya, kita akan teruskan agar build yang sukses di Jenkins dapat dideploy secara otomatis di testing server. Dengan demikian, begitu programmer commit dan push ke repository Git, bila tidak terjadi error, akan segera bisa diakses di testing server.
 
-Stay tuned untuk bagian terakhir, yaitu deployment.
+Stay tuned untuk [bagian terakhir, yaitu deployment](http://software.endy.muhardin.com/java/deploy-jenkins-pivotal/).
 
 ## Referensi ##
 
