@@ -204,6 +204,33 @@ Bila proses build berhasil, kita akan mendapatkan notifikasi dari Gitlab melalui
 
 Pada saat kita menerima email, artinya prosesnya sudah berjalan otomatis. Begitu programmer commit dan push ke repository Git, kode programnya langsung dibuild dan dijalankan automated testnya. Hasilnya, sukses atau gagal, akan dikomunikasikan melalui email.
 
+## Reset Jenkins Build ##
+
+Pada waktu mengkonfigurasi build, seringkali kita mengalami kesalahan konfigurasi sehingga buildnya gagal. Akibatnya, project kita akan memiliki history build yang kurang baik, disebabkan karena adanya build awal yang gagal. Untuk itu, biasanya setelah konfigurasi kita benar, kita ingin menghapus build gagal tersebut dan mulai dari awal. Untuk melakukan reset ini, masuk ke menu Manage Jenkins > Script Console.
+
+Kita bisa menghapus semua build untuk project tertentu dan memulai build number dari 1 lagi dengan menggunakan script berikut
+
+```groovy
+def jobName = "Nama project yang ingin direset"
+def job = Jenkins.instance.getItem(jobName)
+job.getBuilds().each { it.delete() }
+job.nextBuildNumber = 1
+job.save()
+```
+
+Setelah itu, klik `Run` untuk menjalankan script. Project kita akan bersih kembali.
+
+Bila kita membuat aplikasi microservices, biasanya kita akan punya banyak aplikasi dan project. Kalau kita gunakan script di atas, kita harus ganti nama project berkali-kali. Lumayan merepotkan. Solusinya, kita bisa gunakan script ini untuk **menghapus history build di semua project**. Jangan dijalankan bila ada project lain yang tidak ingin direset.
+
+```groovy
+for (item in Jenkins.instance.items) {
+  item.builds.each() { build ->
+    build.delete()
+  }
+  item.updateNextBuildNumber(1)
+}
+```
+
 ## Penutup ##
 
 Kita telah berhasil menghubungkan antara Gitlab dan Jenkins. Untuk selanjutnya, kita akan teruskan agar build yang sukses di Jenkins dapat dideploy secara otomatis di testing server. Dengan demikian, begitu programmer commit dan push ke repository Git, bila tidak terjadi error, akan segera bisa diakses di testing server.
