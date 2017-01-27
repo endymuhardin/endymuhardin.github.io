@@ -169,20 +169,16 @@ Masukkan URL yang kita copas dari Jenkins tadi
 
 ![Input Webhook]({{site.url}}/images/uploads/2017/jenkins-gitlab/input-webhook.png)
 
+
+Kadangkala, kita perlu membuat database dulu untuk aplikasi kita. Kita bisa jalankan perintah untuk membuat database di bagian `Pre Step`
+
+![Drop Create Database]({{site.url}}/images/uploads/2017/jenkins-gitlab/drop-create-db.png)
+
 Terakhir, kita tambahkan Post Build Action
 
 ![Post Build Action]({{site.url}}/images/uploads/2017/jenkins-gitlab/post-build-action.png)
 
 Kemudian kita save.
-
-## Persiapan Database di Server Jenkins ##
-
-Karena project `belajar-ci` membutuhkan database, maka kita siapkan dulu di server Jenkins. Kita buatkan user database dan databasenya sesuai kebutuhan.
-
-```
-mysql> grant all on belajar.* to belajar@localhost identified by 'java';
-mysql> create database belajar;
-```
 
 ## Test Webhook ##
 
