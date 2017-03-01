@@ -3,7 +3,7 @@ layout: post
 title: "Setup Deployment ke PaaS"
 date: 2016-02-24 02:00
 comments: true
-categories: 
+categories:
 - java
 ---
 
@@ -20,13 +20,168 @@ Mari kita mulai ...
 
 <!--more-->
 
+
+## Heroku ##
+
+Pada dasarnya, deployment ke Heroku tidak jauh berbeda caranya dengan Openshift. Satu-satunya perbedaan yang cukup signifikan adalah paket gratisan Heroku cuma menyediakan database PostgreSQL. Tidak terlalu merepotkan karena kita menggunakan JPA. Tinggal mengubah tiga baris konfigurasi dan script migrasi database saja.
+
+### Struktur Folder Aplikasi ###
+
+Kita kerjakan dulu script migrasi database. Struktur folder kita yang asli hanyak mengakomodasi satu jenis database. Karena kita ingin ada dua script yang berbeda, kita perlu mengubah foldernya menjadi seperti ini
+
+[![Struktur Folder Migrasi](https://lh3.googleusercontent.com/KuXfp03PAiMLbH5616hUTa0XC9ljmjV0Sq5tsgFyGoh_IgdR76SC2K27HqVpMtDCfFX-eIsqiK0a=w1280-no)](https://lh3.googleusercontent.com/KuXfp03PAiMLbH5616hUTa0XC9ljmjV0Sq5tsgFyGoh_IgdR76SC2K27HqVpMtDCfFX-eIsqiK0a=w1280-no)
+
+Karena perubahan tersebut, kita harus memberi tahu Flyway di mana harus mencari scriptnya. Tambahkan konfigurasi berikut pada file `src/main/resources/application.properties`
+
+```
+flyway.locations=classpath:db/migration/mysql
+```
+
+Dengan demikian, lokasi default script ada di folder `src/main/resources/db/migration/mysql`.
+
+
+### Membuat Aplikasi Heroku ###
+
+Selanjutnya, kita buat aplikasi di Heroku. Login dulu ke Heroku sehingga dapat membuka management console seperti ini
+
+[![Heroku Dashboard](https://lh3.googleusercontent.com/vJIL0M5lHm_zXw9wBqhHFURVRs_aS92ZhL0Hr3yHiYRiRjDqHPNPp0FyG5k2Fhiojf7N5Mx6hvrt=w1280-no)](https://lh3.googleusercontent.com/vJIL0M5lHm_zXw9wBqhHFURVRs_aS92ZhL0Hr3yHiYRiRjDqHPNPp0FyG5k2Fhiojf7N5Mx6hvrt=w1280-no)
+
+Klik `New App` di pojok kanan atas untuk membuat aplikasi baru
+
+[![New App](https://lh3.googleusercontent.com/7S3Ou3h7xF44D52vWwCzZAxS8L5FOfkc9YR5IcTmVIkZADmxozhd8VNsXa3yC3ITRnA3vZrWAWdw=w1280-no)](https://lh3.googleusercontent.com/7S3Ou3h7xF44D52vWwCzZAxS8L5FOfkc9YR5IcTmVIkZADmxozhd8VNsXa3yC3ITRnA3vZrWAWdw=w1280-no)
+
+Isikan nama aplikasi yang ingin kita buat, misalya `aplikasibelajar`. Setelah klik OK, kita akan mendapati halaman administrasi aplikasi kita.
+
+[![Settings](https://lh3.googleusercontent.com/DNLuwV09DmIc5-cmY9MPbthkvVUgLTLSN0_zJRsK_nipgsOMiQ1TX3algAx1dETnqC9sJ9zlD9i7=w1280-no)](https://lh3.googleusercontent.com/DNLuwV09DmIc5-cmY9MPbthkvVUgLTLSN0_zJRsK_nipgsOMiQ1TX3algAx1dETnqC9sJ9zlD9i7=w1280-no)
+
+Perhatikan nilai `Git URL` pada tab `Settings`. Kita akan membutuhkan nilainya untuk melakukan deployment nanti.
+
+Klik tab `Resources`, dan tambahkan add-ons PostgreSQL
+
+[![Add PostgreSQL](https://lh3.googleusercontent.com/gCR_yDwsszVcWwT8BgqT_Zyb8rAMui3NYzbYMVRGlHW4qBKzloY8ROTMSDiLrr_TgG-7D_lM4V0P=w1280-no)](https://lh3.googleusercontent.com/gCR_yDwsszVcWwT8BgqT_Zyb8rAMui3NYzbYMVRGlHW4qBKzloY8ROTMSDiLrr_TgG-7D_lM4V0P=w1280-no)
+
+Pilih saja paket Hobby yang gratis
+
+[![Pilih paket](https://lh3.googleusercontent.com/U2QFH7vZHoQDfUvBN4AQsbytOaJ7VWqwD5a8n8V2ow2J6Rje8bn2AFiWtndaj7ZCRXoAmdnQu2gw=w1280-no)](https://lh3.googleusercontent.com/U2QFH7vZHoQDfUvBN4AQsbytOaJ7VWqwD5a8n8V2ow2J6Rje8bn2AFiWtndaj7ZCRXoAmdnQu2gw=w1280-no)
+
+Database PostgreSQL sudah berhasil ditambahkan.
+
+[![Database PostgreSQL](https://lh3.googleusercontent.com/t-vug3Drj-_hSp_Y6uMn857e1jjbg2YEn5geqDwOOA4fxj2t1dCNhyFNaZSG_nv3Ow2lgmDNXe4S=w1280-no)](https://lh3.googleusercontent.com/t-vug3Drj-_hSp_Y6uMn857e1jjbg2YEn5geqDwOOA4fxj2t1dCNhyFNaZSG_nv3Ow2lgmDNXe4S=w1280-no)
+
+Klik titik tiga di kanannya untuk mengetahui detail konfigurasinya agar bisa kita pasang di aplikasi.
+
+[![Daftar Database](https://lh3.googleusercontent.com/gTQ0-E-whswg7BM3deNaW4HVijl5l5L1NUJRos2hBiobkq8OJAKmvOI67xmZopYJOumx5nL6fho1=w1280-no)](https://lh3.googleusercontent.com/gTQ0-E-whswg7BM3deNaW4HVijl5l5L1NUJRos2hBiobkq8OJAKmvOI67xmZopYJOumx5nL6fho1=w1280-no)
+
+Pada halaman di atas terlihat daftar database yang kita miliki, hanya ada satu di sana. Klik nama databasenya untuk melihat detail konfigurasinya
+
+[![Database Setting](https://lh3.googleusercontent.com/3ihLGkqas3LezBYpsCr-J0zJ-JbsRh1BymgIHT7bZsGXrCiZQ4iyF-Kt147pgHyLDFYtCL582kYG=w1280-no)](https://lh3.googleusercontent.com/3ihLGkqas3LezBYpsCr-J0zJ-JbsRh1BymgIHT7bZsGXrCiZQ4iyF-Kt147pgHyLDFYtCL582kYG=w1280-no)
+
+Di situ kita bisa melihat informasi koneksi database. Informasi ini akan kita pasang di konfigurasi aplikasi.
+
+### Konfigurasi Aplikasi ###
+
+Seperti pada Openshift, kita akan membuat konfigurasi terpisah untuk koneksi database Heroku. Tambahkan file `application-heroku.properties` di dalam folder `src/main/resources`. Isinya sebagai berikut
+
+```
+spring.datasource.url=jdbc:postgresql://ec2-54-83-198-159.compute-1.amazonaws.com:5432/d1sjircg9n9989
+spring.datasource.username=oxfyfvocxwboqn
+spring.datasource.password=1fpn8BZHFIKAALWnvLAUAPBByt
+
+flyway.locations=classpath:db/migration/postgresql
+```
+
+Nilai konfigurasi tersebut didapatkan dari setting database yang disediakan Heroku seperti pada screenshot sebelumnya.
+
+Selanjutnya, kita buat script migrasi untuk database PostgreSQL. Sebetulnya tidak terlalu jauh berbeda karena tabel kita cuma satu dan tidak rumit. Berikut isi file `V0.0.1.20160222__Skema Awal.sql` yang diletakkan di dalam folder `src/main/resources/db/migration/postgresql`.
+
+```sql
+-- tabel Product --
+create table product (
+    id varchar(36) primary key,
+    code varchar(10) not null unique,
+    name varchar(255) not null,
+    price decimal(19,2) not null
+);
+```
+
+Terakhir, jangan lupa menambahkan dependensi untuk driver PostgreSQL di `pom.xml`
+
+```xml
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```
+
+Setelah selesai, jangan lupa `commit` ke repo lokal.
+
+```
+git add .
+git commit -m "konfigurasi database PostgreSQL di Heroku"
+```
+
+### Deployment ###
+
+Agar Heroku paham cara menjalankan aplikasi kita, buat sebuah file bernama `Procfile`. Isinya sebagai berikut
+
+```
+web: java $JAVA_OPTS -jar -Dspring.profiles.active=heroku target/*.jar --server.port=$PORT
+```
+
+File tersebut menunjukkan bahwa aplikasi kita adalah aplikasi web, dijalankan dengan perintah
+
+```
+java -jar target/*.jar -Dspring.profiles.active=heroku
+```
+
+Selebihnya `$JAVA_OPTS` dan `$PORT` adalah variabel yang disediakan Heroku.
+
+Deployment dilakukan dengan cara `git push`, sama seperti Openshift. Untuk itu, kita daftarkan url git Heroku yang telah kita dapatkan di laman administrasi di atas.
+
+```
+git remote add heroku https://git.heroku.com/aplikasibelajar.git
+```
+
+Selanjutnya, kita lakukan deployment
+
+```
+git push heroku master
+```
+
+Sama dengan Openshift, Heroku juga membuatkan file-file template untuk deployment. Kita bisa menimpa repository yang dibuatkan Heroku dengan opsi `--force` sehingga perintahnya menjadi
+
+```
+git push heroku master --force
+```
+
+Untuk memantau apakah aplikasi kita berhasil terdeploy dengan baik, kita bisa menampilkan log aplikasi dengan cara mengklik tombol titik tiga di kanan atas laman administrasi
+
+[![View Log Button](https://lh3.googleusercontent.com/pXk4gPwG1cWjPkPXEDpnQg0mX1zPo6qx7HYerrWpuZikO_MxCYY89XMqOa2zKOPmj0yA1LjdaB_V=w1280-no)](https://lh3.googleusercontent.com/pXk4gPwG1cWjPkPXEDpnQg0mX1zPo6qx7HYerrWpuZikO_MxCYY89XMqOa2zKOPmj0yA1LjdaB_V=w1280-no)
+
+Selanjutnya, kita bisa lihat apakah ada error yang terjadi di log aplikasi
+
+[![Log Aplikasi](https://lh3.googleusercontent.com/53eCLZjK12alrsbu8fyeZ4qq3hFMpuE3omVDGd3BupHlSDJbPv0IW1ecQL7msdmLqaHyY0AlBcuC=w1280-no)](https://lh3.googleusercontent.com/53eCLZjK12alrsbu8fyeZ4qq3hFMpuE3omVDGd3BupHlSDJbPv0IW1ecQL7msdmLqaHyY0AlBcuC=w1280-no)
+
+Bila semuanya lancar, kita dapat mengakses aplikasi kita dengan URL yang tercantum di laman administrasi
+
+[![Output Heroku](https://lh3.googleusercontent.com/kHtUIutukivieFArVdrsOLZcbSOFeiPq4nFpiksILhvWTRCQsZYNcXet-MIb63bZrLB6kpnewPXS=w1280-no)](https://lh3.googleusercontent.com/kHtUIutukivieFArVdrsOLZcbSOFeiPq4nFpiksILhvWTRCQsZYNcXet-MIb63bZrLB6kpnewPXS=w1280-no)
+
+
 ## Openshift ##
+
+**UPDATE !!!**
+
+> Pada saat artikel ini ditulis, Openshift masih menjalankan versi lama.
+> Saat ini OpenShift versi lama sudah tidak menerima pendaftaran baru.
+> Sedangkan OpenShift versi baru hanya menyediakan akun trial yang aplikasi berikut datanya akan terhapus setelah satu bulan.
+> Oleh karena itu, bagian Openshift ini sudah obsolete dan tidak bisa dijadikan referensi lagi.
 
 Untuk bisa mendeploy ke Openshift, terlebih dulu kita harus mendaftar. Cara pendaftaran sudah pernah saya bahas di [artikel sebelumnya](http://software.endy.muhardin.com/aplikasi/membuat-blog-gratis-di-openshift/). Langsung saja [ke websitenya](https://www.openshift.com/) dan mendaftar.
 
 ### Pembuatan Aplikasi di Openshift ###
 
-Setelah login, kita akan melihat daftar aplikasi yang kita miliki. 
+Setelah login, kita akan melihat daftar aplikasi yang kita miliki.
 
 [![Daftar Aplikasi](https://lh3.googleusercontent.com/1aqd3dM7DQXOCgBEqPGnsrzk5UluU2kwtU5CGBpC6xxaK1Nt0Mjw2OLujqfZQXjuE8j4KuN3PZBQ=w1280-no)](https://lh3.googleusercontent.com/1aqd3dM7DQXOCgBEqPGnsrzk5UluU2kwtU5CGBpC6xxaK1Nt0Mjw2OLujqfZQXjuE8j4KuN3PZBQ=w1280-no)
 
@@ -209,154 +364,6 @@ Bila kita coba mengaksesnya, kita akan mendapatkan response JSON.
 
 [![Output](https://lh3.googleusercontent.com/Ej-1LQGRaOPc4eH7kvNmIt6KNyBpRoyyjmhDRl1OjMYxcd8Hi6_wDHgCCbiWc6MhslhyMu2Hrw1b=w1280-no)](https://lh3.googleusercontent.com/Ej-1LQGRaOPc4eH7kvNmIt6KNyBpRoyyjmhDRl1OjMYxcd8Hi6_wDHgCCbiWc6MhslhyMu2Hrw1b=w1280-no)
 
-
-## Heroku ##
-
-Pada dasarnya, deployment ke Heroku tidak jauh berbeda caranya dengan Openshift. Satu-satunya perbedaan yang cukup signifikan adalah paket gratisan Heroku cuma menyediakan database PostgreSQL. Tidak terlalu merepotkan karena kita menggunakan JPA. Tinggal mengubah tiga baris konfigurasi dan script migrasi database saja.
-
-### Struktur Folder Aplikasi ###
-
-Kita kerjakan dulu script migrasi database. Struktur folder kita yang asli hanyak mengakomodasi satu jenis database. Karena kita ingin ada dua script yang berbeda, kita perlu mengubah foldernya menjadi seperti ini
-
-[![Struktur Folder Migrasi](https://lh3.googleusercontent.com/KuXfp03PAiMLbH5616hUTa0XC9ljmjV0Sq5tsgFyGoh_IgdR76SC2K27HqVpMtDCfFX-eIsqiK0a=w1280-no)](https://lh3.googleusercontent.com/KuXfp03PAiMLbH5616hUTa0XC9ljmjV0Sq5tsgFyGoh_IgdR76SC2K27HqVpMtDCfFX-eIsqiK0a=w1280-no)
-
-Karena perubahan tersebut, kita harus memberi tahu Flyway di mana harus mencari scriptnya. Tambahkan konfigurasi berikut pada file `src/main/resources/application.properties`
-
-```
-flyway.locations=classpath:db/migration/mysql
-```
-
-Dengan demikian, lokasi default script ada di folder `src/main/resources/db/migration/mysql`.
-
-
-### Membuat Aplikasi Heroku ###
-
-Selanjutnya, kita buat aplikasi di Heroku. Login dulu ke Heroku sehingga dapat membuka management console seperti ini
-
-[![Heroku Dashboard](https://lh3.googleusercontent.com/vJIL0M5lHm_zXw9wBqhHFURVRs_aS92ZhL0Hr3yHiYRiRjDqHPNPp0FyG5k2Fhiojf7N5Mx6hvrt=w1280-no)](https://lh3.googleusercontent.com/vJIL0M5lHm_zXw9wBqhHFURVRs_aS92ZhL0Hr3yHiYRiRjDqHPNPp0FyG5k2Fhiojf7N5Mx6hvrt=w1280-no)
-
-Klik `New App` di pojok kanan atas untuk membuat aplikasi baru
-
-[![New App](https://lh3.googleusercontent.com/7S3Ou3h7xF44D52vWwCzZAxS8L5FOfkc9YR5IcTmVIkZADmxozhd8VNsXa3yC3ITRnA3vZrWAWdw=w1280-no)](https://lh3.googleusercontent.com/7S3Ou3h7xF44D52vWwCzZAxS8L5FOfkc9YR5IcTmVIkZADmxozhd8VNsXa3yC3ITRnA3vZrWAWdw=w1280-no)
-
-Isikan nama aplikasi yang ingin kita buat, misalya `aplikasibelajar`. Setelah klik OK, kita akan mendapati halaman administrasi aplikasi kita.
-
-[![Settings](https://lh3.googleusercontent.com/DNLuwV09DmIc5-cmY9MPbthkvVUgLTLSN0_zJRsK_nipgsOMiQ1TX3algAx1dETnqC9sJ9zlD9i7=w1280-no)](https://lh3.googleusercontent.com/DNLuwV09DmIc5-cmY9MPbthkvVUgLTLSN0_zJRsK_nipgsOMiQ1TX3algAx1dETnqC9sJ9zlD9i7=w1280-no)
-
-Perhatikan nilai `Git URL` pada tab `Settings`. Kita akan membutuhkan nilainya untuk melakukan deployment nanti.
-
-Klik tab `Resources`, dan tambahkan add-ons PostgreSQL
-
-[![Add PostgreSQL](https://lh3.googleusercontent.com/gCR_yDwsszVcWwT8BgqT_Zyb8rAMui3NYzbYMVRGlHW4qBKzloY8ROTMSDiLrr_TgG-7D_lM4V0P=w1280-no)](https://lh3.googleusercontent.com/gCR_yDwsszVcWwT8BgqT_Zyb8rAMui3NYzbYMVRGlHW4qBKzloY8ROTMSDiLrr_TgG-7D_lM4V0P=w1280-no)
-
-Pilih saja paket Hobby yang gratis
-
-[![Pilih paket](https://lh3.googleusercontent.com/U2QFH7vZHoQDfUvBN4AQsbytOaJ7VWqwD5a8n8V2ow2J6Rje8bn2AFiWtndaj7ZCRXoAmdnQu2gw=w1280-no)](https://lh3.googleusercontent.com/U2QFH7vZHoQDfUvBN4AQsbytOaJ7VWqwD5a8n8V2ow2J6Rje8bn2AFiWtndaj7ZCRXoAmdnQu2gw=w1280-no)
-
-Database PostgreSQL sudah berhasil ditambahkan. 
-
-[![Database PostgreSQL](https://lh3.googleusercontent.com/t-vug3Drj-_hSp_Y6uMn857e1jjbg2YEn5geqDwOOA4fxj2t1dCNhyFNaZSG_nv3Ow2lgmDNXe4S=w1280-no)](https://lh3.googleusercontent.com/t-vug3Drj-_hSp_Y6uMn857e1jjbg2YEn5geqDwOOA4fxj2t1dCNhyFNaZSG_nv3Ow2lgmDNXe4S=w1280-no)
-
-Klik titik tiga di kanannya untuk mengetahui detail konfigurasinya agar bisa kita pasang di aplikasi.
-
-[![Daftar Database](https://lh3.googleusercontent.com/gTQ0-E-whswg7BM3deNaW4HVijl5l5L1NUJRos2hBiobkq8OJAKmvOI67xmZopYJOumx5nL6fho1=w1280-no)](https://lh3.googleusercontent.com/gTQ0-E-whswg7BM3deNaW4HVijl5l5L1NUJRos2hBiobkq8OJAKmvOI67xmZopYJOumx5nL6fho1=w1280-no)
-
-Pada halaman di atas terlihat daftar database yang kita miliki, hanya ada satu di sana. Klik nama databasenya untuk melihat detail konfigurasinya
-
-[![Database Setting](https://lh3.googleusercontent.com/3ihLGkqas3LezBYpsCr-J0zJ-JbsRh1BymgIHT7bZsGXrCiZQ4iyF-Kt147pgHyLDFYtCL582kYG=w1280-no)](https://lh3.googleusercontent.com/3ihLGkqas3LezBYpsCr-J0zJ-JbsRh1BymgIHT7bZsGXrCiZQ4iyF-Kt147pgHyLDFYtCL582kYG=w1280-no)
-
-Di situ kita bisa melihat informasi koneksi database. Informasi ini akan kita pasang di konfigurasi aplikasi.
-
-### Konfigurasi Aplikasi ###
-
-Seperti pada Openshift, kita akan membuat konfigurasi terpisah untuk koneksi database Heroku. Tambahkan file `application-heroku.properties` di dalam folder `src/main/resources`. Isinya sebagai berikut
-
-```
-spring.datasource.url=jdbc:postgresql://ec2-54-83-198-159.compute-1.amazonaws.com:5432/d1sjircg9n9989
-spring.datasource.username=oxfyfvocxwboqn
-spring.datasource.password=1fpn8BZHFIKAALWnvLAUAPBByt
-
-flyway.locations=classpath:db/migration/postgresql
-```
-
-Nilai konfigurasi tersebut didapatkan dari setting database yang disediakan Heroku seperti pada screenshot sebelumnya.
-
-Selanjutnya, kita buat script migrasi untuk database PostgreSQL. Sebetulnya tidak terlalu jauh berbeda karena tabel kita cuma satu dan tidak rumit. Berikut isi file `V0.0.1.20160222__Skema Awal.sql` yang diletakkan di dalam folder `src/main/resources/db/migration/postgresql`.
-
-```sql
--- tabel Product --
-create table product (
-    id varchar(36) primary key,
-    code varchar(10) not null unique,
-    name varchar(255) not null,
-    price decimal(19,2) not null
-);
-```
-
-Terakhir, jangan lupa menambahkan dependensi untuk driver PostgreSQL di `pom.xml`
-
-```xml
-<dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <scope>runtime</scope>
-</dependency>
-```
-
-Setelah selesai, jangan lupa `commit` ke repo lokal.
-
-```
-git add .
-git commit -m "konfigurasi database PostgreSQL di Heroku"
-```
-
-### Deployment ###
-
-Agar Heroku paham cara menjalankan aplikasi kita, buat sebuah file bernama `Procfile`. Isinya sebagai berikut
-
-```
-web: java $JAVA_OPTS -jar -Dspring.profiles.active=heroku target/*.jar --server.port=$PORT
-```
-
-File tersebut menunjukkan bahwa aplikasi kita adalah aplikasi web, dijalankan dengan perintah 
-
-```
-java -jar target/*.jar -Dspring.profiles.active=heroku
-```
-
-Selebihnya `$JAVA_OPTS` dan `$PORT` adalah variabel yang disediakan Heroku.
-
-Deployment dilakukan dengan cara `git push`, sama seperti Openshift. Untuk itu, kita daftarkan url git Heroku yang telah kita dapatkan di laman administrasi di atas.
-
-```
-git remote add heroku https://git.heroku.com/aplikasibelajar.git
-```
-
-Selanjutnya, kita lakukan deployment
-
-```
-git push heroku master
-```
-
-Sama dengan Openshift, Heroku juga membuatkan file-file template untuk deployment. Kita bisa menimpa repository yang dibuatkan Heroku dengan opsi `--force` sehingga perintahnya menjadi
-
-```
-git push heroku master --force
-```
-
-Untuk memantau apakah aplikasi kita berhasil terdeploy dengan baik, kita bisa menampilkan log aplikasi dengan cara mengklik tombol titik tiga di kanan atas laman administrasi
-
-[![View Log Button](https://lh3.googleusercontent.com/pXk4gPwG1cWjPkPXEDpnQg0mX1zPo6qx7HYerrWpuZikO_MxCYY89XMqOa2zKOPmj0yA1LjdaB_V=w1280-no)](https://lh3.googleusercontent.com/pXk4gPwG1cWjPkPXEDpnQg0mX1zPo6qx7HYerrWpuZikO_MxCYY89XMqOa2zKOPmj0yA1LjdaB_V=w1280-no)
-
-Selanjutnya, kita bisa lihat apakah ada error yang terjadi di log aplikasi
-
-[![Log Aplikasi](https://lh3.googleusercontent.com/53eCLZjK12alrsbu8fyeZ4qq3hFMpuE3omVDGd3BupHlSDJbPv0IW1ecQL7msdmLqaHyY0AlBcuC=w1280-no)](https://lh3.googleusercontent.com/53eCLZjK12alrsbu8fyeZ4qq3hFMpuE3omVDGd3BupHlSDJbPv0IW1ecQL7msdmLqaHyY0AlBcuC=w1280-no)
-
-Bila semuanya lancar, kita dapat mengakses aplikasi kita dengan URL yang tercantum di laman administrasi
-
-[![Output Heroku](https://lh3.googleusercontent.com/kHtUIutukivieFArVdrsOLZcbSOFeiPq4nFpiksILhvWTRCQsZYNcXet-MIb63bZrLB6kpnewPXS=w1280-no)](https://lh3.googleusercontent.com/kHtUIutukivieFArVdrsOLZcbSOFeiPq4nFpiksILhvWTRCQsZYNcXet-MIb63bZrLB6kpnewPXS=w1280-no)
-
-
 ## Deployment Subfolder ##
 
 Project yang kita kerjakan tidak selalu hanya terdiri dari satu aplikasi. Adakalanya project kita terdiri dari aplikasi web dan mobile yang bekerja sama. Untuk itu, biasanya di dalam repository kita akan ada dua folder untuk masing-masing aplikasi web dan aplikasi mobile, seperti terlihat pada screenshot di bawah.
@@ -386,6 +393,3 @@ Untuk mendeploy subfolder ke Heroku caranya sama. Tinggal ganti saja tujuan remo
 ## Penutup ##
 
 Demikianlah cara deployment aplikasi ke penyedia layanan PaaS di cloud. Setelah kita bisa melakukannya secara manual, pada [artikel berikutnya kita akan otomasi deployment ini menggunakan Travis CI](http://software.endy.muhardin.com/java/project-bootstrap-04/). Stay tuned ......
-
-
-
