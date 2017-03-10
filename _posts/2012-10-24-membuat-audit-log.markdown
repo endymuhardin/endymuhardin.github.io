@@ -41,7 +41,7 @@ Contoh perubahan ini bisa dilihat [di sini](https://github.com/endymuhardin/bela
 
 Entity class yang sudah ditambahi dengan annotation `@Audited` tampak seperti ini:
 
-```java Kategori.java
+```java
 @Entity @Audited
 @Table(name="m_kategori")
 public class Kategori {
