@@ -20,22 +20,32 @@ Pada bagian pertama ini (atau kelima kalau dihitung dari seri terdahulu), kita a
 
 Untuk menghosting Jenkins, kita akan gunakan [Digital Ocean](https://m.do.co/c/910ad80271f7).
 
-Berikut langkah instalasinya. Saya menggunakan aplikasi command line bernama [Tugboat](https://github.com/pearkes/tugboat)
+Berikut langkah instalasinya. Saya menggunakan [aplikasi command line resmi dari DigitalOcean](https://github.com/digitalocean/doctl)
 
 * siapkan VPS di DigitalOcean. Saya gunakan yang berukuran 2GB karena berdasarkan pengalaman, yang 512MB dan 1GB sering error kehabisan memori
 
-        tugboat create vps-jenkins --size=2gb
+		doctl compute droplet create vps-jenkins --size=2gb --image ubuntu-16-04-x64 --region nyc1
 
     hasilnya seperti ini
 
-        Queueing creation of droplet 'vps-jenkins'...Droplet created!
+		ID          Name           Public IPv4    Private IPv4    Public IPv6    Memory    VCPUs    Disk    Region    Image                 Status    Tags
+		44271929    vps-jenkins                                                  2048      2        40      nyc1      Ubuntu 16.04.2 x64    new       
+
+* Lihat IP Address VPS yang baru kita buat
+
+		doctl compute droplet list
+
+	hasilnya seperti ini
+
+		ID          Name                    Public IPv4       Private IPv4    Public IPv6    Memory    VCPUs    Disk    Region    Image                   Status    Tags
+		44271929    vps-jenkins             67.205.183.31                                    2048      2        40      nyc1      Ubuntu 16.04.2 x64      active    
+
 
 * Login ssh ke dalam VPS
 
-        tugboat ssh vps-jenkins
+        ssh root@67.205.183.31
 
     Outputnya
-
 
         Attempting SSH: root@216.58.221.69
         SShing with options: -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes -i /Users/endymuhardin/.ssh/id_rsa -p 22 root@216.58.221.69

@@ -3,11 +3,11 @@ layout: post
 title: "Restore Gitlab dari Amazon Glacier"
 date: 2016-09-21 07:00
 comments: true
-categories: 
+categories:
 - linux
 ---
 
-Hari ini saya membaca [artikel menyedihkan](http://istofani.com/wp/digital-ocean-sebuah-mimpi-buruk/) dari salah satu pelaku startup di negara kita ini. Aplikasinya yang dihosting di Digital Ocean crash dan datanya tidak bisa direcover. Entah apakah dia punya backup di tempat lain atau tidak. 
+Hari ini saya membaca [artikel menyedihkan](http://istofani.com/wp/digital-ocean-sebuah-mimpi-buruk/) dari salah satu pelaku startup di negara kita ini. Aplikasinya yang dihosting di Digital Ocean crash dan datanya tidak bisa direcover. Entah apakah dia punya backup di tempat lain atau tidak.
 
 Dengan artikel ini, pertama-tama saya mengucapkan turut berduka cita atas kehilangannya. Semoga tetap tabah, bisa mengatasi dengan lancar, dan diberikan ganti yang lebih baik.
 
@@ -108,12 +108,12 @@ Outputnya seperti ini
 
 ```
 {
-    "AcceptRanges": "bytes", 
-    "ContentType": "binary/octet-stream", 
-    "LastModified": "Mon, 19 Sep 2016 19:00:58 GMT", 
-    "ContentLength": 2840115200, 
-    "ETag": "\"dad3ad8683b936e03de57bccbc764292-28\"", 
-    "StorageClass": "GLACIER", 
+    "AcceptRanges": "bytes",
+    "ContentType": "binary/octet-stream",
+    "LastModified": "Mon, 19 Sep 2016 19:00:58 GMT",
+    "ContentLength": 2840115200,
+    "ETag": "\"dad3ad8683b936e03de57bccbc764292-28\"",
+    "StorageClass": "GLACIER",
     "Metadata": {}
 }
 ```
@@ -128,13 +128,13 @@ Bila kita cek lagi info filenya, maka statusnya akan berubah menjadi `Restore : 
 
 ```
 {
-    "Restore": "ongoing-request=\"true\"", 
-    "AcceptRanges": "bytes", 
-    "ContentType": "binary/octet-stream", 
-    "LastModified": "Mon, 19 Sep 2016 19:00:58 GMT", 
-    "ContentLength": 2840115200, 
-    "ETag": "\"dad3ad8683b936e03de57bccbc764292-28\"", 
-    "StorageClass": "GLACIER", 
+    "Restore": "ongoing-request=\"true\"",
+    "AcceptRanges": "bytes",
+    "ContentType": "binary/octet-stream",
+    "LastModified": "Mon, 19 Sep 2016 19:00:58 GMT",
+    "ContentLength": 2840115200,
+    "ETag": "\"dad3ad8683b936e03de57bccbc764292-28\"",
+    "StorageClass": "GLACIER",
     "Metadata": {}
 }
 ```
@@ -143,20 +143,20 @@ Setelah selesai restore, info file akan menjadi seperti ini
 
 ```
 {
-    "Restore": "ongoing-request=\"false\", expiry-date=\"Sat, 24 Sep 2016 00:00:00 GMT\"", 
-    "AcceptRanges": "bytes", 
-    "ContentType": "binary/octet-stream", 
-    "LastModified": "Mon, 19 Sep 2016 19:00:58 GMT", 
-    "ContentLength": 2840115200, 
-    "ETag": "\"dad3ad8683b936e03de57bccbc764292-28\"", 
-    "StorageClass": "GLACIER", 
+    "Restore": "ongoing-request=\"false\", expiry-date=\"Sat, 24 Sep 2016 00:00:00 GMT\"",
+    "AcceptRanges": "bytes",
+    "ContentType": "binary/octet-stream",
+    "LastModified": "Mon, 19 Sep 2016 19:00:58 GMT",
+    "ContentLength": 2840115200,
+    "ETag": "\"dad3ad8683b936e03de57bccbc764292-28\"",
+    "StorageClass": "GLACIER",
     "Metadata": {}
 }
 ```
 
 Sama seperti versi web, kita mendapatkan tanggal tertentu dimana file tersebut bisa diakses.
 
-> Peringatan !!! Jangan restore semua file backup sekaligus. Nanti kena charge mahal. 
+> Peringatan !!! Jangan restore semua file backup sekaligus. Nanti kena charge mahal.
 
 Sebetulnya Amazon sudah mengingatkan kita pada waktu kita restore melalui antarmuka web. Begini katanya
 
@@ -173,17 +173,26 @@ Ini kesalahan yang saya lakukan di awal-awal karena tidak RTFM. Ternyata kalau k
 
 ### Menyiapkan Target Restorasi ###
 
-Kita akan membuat VPS baru di DigitalOcean untuk menjalankan proses restorasi. Pembuatan VPS ini kita lakukan menggunakan aplikasi commandline bernama `tugboat`.
+Kita akan [membuat VPS baru di DigitalOcean](https://m.do.co/c/910ad80271f7) untuk menjalankan proses restorasi. Pembuatan VPS ini kita lakukan menggunakan [aplikasi commandline resmi dari DigitalOcean](https://github.com/digitalocean/doctl).
 
 1. Create droplet baru di DigitalOcean
 
-        tugboat create restoregitlab -k 714736 -s 2gb -i ubuntu-16-04-x64
+		doctl compute droplet create restoregitlab --size=2gb --image ubuntu-16-04-x64 --region nyc1
+
+2. Dapatkan IP address dari droplet yang baru dibuat
+
+		doctl compute droplet list
+
+	hasilnya seperti ini
+
+		ID          Name                    Public IPv4       Private IPv4    Public IPv6    Memory    VCPUs    Disk    Region    Image                   Status    Tags
+		44271929    restoregitlab           67.205.183.31                                    2048      2        40      nyc1      Ubuntu 16.04.2 x64      active    
 
 2. SSH ke droplet. Kadang harus ditunggu dulu sampai droplet aktif sempurna.
 
-        tugboat ssh restoregitlab
+        ssh root@67.205.183.31
 
-3. Install Gitlab dengan versi yang sesuai dengan yang digunakan di backup. Daftar installer semua versi ada [di sini](https://www.gitlab.com/downloads/archives/) dan [di sini](https://packages.gitlab.com/gitlab/gitlab-ce). 
+3. Install Gitlab dengan versi yang sesuai dengan yang digunakan di backup. Daftar installer semua versi ada [di sini](https://www.gitlab.com/downloads/archives/) dan [di sini](https://packages.gitlab.com/gitlab/gitlab-ce).
 
 [![Gitlab Versi Lama](https://lh3.googleusercontent.com/MY94aFy8XDsSbG3RmEvcF-_0RmvBLH9PijpOkumFd9Yz16gs9Yo1hggPH0J6y8RjlUn_SO8tkDyU=w1140-h694-no)](https://lh3.googleusercontent.com/MY94aFy8XDsSbG3RmEvcF-_0RmvBLH9PijpOkumFd9Yz16gs9Yo1hggPH0J6y8RjlUn_SO8tkDyU=w1140-h694-no)
 
@@ -212,7 +221,7 @@ Untuk memudahkan dan mempercepat proses, kita akan gunakan aplikasi commandline 
         export LANG=en_US.UTF-8
         apt install python-pip -y
         pip install awscli
-    
+
 
 2. Konfigurasi Secret Key
 
@@ -221,7 +230,7 @@ Untuk memudahkan dan mempercepat proses, kita akan gunakan aplikasi commandline 
         printf "[default]" > .aws/credentials
         printf "aws_access_key_id = AKIAKIMASUKKANACCESSKEYDISINI" >> .aws/credentials
         printf "aws_secret_access_key = blablablamasukkansecretkeydisini" >> .aws/credentials
-    
+
 3. Download file backup terakhir ke folder restore gitlab. Langkah ini bisa dijalankan paralel dengan proses instalasi dengan menggunakan tmux
 
         aws s3 cp s3://gitlab-artivisi-backup/1474311643_gitlab_backup.tar /var/opt/gitlab/backups/
@@ -231,7 +240,7 @@ Untuk memudahkan dan mempercepat proses, kita akan gunakan aplikasi commandline 
         gitlab-ctl stop unicorn
         gitlab-ctl stop sidekiq
         gitlab-ctl status
-    
+
 5. Restore backup
 
         gitlab-rake gitlab:backup:restore BACKUP=1474311643
@@ -243,12 +252,12 @@ Untuk memudahkan dan mempercepat proses, kita akan gunakan aplikasi commandline 
           Your current GitLab version (8.11.7) differs from the GitLab version in the backup!
           Please switch to the following version and try again:
           version: 8.11.0
-    
+
 6. Restart Gitlab dan Periksa Hasilnya
 
         gitlab-ctl start
         gitlab-rake gitlab:check SANITIZE=true
-    
+
 Setelah restore dilakukan dengan sukses, kita akan melihat login screen
 
 [![Login Screen](https://lh3.googleusercontent.com/_VDioYRvWdEoZV5aMR7rcb4NA0STy6YRVEq1Pax0pN-PPfml-TEQfm31e6ZkwYB8n-JRYyY2tuxj=w997-h470-no)](https://lh3.googleusercontent.com/_VDioYRvWdEoZV5aMR7rcb4NA0STy6YRVEq1Pax0pN-PPfml-TEQfm31e6ZkwYB8n-JRYyY2tuxj=w997-h470-no)
@@ -258,7 +267,7 @@ Lalu kita bisa coba login dan mengoperasikan Gitlab seperti biasa.
 Setelah kita pastikan hasil restore bekerja dengan baik, kita bisa hapus lagi droplet Digital Ocean supaya kita tidak kena tagihan mahal. Digital Ocean menghitung tagihan per jam. Jadi jangan menunda-nunda untuk menghapus droplet.
 
 ```
-tugboat destroy restoregitlab
+doctl compute droplet delete restoregitlab
 ```
 
 ## Catatan Tambahan ##
@@ -271,7 +280,7 @@ Jadi jangan malas mengimplementasikan prosedur backup dan restore.
 
 Total waktu yang saya habiskan untuk membuat prosedur ini, mengetes, screenshot, menulis jadi blog, semuanya butuh waktu 1 hari penuh untuk backup dan 1 hari penuh untuk restore. Memang 2 mandays terasa banyak juga, apalagi kalau kita monetisasi dengan rate harian level software architect atau CTO. Tapi 2 mandays ini bisa menyelamatkan ratusan mandays yang hilang kalau kita tidak punya backup.
 
-Sebagai tambahan motivasi, prosedur 2 mandays ini tidak ada apa-apanya dibandingkan apa yang dilakukan oleh Netflix. Bukan hanya berjaga-jaga terhadap server crash, mereka dengan sengaja membuat crash server mereka sendiri secara acak. Server production, bukan server testing. 
+Sebagai tambahan motivasi, prosedur 2 mandays ini tidak ada apa-apanya dibandingkan apa yang dilakukan oleh Netflix. Bukan hanya berjaga-jaga terhadap server crash, mereka dengan sengaja membuat crash server mereka sendiri secara acak. Server production, bukan server testing.
 
 Manfaatnya:
 
@@ -290,7 +299,7 @@ Selengkapnya bisa [dibaca di blognya Netflix](http://techblog.netflix.com/2012/0
 Demikianlah prosedur untuk melakukan restore backup dari Amazon Glacier. Prosedur ini harus dilakukan secara berkala untuk memastikan backup kita benar-benar dapat digunakan. Percuma saja kita backup setiap hari kalau ternyata pada waktu dibutuhkan kita tidak bisa restore.
 
 
-Server akan crash, database akan error, harddisk akan corrupt. Pertanyaannya bukanlah 
+Server akan crash, database akan error, harddisk akan corrupt. Pertanyaannya bukanlah
 
 > Apakah server/database/harddisk saya akan error?
 
