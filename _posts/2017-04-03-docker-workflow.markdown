@@ -274,6 +274,32 @@ export DOCKER_MACHINE_NAME="docker-ocean"
 
 Dengan demikian, aplikasi kita bisa diakses di http://138.197.101.3/api/product/
 
+### Menjalankan Docker Compose ###
+
+Kita bisa menjalankan rangkaian container kita tadi dengan perintah berikut:
+
+		docker-compose up
+
+Dengan perintah di atas, `docker-compose` akan menjalankan container `mysql` dan `belajarci-app`, kemudian menghubungkan keduanya. Kita bisa test hasilnya dengan mengakses alamat IP docker host seperti sudah dijelaskan di atas. Untuk mematikan container, kita bisa tekan `Ctrl-C`.
+
+Bila kita ingin `docker-compose` sebagai background service (supaya kita bisa mematikan command prompt), tambahkan opsi `-d` seperti ini
+
+		docker-compose up -d
+
+Bila ada perubahan terhadap kode program aplikasi kita, jalankan proses build maven/gradle seperti biasa
+
+		mvn clean package
+
+Kemudian rebuild docker image dan kemudian push. Setelah itu restart container web kita
+
+		docker-compose up --no-deps belajarci-app
+
+Opsi `--no-deps` digunakan agar service lain yang bergantung pada `belajarci-app` tidak ikut direstart.
+
+### Memeriksa Volume Mapping ###
+
+Pada konfigurasi di atas, kita menggunakan volume mapping agar data dari MySQL kita tersimpan di mesin fisik.
+
 Kita bisa memastikan bahwa MySQL benar-benar menulis ke folder `/opt/data` di host dengan cara login ke `docker-machine`.
 
 ```
