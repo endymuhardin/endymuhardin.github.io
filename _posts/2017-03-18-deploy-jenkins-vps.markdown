@@ -218,6 +218,18 @@ Harusnya kita akan mendapatkan output seperti ini
 }
 ```
 
+Bila kita mengedit file `belajarci.service`, kita harus me-reload systemctl supaya perubahannya diproses
+
+```
+systemctl daemon-reload
+```
+
+Baru setelah itu kita restart
+
+```
+service belajarci restart
+```
+
 ## Deployment dengan Jenkins ##
 
 Setelah deployment manual berhasil, kita akan mengotomasinya supaya deployment selanjutnya dilakukan oleh Jenkins. Kita ingat-ingat lagi langkah-langkah deploymentnya:
