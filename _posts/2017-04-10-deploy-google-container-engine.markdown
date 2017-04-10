@@ -732,4 +732,6 @@ Selama disk ini tidak kita hapus, data produk sebanyak 2 record tadi akan tetap 
 
 Demikianlah deployment aplikasi ke Google Container Engine (GKE) dengan menggunakan Kubernetes. Setelah kita bisa melakukannya secara manual, pada artikel berikutnya kita akan otomasi menggunakan proses Continuous Delivery.
 
+Seperti biasa, seluruh kode program bisa diakses [di Github](http://github.com/endymuhardin/belajar-ci)
+
 Semoga bermanfaat, stay tuned...
