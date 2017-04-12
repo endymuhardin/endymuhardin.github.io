@@ -367,4 +367,4 @@ Docker ini sudah didukung berbagai provider cloud yang populer seperti:
 
 Dengan adanya Docker, kita sebagai developer bisa mendeliver bukan saja aplikasi kita, tapi lengkap dengan environment tempat dia dijalankan, sehingga sysadmin/operation bisa langsung menjalankannya dengan mudah. Mereka tinggal memilih provider hosting yang paling disukai.
 
-Pada artikel selanjutnya insya Allah kita akan membahas tentang otomasi proses ini dengan Continuous Integration, dan kemudian clustering dan replikasi aplikasi kita yang sudah dipaketkan dalam container. Stay tuned ;)
+Pada artikel selanjutnya insya Allah kita akan membahas tentang [otomasi proses ini dengan Continuous Integration](https://software.endy.muhardin.com/devops/gitlab-ci-kubernetes-gke), dan kemudian clustering dan replikasi aplikasi kita yang sudah dipaketkan dalam container. Stay tuned ;)

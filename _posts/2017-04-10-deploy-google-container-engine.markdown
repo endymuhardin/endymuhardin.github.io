@@ -7,7 +7,7 @@ categories:
 - devops
 ---
 
-Pada artikel sebelumnya, kita telah membuat docker image, merangkainya dengan docker compose, kemudian menjalankannya di Docker Engine di Digital Ocean. Di artikel ini, kita akan coba naikkan level kekiniannya dengan mendeploy ke Google Container Engine yang biasa disingkat GKE. Ingat!! Pakai `K` ya. Bukan GCE, karena singkatan GCE sudah dipakai oleh Google Compute Engine.
+Pada [artikel sebelumnya](http://software.endy.muhardin.com/devops/docker-workflow/), kita telah membuat docker image, merangkainya dengan docker compose, kemudian menjalankannya di Docker Engine di Digital Ocean. Di artikel ini, kita akan coba naikkan level kekiniannya dengan mendeploy ke Google Container Engine yang biasa disingkat GKE. Ingat!! Pakai `K` ya. Bukan GCE, karena singkatan GCE sudah dipakai oleh Google Compute Engine.
 
 Untuk mendeploy ke GKE, kita akan menggunakan [Kubernetes](https://kubernetes.io/), bukan Docker Compose.
 
@@ -730,7 +730,7 @@ Selama disk ini tidak kita hapus, data produk sebanyak 2 record tadi akan tetap 
 
 ## Penutup ##
 
-Demikianlah deployment aplikasi ke Google Container Engine (GKE) dengan menggunakan Kubernetes. Setelah kita bisa melakukannya secara manual, pada artikel berikutnya kita akan otomasi menggunakan proses Continuous Delivery.
+Demikianlah deployment aplikasi ke Google Container Engine (GKE) dengan menggunakan Kubernetes. Setelah kita bisa melakukannya secara manual, pada artikel berikutnya kita akan [otomasi menggunakan proses Continuous Delivery](https://software.endy.muhardin.com/devops/gitlab-ci-kubernetes-gke).
 
 Seperti biasa, seluruh kode program bisa diakses [di Github](http://github.com/endymuhardin/belajar-ci)
 
