@@ -164,6 +164,8 @@ with Compute Engine resources, the default is assumed.
 
 Pilih zona default. Di sini saya pilih 1 agar servernya lebih dekat ke Indonesia.
 
+> Hari ini saya cek, sudah ada opsi zone Singapura yang lebih dekat lagi. Kodenya `asia-southeast1-a` dan `asia-southeast1-b`
+
 ```
  Your project default Compute Engine zone has been set to [asia-east1-a].
  You can change it by running [gcloud config set compute/zone NAME].
