@@ -218,6 +218,8 @@ gs://belajar-ci/
 
 Dulu, membuat instalasi clustering dan failover seperti gambar di atas relatif sulit. Kita harus instal semua node satu persatu, memasang alamat IP, mengatur subnet, menghubungkan antar node dengan `keepalived` atau `heartbeat`, konfigurasi load balancer dengan `HAProxy` atau `Nginx`, dan banyak urusan lainnya. Sekarang, dengan teknologi cloud, mau replikasi berapa node pun bisa dilakukan dengan satu baris perintah.
 
+![Shadow Clone Jutsu]({{site.url}}/images/uploads/2017/clustering-aplikasi/kagebunshin.jpg)
+
 ### Kubernetes ###
 
 Berikut perintahnya bila kita deploy ke Kubernetes. Pertama kita lihat dulu kondisi awalnya
