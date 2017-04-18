@@ -337,7 +337,7 @@ Klik tombol reload beberapa kali. Kita akan melihat bahwa isi `Hostname` dan `IP
 Di tahun 2017 ini replication dan failover sudah sangat mudah. Dengan satu kali perintah saja, kita sudah bisa menambah instance aplikasi. Bahkan berbagai penyedia layanan cloud sudah menyediakan fasilitas `autoscaling`, yaitu secara otomatis menambah instance pada saat aplikasi kita mencapai pemakaian CPU/RAM tertentu. Informasi lebih lanjut mengenai autoscaling dapat dibaca di masing-masing penyedia:
 
 * [Heroku](https://blog.heroku.com/heroku-autoscaling)
-* [Google Container Engine](https://cloud.google.com/container-engine/docs/clusters/operations#create_a_cluster_with_autoscaling
+* [Google Container Engine](https://cloud.google.com/container-engine/docs/clusters/operations#create_a_cluster_with_autoscaling)
 * [Pivotal Cloud Foundry](https://docs.run.pivotal.io/appsman-services/autoscaler/using-autoscaler.html)
 * [Amazon](https://aws.amazon.com/autoscaling/)
 
