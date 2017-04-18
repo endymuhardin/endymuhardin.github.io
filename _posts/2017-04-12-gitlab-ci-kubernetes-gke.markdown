@@ -266,7 +266,7 @@ Di jaman serba cepat seperti sekarang ini, segala hal harus dioptimasi, termasuk
 
 Sudah tidak jamannya lagi kita menyiapkan mesin fisik secara manual, menginstal sistem operasi dan kelengkapannya, baru mendeploy aplikasi. Jaman sekarang, cukup kita paketkan aplikasi dalam container, kemudian deploy otomatis tiap ada perubahan kode program. Ini akan memangkas waktu dari programmer selesai coding sampai aplikasi bisa digunakan user, yang tadinya berminggu-minggu menjadi beberapa menit saja.
 
-Walaupun demikian, rangkaian otomasi ini belum selesai. Di artikel selanjutnya, kita akan menyiapkan aplikasi kita agar siap direplikasi. Setelah itu, kita akan mencoba kemudahan replikasi dengan satu perintah saja. Fitur ini sudah umum tersedia di mana-mana, seperti misalnya Amazon AWS, Google Cloud, Heroku, Pivotal Web Service, dan mayoritas penyedia layanan cloud lain.
+Walaupun demikian, rangkaian otomasi ini belum selesai. Di [artikel selanjutnya](http://software.endy.muhardin.com/java/cluster-ready-app), kita akan menyiapkan aplikasi kita agar siap direplikasi. Setelah itu, kita akan mencoba kemudahan replikasi dengan satu perintah saja. Fitur ini sudah umum tersedia di mana-mana, seperti misalnya Amazon AWS, Google Cloud, Heroku, Pivotal Web Service, dan mayoritas penyedia layanan cloud lain.
 
 Untuk melihat kode program aplikasinya, silahkan langsung menuju repositorynya [di Gitlab](https://gitlab.com/endymuhardin/belajar-ci). Hasil build bisa dilihat di [tab Pipelines](https://gitlab.com/endymuhardin/belajar-ci/pipelines)
 
