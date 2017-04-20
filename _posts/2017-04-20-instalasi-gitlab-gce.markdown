@@ -343,8 +343,7 @@ Outputnya seperti ini, kita harus bersabar menunggu dia selesai
 ```
 Generating DH parameters, 4096 bit long safe prime, generator 2
 This is going to take a long time
-.................................................+............................................+.......+.........................................................................+...............................................................................................................
-
+.................................................+............................................+.......+.........................................................................+.........................................................................................................................................................................++*++*
 ```
 
 Setelah selesai, kita akan mengkonfigurasikan Gitlab agar membaca file sertifikat dan private key. Edit lagi `/etc/gitlab/gitlab.rb` dan masukkan baris berikut
@@ -356,6 +355,16 @@ nginx['ssl_certificate'] = "/etc/letsencrypt/live/gitlab.artivisi.id/fullchain.p
 nginx['ssl_certificate_key'] = "/etc/letsencrypt/live/gitlab.artivisi.id/privkey.pem"
 nginx['ssl_dhparam'] = "/etc/gitlab/ssl/dhparams.pem"
 ```
+
+Lalu restart Gitlab sekali lagi.
+
+```
+sudo gitlab-ctl reconfigure
+```
+
+SSL kita sudah terpasang dengan baik. Kita bisa cek di [situs pemeriksaan SSL](https://www.ssllabs.com/ssltest/) untuk melihat berapa nilai konfigurasi kita.
+
+[![Hasil SSL Test]({{site.url}}/images/uploads/2017/gitlab-family/hasil-ssl-test.png)]({{site.url}}/images/uploads/2017/gitlab-family/hasil-ssl-test.png)
 
 Jangan lupa untuk memasang script auto-renewal. Masukkan baris berikut di crontab.
 
