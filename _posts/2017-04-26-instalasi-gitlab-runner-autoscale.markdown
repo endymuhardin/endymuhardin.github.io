@@ -515,6 +515,8 @@ Ada beberapa hal yang kita konfigurasi pada runner kita, yaitu:
 * `IdleTime = 600` : kalau ada VPS yang nganggur selama 600 detik (10 menit), segera remove
 * `MaxBuilds = 5` : maksimal kerjaan yang jalan berbarengan adalah `5`. Kalau ada 7 permintaan, maka yang 2 antri dulu. Setting ini bisa kita gunakan untuk membatasi jumlah VPS yang akan dibuat oleh Gitlab sehingga tagihan tidak membengkak.
 * `MachineDriver = "google"` : provider VPS yang kita gunakan. Kita bisa menggunakan [berbagai provider yang didukung oleh `docker-machine`](https://docs.docker.com/machine/drivers/)
+* `engine-registry-mirror` : lokasi registry mirror yang sudah kita install tadi.
+* `runners.cache` : lokasi penyimpanan cache. Arahkan ke konfigurasi `minio` yang sudah kita buat tadi.
 
 Setelah diedit, restart Gitlab Runner
 
