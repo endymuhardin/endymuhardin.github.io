@@ -69,7 +69,7 @@ ERROR: (gcloud.compute.instances.create) Could not fetch resource:
  - Access Not Configured. Compute Engine API has not been used in project 964256271847 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute_component/overview?project=964256271847 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
 ```
 
-Agar bisa mengaktifkan Compute API, kita harus mengijinkan Google menagih ke kartu kredit kita (`Enable Billing`). Kita bisa jalankan proses ini lewat web seperti ini 
+Agar bisa mengaktifkan Compute API, kita harus mengijinkan Google menagih ke kartu kredit kita (`Enable Billing`). Kita bisa jalankan proses ini lewat web seperti ini
 
 [![Enable Billing]({{site.url}}/images/uploads/2017/gitlab-family/enable-gcp-billing.png)]({{site.url}}/images/uploads/2017/gitlab-family/enable-gcp-billing.png)
 
@@ -162,7 +162,7 @@ Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.8.0-45-generic x86_64)
 0 updates are security updates.
 
 
-endymuhardin@gitlab-ce:~$ 
+endymuhardin@gitlab-ce:~$
 ```
 
 Nah kita sudah berada di dalam VPS tersebut.
@@ -175,7 +175,7 @@ Supaya lebih bonafit, kita berikan nama domain ke server kita ini dengan cara me
 Kita booking dulu alamat IP yang static
 
 ```
-gcloud compute addresses create gitlab-ip 
+gcloud compute addresses create gitlab-ip
 ```
 
 Outputnya seperti ini
@@ -384,6 +384,6 @@ Setelah itu, kita bisa login dan mulai berkarya :D
 
 ## Penutup ##
 
-Server Gitlab CE kita sudah beroperasi. Sekarang kita bisa membuat user, project, dan mulai menggunakan Git untuk version control. Pada artikel selanjutnya, kita akan mengkonfigurasikan Gitlab Runner supaya proses Continuous Delivery kita bisa dijalankan. Stay tuned ...
+Server Gitlab CE kita sudah beroperasi. Sekarang kita bisa membuat user, project, dan mulai menggunakan Git untuk version control. Pada artikel selanjutnya, kita akan [mengkonfigurasikan Gitlab Runner](http://software.endy.muhardin.com/devops/instalasi-gitlab-runner-autoscale/) supaya proses Continuous Delivery kita bisa dijalankan. Stay tuned ...
 
 Semoga bermanfaat
