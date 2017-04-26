@@ -10,7 +10,7 @@ categories:
 Setelah kita berhasil [memasang Gitlab CE di Google Cloud Platform](http://software.endy.muhardin.com/devops/instalasi-gitlab-gce/), sekarang kita akan lanjutkan untuk memasang Gitlab Runner. Ada satu fitur menarik dari Gitlab Runner ini, yaitu `autoscale`. Fitur ini memungkinkan kita untuk menghemat biaya sewa VPS di penyedia layanan cloud seperti Digital Ocean, Amazon, Google, dan lainnya. Caranya adalah dengan membuat VPS untuk menjalankan build sesuai kebutuhan. Bila sedang ramai antrian, Gitlab akan membuat banyak VPS. Bila antrian sepi, VPS tersebut akan dihapus sehingga tidak menimbulkan biaya.
 
 Berikut langkah-langkah untuk memasang Gitlab Runner dengan fitur `autoscale`:
-
+<!--more-->
 * [Setup CI Cache dan Docker Registry Proxy](#cache-registry)
 * [Setup Gitlab Runner](#setup-gitlab-runner)
 
@@ -21,8 +21,6 @@ Berikut langkah-langkah untuk memasang Gitlab Runner dengan fitur `autoscale`:
 
 * [Registrasi Gitlab Runner](#registrasi-gitlab-multi-runner)
 * [Test Gitlab Runner](#test-gitlab-runner)
-
-<!--more-->
 
 <a name="cache-registry"></a>
 ## Setup CI Cache dan Docker Registry Proxy ##
