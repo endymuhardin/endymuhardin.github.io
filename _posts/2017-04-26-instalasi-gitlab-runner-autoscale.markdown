@@ -52,7 +52,7 @@ docker run -it --restart always -p 9005:9000 \
         minio/minio:latest server /export
 ```
 
-Agar lebih mudah, kita bisa gabungkan keduanya dalam docker compose sebagai berikut
+Agar lebih mudah, kita bisa gabungkan keduanya dalam docker compose sebagai berikut. Simpan konfigurasi ini dengan nama file `docker-compose.yml`
 
 ```yml
 version: "2.1"
