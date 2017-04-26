@@ -528,7 +528,7 @@ Kita bisa lihat hasilnya di antarmuka web Gitlab CE di menu `Admin > Runners`
 
 [![Runner Sukses Registrasi]({{site.url}}/images/uploads/2017/gitlab-family/runner-registered.png)]({{site.url}}/images/uploads/2017/gitlab-family/runner-registered.png)
 
-<a name=test-gitlab-runner></a>
+<a name="test-gitlab-runner"></a>
 ## Test Gitlab Runner ##
 
 Ada beberapa hal yang perlu kita test, yaitu:
