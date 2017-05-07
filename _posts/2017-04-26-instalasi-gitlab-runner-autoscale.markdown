@@ -22,6 +22,47 @@ Berikut langkah-langkah untuk memasang Gitlab Runner dengan fitur `autoscale`:
 * [Registrasi Gitlab Runner](#registrasi-gitlab-multi-runner)
 * [Test Gitlab Runner](#test-gitlab-runner)
 
+Sebelum kita mulai, kita bahas dulu tentang cara kerja Gitlab CI Runner. Banyak di antara kita yang sebelumnya terbiasa menggunakan aplikasi CI yang terpisah dengan source code repository seperti misalnya Jenkins, Travis CI, Circle CI, dan sebagainya. Untuk aplikasi CI yang standalone, skema cara kerjanya seperti ini:
+
+[![Skema CI Standalone]({{site.url}}/images/uploads/2017/gitlab-family/ci-standalone.jpg)]({{site.url}}/images/uploads/2017/gitlab-family/ci-standalone.jpg)
+
+Biasanya untuk meningkatkan kapasitas build, aplikasi CI ini memiliki fitur slave, yaitu mesin lain yang khusus berfungsi untuk menjalankan build, terpisah dari `master`nya, yaitu mesin utama yang bertugas mengontrol proses build. Kalau digambarkan skemanya kira-kira seperti ini:
+
+[![Skema CI Master Slave]({{site.url}}/images/uploads/2017/gitlab-family/ci-master-slave.jpg)]({{site.url}}/images/uploads/2017/gitlab-family/ci-master-slave.jpg)
+
+Untuk Gitlab, fitur CInya sudah terintegrasi dengan aplikasi source code repositorynya. Kita hanya perlu memasang `Runner` yang kira-kira fungsinya sama seperti `slave` pada diagram di atas.
+
+Runner menggunakan `executor` untuk menjalankan proses build. Ada beberapa executor yang disediakan oleh Gitlab, yaitu:
+
+* Shell
+* Docker
+* Docker Machine
+* Virtual Box
+* Parallels
+* SSH
+* Kubernetes
+
+Shell executor akan menjalankan proses build di dalam mesin Runner, sama seperti kita menjalankan build di laptop kita sendiri. Di laptop kita, agar proses build bisa berjalan, kita harus menyediakan semua yang dibutuhkan dalam proses build. Misalnya kita membuat aplikasi Java yang dibuild dengan Apache Maven dan menggunakan database MySQL, maka kita harus menginstal dulu:
+
+* Java SDK
+* Apache Maven
+* Database MySQL
+
+Kemudian mengkonfigurasikan semuanya agar aplikasi kita bisa dibuild. Kurang lebih prosesnya sama seperti yang dijelaskan di [artikel project setup](http://software.endy.muhardin.com/java/project-bootstrap-01/).
+
+Demikian juga halnya dengan Shell executor. Kita harus menginstal dan mengkonfigurasikan kebutuhan tersebut di mesin Runner. Untuk sistem Linux, caranya bisa dibaca [di sini](http://software.endy.muhardin.com/java/persiapan-coding-java/). Setelah melakukan persiapan tersebut, kita bisa lanjut menginstal runner.
+
+Penggunaan shell executor relatif mudah kalau semua project kita menggunakan teknologi yang sama. Walaupun demikian, kita tetap perlu membuatkan user database dan databasenya untuk masing-masing project kita. Ini akan sangat merepotkan kalau projectnya banyak. Apalagi kalau project kita menggunakan framework dan bahasa pemrograman yang berbeda-beda.
+
+Agar lebih mudah, kita bisa gunakan executor Docker. Dengan executor ini, proses build kita akan dijalankan dalam docker container. Bila belum paham apa itu Docker, bisa baca [pembahasan tentang apa itu docker](http://software.endy.muhardin.com/linux/intro-docker/) dan [workflow development dengan Docker](http://software.endy.muhardin.com/devops/docker-workflow/).
+
+Yang lebih canggih dari executor Docker adalah executor Docker Machine, yang akan kita bahas pada artikel ini. Executor ini akan membuatkan VPS khusus untuk masing-masing proses build, tidak seperti executor Docker biasa yang menjalankan semua project dalam satu host. Executor ini cocok dikombinasikan dengan layanan VPS modern yang umumnya sekarang menghitung biaya dalam satuan jam. Jadi kita cukup sewa VPS selama proses build jalan. Setelah build selesai, VPS didestroy dan kita tidak perlu bayar. Fitur ini di Gitlab CI disebut dengan istilah `autoscale`.
+
+Executor yang lain tidak kita bahas, silahkan baca sendiri [dokumentasinya](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/executors/README.md) kalau penasaran.
+
+Baiklah, mari kita mulai instalasi dan setup Gitlab Runner Autoscale.
+
+
 <a name="cache-registry"></a>
 ## Setup CI Cache dan Docker Registry Proxy ##
 
