@@ -21,7 +21,7 @@ Secara garis besar, berikut adalah langkah-langkahnya:
 
 ## Cara Kerja Gitlab CI ##
 
-Di artikel sebelumnya, kita telah jelaskan bahwa kita memilih executor `docker-machine` untuk Gitlab Runner kita. Dengan demikian, pada waktu proses build dijalankan, kita akan mendapat container baru dalam setiap job. Ini artinya antar job kita tidak punya file yang disimpan secara permanen, termasuk di antaranya konfigurasi ssh client. Jadi, setiap kali proses build berjalan, kita harus membuat pasangan private dan public key baru karena yang ada di proses build sebelumnya sudah dihapus.
+Di [artikel sebelumnya](http://software.endy.muhardin.com/devops/instalasi-gitlab-runner-autoscale/), kita telah jelaskan bahwa kita memilih executor `docker-machine` untuk Gitlab Runner kita. Dengan demikian, pada waktu proses build dijalankan, kita akan mendapat container baru dalam setiap job. Ini artinya antar job kita tidak punya file yang disimpan secara permanen, termasuk di antaranya konfigurasi ssh client. Jadi, setiap kali proses build berjalan, kita harus membuat pasangan private dan public key baru karena yang ada di proses build sebelumnya sudah dihapus.
 
 Tentu ini merepotkan, karena public key untuk deployment biasanya kita daftarkan di server yang menjadi target deployment. Kalau setiap kali key baru, tentu harus didaftarkan ulang dan menjadi tidak otomatis lagi.
 
@@ -30,7 +30,7 @@ Solusinya, kita masukkan private key menjadi variabel dalam Gitlab, dan kita sur
 <a name="mendaftarkan-private-key"></a>
 ## Mendaftarkan Private Key ##
 
-Seperti pada artikel Jenkins terdahulu, buka file private key dengan text editor dan kemudian copy isinya. Kemudian kita masuk ke menu `Settings > CI/CD Pipelines`. Tambahkan secret variables seperti ini
+Seperti pada [artikel Jenkins terdahulu](http://software.endy.muhardin.com/java/deploy-jenkins-vps/), buka file private key dengan text editor dan kemudian copy isinya. Kemudian kita masuk ke menu `Settings > CI/CD Pipelines`. Tambahkan secret variables seperti ini
 
 [![Secret Variable]({{site.url}}/images/uploads/2017/gitlab-ci/ssh-private-key.png)]({{site.url}}/images/uploads/2017/gitlab-ci/ssh-private-key.png)
 
