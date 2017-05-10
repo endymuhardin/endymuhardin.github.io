@@ -33,6 +33,14 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- redirect to https -->
+  <script>
+    var host = "software.endy.muhardin.com";
+    if ((host == window.location.host) && (window.location.protocol != 'https:')) {
+      window.location = window.location.toString().replace(/^http:/, "https:");
+    }
+  </script>
   
   {% feed_meta %}
 </head>
