@@ -12,7 +12,7 @@ permalink:        /:categories/:title/
 title:            'Living life and Make it Better'
 tagline:          'life, learn, contribute'
 description:      'learns software development, java programming, android, linux, and other open source technology'
-url:              http://software.endy.muhardin.com
+url:              https://software.endy.muhardin.com
 
 author:
   name:           Endy Muhardin
