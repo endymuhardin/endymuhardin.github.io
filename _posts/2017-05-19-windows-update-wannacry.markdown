@@ -43,7 +43,7 @@ Pertama, kita jalankan dulu bagian mengunduh. Berikut tampilannya.
 
 ![[WSUS Downloader]({{site.url}}/images/uploads/2017/wsus-offline/wsus-downloader.png)]({{site.url}}/images/uploads/2017/wsus-offline/wsus-downloader.png)
 
-Kita cukup centang versi yang mau kita patch. Karena urusan belang-belang tadi, maka saya centang semua (7,8,10). Vista dan XP tidak ada karena sudah tidak diskontinu. Silahkan donlod WSUS versi lama kalau butuh Vista dan XP.
+Kita cukup centang versi yang mau kita patch. Karena urusan belang-belang tadi, maka saya centang semua (7,8,10). Vista dan XP tidak ada karena sudah tidak disupport (diskontinu). Silahkan donlod WSUS versi lama kalau butuh Vista dan XP.
 
 Setelah centang, klik Start. Saya anjurkan untuk menjalankannya sebelum pulang kantor dan ditinggal jalan. Soalnya setelah selesai versi 7,8,10 64 bit, saya cek ukurannya 10GB. Bisa diamuk orang sekantor kalo kita jalankan siang-siang.
 
