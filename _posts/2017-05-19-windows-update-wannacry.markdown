@@ -12,7 +12,7 @@ Saya tidak akan membahas lagi tentang apa itu WannaCry. Silahkan baca [blognya P
 
 <!--more-->
 
-Cara menangkal malware ini sebenarnya sangat sederhana, yaitu Update Windows Anda !!!
+> Cara menangkal malware ini sebenarnya sangat sederhana, yaitu Update Windows Anda !!!
 
 Tapi sayangnya, mayoritas orang Indonesia tidak mengupdate Windows secara berkala. Bahkan sudah disediakan fitur otomatisnya pun malah dimatikan 😪. Banyak alasannya, diantaranya boros benwit, bikin komputer lemot (selama proses update berjalan), dan mengganggu ritual tenggo. Begitu jam 16:55, mau shutdown komputer, ternyata tulisannya installing update 11 of 208 ...
 
