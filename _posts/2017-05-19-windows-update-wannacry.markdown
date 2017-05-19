@@ -8,7 +8,7 @@ categories:
 ---
 Wiken lalu, para staf IT di seluruh dunia mendapat hadiah istimewa, yaitu malware WannaCry. Banyak korban yang kena, baik di luar negeri maupun di negara kita. Sampai masuk TV segala.
 
-Saya tidak akan membahas lagi tentang apa itu WannaCry. Silahkan baca blognya Prof. Budi Rahardjo, baca slide presentasi saya, atau -- bagi yang tidak suka artikel bahasa Indonesia -- bisa baca tulisannya Troy Hunt. Pada artikel ini saya akan bahas tentang bagaimana menyelesaikan urusan WannaCry ini, untuk puluhan komputer, tanpa membuat kita wanna cry.
+Saya tidak akan membahas lagi tentang apa itu WannaCry. Silahkan baca [blognya Prof. Budi Rahardjo](https://rahard.wordpress.com/2017/05/14/penanganan-ransomware-wannacry/), baca [slide presentasi saya](https://goo.gl/s7xCV1), atau -- bagi yang tidak suka artikel bahasa Indonesia -- bisa baca [tulisannya Troy Hunt](https://www.troyhunt.com/everything-you-need-to-know-about-the-wannacrypt-ransomware/). Pada artikel ini saya akan bahas tentang bagaimana menyelesaikan urusan WannaCry ini, untuk puluhan komputer, tanpa membuat kita __wanna cry__.
 
 <!--more-->
 
