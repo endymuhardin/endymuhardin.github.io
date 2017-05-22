@@ -3,7 +3,7 @@ layout: post
 title: "Menggunakan GPG"
 date: 2015-08-19 16:28
 comments: true
-categories: 
+categories:
 - linux
 ---
 
@@ -136,7 +136,7 @@ Keyring kita berisi keypair kita sendiri, dan juga bisa diisi dengan public key 
 
 ### Membuat Revocation Certificate ###
 
-Ada beberapa kasus dimana kita tidak lagi ingin memakai keypair, diantaranya: 
+Ada beberapa kasus dimana kita tidak lagi ingin memakai keypair, diantaranya:
 
 * private key sudah bocor ke tangan orang lain
 * kita ingin mengganti key dengan yang lebih panjang
@@ -186,7 +186,7 @@ Berikut perintahnya
 gpg --export-secret-keys -a endy.muhardin@gmail.com | gpg --symmetric --cipher-algo AES256 -a > endymuhardin-encrypted.asc
 ```
 
-Pada waktu dijalankan, perintah tersebut akan meminta password enkripsi. Pilihlah password yang panjang, misalnya 
+Pada waktu dijalankan, perintah tersebut akan meminta password enkripsi. Pilihlah password yang panjang, misalnya
 
 `Ini password saya panjang sekali supaya susah ditebak orang lain. Mudah-mudahan saya sendiri tidak lupa`
 
@@ -213,6 +213,30 @@ Sedangkan bila private key dienkripsi seperti anjuran di atas, maka perlu didekr
 
 ```
 gpg -a --output - endymuhardin-encrypted.asc | gpg --import
+```
+
+Setelah diimport, kita perlu membuat statusnya menjadi `trusted` supaya bisa digunakan untuk encrypt/decrypt maupun sign/verify.
+
+```
+gpg --edit-key endy.muhardin@gmail.com
+gpg> trust
+```
+
+Kita akan dihadapkan pada pertanyaan, mau trust level berapa. Karena ini adalah private key kita sendiri, maka jawab saja `5`.
+
+```
+Please decide how far you trust this user to correctly verify other users' keys
+(by looking at passports, checking fingerprints from different sources, etc.)
+
+  1 = I don't know or won't say
+  2 = I do NOT trust
+  3 = I trust marginally
+  4 = I trust fully
+  5 = I trust ultimately
+  m = back to the main menu
+
+Your decision? 5
+Do you really want to set this key to ultimate trust? (y/N) y
 ```
 
 ### Menghapus Key ###
@@ -273,7 +297,7 @@ Setelah kita memiliki keypair, kita bisa gunakan untuk:
 Berikut adalah perintah untuk enkripsi file
 
 ```
-gpg -a --encrypt -r 'endy.muhardin@gmail.com' namafile.txt 
+gpg -a --encrypt -r 'endy.muhardin@gmail.com' namafile.txt
 ```
 
 Perintah di atas akan membuat file dengan nama `namafile.txt.asc`
@@ -292,7 +316,7 @@ Selanjutnya kita akan membuat digital signature untuk file yang akan kita kirim.
 gpg --sign namafile.txt
 ```
 
-Akan terbentuk file `namafile.txt.gpg` yang berisi signature dari file `namafile.txt`. 
+Akan terbentuk file `namafile.txt.gpg` yang berisi signature dari file `namafile.txt`.
 
 Untuk memeriksanya, gunakan opsi `verify`
 
@@ -325,7 +349,7 @@ Kita bisa lihat ada extension untuk Firefox dan Chrome. Mari kita coba install e
 
 [![Extension Mymail Crypt](https://lh3.googleusercontent.com/MXe17kR1ml5SAf-0YQ0taBbakvp983qI1U6Dqke6Pe8=w1280-no)](https://lh3.googleusercontent.com/MXe17kR1ml5SAf-0YQ0taBbakvp983qI1U6Dqke6Pe8=w1280-no)
 
-Setelah terinstal, kita bisa lihat di menu Extension. 
+Setelah terinstal, kita bisa lihat di menu Extension.
 
 [![Extension MyMail Crypt sudah terinstall](https://lh3.googleusercontent.com/TzETAGFvtI2oW-HGFpPop2KceKDYgcGgwP3Squmtq1M=w1280-no)](https://lh3.googleusercontent.com/TzETAGFvtI2oW-HGFpPop2KceKDYgcGgwP3Squmtq1M=w1280-no)
 
@@ -371,7 +395,7 @@ Bahkan Amazon Glacier menawarkan harga **$0.01 per GB per bulan** !!! Sebagai il
 
 Tentunya untuk alasan keamanan, kita tidak bisa menyimpan data tersebut begitu saja. Kita harus enkripsi dulu file-filenya sebelum diupload. Ada aplikasi canggih bernama [duplicity](http://duplicity.nongnu.org/duplicity.1.html) yang bisa mengenkripsi file kita, kemudian menguploadnya ke berbagai layanan storage di atas. Tidak cuma itu, bila data kita berubah, duplicity juga cukup cerdas untuk hanya mengupload perubahannya saja. Dengan demikian, kita bisa menghemat bandwidth untuk upload.
 
-Penggunaan duplicity untuk melakukan backup akan kita bahas pada artikel selanjutnya. Duplicity membutuhkan keypair untuk melakukan enkripsi. Jadi, silahkan berlatih GPG dulu agar nantinya mudah menggunakan Duplicity.
+Penggunaan duplicity untuk melakukan backup akan kita bahas pada [artikel selanjutnya](https://software.endy.muhardin.com/linux/backup-duplicity/). Duplicity membutuhkan keypair untuk melakukan enkripsi. Jadi, silahkan berlatih GPG dulu agar nantinya mudah menggunakan Duplicity.
 
 ## Referensi ##
 * http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html
