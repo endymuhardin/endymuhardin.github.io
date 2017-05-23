@@ -3,7 +3,7 @@ layout: post
 title: "Backup dengan Duplicity"
 date: 2015-10-19 13:37
 comments: true
-categories: 
+categories:
 - linux
 ---
 
@@ -57,7 +57,7 @@ Ada beberapa faktor yang harus diperhatikan supaya data kita benar-benar aman. S
 Berikut beberapa kriteria yang harus kita penuhi agar data kita aman:
 
 * datanya terduplikasi di lebih dari satu tempat. Selain di laptop, ada juga di external harddisk, dan ada juga di server atau layanan cloud.
-* tempat penyimpanan terpisah satu dengan lainnya secara geografis lebih dari 30 kilometer. Ini untuk mengantisipasi apabila terjadi kejadian seperti gempa bumi, kerusuhan, atau kebakaran. 
+* tempat penyimpanan terpisah satu dengan lainnya secara geografis lebih dari 30 kilometer. Ini untuk mengantisipasi apabila terjadi kejadian seperti gempa bumi, kerusuhan, atau kebakaran.
 * data sensitif disimpan dalam bentuk terenkripsi. Kita tentu tidak mau arsip foto keluarga beredar secara bebas di internet. Demikian juga dokumen-dokumen pribadi seperti scan identitas, surat kendaraan, dan informasi rahasia lainnya.
 * data harus bisa _dimundurkan_ ke periode waktu tertentu. Misalnya komputer kita terkena virus, kemudian kita jalankan prosedur backup. Tentu saja si virus ini akan ikut tersimpan dalam backup. Bila ini terjadi, kita ingin mengambil data **pada waktu belum terkena virus**.
 
@@ -419,6 +419,51 @@ Kita akan dimintai passphrase yang digunakan untuk mengenkripsi (bila pakai symm
 
 ### Backup ke Amazon S3 dan Glacier ###
 
+Agar dapat mengupload file ke Amazon, kita membutuhkan `AWS_ACCESS_KEY_ID` berikut `AWS_SECRET_ACCESS_KEY`. Untuk mendapatkannya, kita login dulu ke web console Amazon. Kemudian masuk ke [bagian User Management di modul IAM](https://console.aws.amazon.com/iam/home#/users). Kemudian klik `Add User`
+
+![[Add User]({{site.url}}/images/uploads/2015/duplicity/01-add-user.png)]({{site.url}}/images/uploads/2015/duplicity/01-add-user.png)
+
+Isikan username yang akan kita buat, kemudian klik `Next` untuk mengatur permission.
+
+![[Add Permission]({{site.url}}/images/uploads/2015/duplicity/02-add-permission.png)]({{site.url}}/images/uploads/2015/duplicity/02-add-permission.png)
+
+Selanjutnya, pilih tab `Attach Existing Policy` kemudian klik `Create Policy`.
+
+![[Create Policy]({{site.url}}/images/uploads/2015/duplicity/03-create-policy.png)]({{site.url}}/images/uploads/2015/duplicity/03-create-policy.png)
+
+Isi policy seperti ini, yaitu memberikan akses buat mengunggah ke dalam bucket
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::endy-backup",
+                "arn:aws:s3:::endy-backup/*"
+            ]
+        }
+    ]
+}
+```
+
+Setelah itu, klik `Create Policy`. Kembali ke layar `Add User`, pasang policy tersebut ke user yang baru dibuat tadi
+
+![[Add Policy]({{site.url}}/images/uploads/2015/duplicity/04-add-policy.png)]({{site.url}}/images/uploads/2015/duplicity/04-add-policy.png)
+
+Klik `Finish` dan user kita telah terbentuk. Masuk ke record user tersebut, kemudian buka tab `Security Credential`. Klik `Add Access Key`.
+
+![[Access Key]({{site.url}}/images/uploads/2015/duplicity/06-access-key-created.png)]({{site.url}}/images/uploads/2015/duplicity/06-access-key-created.png)
+
+Kita akan dibuatkan `Access Key` baru. Copy paste `Access Key ID` dan `Secret Key Access`. Kita akan membutuhkannya untuk dipasang di script di atas.
+
+![[Add Access Key]({{site.url}}/images/uploads/2015/duplicity/05-create-access-key.png)]({{site.url}}/images/uploads/2015/duplicity/05-create-access-key.png)
+
+
+Setelah `Access Key ID` dan `Secret Key Access` kita dapatkan, sekarang kita bisa lanjut membuat script uploadnya.
+
 Untuk memasukkan file ke Glacier, kita harus melalui layanan S3 dulu. Di dalam konfigurasi S3, kita bisa membuat aturan (rule) untuk memindahkan file dari dalam S3 ke Glacier.
 
 Berkaitan dengan duplicity, dia membutuhkan file `signature` dan `manifest` agar dia tahu posisi terakhir backup dan apa saja isi backup. Ukuran kedua file tersebut relatif tidak besar. Sedangkan datanya sendiri disimpan dalam file `difftar` yang hanya diperlukan pada waktu ingin restore. File `difftar` inilah yang ukurannya besar, sesuai dengan isi folder yang kita backup.
@@ -524,6 +569,7 @@ Script tersebut akan melihat konfigurasi login ke Amazon dalam file `amazon-auth
 AWS_ACCESS_KEY_ID='MASUKKANACCESSKEYDISINI'
 AWS_SECRET_ACCESS_KEY='awsSECRETaccessKEYanda'
 ```
+
 
 Dia juga akan melihat daftar folder yang ingin dibackup berikut tujuannya dalam file `daftar-backup-s3.txt` yang isinya seperti ini
 
