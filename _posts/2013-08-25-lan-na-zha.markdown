@@ -3,11 +3,11 @@ layout: post
 title: "Lan Na Zha"
 date: 2013-08-25 16:38
 comments: true
-categories: 
+categories:
 - life
 ---
 
-Beberapa hari yang lalu, saya membaca artikel menarik tentang profesi IT. 
+Beberapa hari yang lalu, saya membaca artikel menarik tentang profesi IT.
 Inti dari artikel tersebut adalah profesi di dunia IT _sucks_ dengan beberapa alasan:
 
 1. Pemrograman termasuk kategori _temporary knowledge capital_, yaitu pengetahuan yang cepat kadaluarsa
@@ -17,7 +17,7 @@ Inti dari artikel tersebut adalah profesi di dunia IT _sucks_ dengan beberapa al
 
 Artikel selengkapnya bisa dibaca [di sini](http://www.halfsigma.com/2007/03/why_a_career_in.html).
 
-Untuk masalah nomer #3 dan #4, menurut saya lebih terkait pada masalah ambisi, attitude, dan [self-improvement/kemampuan otodidak](http://software.endy.muhardin.com/life/otodidak/). Di artikel ini, kita akan bahas solusi untuk masalah nomer #1 dan #2. 
+Untuk masalah nomer #3 dan #4, menurut saya lebih terkait pada masalah ambisi, attitude, dan [self-improvement/kemampuan otodidak](http://software.endy.muhardin.com/life/otodidak/). Di artikel ini, kita akan bahas solusi untuk masalah nomer #1 dan #2.
 
 Seperti di artikel sebelumnya, kali ini kita juga akan mengambil teladan dari seorang tokoh di luar dunia IT. Siapa dia?
 
@@ -50,15 +50,15 @@ Hal yang sama berlaku juga di urusan platform. Beberapa tahun yang lalu, Blackbe
 
 Nah, saya termasuk salah satu Pak Tua tersebut. Tergabung dalam generasi dinosaurus yang masih tau apa itu CORBA, RMI, SOAP, XML, dan singkatan-singkatan lain yang tidak dipahami generasi masa kini yang urusannya adalah KML, JSON, dan kawan-kawannya. Bagaimana cara saya survive bisa menjadi pelajaran buat generasi 2013 yang akan menyusul menjadi Pak Tua dalam 5 tahun ke depan :D
 
-Kuncinya ada di legenda kungfu jaman dulu, [Li Shu Wen](http://kenji.mangawiki.org/?p=1) yang diceritakan dalam komik Kenji dengan nama Lie Syo Bun yang bisa dibaca online [di sini](http://mangafox.me/manga/kenji/v21/c001/1.html). Berikut sedikit bagian yang relevan dengan artikel ini, yaitu tentang gerakan Lan Na Zha.
+Kuncinya ada di legenda kungfu jaman dulu, [Li Shu Wen](http://kenji.mangawiki.org/?p=1) yang diceritakan dalam komik Kenji dengan nama Lie Syo Bun yang bisa dibaca online [di sini](http://manga.my.id/Kenji/21/). Berikut sedikit bagian yang relevan dengan artikel ini, yaitu tentang gerakan Lan Na Zha.
 
-> Untuk menjadi master di aliran kungfu Delapan Mata Angin, Li Shu Wen harus menguasai dua teknik, yaitu pukulan pamungkas dan teknik tombak. Dia menguasai pukulan pamungkas secara otodidak dengan mempertaruhkan nyawa. Baca ceritanya [di bab dua Kenji volume 21](http://mangafox.me/manga/kenji/v21/c002/2.html). Setelah itu, dia mendapat pengajaran dasar-dasar ilmu tombak di perguruannya. Karena sering berkelahi, maka Li Shu Wen hanya boleh menonton, tidak boleh mencoba. Gurunya mendemokan tiga gerakan dasar ilmu tombak, yaitu Lan (memutar ke luar), Na (memutar ke dalam), dan Zha (menusuk).
+> Untuk menjadi master di aliran kungfu Delapan Mata Angin, Li Shu Wen harus menguasai dua teknik, yaitu pukulan pamungkas dan teknik tombak. Dia menguasai pukulan pamungkas secara otodidak dengan mempertaruhkan nyawa. Baca ceritanya [di bab dua Kenji volume 21](http://manga.my.id/Kenji/21/10). Setelah itu, dia mendapat pengajaran dasar-dasar ilmu tombak di perguruannya. Karena sering berkelahi, maka Li Shu Wen hanya boleh menonton, tidak boleh mencoba. Gurunya mendemokan tiga gerakan dasar ilmu tombak, yaitu Lan (memutar ke luar), Na (memutar ke dalam), dan Zha (menusuk).
 
 [![Lan Na Zha ](/images/uploads/2013/08/lan-na-zha/lan-na-zha.jpg)](/images/uploads/2013/08/lan-na-zha/lan-na-zha.jpg)
 
-_gambar diambil dari [MangaFox](http://mangafox.me/manga/kenji/v21/c003/8.html)_
+_gambar diambil dari [MangaMyID](http://manga.my.id/Kenji/21/23)_
 
-> Ketika gurunya mengajarkan teknik kombinasi yang lebih advanced, dia menolak belajar karena menganggap sudah cukup dengan tiga gerakan dasar itu saja, sehingga diskorsing oleh gurunya. Tapi bermodalkan tiga gerakan dasar ini saja, dia berhasil mengalahkan semua yang menantangnya, sehingga digelari Dewa Tombak. Baca cerita lengkapnya [di sini](http://mangafox.me/manga/kenji/v21/c003/6.html).
+> Ketika gurunya mengajarkan teknik kombinasi yang lebih advanced, dia menolak belajar karena menganggap sudah cukup dengan tiga gerakan dasar itu saja, sehingga diskorsing oleh gurunya. Tapi bermodalkan tiga gerakan dasar ini saja, dia berhasil mengalahkan semua yang menantangnya, sehingga digelari Dewa Tombak. Baca cerita lengkapnya [di sini](http://manga.my.id/Kenji/21/27).
 
 Sedemikian universalnya teknik dasar ini, sehingga bisa kita temukan juga di komik lain, yaitu [Legenda Naga]().
 
@@ -77,7 +77,7 @@ Mari kita telusuri apakah benar istilah tersebut membuat skill kita kadaluarsa?
 
 ### Functional Programming ###
 
-[Menurut Wikipedia](http://en.wikipedia.org/wiki/Functional_programming), Functional programming sudah dikenal sejak tahun 1950. Bahasa yang terkenal adalah [LISP](http://en.wikipedia.org/wiki/Lisp_(programming_language)) dan [Haskell](http://en.wikipedia.org/wiki/Haskell_(programming_language)). 
+[Menurut Wikipedia](http://en.wikipedia.org/wiki/Functional_programming), Functional programming sudah dikenal sejak tahun 1950. Bahasa yang terkenal adalah [LISP](http://en.wikipedia.org/wiki/Lisp_(programming_language)) dan [Haskell](http://en.wikipedia.org/wiki/Haskell_(programming_language)).
 
 Jadi, apa yang ngetren dengan nama Clojure di masa kini, sebetulnya sudah ada sejak tahun 1950. Kalau saja kita menguasai konsep functional programming, bukan hanya teknik pemrograman Lisp/Haskell, maka konsep yang kita pahami tersebut akan memungkinkan kita menguasai Clojure dalam waktu satu bulan saja. Demikian juga dengan bahasa pemrograman functional lain seperti Scala, Groovy, dan fitur Lambda Expression yang akan hadir di Java 8.
 
@@ -86,7 +86,7 @@ Jadi, apa yang ngetren dengan nama Clojure di masa kini, sebetulnya sudah ada se
 
 Istilah OOP mungkin tidak terdengar terlalu modern. Tapi sebetulnya dia umurnya sama dengan Functional Programming, yaitu dikenal sejak tahun 1950. Bahasa pemrograman berparadigma OOP yang terkenal antara lain adalah Smalltalk.
 
-Untuk mendokumentasikan desain aplikasi OOP, digunakan notasi UML. Notasi ini dirumuskan pada tahun 1990. 
+Untuk mendokumentasikan desain aplikasi OOP, digunakan notasi UML. Notasi ini dirumuskan pada tahun 1990.
 
 ### ORM ###
 
@@ -96,7 +96,7 @@ Object Relational Mapping atau ORM, sering kita kenal dengan istilah JPA, Hibern
 * [cartesian product](http://en.wikipedia.org/wiki/Cartesian_product)
 * [cascade operation](http://en.wikipedia.org/wiki/Foreign_key#CASCADE)
 
-adalah istilah umum yang juga ditemui di SQL. Sedangkan 
+adalah istilah umum yang juga ditemui di SQL. Sedangkan
 
 * second level cache
 * lazy loading vs eager fetching
@@ -170,7 +170,7 @@ Seperti kita lihat, kalau kita menghafalkan implementasi (konfigurasi XML), maka
 
 ### Spring Framework ###
 
-Bagi aliran non JavaEE, biasanya pakai Spring Framework. Di sinipun tidak jauh berbeda. Dulunya konfigurasi menggunakan XML, sekarang bisa pakai Annotation dan JavaConfig. 
+Bagi aliran non JavaEE, biasanya pakai Spring Framework. Di sinipun tidak jauh berbeda. Dulunya konfigurasi menggunakan XML, sekarang bisa pakai Annotation dan JavaConfig.
 
 Implementasi jaman dulu:
 
@@ -184,7 +184,7 @@ Implementasi jaman sekarang:
 * inisialisasi dilakukan melalui annotation
 * transaction management dikonfigurasi di annotation
 
-Contohnya bisa dilihat di [kode program saya tahun 2013](http://software.endy.muhardin.com/java/konfigurasi-koneksi-database-dengan-spring/). 
+Contohnya bisa dilihat di [kode program saya tahun 2013](http://software.endy.muhardin.com/java/konfigurasi-koneksi-database-dengan-spring/).
 
 Walaupun kode programnya berubah sama sekali, konsepnya tidak berubah dalam kurun waktu 7 tahun, yaitu:
 
@@ -193,7 +193,7 @@ Walaupun kode programnya berubah sama sekali, konsepnya tidak berubah dalam kuru
 
 ## Gong Fu ##
 
-Kalau kita baca terus kisah Li Shu Wen sampai [bab 5](http://mangafox.me/manga/kenji/v21/c005/10.html), kita akan mendapat pelajaran penting lainnya, yaitu `gongfu`. Gongfu artinya adalah `hasil yang didapat dari latihan`. Kita melakukan satu hal berulang-ulang, sehingga hal tersebut menjadi refleks dan bisa kita lakukan tanpa harus berpikir lagi. 
+Kalau kita baca terus kisah Li Shu Wen sampai [bab 5](http://mangafox.me/manga/kenji/v21/c005/10.html), kita akan mendapat pelajaran penting lainnya, yaitu `gongfu`. Gongfu artinya adalah `hasil yang didapat dari latihan`. Kita melakukan satu hal berulang-ulang, sehingga hal tersebut menjadi refleks dan bisa kita lakukan tanpa harus berpikir lagi.
 
 [![Gong Fu ](/images/uploads/2013/08/lan-na-zha/gongfu.jpg)](/images/uploads/2013/08/lan-na-zha/gongfu.jpg)
 
@@ -205,13 +205,13 @@ Salah satu latihan yang sering saya lakukan adalah membuat aplikasi dengan satu 
 
 Khusus programmer, penting juga dilatih cara untuk mendebug error. Membaca pesan error, memisahkan mana yang relevan dan tidak, kemudian mencari tahu baris kode yang menyebabkan error, merupakan skill yang hanya bisa didapat melalui latihan.
 
-Dalam melatih gongfu, ada satu prinsip yang penting untuk kita gunakan, yaitu [Slow is smooth, smooth is fast](http://joshvogelart.blogspot.com/2013/02/slow-is-smooth-and-smooth-is-fast.html). Artinya, kita lakukan langkah demi langkah seakurat mungkin walaupun perlahan. Fokusnya adalah **melakukan secara benar**. Seiring dengan durasi latihan kita, rangkaian gerakan tersebut akan tertanam menjadi refleks di otak kita, sehingga kita bisa melakukannya dengan lebih cepat. Ulangi terus dalam jangka waktu yang lama, maka kita akan bisa melakukan hal tersebut dengan sangat cepat, namun tetap akurat. 
+Dalam melatih gongfu, ada satu prinsip yang penting untuk kita gunakan, yaitu [Slow is smooth, smooth is fast](http://joshvogelart.blogspot.com/2013/02/slow-is-smooth-and-smooth-is-fast.html). Artinya, kita lakukan langkah demi langkah seakurat mungkin walaupun perlahan. Fokusnya adalah **melakukan secara benar**. Seiring dengan durasi latihan kita, rangkaian gerakan tersebut akan tertanam menjadi refleks di otak kita, sehingga kita bisa melakukannya dengan lebih cepat. Ulangi terus dalam jangka waktu yang lama, maka kita akan bisa melakukan hal tersebut dengan sangat cepat, namun tetap akurat.
 
 ## Kesimpulan ##
 
 Belajar dari kisah Li Shu Wen di atas, kita tidak perlu khawatir dengan cepatnya perkembangan teknologi di dunia IT. Bila kita paham konsep dan prinsip dasarnya, kita tidak akan tertinggal. Teknik implementasi, bahasa pemrograman, platform, format data, protokol komunikasi, memang akan terus berubah sepanjang jaman. Tapi prinsip yang mendasarinya akan tetap berpulang pada konsep klasik dan akal sehat.
 
-Jadi, bila kita belajar sesuatu, tidak hanya di dunia IT, jangan cepat puas begitu kita tahu **bagaimana cara melakukannya**. Gali terus sampai kita memahami **tujuan kenapa kita melakukan hal tersebut** dan **berbagai cara lain untuk mencapai tujuan yang sama**. Jangan puas begitu kita bisa **insert data menggunakan ORM**. Tapi gali terus sampai kita paham **mengapa ORM dibuat** dan **bagaimana cara kerja/isi perut ORM**. 
+Jadi, bila kita belajar sesuatu, tidak hanya di dunia IT, jangan cepat puas begitu kita tahu **bagaimana cara melakukannya**. Gali terus sampai kita memahami **tujuan kenapa kita melakukan hal tersebut** dan **berbagai cara lain untuk mencapai tujuan yang sama**. Jangan puas begitu kita bisa **insert data menggunakan ORM**. Tapi gali terus sampai kita paham **mengapa ORM dibuat** dan **bagaimana cara kerja/isi perut ORM**.
 
 Setelah paham, latih terus pemahaman konsep tersebut sampai kita mahir. Jangan berhenti ketika merasa sudah mahir, karena semua skill dan teknik perlu maintenance supaya tidak hilang.
 
@@ -227,14 +227,14 @@ Dalam komik Kenji, Li Shu Wen melatih kuda-kuda dasar selama 3 bulan. Tidak sepe
 
 [![Latihan Kuda-kuda ](/images/uploads/2013/08/lan-na-zha/horse-stance-training.jpg)](/images/uploads/2013/08/lan-na-zha/horse-stance-training.jpg)
 
-_gambar diambil dari [MangaFox](http://mangafox.me/manga/kenji/v21/c007/6.html)_
+_gambar diambil dari [MangaMyID](http://manga.my.id/Kenji/21/66)_
 
 
-Bagaimana dengan programming? 
+Bagaimana dengan programming?
 
 > Menurut Peter Norvig, [belajar pemrograman butuh waktu 10 tahun](http://norvig.com/21-days.html).
 
-Jadi, kalau kita belajar sesuatu, setelah dua minggu belum paham dan masih bingung, jangan khawatir. Masih ada waktu 10 tahun kurang 
+Jadi, kalau kita belajar sesuatu, setelah dua minggu belum paham dan masih bingung, jangan khawatir. Masih ada waktu 10 tahun kurang
 2 minggu lagi untuk belajar ;)
 
 Nah, dengan artikel ini, mudah-mudahan orang bisa memahami mengapa di berbagai forum, milis, sesi kuliah dan pelatihan, saya selalu bersikeras supaya orang [mencoba dulu sebelum bertanya/minta solusi](http://software.endy.muhardin.com/life/rtfm/). Karena dengan mencoba, kita akan meningkatkan gongfu dalam skill problem solving.
