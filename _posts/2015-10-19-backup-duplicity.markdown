@@ -617,6 +617,32 @@ Lihat lagi besoknya, dan file kita sudah dipindahkan dari S3 ke Glacier.
 ![Storage Class
 Glacier](https://lh3.googleusercontent.com/ghj7nOi-9LXzGnNePC2TDvfbxu4vIsuNi8s_g7pEL-Nu7j0PyfU=w1280-no)
 
+
+### Solusi Fakir Bandwidth ###
+
+Banyak di antara kita yang memiliki koneksi internet yang terbatas. Baik secara kecepatan maupun secara kuota. Agar kita tetap bisa melakukan backup ke Amazon Glacier, kita bisa mengakalinya dengan cara melakukan enkripsi dengan `Duplicity` secara local. Berikut perintah yang kita jalankan
+
+```
+duplicity --encrypt-key 0x80D2744B0EB1FA47 --volsize 200 /lokasi/foto/yang/mau/dibackup file:///folder/tujuan/backup
+```
+
+Untuk bisa mengupload ke Amazon Glacier, kita perlu file konfigurasi credential yang berada di `.aws/credentials`. Isinya seperti ini
+
+```
+aws_access_key_id = 'MASUKKANACCESSKEYDISINI'
+aws_secret_access_key = 'awsSECRETaccessKEYanda'
+```
+
+Kita juga perlu menginstal aplikasi command line AWS, caranya bisa dibaca [di dokumentasi resminya](http://docs.aws.amazon.com/cli/latest/userguide/installing.html).
+
+Setelah persiapan lengkap, kita bisa upload dengan perintah berikut
+
+```
+aws s3 sync /folder/tujuan/backup s3://endy-backup/backup-foto
+```
+
+Hasil akhirnya akan sama saja dengan backup langsung ke Glacier.
+
 ## Kesimpulan ##
 
 Backup itu penting. Dengan sudah semakin canggihnya teknologi di jaman sekarang, alternatif tempat penyimpanan semakin murah dan mudah digunakan. Saat ini kombinasi paling optimal yang saya gunakan adalah:
