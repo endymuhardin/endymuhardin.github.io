@@ -16,7 +16,7 @@ Saya tidak akan membahas lagi tentang apa itu WannaCry. Silahkan baca [blognya P
 
 Tapi sayangnya, mayoritas orang Indonesia tidak mengupdate Windows secara berkala. Bahkan sudah disediakan fitur otomatisnya pun malah dimatikan 😪. Banyak alasannya, diantaranya boros benwit, bikin komputer lemot (selama proses update berjalan), dan mengganggu ritual tenggo. Begitu jam 16:55, mau shutdown komputer, ternyata tulisannya installing update 11 of 208 ...
 
-![[Windows Update]({{site.url}}/images/uploads/2017/wsus-offline/windows-update.png)]({{site.url}}/images/uploads/2017/wsus-offline/windows-update.png)
+[![Windows Update]({{site.url}}/images/uploads/2017/wsus-offline/windows-update.png)]({{site.url}}/images/uploads/2017/wsus-offline/windows-update.png)
 
 Capedee ...
 
@@ -29,7 +29,7 @@ Tambah urusan lagi bila Anda -sebagai staf IT support- punya puluhan komputer ya
 
 Sebetulnya Microsoft sudah menyediakan patch khusus untuk menambal lubang yang dieksploitasi WannaCry. Tapi sayangnya, seringkali dia mengeluarkan pesan error Not Applicable.
 
-![[Windows Update]({{site.url}}/images/uploads/2017/wsus-offline/update-not-applicable.png)]({{site.url}}/images/uploads/2017/wsus-offline/update-not-applicable.png)
+[![Windows Update]({{site.url}}/images/uploads/2017/wsus-offline/update-not-applicable.png)]({{site.url}}/images/uploads/2017/wsus-offline/update-not-applicable.png)
 
 Nampaknya untuk bisa memasang patch ini kita harus pasang dulu patch-patch yang dirilis sebelumnya. Tidak bisa dia sendirian saja. Tidak heran Bill Gates kesulitan.
 
@@ -41,7 +41,7 @@ Cara kerjanya sangat sederhana. Aplikasi ini memiliki dua bagian : bagian mengun
 
 Pertama, kita jalankan dulu bagian mengunduh. Berikut tampilannya.
 
-![[WSUS Downloader]({{site.url}}/images/uploads/2017/wsus-offline/wsus-downloader.png)]({{site.url}}/images/uploads/2017/wsus-offline/wsus-downloader.png)
+[![WSUS Downloader]({{site.url}}/images/uploads/2017/wsus-offline/wsus-downloader.png)]({{site.url}}/images/uploads/2017/wsus-offline/wsus-downloader.png)
 
 Kita cukup centang versi yang mau kita patch. Karena urusan belang-belang tadi, maka saya centang semua (7,8,10). Vista dan XP tidak ada karena sudah tidak disupport (diskontinu). Silahkan donlod WSUS versi lama kalau butuh Vista dan XP.
 
@@ -53,7 +53,7 @@ Setelah selesai dia donlod, kita zip satu folder tersebut, masukkan ke flashdisk
 
 Copy file WSUS tersebut ke komputer/laptop yang mau diupdate, kemudian extract. Setelah itu masuk ke folder `client`, lalu jalankan `UpdateInstaller`.
 
-![[WSUS Downloader]({{site.url}}/images/uploads/2017/wsus-offline/wsus-downloader.png)]({{site.url}}/images/uploads/2017/wsus-offline/run-wsus-client.png)
+[![WSUS Downloader]({{site.url}}/images/uploads/2017/wsus-offline/wsus-downloader.png)]({{site.url}}/images/uploads/2017/wsus-offline/run-wsus-client.png)
 
 Klik start, kemudian `sit back and relax`. Sementara menunggu selesai, jalankan prosedur yang sama di komputer lain. WSUS client ini akan menginstal update dari hasil download kita tadi, sehingga proses update tidak membutuhkan koneksi internet. Dengan demikian, kita bisa menghemat bandwidth sekaligus mengurangi resiko komputer terinfeksi `WannaCry` sementara proses update belum selesai.
 
