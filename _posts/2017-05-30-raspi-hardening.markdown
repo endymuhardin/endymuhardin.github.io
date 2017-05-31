@@ -11,16 +11,16 @@ Raspberry PI tentunya sudah bukan barang baru lagi bagi para opreker nusantara. 
 Berikut langkah-langkah yang biasa saya lakukan pada saat setup Raspberry PI
 
 
-1. [Instalasi Raspbian ke MicroSD](#instalasi)
-2. [Login ke Raspbian](#login)
-3. [Buat user baru](#user-baru)
-4. [Hapus user pi](#hapus-user-pi)
-5. [Ganti keyboard dan timezone](#keyboard-timezone)
-6. [Update & Upgrade](#update-upgrade)
-7. [Setup passwordless login](#passwordless-ssh)
-8. [Proteksi brute-force ssh](#proteksi-brute-force-ssh)
-9. [Setup WiFi](#setup-wifi-debian)
-10. [Automount USB](#automount-usb-debian)
+1. [Instalasi Raspbian ke MicroSD]({{ page.url }}/#instalasi)
+2. [Login ke Raspbian]({{ page.url }}/#login)
+3. [Buat user baru]({{ page.url }}/#user-baru)
+4. [Hapus user pi]({{ page.url }}/#hapus-user-pi)
+5. [Ganti keyboard dan timezone]({{ page.url }}/#keyboard-timezone)
+6. [Update & Upgrade]({{ page.url }}/#update-upgrade)
+7. [Setup passwordless login]({{ page.url }}/#passwordless-ssh)
+8. [Proteksi brute-force ssh]({{ page.url }}/#proteksi-brute-force-ssh)
+9. [Setup WiFi]({{ page.url }}/#setup-wifi-debian)
+10. [Automount USB]({{ page.url }}/#automount-usb-debian)
 
 <!--more-->
 
