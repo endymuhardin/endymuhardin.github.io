@@ -13,6 +13,9 @@ Kali ini, kita akan coba deploy ke layanan IaaS yang lebih sedikit fiturnya. Kit
 
 Sebagai ilustrasi, saya akan gunakan VPS di Digital Ocean yang relatif mudah digunakan dan terjangkau harganya. Penagihannya juga dihitung perjam, sehingga kalau para pembaca ingin mencoba, bisa langsung praktek dan segera destroy setelah selesai agar tagihan tidak besar. Kita bisa gunakan paket memori 1GB dengan harga $0.015/jam.
 
+* TOC
+{:toc}
+
 <!--more-->
 
 ## Persiapan Platform ##
