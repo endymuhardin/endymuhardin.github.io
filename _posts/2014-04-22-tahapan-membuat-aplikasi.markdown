@@ -3,7 +3,7 @@ layout: post
 title: "Tahapan Membuat Aplikasi"
 date: 2014-04-22 23:51
 comments: true
-categories: 
+categories:
 - manajemen
 ---
 
@@ -55,8 +55,8 @@ Ok mari kita mulai.
 Penjelasan atau deskripsi aplikasi adalah hal terpenting dalam pembuatan aplikasi. Bila kita membuatnya dengan benar, maka pekerjaan kita di tahap selanjutnya akan mudah. Sebagaimana halnya semua skill yang lain, kemahiran kita dalam mengarang penjelasan aplikasi ini hanya bisa didapatkan dari latihan. Berikut contoh penjelasan aplikasi perpustakaan.
 
 ```
-Aplikasi perpustakaan ini, sesuai namanya berguna 
-untuk mengelola kegiatan operasional perpustakaan. 
+Aplikasi perpustakaan ini, sesuai namanya berguna
+untuk mengelola kegiatan operasional perpustakaan.
 Aplikasi ini akan digunakan oleh penjaga perpustakaan untuk:
 
 * entri data anggota
@@ -66,7 +66,7 @@ Aplikasi ini akan digunakan oleh penjaga perpustakaan untuk:
 
 Selain itu, anggota juga bisa menggunakan aplikasi ini untuk:
 
-* mencari buku dengan kriteria tertentu 
+* mencari buku dengan kriteria tertentu
   (misalnya judul, pengarang, topik, dan sebagainya)
 * melihat ketersediaan buku
 * mengetahui lokasi penyimpanan buku
@@ -193,9 +193,9 @@ Sebagai contoh, kita lihat transaksi peminjaman. Satu kali pinjam, anggota bisa 
 Salah satu teknik yang sering saya gunakan dalam analisa dan desain aplikasi adalah `visualisasi dengan ilustrasi`. Kita buat contoh kasus yang menceritakan transaksi bisnis yang terjadi lengkap dengan datanya. Dengan menggunakan kasus konkrit, kita tidak perlu pusing membayangkan sesuatu yang abstrak. Ini adalah trik yang biasanya tidak diketahui programmer pemula sehingga mereka bingung gak tau mana ujung mana pangkal. Berikut contoh kasusnya.
 
 ```
-Pada hari Senin 21 April 2014 pukul 13:45 
-anggota bernama `Endy Muhardin` 
-dilayani oleh petugas bernama `Anton Raharja` 
+Pada hari Senin 21 April 2014 pukul 13:45
+anggota bernama `Endy Muhardin`
+dilayani oleh petugas bernama `Anton Raharja`
 meminjam tiga buku sebagai berikut:
 
 * Java Desktop
@@ -207,7 +207,7 @@ meminjam tiga buku sebagai berikut:
 
 Pertama, kita tentukan dulu headernya. Header adalah satu record yang menjadi induk dari transaksi di atas. Kita buat tabel `peminjaman_header` sebagai berikut
 
- id  | waktu               | id_petugas | id_anggota 
+ id  | waktu               | id_petugas | id_anggota
 -----|---------------------|------------|------------
 p001 | 2014-04-21 13:45:00 | u001       | u100
 
@@ -233,7 +233,7 @@ Tapi itu nanti, ada waktunya. Bila Anda masih membaca artikel ini, berarti belum
 
 Baiklah, kita kembali ke masalah header-detail. Kita sudah mencatat waktu transaksi, petugas, dan anggota. Sekarang kita akan mencatat buku apa saja yang dipinjam. Untuk itu, kita membuat tabel `peminjaman_detail` sebagai berikut
 
-id    | id_header | id_buku 
+id    | id_header | id_buku
 ------|-----------|---------
 pd001 | p001      | b001
 pd002 | p001      | b010
@@ -262,7 +262,7 @@ Pola header-detail ini berlaku untuk sebagian besar fitur transaksi. Mari kita a
 
 [![Foto](https://lh3.googleusercontent.com/LQsOccTBJ6_nHzLHirLdybAv8CMZ_gl6lw3WGIEfpX8=w1280-no)](https://lh3.googleusercontent.com/LQsOccTBJ6_nHzLHirLdybAv8CMZ_gl6lw3WGIEfpX8=w1280-no)
 
-Pada transaksi minimarket, ada tambahan data yaitu `quantity` untuk mengakomodasi orang beli permen 5 buah. Dialog tambah detailnya juga harus memiliki input field untuk `quantity`. Dan karena jumlah produknya ribuan, kita juga harus sediakan lookup dialog sekali lagi untuk memilih produk. 
+Pada transaksi minimarket, ada tambahan data yaitu `quantity` untuk mengakomodasi orang beli permen 5 buah. Dialog tambah detailnya juga harus memiliki input field untuk `quantity`. Dan karena jumlah produknya ribuan, kita juga harus sediakan lookup dialog sekali lagi untuk memilih produk.
 
 Dialog tambah detail seperti ini bentuknya
 
@@ -272,15 +272,15 @@ Di situ ada tombol `Cari` yang bila diklik akan menampilkan dialog pilih produk 
 
 [![Foto](https://lh6.googleusercontent.com/-lmToPoVQHZ0/U1acWmCjTsI/AAAAAAAAFq4/3mFYG1Cpz1o/w762-h402-no/dialog_cari_produk.png)](https://lh6.googleusercontent.com/-lmToPoVQHZ0/U1acWmCjTsI/AAAAAAAAFq4/3mFYG1Cpz1o/w762-h402-no/dialog_cari_produk.png)
 
-Jadi, untuk mengentri satu detail, user akan membuka dialog dua tingkat: dialog entri quantity dan dialog pilih produk. 
+Jadi, untuk mengentri satu detail, user akan membuka dialog dua tingkat: dialog entri quantity dan dialog pilih produk.
 
 Adapun tabel di database cukup kita tambahkan satu field quantity seperti ini
 
-id    | id_header | id_produk | qty 
+id    | id_header | id_produk | qty
 ------|-----------|-----------|-----
-pd001 | p001      | b001      |   1 
-pd002 | p001      | b010      |   5 
-pd003 | p001      | b100      |  12 
+pd001 | p001      | b001      |   1
+pd002 | p001      | b010      |   5
+pd003 | p001      | b100      |  12
 
 
 Bisa juga detailnya lebih dari satu, seperti screen transaksi servis motor/mobil. Ada komponen sparepart dan ada komponen jasa. Begini bentuknya
@@ -317,4 +317,4 @@ Selain itu, dengan melihat _the big picture_, kita jadi tahu fitur mana yang pen
 
 Walaupun demikian, saya tidak membuat dokumen desain. Mengapa begitu? Jawabannya bisa disimak [di artikel ini](http://software.endy.muhardin.com/manajemen/dokumentasi-project/).
 
-Proses mendesain skema database dan skema class/objek akan kita bahas pada artikel selanjutnya. Stay tuned.
+Proses mendesain skema database dan skema class/objek akan kita bahas pada [artikel selanjutnya](https://software.endy.muhardin.com/java/desain-skema-database/). Stay tuned.
