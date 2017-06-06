@@ -34,6 +34,9 @@ Bagi mereka yang levelnya user biasa, cukuplah dengan beberapa alternatif beriku
 
 Nah, untuk advanced users, silahkan meneruskan membaca artikel ini ;)
 
+* TOC
+{:toc}
+
 <!--more-->
 
 ## Kenapa perlu backup ##
