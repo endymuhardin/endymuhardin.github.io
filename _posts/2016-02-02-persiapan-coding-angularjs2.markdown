@@ -3,9 +3,11 @@ layout: post
 title: "Persiapan Coding AngularJS 2"
 date: 2016-02-02 20:37
 comments: true
-categories: 
+categories:
 - javascript
 ---
+
+> Artikel ini sudah kadaluarsa, mengingat perkembangan Angular yang luar biasa cepat. Silahkan nonton [video tutorialnya](https://www.youtube.com/watch?v=iI_6RVpjCtw&list=PL9oC_cq7OYbyXj9NPqM2iedlHQMeChGJp) untuk mendapatkan versi yang lebih up to date.
 
 Saat ini, framework front end yang kami gunakan di ArtiVisi, AngularJS, [sudah merilis versi 2](https://angular.io/). Walaupun saat ini masih berstatus Beta, tapi menurut developernya [sudah bisa digunakan untuk aplikasi berskala besar](http://angularjs.blogspot.co.id/2015/12/angular-2-beta.html).
 
@@ -149,7 +151,7 @@ ok   Verified package.json at package.json
        system-polyfills.src.js
        system-polyfills.js.map
        system-csp-production.src.js
-     
+
      Using loader versions:
        systemjs@0.19.17
      Looking up npm:typescript
@@ -207,11 +209,11 @@ npm install --save angular2 es6-promise@^3.0.2 es6-shim@^0.33.3 reflect-metadata
 Berikut outputnya
 
 ```
-├── es6-promise@3.0.2 
-├── es6-shim@0.33.13 
-├── reflect-metadata@0.1.2 
-├── rxjs@5.0.0-beta.0 
-└── zone.js@0.5.10 
+├── es6-promise@3.0.2
+├── es6-shim@0.33.13
+├── reflect-metadata@0.1.2
+├── rxjs@5.0.0-beta.0
+└── zone.js@0.5.10
 
 npm WARN angular2-jspm No description
 npm WARN angular2-jspm No repository field.
@@ -362,7 +364,7 @@ ok   Installed angular2 as npm:angular2@^2.0.0-beta.2 (2.0.0-beta.2)
      Installed Forks
 
                                npm:isarray 0.0.1 1.0.0
-     
+
      To inspect individual package constraints, use jspm inspect registry:name.
 
      Looking up loader files...
@@ -375,7 +377,7 @@ ok   Installed angular2 as npm:angular2@^2.0.0-beta.2 (2.0.0-beta.2)
        system-csp-production.src.js
        system-polyfills.js.map
        system-polyfills.js
-     
+
      Using loader versions:
        systemjs@0.19.18
 ok   Loader files downloaded successfully
@@ -409,7 +411,7 @@ ok   Installed ts as github:frankwallis/plugin-typescript@^2.5.9 (2.5.9)
      Installed Forks
 
                                 npm:isarray 0.0.1 1.0.0
-     
+
      To inspect individual package constraints, use jspm inspect registry:name.
 
 ok   Installed typescript as npm:typescript@^1.6.2 (1.7.5)
@@ -433,7 +435,7 @@ Selanjutnya, kita edit `config.js` untuk mengkonfigurasi project kita dan mengak
         }
       }
     }
-  }, 
+  },
 ```
 
 File di atas berisi:
@@ -728,7 +730,7 @@ npm install
 jspm install
 ```
 
-Setelah itu, bisa langsung menjalankan aplikasi dengan perintah 
+Setelah itu, bisa langsung menjalankan aplikasi dengan perintah
 
 ```
 http-server
@@ -739,4 +741,3 @@ ataupun membukanya di editor.
 ## Penutup ##
 
 Demikianlah persiapan untuk memulai project AngularJS versi 2. Kode program selengkapnya ada [di Github](https://github.com/endymuhardin/belajar-angular2).
-
