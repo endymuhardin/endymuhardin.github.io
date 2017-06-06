@@ -4,7 +4,7 @@ title: "Video Blogging"
 date: 2014-09-13 10:10
 comments: true
 published: false
-categories: 
+categories:
 - vlog
 ---
 
@@ -26,28 +26,25 @@ Di ArtiVisi, kita punya dua tim produksi. Tim pertama isinya saya sendiri. Ini k
 
 Berikut adalah hardware yang saya gunakan beserta perkiraan harga belinya.
 
-* Nikon D5100 (5000) + AF-S 35mm 1.8 DX (2000)
-* [Microphone Audio Technica ATR-3350](http://www.tokorecordingdaw.com/index.php/Clip-on-/-Lavalier-for-DSLR/AUDIO-TECHNICA-ATR3350-Lavalier-Omnidirectional-Condenser-Microp/tpflypage.tpl.html) (385)
-* [Perekam suara Zoom H4N](http://www.tokorecordingdaw.com/index.php/Handheld-Recorder/ZOOM-H4N-Handy-Mobile-4-Track-Recorder/tpflypage.tpl.html) (3050)
+* [Nikon D5600 + AF-P 18-55 VR](http://www.tokocamzone.com/Nikon-D5600-Kit-18-55mm-VR) (11000)
+* [Microphone Audio Technica System 10 - AT1701L](http://www.lazada.co.id/audio-technica-at1701l-system-10-clip-on-wireless-untuk-dslr-hitam-840344.html) (5500)
+* [Perekam suara Zoom H1](http://www.tokocamzone.com/Zoom-H1-Handy-Recorder-APH-1-Accessories) (1500)
 
 Sedangkan yang digunakan tim di kantor
 
-* Nikon D3100 (2000) + AF-S 18-55 (400)
-* Microphone Audio Technica ATR-3350 (385)
-* [Jack konektor microphone ke handphone](http://www.tokosigma.com/?1116,en_philips-converter-2-in-to-1-pin-3.5mm) (50)
-* Handphone Android untuk merekam (??)
+* [Canon EOS M3 + EF-M 15-45 IS](http://www.tokocamzone.com/Canon-EOS-M3-Kit-EF-M15-45mm) (7000)
+* [Microphone Audio Technica ATR3350IS](http://www.warungrecording.com/product/audio-technica-atr3350.html) (500)
+* [Perekam suara Zoom H4N](http://www.tokocamzone.com/Zoom-H4N-Recorder-APH-4n-Accessory-Pack) (3400)
 
 > Wuah, mahal bener modalnya?
 
 Sebetulnya kalo mau minimalis bisa juga. Berikut perlengkapannya:
 
 * Smartphone iPhone/Android
-* Microphone Audio Technica ATR-3350 (385)
-* [Jack konektor microphone ke handphone](http://www.tokosigma.com/?1116,en_philips-converter-2-in-to-1-pin-3.5mm) (50)
+* Microphone Audio Technica ATR-3350-IS (500)
 
 Nanti hasilnya kira-kira seperti ini kualitasnya
 
+{% include youtube_embed.html id="xMHWeQ5xdBk" %}
 
- 
-Seperti yang 
-
+Video tersebut dibuat 100% dengan iPhone SE. Tidak terlalu buruk kan buat ukuran video tutorial.
