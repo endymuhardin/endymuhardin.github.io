@@ -7,8 +7,6 @@ categories:
 - java
 ---
 
-# Membuat Audit Log dalam Aplikasi #
-
 Dalam membuat aplikasi bisnis, kita sering diminta membuat audit log.
 
 > Apa itu audit log?
