@@ -3,7 +3,7 @@ layout: post
 title: "Upload ke Youtube dari Command Line"
 date: 2016-09-23 07:00
 comments: true
-categories: 
+categories:
 - linux
 ---
 
@@ -140,23 +140,23 @@ Berikut adalah outputnya
 ```
 Collecting google-api-python-client
   Downloading google_api_python_client-1.5.3-py2.py3-none-any.whl (50kB)
-    100% |████████████████████████████████| 51kB 124kB/s 
+    100% |████████████████████████████████| 51kB 124kB/s
 Collecting progressbar2
   Downloading progressbar2-3.10.1-py2.py3-none-any.whl
 Requirement already up-to-date: six<2,>=1.6.1 in /usr/lib/python2.7/dist-packages (from google-api-python-client)
 Collecting httplib2<1,>=0.8 (from google-api-python-client)
   Downloading httplib2-0.9.2.zip (210kB)
-    100% |████████████████████████████████| 215kB 275kB/s 
+    100% |████████████████████████████████| 215kB 275kB/s
 Collecting uritemplate<1,>=0.6 (from google-api-python-client)
   Downloading uritemplate-0.6.tar.gz
 Collecting oauth2client<4.0.0,>=1.5.0 (from google-api-python-client)
   Downloading oauth2client-3.0.0.tar.gz (77kB)
-    100% |████████████████████████████████| 81kB 803kB/s 
+    100% |████████████████████████████████| 81kB 803kB/s
 Collecting python-utils>=2.0.0 (from progressbar2)
   Downloading python_utils-2.0.0-py2.py3-none-any.whl
 Collecting simplejson>=2.5.0 (from uritemplate<1,>=0.6->google-api-python-client)
   Downloading simplejson-3.8.2.tar.gz (76kB)
-    100% |████████████████████████████████| 81kB 780kB/s 
+    100% |████████████████████████████████| 81kB 780kB/s
 Requirement already up-to-date: pyasn1>=0.1.7 in /usr/local/lib/python2.7/dist-packages (from oauth2client<4.0.0,>=1.5.0->google-api-python-client)
 Collecting pyasn1-modules>=0.0.5 (from oauth2client<4.0.0,>=1.5.0->google-api-python-client)
   Downloading pyasn1_modules-0.0.8-py2.py3-none-any.whl
@@ -258,12 +258,12 @@ Pertama kali dijalankan, Google akan memverifikasi apakah aplikasi ini diijinkan
 Using client secrets: client_id.json
 Using credentials file: /home/endy/.youtube-upload-credentials.json
 Check this link in your browser: https://accounts.google.com/o/oauth2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&client_id=962699408619-lpbe09lvfkb7ju9gk74kcoksftel0flq.apps.googleusercontent.com&access_type=offline
-Enter verification code: 
+Enter verification code:
 ```
 
-Kita disuruh copy-paste link yang diberikan di browser agar Google bisa meminta persetujuan. Buka link tersebut di browser. Tentunya kita harus login dulu dengan akun Google. 
+Kita disuruh copy-paste link yang diberikan di browser agar Google bisa meminta persetujuan. Buka link tersebut di browser. Tentunya kita harus login dulu dengan akun Google.
 
-Saya memiliki beberapa channel, karenanya Google menanyakan channel mana yang akan menerima upload video ini. 
+Saya memiliki beberapa channel, karenanya Google menanyakan channel mana yang akan menerima upload video ini.
 
 [![Pilih channel](https://lh3.googleusercontent.com/dELZDPhOwU8XG_OE3QpRiV8S4hUtH5IMBtusrECUpGmEaJFA1Nj-kJzlwZDOrBSmZx1-hvarVEfu=w1361-h460-no)](https://lh3.googleusercontent.com/dELZDPhOwU8XG_OE3QpRiV8S4hUtH5IMBtusrECUpGmEaJFA1Nj-kJzlwZDOrBSmZx1-hvarVEfu=w1361-h460-no)
 
@@ -271,7 +271,7 @@ Selanjutnya, Google akan minta persetujuan agar aplikasi `youtube-upload` boleh 
 
 [![Auth Request](https://lh3.googleusercontent.com/SEDmBGSL7_Z4Sm3lFBqXfaZCafl9w0d_VWm-h5nIyQoodcx96gEqULkjo2DCFNsnxSfw7MV2d3gm=w1361-h483-no)](https://lh3.googleusercontent.com/SEDmBGSL7_Z4Sm3lFBqXfaZCafl9w0d_VWm-h5nIyQoodcx96gEqULkjo2DCFNsnxSfw7MV2d3gm=w1361-h483-no)
 
-Begitu kita klik Approve, kita akan diberikan verification code. 
+Begitu kita klik Approve, kita akan diberikan verification code.
 
 [![Auth Code](https://lh3.googleusercontent.com/et9ACNIMIsrZmd7lStbw6NgEA7d3Qh7ike2IKxHyN_jqObssILwewTh84BW1-pNgm9zefT-9803_=w763-h123-no)](https://lh3.googleusercontent.com/et9ACNIMIsrZmd7lStbw6NgEA7d3Qh7ike2IKxHyN_jqObssILwewTh84BW1-pNgm9zefT-9803_=w763-h123-no)
 
@@ -315,6 +315,44 @@ Aplikasi ini memiliki beberapa opsi tambahan yang bermanfaat, misalnya:
 * `--playlist="Belajar Pemrograman Android"` : untuk memasukkan video ke playlist
 * `--privacy=private` : bila ingin videonya tidak bisa dilihat orang lain
 * dan sebagainya, bisa dilihat [di dokumentasinya](https://github.com/tokland/youtube-upload).
+
+## Upload Banyak Video ##
+
+> Bagaimana kalau video kita banyak? Misalnya ada 100 file.
+
+Masing-masing file video tentu punya metadata (judul, kategori, playlist, dan sebagainya) yang berbeda. Untuk mengatasi hal ini, kita buat dulu daftar file berikut metadatanya dalam file text. Misalnya, bila saya ingin menggunakan metadata : `judul`, `deskripsi`, `playlist`, saya akan membuat file `daftar-upload.txt` yang isinya seperti ini:
+
+```
+file,judul,deskripsi,playlist
+GOPRO001.mp4,Rute Rindu Alam 1,Jalur Rindu Alam dari Mang Ade sampai Gadog,Gowes Puncak
+GOPRO002.mp4,Jalur Pipa Gas Depok,Menyusuri single track JPG Depok,Gowes Depok,
+GOPRO003.mp4,Gunung Pancar,Sentul City ke Hutan Pinus,Gowes Sentul City
+GOPRO004.mp4,KM 0 Bojong Koneng,Sentul City ke KM 0 via Bukit Pelangi,Gowes Sentul City
+```
+
+Kemudian, kita letakkan file tersebut di folder yang sama dengan file `GOPRO001.mp4`,`GOPRO002.mp4`,`GOPRO003.mp4`, dan `GOPRO004.mp4`.
+
+Selanjutnya, buat script untuk mengupload, misalnya kita beri nama `upload.sh`. Isinya sebagai berikut
+
+```bash
+#!/bin/bash
+while IFS="," read namafile judul deskripsi playlist
+do
+  youtube-upload --client-secret=client_id.json --credentials-file=channel_artivisi.json --title='$judul' --description='$deskripsi' --playlist='$playlist' $namafile
+done < daftar-upload.txt
+```
+
+Pasang mode executablenya
+
+```
+chmod +x upload.sh
+```
+
+Kemudian tinggal kita jalankan
+
+```
+./upload.sh
+```
 
 ## Penutup ##
 
