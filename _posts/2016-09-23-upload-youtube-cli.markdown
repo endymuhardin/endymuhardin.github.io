@@ -323,7 +323,6 @@ Aplikasi ini memiliki beberapa opsi tambahan yang bermanfaat, misalnya:
 Masing-masing file video tentu punya metadata (judul, kategori, playlist, dan sebagainya) yang berbeda. Untuk mengatasi hal ini, kita buat dulu daftar file berikut metadatanya dalam file text. Misalnya, bila saya ingin menggunakan metadata : `judul`, `deskripsi`, `playlist`, saya akan membuat file `daftar-upload.txt` yang isinya seperti ini:
 
 ```
-file,judul,deskripsi,playlist
 GOPRO001.mp4,Rute Rindu Alam 1,Jalur Rindu Alam dari Mang Ade sampai Gadog,Gowes Puncak
 GOPRO002.mp4,Jalur Pipa Gas Depok,Menyusuri single track JPG Depok,Gowes Depok,
 GOPRO003.mp4,Gunung Pancar,Sentul City ke Hutan Pinus,Gowes Sentul City
