@@ -4,7 +4,7 @@ title: "SSL Gratis dengan LetsEncrypt"
 date: 2017-09-14 08:52
 comments: true
 categories:
-- aplikasi
+- devops
 ---
 Di tahun 2017 ini, sudah tidak ada lagi alasan bagi kita untuk tidak menggunakan `HTTPS`. [Sertifikat SSL](https://software.endy.muhardin.com/aplikasi/apa-itu-ssl/) bisa didapatkan dengan mudah dan gratis dengan adanya [LetsEncrypt](https://letsencrypt.org/).
 
