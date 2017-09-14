@@ -13,6 +13,10 @@ Untuk itu, sekarang saya akan menulis lagi panduan untuk membuat workflow yang s
 * source code disimpan di repository [Gitlab](https://about.gitlab.com/) yang terinstal di server sendiri dan tidak bisa diakses umum.
 * build dilakukan dengan [Jenkins](http://jenkins-ci.org/) yang juga terinstal di server sendiri.
 * deployment dilakukan ke penyedia layanan cloud, tapi versi berbayar. Saya akan gunakan [Pivotal Web Services](http://run.pivotal.io/) yang saat artikel ini ditulis paling kompetitif harganya.
+
+* TOC
+{:toc}
+
 <!--more-->
 Pada bagian pertama ini (atau kelima kalau dihitung dari seri terdahulu), kita akan membahas dulu cara instalasi Jenkins. Adapun cara instalasi Gitlab tidak saya bahas karena amat sangat terlalu mudah. Silahkan ikuti [panduannya](https://about.gitlab.com/downloads/#ubuntu1604).
 
