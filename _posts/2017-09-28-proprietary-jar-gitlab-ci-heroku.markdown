@@ -121,10 +121,19 @@ deploy-heroku:
  variables:
    HEROKU_API_KEY: $HEROKU_API_KEY
  script:
-   - apt install wget -y
+   - apt install wget openjdk-8-jdk-headless -y
    - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
    - heroku plugins:install heroku-cli-deploy
    - heroku deploy:jar target/*.jar --app $HEROKU_APP_NAME
+```
+
+Jangan lupa, kita juga harus menginstal `openjdk-8` supaya bisa mendeploy jar. Bila tidak terinstal, maka akan muncul pesan error seperti ini
+
+```
+heroku deploy:jar target/*.jar --app $HEROKU_APP_NAME
+Uploading payment-virtualaccount-1.0.1-M.001.jar
+ ▸    'ENOENT': spawn java ENOENT
+ERROR: Job failed: exit code 1
 ```
 
 ## Kesimpulan ##
@@ -179,7 +188,7 @@ deploy-dev:
  variables:
    HEROKU_API_KEY: $HEROKU_API_KEY
  script:
-   - apt install wget -y
+   - apt install wget openjdk-8-jdk-headless -y
    - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
    - heroku plugins:install heroku-cli-deploy
    - heroku deploy:jar target/*.jar --app $HEROKU_APP_NAME
