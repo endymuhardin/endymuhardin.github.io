@@ -123,6 +123,7 @@ deploy-heroku:
  script:
    - apt install wget -y
    - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+   - heroku plugins:install heroku-cli-deploy
    - heroku deploy:jar target/*.jar --app $HEROKU_APP_NAME
 ```
 
@@ -180,6 +181,7 @@ deploy-dev:
  script:
    - apt install wget -y
    - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+   - heroku plugins:install heroku-cli-deploy
    - heroku deploy:jar target/*.jar --app $HEROKU_APP_NAME
 ```
 
