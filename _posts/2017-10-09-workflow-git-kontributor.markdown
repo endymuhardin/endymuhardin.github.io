@@ -257,9 +257,13 @@ Branch implement-lombok set up to track remote branch implement-lombok from orig
 
 Pull request artinya notifikasi ke administrator/maintainer project asal untuk melihat perubahan yang sudah kita lakukan. Bila perubahannya dinilai bermanfaat dan bisa dipakai (tidak error, kualitas coding rapih, dan berbagai kriteria lain), maka maintainer akan mengambil (`pull`) perubahan tersebut dari repo kita. Bila ternyata kurang sesuai, kita akan diminta untuk merevisi.
 
-Di halaman web repo kita di Github, sudah tersedia tombol untuk melakukan Pull Request. Langsung saja tekan, nanti kita akan mendapati form input Pull Request.
+Di halaman web repo kita di Github, sudah tersedia tombol untuk melakukan Pull Request.
 
-[![Form Pull Request]({{site.url}}/images/uploads/2017/git-workflow/06-form-pull-request.png)]({{site.url}}/images/uploads/2017/git-workflow/06-form-pull-request.png)
+[![Tombol Pull Request]({{site.url}}/images/uploads/2017/git-workflow/06-tombol-pull-request.png)]({{site.url}}/images/uploads/2017/git-workflow/06-tombol-pull-request.png)
+
+Langsung saja tekan, nanti kita akan mendapati form input Pull Request.
+
+[![Form Pull Request]({{site.url}}/images/uploads/2017/git-workflow/07-form-pull-request.png)]({{site.url}}/images/uploads/2017/git-workflow/07-form-pull-request.png)
 
 Klik tombol `Create Pull Request`. Project maintainer akan mendapatkan notifikasi dari Github bahwa ada pull request dari kita. Apa yang harus dilakukan oleh maintainer akan kita bahas pada artikel tersendiri. Sedangkan tugas kita sementara ini sudah selesai.
 
@@ -320,7 +324,7 @@ Ada kalanya pull request kita ditolak oleh maintainer. Banyak penyebabnya, misal
 
 Bila pull request kita ditolak, tidak perlu baper. Cukup tanyakan pada maintainer apa masalahnya. Project open source biasanya butuh banyak kontribusi, jadi biasanya maintainer justru gembira kalau menerima pull request. Bila dia menolak, biasanya ada komentar atau penjelasan apa yang kurang dan bagaimana cara memperbaikinya. Contohnya seperti di gambar berikut
 
-[![Feedback PR]({{site.url}}/images/uploads/2017/git-workflow/07-revisi-pull-request.png)]({{site.url}}/images/uploads/2017/git-workflow/07-revisi-pull-request.png)
+[![Feedback PR]({{site.url}}/images/uploads/2017/git-workflow/08-revisi-pull-request.png)]({{site.url}}/images/uploads/2017/git-workflow/08-revisi-pull-request.png)
 
 Pada gambar di atas, terlihat bahwa awalnya Pull Request dikomentari oleh maintainer. Di situ dijelaskan apa yang salah, dan bagaimana cara memperbaikinya. Kemudian kontributor melakukan perubahan lagi sesuai apa yang diminta. Akhirnya Pull Request diterima oleh maintainer.
 
