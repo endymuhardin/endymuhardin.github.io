@@ -138,7 +138,15 @@ ERROR: Job failed: exit code 1
 
 ## Kesimpulan ##
 
-Sebisa mungkin, selalu gunakan library open source. Ini akan sangat memudahkan kita dalam proses development dan otomasi workflow. Akan tetapi adakalanya kita tidak bisa menghindari penggunaan library proprietary. Jadi apa boleh buat terpaksa harus dilakukan akal-akalan. Walaupun demikian, tetap harus legal. Sebetulnya bisa saja tadi kita masukkan file `ojdbc8.jar` ke dalam struktur folder project, misalnya di folder `.mvn/repository` sejajar dengan `src` dan `pom.xml`. Kemudian kita daftarkan folder tersebut sebagai repo lokal di `pom.xml` dengan konfigurasi berikut
+Sebisa mungkin, selalu gunakan library open source. Ini akan sangat memudahkan kita dalam proses development dan otomasi workflow. Akan tetapi adakalanya kita tidak bisa menghindari penggunaan library proprietary. Jadi apa boleh buat terpaksa harus dilakukan akal-akalan. Walaupun demikian, tetap harus legal.
+
+Sebetulnya bisa saja tadi kita masukkan file `ojdbc8.jar` ke dalam struktur folder project, misalnya di folder `.mvn/repository` sejajar dengan `src` dan `pom.xml`. Perintahnya sebagai berikut
+
+```
+mvn deploy:deploy-file -Durl=file://$(pwd)/.mvn/repository -DgroupId=com.oracle.jdbc -DartifactId=ojdbc8 -Dversion=12.2.0.1 -Dpackaging=jar -Dfile=/tmp/ojdbc8.jar
+```
+
+Kemudian kita daftarkan folder tersebut sebagai repo lokal di `pom.xml` dengan konfigurasi berikut
 
 ```xml
 <repositories>
