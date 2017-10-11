@@ -354,7 +354,7 @@ Misalnya, kita mendapat link [https://github.com/endymuhardin/aplikasi-dosen/com
 
 [![Link Commit]({{site.url}}/images/uploads/2017/git-workflow/10-commit-detail-page.png)]({{site.url}}/images/uploads/2017/git-workflow/10-commit-detail-page.png)
 
-Kita bisa tambahkan `.patch` di belakang link tersebut sehingga menjadi [https://github.com/endymuhardin/aplikasi-dosen/commit/d8686f6cc4306b75109d88e2834f7e58456c60f6.patch](https://github.com/endymuhardin/aplikasi-dosen/commit/d8686f6cc4306b75109d88e2834f7e58456c60f6) yang bila dibuka akan menghasilkan tampilan patch, sama seperti output perintah `git format-patch` di atas.
+Kita bisa tambahkan `.patch` di belakang link tersebut sehingga menjadi [https://github.com/endymuhardin/aplikasi-dosen/commit/d8686f6cc4306b75109d88e2834f7e58456c60f6.patch](https://github.com/endymuhardin/aplikasi-dosen/commit/d8686f6cc4306b75109d88e2834f7e58456c60f6.patch) yang bila dibuka akan menghasilkan tampilan patch, sama seperti output perintah `git format-patch` di atas.
 
 [![Link Commit]({{site.url}}/images/uploads/2017/git-workflow/11-github-patch-page.png)]({{site.url}}/images/uploads/2017/git-workflow/11-github-patch-page.png)
 
