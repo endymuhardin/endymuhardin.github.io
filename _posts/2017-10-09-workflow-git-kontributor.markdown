@@ -267,6 +267,99 @@ Langsung saja tekan, nanti kita akan mendapati form input Pull Request.
 
 Klik tombol `Create Pull Request`. Project maintainer akan mendapatkan notifikasi dari Github bahwa ada pull request dari kita. Apa yang harus dilakukan oleh maintainer akan kita bahas pada artikel tersendiri. Sedangkan tugas kita sementara ini sudah selesai.
 
+### Berbagai Alternatif Mekanisme Pull Request ###
+
+Yang kita bahas di atas adalah pull request menggunakan fasilitas yang disediakan Github. Akan tetapi, sebetulnya aplikasi Git yang kita gunakan untuk versioning sudah lebih dulu ada sebelum adanya layanan Github. Jadi sebenarnya banyak cara lain untuk membuat Pull Request selain menggunakan fitur Github. Bahkan pembuat Git sendiri, yaitu om Linus yang terkenal itu, [menolak menggunakan fitur Pull Request Github](https://github.com/torvalds/linux/pull/17#issuecomment-5654674).
+
+Intinya Pull Request adalah mengirimkan perubahan yang kita lakukan ke pengelola (maintainer) dari project open source tersebut. Ada beberapa cara untuk mengirimkannya, misalnya:
+
+* memberikan link/URL repository kita ke maintainer. Link ini bisa dikirim melalui email, whatsapp, telegram, sms, terserahlah metode apa yang ingin kita gunakan.
+* membuat patch/diff/selisih yang berisi perubahan yang kita lakukan. Kemudian mengirimkan patch tersebut melalui email. Cara inilah yang dipilih oleh om Linus.
+
+URL repo bisa kita dapatkan seperti pada langkah clone di atas. Jangan lupa untuk memberitahukan branch yang ingin kita kontribusikan ke maintainer.
+
+Sedangkan bila kita ingin membuat file `patch` untuk dikirim melalui email, berikut perintahnya.
+
+```
+git checkout implementasi-lombok
+git format-patch master..implementasi-lombok
+```
+
+Perintah di atas akan menghasilkan file `0001-implement-lombok-remove-getter-setter.patch`
+
+Isi filenya kira-kira seperti ini
+
+```
+From d8686f6cc4306b75109d88e2834f7e58456c60f6 Mon Sep 17 00:00:00 2001
+From: Endy Muhardin <endy.muhardin@gmail.com>
+Date: Wed, 11 Oct 2017 10:55:14 +0700
+Subject: [PATCH] implement lombok, remove getter/setter
+
+---
+ pom.xml                                            |   5 +
+ .../java/id/ac/tazkia/dosen/entity/BidangIlmu.java |  36 +---
+ .../id/ac/tazkia/dosen/entity/BuktiKinerja.java    |  34 +---
+ .../tazkia/dosen/entity/BuktiKinerjaKegiatan.java  |  35 +---
+ .../id/ac/tazkia/dosen/entity/BuktiPenugasan.java  |  35 +---
+ .../dosen/entity/BuktiPenugasanKegiatan.java       |  35 +---
+ src/main/java/id/ac/tazkia/dosen/entity/Dosen.java | 218 +--------------------
+ .../java/id/ac/tazkia/dosen/entity/Fakultas.java   |  26 +--
+ .../ac/tazkia/dosen/entity/JenisBuktiKegiatan.java |  27 +--
+ .../id/ac/tazkia/dosen/entity/JenisKegiatan.java   |  50 +----
+ .../tazkia/dosen/entity/JenisPengajuanDokumen.java |  34 +---
+ .../java/id/ac/tazkia/dosen/entity/JenisSurat.java |  34 +---
+ .../tazkia/dosen/entity/KategoriBuktiKegiatan.java |  28 +--
+ .../ac/tazkia/dosen/entity/KategoriKegiatan.java   |  28 +--
+ .../java/id/ac/tazkia/dosen/entity/Kecamatan.java  |  35 +---
+ .../dosen/entity/KegiatanBelajarMengajar.java      | 107 +---------
+ .../id/ac/tazkia/dosen/entity/KegiatanDosen.java   | 108 +---------
+ src/main/java/id/ac/tazkia/dosen/entity/Kota.java  |  35 +---
+ .../tazkia/dosen/entity/PengajuanDosenProfile.java | 148 +-------------
+ .../java/id/ac/tazkia/dosen/entity/Permission.java |  34 +---
+ .../id/ac/tazkia/dosen/entity/PoinKegiatan.java    |  42 +---
+ .../id/ac/tazkia/dosen/entity/ProgramStudi.java    |  44 +----
+ .../java/id/ac/tazkia/dosen/entity/Provinsi.java   |  28 +--
+ src/main/java/id/ac/tazkia/dosen/entity/Role.java  |  36 +---
+ .../tazkia/dosen/entity/SatuanHasilKegiatan.java   |  27 +--
+ .../java/id/ac/tazkia/dosen/entity/SuratTugas.java |  51 +----
+ src/main/java/id/ac/tazkia/dosen/entity/User.java  |  51 +----
+ .../id/ac/tazkia/dosen/entity/UserPassword.java    |  26 +--
+
+
+ diff --git a/pom.xml b/pom.xml
+ index c1d759d..654ba52 100644
+ --- a/pom.xml
+ +++ b/pom.xml
+ @@ -59,6 +59,11 @@
+              <artifactId>flyway-core</artifactId>
+          </dependency>
+          <dependency>
+ +            <groupId>org.projectlombok</groupId>
+ +            <artifactId>lombok</artifactId>
+ +            <optional>true</optional>
+ +        </dependency>
+ +        <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-test</artifactId>
+              <scope>test</scope>
+```
+
+File di atas kemudian bisa kita kirimkan ke maintainer melalui berbagai metode yang memungkinkan (email, ftp, scp, flashdisk, dsb).
+
+Selain itu, Github juga memiliki fitur untuk membuatkan patch secara online. Kita cukup klik kanan tulisan commit id untuk mendapatkan linknya.
+
+[![Link Commit]({{site.url}}/images/uploads/2017/git-workflow/09-link-patch.png)]({{site.url}}/images/uploads/2017/git-workflow/09-link-patch.png)
+
+Misalnya, kita mendapat link [https://github.com/endymuhardin/aplikasi-dosen/commit/d8686f6cc4306b75109d88e2834f7e58456c60f6](https://github.com/endymuhardin/aplikasi-dosen/commit/d8686f6cc4306b75109d88e2834f7e58456c60f6). Bila dibuka, tampilannya seperti ini
+
+[![Link Commit]({{site.url}}/images/uploads/2017/git-workflow/10-commit-detail-page.png)]({{site.url}}/images/uploads/2017/git-workflow/10-commit-detail-page.png)
+
+Kita bisa tambahkan `.patch` di belakang link tersebut sehingga menjadi [https://github.com/endymuhardin/aplikasi-dosen/commit/d8686f6cc4306b75109d88e2834f7e58456c60f6.patch](https://github.com/endymuhardin/aplikasi-dosen/commit/d8686f6cc4306b75109d88e2834f7e58456c60f6) yang bila dibuka akan menghasilkan tampilan patch, sama seperti output perintah `git format-patch` di atas.
+
+[![Link Commit]({{site.url}}/images/uploads/2017/git-workflow/11-github-patch-page.png)]({{site.url}}/images/uploads/2017/git-workflow/11-github-patch-page.png)
+
+Link patch tersebut bisa kita berikan kepada maintainer.
+
 ## Sinkronisasi dengan project asal ##
 
 Sinkronisasi dengan project asal atau repository `upstream` sebaiknya dilakukan di branch `master`. Demikian pula, sebaiknya kita **tidak** coding di dalam `master`, supaya kondisinya selalu bersih dan siap menerima update terbaru dari `upstream`.
