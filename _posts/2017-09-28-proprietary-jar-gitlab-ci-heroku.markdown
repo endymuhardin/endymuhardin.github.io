@@ -12,6 +12,9 @@ Akan menjadi persoalan kalau project kita menggunakan library yang tidak open so
 
 Untuk mengatasi hal ini, kita perlu menyesuaikan proses build aplikasi kita agar tetap bisa berjalan otomatis dari commit hingga deployment.
 
+* TOC
+{:toc}
+
 <!--more-->
 
 ## Membuat Repo Maven Lokal ##

@@ -23,6 +23,9 @@ Begitu kita mendapatkan kontribusi, ada beberapa hal yang harus kita lakukan, ya
 * bila oke, masukkan ke repository
 * bila kurang oke, berikan feedback kepada kontributor
 
+* TOC
+{:toc}
+
 <!--more-->
 
 ## Pull Request di Aplikasi ##

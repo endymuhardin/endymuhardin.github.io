@@ -25,6 +25,9 @@ Problem keempat, sebetulnya saya sudah buatkan [video tutorialnya](https://youtu
 
 Tapi agar lebih jelas, saya akan buatkan rangkuman langkah-langkah dan perintah Git yang harus dilakukan.
 
+* TOC
+{:toc}
+
 <!--more-->
 
 ## Persiapan Project ##

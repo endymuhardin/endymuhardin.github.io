@@ -9,6 +9,9 @@ categories:
 
 Setelah kita [menyiapkan infrastruktur Continuous Delivery dengan Gitlab CI](http://software.endy.muhardin.com/devops/instalasi-gitlab-runner-autoscale/), sekarang kita akan menggunakannya untuk melakukan deployment otomatis ke VPS. Pada artikel terdahulu, kita sudah [mendeploy dari Jenkins ke VPS](http://software.endy.muhardin.com/java/deploy-jenkins-vps/) dan juga [mendeploy dari Gitlab ke Kubernetes](http://software.endy.muhardin.com/devops/gitlab-ci-kubernetes-gke/). Nah sekarang, kita akan mendeploy dari Gitlab ke VPS.
 
+* TOC
+{:toc}
+
 <!--more-->
 
 Secara garis besar, berikut adalah langkah-langkahnya:
@@ -61,7 +64,7 @@ Normalnya, bila kita pertama kali melakukan ssh ke mesin lain, kita akan diminta
 $ ssh 192.168.10.100
 The authenticity of host '192.168.10.100 (192.168.10.100)' can't be established.
 ECDSA key fingerprint is SHA256:Qt7wVAJ7mW/y0TTHMgswxkb2SYhfBZ+pgkrqhQcMEbQ.
-Are you sure you want to continue connecting (yes/no)? 
+Are you sure you want to continue connecting (yes/no)?
 ```
 
 Kita harus jawab `yes` untuk bisa melanjutkan.
@@ -84,7 +87,7 @@ git tag 1.10.0-M114
 git push --tags
 ```
 
-Berikut adalah konfigurasi `.gitlab-ci.yml` untuk menjalankan siklus deployment di atas. Dia akan melakukan deployment sesuai dengan tag yang kita buat. 
+Berikut adalah konfigurasi `.gitlab-ci.yml` untuk menjalankan siklus deployment di atas. Dia akan melakukan deployment sesuai dengan tag yang kita buat.
 
 
 ```yml
@@ -132,7 +135,7 @@ deploy-to-development:
   stage: deploy
   only:
     - /-M\./
-  script: 
+  script:
   - scp target/*.jar root@server.development.com:/home/artivisi/aplikasi
   - ssh root@server.development.com service aplikasi restart
 
@@ -141,7 +144,7 @@ deploy-to-testing:
   stage: deploy
   only:
     - /-RC\./
-  script: 
+  script:
   - scp target/*.jar root@server.testing.com:/home/artivisi/aplikasi
   - ssh root@server.testing.com service aplikasi restart
 
@@ -150,10 +153,9 @@ deploy-to-production:
   stage: deploy
   only:
     - /-RELEASE$/
-  script: 
+  script:
   - scp target/*.jar root@server.production.com:/home/artivisi/aplikasi
   - ssh root@server.production.com service aplikasi restart
 ```
 
 Selamat mencoba, semoga sukses :D
-
