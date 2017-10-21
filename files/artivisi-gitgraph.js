@@ -58,7 +58,7 @@ window.onload = function(e){
 
     master.commit({
       message: "Rilis development #1",
-      tag: "v1.0.0-M.001"
+      tag: "1.0.0-M.001"
     });
 
     fitur3.commit("ui mockup").commit("akses database").commit("validasi");
@@ -66,7 +66,7 @@ window.onload = function(e){
 
     master.commit({
       message: "Rilis testing #1",
-      tag: ["v1.0.0-RC.001"]
+      tag: ["1.0.0-RC.001"]
     });
 
     fitur4.commit("ui mockup").commit("akses database").commit("validasi");
@@ -74,7 +74,7 @@ window.onload = function(e){
 
     master.commit({
       message: "Rilis ke production",
-      tag: "v1.0.0-RELEASE"
+      tag: "1.0.0-RELEASE"
     });
 
     var maint1x = master.branch({
@@ -82,13 +82,13 @@ window.onload = function(e){
     });
 
     master.commit("fitur #5").commit("fitur #6");
-    master.commit({ message : "Development release pertama versi 2.0.0", tag: "v2.0.0-M.001"});
+    master.commit({ message : "Development release pertama versi 2.0.0", tag: "2.0.0-M.001"});
 
     maint1x.commit({ message : "fix #1", tag: "1.0.1-RELEASE"});
     maint1x.merge(master, {message : "merge fix #1"});
 
     master.commit("fitur #7").commit("fitur #8");
-    master.commit({ message : "Persiapan rilis versi 2", tag: "v2.0.0-RC.001"});
+    master.commit({ message : "Persiapan rilis versi 2", tag: "2.0.0-RC.001"});
 
     maint1x.commit({ message : "fix #2", tag: "1.0.2-RELEASE"});
     maint1x.merge(master, {message : "merge fix #2"});
@@ -119,7 +119,7 @@ window.onload = function(e){
 
     masterVertical.commit({
       message: "Rilis development #1",
-      tag: "v1.0.0-M.001"
+      tag: "1.0.0-M.001"
     });
 
     fitur3Vertical.commit("ui mockup").commit("akses database").commit("validasi");
@@ -127,7 +127,7 @@ window.onload = function(e){
 
     masterVertical.commit({
       message: "Rilis testing #1",
-      tag: ["v1.0.0-RC.001"]
+      tag: ["1.0.0-RC.001"]
     });
 
     fitur4Vertical.commit("ui mockup").commit("akses database").commit("validasi");
@@ -135,7 +135,7 @@ window.onload = function(e){
 
     masterVertical.commit({
       message: "Rilis ke production",
-      tag: "v1.0.0-RELEASE"
+      tag: "1.0.0-RELEASE"
     });
 
     var maint1xVertical = masterVertical.branch({
@@ -143,13 +143,13 @@ window.onload = function(e){
     });
 
     masterVertical.commit("fitur #5").commit("fitur #6");
-    masterVertical.commit({ message : "Development release pertama versi 2.0.0", tag: "v2.0.0-M.001"});
+    masterVertical.commit({ message : "Development release pertama versi 2.0.0", tag: "2.0.0-M.001"});
 
     maint1xVertical.commit({ message : "fix #1", tag: "1.0.1-RELEASE"});
     maint1xVertical.merge(masterVertical, {message : "merge fix #1"});
 
     masterVertical.commit("fitur #7").commit("fitur #8");
-    masterVertical.commit({ message : "Persiapan rilis versi 2", tag: "v2.0.0-RC.001"});
+    masterVertical.commit({ message : "Persiapan rilis versi 2", tag: "2.0.0-RC.001"});
 
     maint1xVertical.commit({ message : "fix #2", tag: "1.0.2-RELEASE"});
     maint1xVertical.merge(masterVertical, {message : "merge fix #2"});
