@@ -82,11 +82,13 @@ window.onload = function(e){
     });
 
     master.commit("fitur #5").commit("fitur #6");
+    master.commit({ message : "Development release pertama versi 2.0.0", tag: "v2.0.0-M.001"});
 
     maint1x.commit({ message : "fix #1", tag: "1.0.1-RELEASE"});
     maint1x.merge(master, {message : "merge fix #1"});
 
     master.commit("fitur #7").commit("fitur #8");
+    master.commit({ message : "Persiapan rilis versi 2", tag: "v2.0.0-RC.001"});
 
     maint1x.commit({ message : "fix #2", tag: "1.0.2-RELEASE"});
     maint1x.merge(master, {message : "merge fix #2"});
@@ -141,11 +143,13 @@ window.onload = function(e){
     });
 
     masterVertical.commit("fitur #5").commit("fitur #6");
+    masterVertical.commit({ message : "Development release pertama versi 2.0.0", tag: "v2.0.0-M.001"});
 
     maint1xVertical.commit({ message : "fix #1", tag: "1.0.1-RELEASE"});
     maint1xVertical.merge(masterVertical, {message : "merge fix #1"});
 
     masterVertical.commit("fitur #7").commit("fitur #8");
+    masterVertical.commit({ message : "Persiapan rilis versi 2", tag: "v2.0.0-RC.001"});
 
     maint1xVertical.commit({ message : "fix #2", tag: "1.0.2-RELEASE"});
     maint1xVertical.merge(masterVertical, {message : "merge fix #2"});
