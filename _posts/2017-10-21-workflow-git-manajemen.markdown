@@ -164,4 +164,63 @@ Berikut adalah visualisasi dari skenario di atas.
 
 Visualisasi dibuat menggunakan [Gitgraph.js](http://gitgraphjs.com/)
 
+
+## Otomasi ##
+
+Workflow di atas bisa diotomasi menggunakan Gitlab CI dengan script sebagai berikut:
+
+```yml
+image: alpine:latest
+
+stages:
+  - build
+  - package
+  - deploy
+
+compile-test:
+  stage: build
+  script:
+    - echo "Build $CI_COMMIT_SHA in branch $CI_COMMIT_REF_SLUG with tag $CI_COMMIT_TAG"
+
+static-analysis:
+  stage: build
+  script:
+    - echo "Static Code Analysis, parallel run with compiling"
+
+build-dan-package:
+  stage: package
+  script:
+    - echo "Build $CI_COMMIT_SHA in branch $CI_COMMIT_REF_SLUG with tag $CI_COMMIT_TAG"
+    - cat README.md > README-$CI_COMMIT_SHA.md
+    - echo "Version $CI_COMMIT_SHA" >> README-$CI_COMMIT_SHA.md
+  artifacts:
+    paths:
+      - README-$CI_COMMIT_SHA.md
+
+deploy-to-development:
+  stage: deploy
+  only:
+    - /-M\./
+  script:
+    - echo "Deploy build" +$CI_COMMIT_SHA+ " to development server"
+    - cat README-$CI_COMMIT_SHA.md
+
+deploy-to-testing:
+  stage: deploy
+  only:
+    - /-RC\./
+  script:
+    - echo "Deploy build" +$CI_COMMIT_SHA+ " to testing server"
+    - cat README-$CI_COMMIT_SHA.md
+
+deploy-to-production:
+  stage: deploy
+  only:
+    - /-RELEASE$/
+  when: manual
+  script:
+    - echo "Deploy build" +$CI_COMMIT_SHA+ " to production server"
+    - cat README-$CI_COMMIT_SHA.md
+```
+
 Semoga bermanfaat.
