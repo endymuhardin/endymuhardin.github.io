@@ -44,8 +44,9 @@ Visualisasinya seperti ini
     <canvas id="gitGraphHorizontal"></canvas>
 </div>
 
+Bila setelah membaca masih bingung, bisa nonton [video penjelasan workflow](https://youtu.be/gDqT_Wvt3VQ) atau [video training Git](https://www.youtube.com/watch?v=XZxaY2XvRzE&list=PL9oC_cq7OYbwhs_x2S_Vv9VFRKnoXs8hn)
 
-Berikut penjelasan versi panjangnya ...
+Buat yang fakir kuota atau lebih suka versi tulisan, berikut penjelasan versi panjangnya ...
 
 <!--more-->
 
