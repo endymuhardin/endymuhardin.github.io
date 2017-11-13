@@ -461,7 +461,7 @@ Cek inbox gan, harusnya ada message baru.
 
 Klik untuk melihat isinya
 
-[![Choose Account]({{site.url}}/images/uploads/2017/gmail-api/20-inbox.png)]({{site.url}}/images/uploads/2017/gmail-api/20-inbox.png)
+[![Choose Account]({{site.url}}/images/uploads/2017/gmail-api/21-email-content.png)]({{site.url}}/images/uploads/2017/gmail-api/21-email-content.png)
 
 
 ## Mengirim Email dengan Template HTML ##
