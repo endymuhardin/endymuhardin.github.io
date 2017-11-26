@@ -7,10 +7,6 @@ categories:
 - aplikasi
 ---
 
-[![Gmail Login]({{site.url}}/images/uploads/2017/gmail-api/01-login-gmail.png)]({{site.url}}/images/uploads/2017/gmail-api/01-login-gmail.png)
-
-Membatalkan Perubahan File dental Git
-
 Salah satu keuntungan menggunakan version control adalah kita bisa dengan mudah mengembalikan kondisi file ke masa lalu. Hal ini dibutuhkan bila ternyata ada anggota tim membuat perubahan yang ternyata tidak bisa digunakan. Contohnya, di Java kita menggunakan library FlywayDB untuk mengurus migrasi database. File migrasi ini sekali sudah dijalankan maka tidak boleh diedit lagi. Bila diedit, maka akan keluar error seperti ini
 
 ```
