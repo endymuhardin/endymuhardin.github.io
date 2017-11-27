@@ -509,7 +509,7 @@ public class BelajarGmailApiApplication {
 }
 ```
 
-Nama variabel di Mustache ditandai dengan kurung kurawal berganda. Jadi bila kita ingin memasukkan variabel `nama`, di dalam template kita akan tulis seperti ini : `{{nama}}`. Agar sederhana, saya akan buat saja dua variabel, yaitu `nama` dan `pesan`. Silahkan cek isi file template untuk melihat caranya. Saya tidak paste di sini karena filenya lumayan besar. Variabel `nama` ada [di baris 1480](https://github.com/endymuhardin/belajar-gmail-api/blob/master/src/main/resources/templates/welcome.html#L1480) dan variabel `pesan` dipasang [di baris 1508]()https://github.com/endymuhardin/belajar-gmail-api/blob/master/src/main/resources/templates/welcome.html#L1508.
+Nama variabel di Mustache ditandai dengan kurung kurawal berganda. Jadi bila kita ingin memasukkan variabel `nama`, di dalam template kita akan tulis seperti ini : {% raw %}{{nama}}{% endraw %}. Agar sederhana, saya akan buat saja dua variabel, yaitu `nama` dan `pesan`. Silahkan cek isi file template untuk melihat caranya. Saya tidak paste di sini karena filenya lumayan besar. Variabel `nama` ada [di baris 1480](https://github.com/endymuhardin/belajar-gmail-api/blob/master/src/main/resources/templates/welcome.html#L1480) dan variabel `pesan` dipasang [di baris 1508](https://github.com/endymuhardin/belajar-gmail-api/blob/master/src/main/resources/templates/welcome.html#L1508).
 
 Selanjutnya, kita akan membaca file template ini dan mengisinya dengan variabel. Lalu kita kirim dengan class `GmailApiService` tadi.
 
