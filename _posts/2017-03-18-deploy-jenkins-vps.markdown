@@ -174,7 +174,30 @@ WantedBy=multi-user.target
 
 Dan letakkan di server, dalam folder `/etc/systemd/system/` dengan nama file `belajarci.service`.
 
-Set dulu permission file aplikasi `/home/artivisi/belajar-ci.jar` agar menjadi executable.
+Ada dua file konfigurasi yang bisa kita buat dalam `/home/artivisi`, yaitu:
+
+* application.properties : berisi file konfigurasi aplikasi, misalnya setting database production. Isi file ini akan menimpa konfigurasi application.properties yang terbundel dalam jar
+* belajar-ci.conf : berisi file konfigurasi untuk menjalankan aplikasi. Misalnya setting memori, environment variable, dan sebagainya. Nama file ini disamakan dengan nama file jar.
+
+Isi `application.properties` misalnya seperti ini:
+
+```
+server.port=12345
+server.ssl.key-store=belajar-ci.jks
+server.ssl.key-store-password=IniPasswordKeyStore
+server.ssl.key-password=IniPasswordPrivateKey
+
+spring.datasource.username=belajardbuser
+spring.datasource.password=AbCdefXZY3322434221
+```
+
+Dan berikut isi `belajar-ci.conf`
+
+```
+JAVA_OPTS=-Xmx32M
+```
+
+Selanjutnya, agar bisa dijalankan, set dulu permission file aplikasi `/home/artivisi/belajar-ci.jar` agar menjadi executable.
 
 ```
 chmod +x /home/artivisi/belajar-ci.jar
