@@ -43,13 +43,32 @@ apt-get update && apt-get upgrade -y
 Kemudian, kita instalasi paket-paket berikut:
 
 * Java SDK
-* MySQL Server
+* PostgreSQL Server
+* Haveged
 
 dengan perintah
 
 ```
-apt-get install openjdk-8-jdk-headless postgresql -y
+apt-get install openjdk-8-jdk-headless postgresql haveged -y
 ```
+
+`Haveged` ini adalah generator entropi. Entropi ini salah satunya dibutuhkan untuk menghasilkan random number untuk keperluan kriptografi. Pada komputer desktop, entropi dapat diambil dari gerakan mouse atau ketikan keyboard. Tapi di server, tidak ada mouse dan keyboard, sehingga butuh waktu lama untuk menghasilkan entropi. Bila kekurangan entropi, aplikasi kita akan terlihat lemot atau hang. 
+
+Ini pernah terjadi pada saya. Awalnya saya kira spec VPS kurang. Tapi setelah ditambahkan jadi 2GB pun tetap sama. Kemudian saya cek google
+
+[![Tomcat Slow Digital Ocean]({{site.url}}/images/uploads/2017/springboot-digitalocean/01-google-tomcat-slow.png)]({{site.url}}/images/uploads/2017/springboot-digitalocean/01-google-tomcat-slow.png)
+
+Klik link paling atas
+
+[![Forum Digital Ocean]({{site.url}}/images/uploads/2017/springboot-digitalocean/02-digitalocean-thread.png)]({{site.url}}/images/uploads/2017/springboot-digitalocean/02-digitalocean-thread.png)
+
+Scroll ke bawah, nanti ketemu ini
+
+[![Solusi di Forum Digital Ocean]({{site.url}}/images/uploads/2017/springboot-digitalocean/03-answer-1.png)]({{site.url}}/images/uploads/2017/springboot-digitalocean/03-answer-1.png)
+
+Scroll ke bawah, ketemu lagi testimoni user lain. Bahkan di VPS yang termurah ($5/bulan) juga sudah bisa ngebut.
+
+[![Testimoni Solusi]({{site.url}}/images/uploads/2017/springboot-digitalocean/04-answer-verification.png)]({{site.url}}/images/uploads/2017/springboot-digitalocean/04-answer-verification.png)
 
 Kita juga harus menyiapkan user di sistem operasi untuk menjalankan aplikasi kita. Jangan menjalankan aplikasi dengan user `root`, karena mendatangkan resiko keamanan. User yang kita buat ini merupakan `system user`, yaitu user khusus dengan ketentuan:
 
