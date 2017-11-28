@@ -70,6 +70,8 @@ Scroll ke bawah, ketemu lagi testimoni user lain. Bahkan di VPS yang termurah ($
 
 [![Testimoni Solusi]({{site.url}}/images/uploads/2017/springboot-digitalocean/04-answer-verification.png)]({{site.url}}/images/uploads/2017/springboot-digitalocean/04-answer-verification.png)
 
+Penjelasan lebih lanjut mengenai apa itu `haveged` dan kelayakannya untuk generate secure random bisa dibaca di [diskusi Stack Overflow](https://security.stackexchange.com/questions/34523/is-it-appropriate-to-use-haveged-as-a-source-of-entropy-on-virtual-machines).
+
 Kita juga harus menyiapkan user di sistem operasi untuk menjalankan aplikasi kita. Jangan menjalankan aplikasi dengan user `root`, karena mendatangkan resiko keamanan. User yang kita buat ini merupakan `system user`, yaitu user khusus dengan ketentuan:
 
 * tidak boleh login
