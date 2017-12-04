@@ -195,6 +195,12 @@ WantedBy=multi-user.target
 
 Dan letakkan di server, dalam folder `/etc/systemd/system/` dengan nama file `belajarci.service`.
 
+Bila kita edit file tersebut (misalnya menambahkan variabel, dsb), jangan lupa reload `systemd` dengan perintah berikut:
+
+```
+systemctl daemon-reload
+```
+
 Ada dua file konfigurasi yang bisa kita buat dalam `/home/artivisi`, yaitu:
 
 * application.properties : berisi file konfigurasi aplikasi, misalnya setting database production. Isi file ini akan menimpa konfigurasi application.properties yang terbundel dalam jar
