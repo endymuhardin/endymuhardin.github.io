@@ -24,7 +24,7 @@ Untuk mengaktifkan fitur https pada webserver, pada prinsipnya kita membutuhkan 
 2. Certificate yang sudah diberikan signature oleh Certificate Authority (CA)
 3. Certificate CA yang memberikan signature. File jenis ini bisa terdiri dari banyak file, tergantung apakah CA tersebut memiliki intermediate certificate atau tidak
 
-Sebagai contoh, kita akan gunakan file-file berikut yang didapatkan dari [penyedia SSL gratis StartSSL](https://www.startssl.com/?app=1). File self-signed yang kita buat di artikel bagian kedua juga bisa digunakan, malah lebih mudah karena sertifikat CA hanya satu, sedangkan yang dari StartSSL ada 2 file, satu Root CA dan satu Intermediate CA. Berikut adalah file-file tersebut:
+Sebagai contoh, kita akan gunakan file-file berikut yang didapatkan dari ~~[penyedia SSL gratis StartSSL](https://www.startssl.com/?app=1)~~. **Update : StartSSL [sudah diblokir oleh semua browser](https://arstechnica.com/information-technology/2017/07/google-drops-the-boom-on-wosign-startcom-certs-for-good/). Sekarang kita bisa pakai LetsEncrypt yang gratis dan otomatis.** File self-signed yang kita buat di artikel bagian kedua juga bisa digunakan, malah lebih mudah karena sertifikat CA hanya satu, sedangkan yang dari StartSSL ada 2 file, satu Root CA dan satu Intermediate CA. Berikut adalah file-file tersebut:
 
 1. Private Key : `demo.muhardin.com.key`
 2. Sertifikat yang sudah ditandatangani CA : `demo.muhardin.com.crt`
