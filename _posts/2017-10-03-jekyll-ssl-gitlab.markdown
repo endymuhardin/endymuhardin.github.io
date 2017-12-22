@@ -38,6 +38,11 @@ Klik `New Domain`, kemudian masukkan nama domain, public key, dan private key se
 
 [![Custom Domain]({{site.url}}/images/uploads/2017/ssl-gitlab/custom-domain.png)]({{site.url}}/images/uploads/2017/ssl-gitlab/custom-domain.png)
 
+Bila [menggunakan sertifikat SSL gratis dari LetsEncrypt](https://software.endy.muhardin.com/devops/letsencrypt-manual-dns/), file yang digunakan adalah sebagai berikut:
+
+* `fullchain.pem` untuk di isian `Certificate (PEM)`
+* `privkey.pem` untuk di isian `Key (PEM)`
+
 Klik `Save`. Hasilnya sebagai berikut
 
 [![Hasil Settings]({{site.url}}/images/uploads/2017/ssl-gitlab/hasil.png)]({{site.url}}/images/uploads/2017/ssl-gitlab/hasil.png)
