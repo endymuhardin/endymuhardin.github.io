@@ -323,10 +323,10 @@ Aplikasi ini memiliki beberapa opsi tambahan yang bermanfaat, misalnya:
 Masing-masing file video tentu punya metadata (judul, kategori, playlist, dan sebagainya) yang berbeda. Untuk mengatasi hal ini, kita buat dulu daftar file berikut metadatanya dalam file text. Misalnya, bila saya ingin menggunakan metadata : `judul`, `deskripsi`, `playlist`, saya akan membuat file `daftar-upload.txt` yang isinya seperti ini:
 
 ```
-GOPRO001.mp4,Rute Rindu Alam 1,Jalur Rindu Alam dari Mang Ade sampai Gadog,Gowes Puncak
-GOPRO002.mp4,Jalur Pipa Gas Depok,Menyusuri single track JPG Depok,Gowes Depok,
-GOPRO003.mp4,Gunung Pancar,Sentul City ke Hutan Pinus,Gowes Sentul City
-GOPRO004.mp4,KM 0 Bojong Koneng,Sentul City ke KM 0 via Bukit Pelangi,Gowes Sentul City
+2016-01-02T00:00:00.0Z,GOPRO001.mp4,Rute Rindu Alam 1,Jalur Rindu Alam dari Mang Ade sampai Gadog\nLokasi: Puncak - Bogor,Gowes Puncak
+2016-01-03T00:00:00.0Z,GOPRO002.mp4,Jalur Pipa Gas Depok,Menyusuri single track JPG Depok\nLokasi: Depok - Jawa Barat,Gowes Depok,
+2016-01-04T00:00:00.0Z,GOPRO003.mp4,Gunung Pancar,Sentul City ke Hutan Pinus\nLokasi: Sentul - Bogor,Gowes Sentul City
+2016-01-05T00:00:00.0Z,GOPRO004.mp4,KM 0 Bojong Koneng,Sentul City ke KM 0 via Bukit Pelangi\nLokasi: Sentul - Bogor,Gowes Sentul City
 ```
 
 Kemudian, kita letakkan file tersebut di folder yang sama dengan file `GOPRO001.mp4`,`GOPRO002.mp4`,`GOPRO003.mp4`, dan `GOPRO004.mp4`.
@@ -335,10 +335,13 @@ Selanjutnya, buat script untuk mengupload, misalnya kita beri nama `upload.sh`. 
 
 ```bash
 #!/bin/bash
-while IFS="," read namafile judul deskripsi playlist
+OLDIFS=$IFS
+IFS=,
+while read publishdate namafile judul deskripsi playlist
 do
-  youtube-upload --client-secret=client_id.json --credentials-file=channel_artivisi.json --title='$judul' --description='$deskripsi' --playlist='$playlist' $namafile
+  youtube-upload --client-secret=client_id.json --credentials-file=channel_artivisi.json --title='$judul' --description='$deskripsi' --playlist='$playlist' --publish-at=$publishdate $namafile
 done < daftar-upload.txt
+IFS=$OLDIFS
 ```
 
 Pasang mode executablenya
