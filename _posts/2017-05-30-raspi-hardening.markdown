@@ -157,8 +157,10 @@ passwd: password updated successfully
 
 Kemudian kita coba exit dan ssh lagi dengan user yang baru tersebut.
 
+```
 $ exit
 $ ssh endy@192.168.100.10
+```
 
 <a name="hapus-user-pi"></a>
 ## Menghapus User pi ##
