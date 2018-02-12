@@ -16,10 +16,10 @@ Pada artikel kali ini, kita akan mendeploy beberapa aplikasi microservices dalam
 
 Satu VPS biasanya hanya punya satu IP public. Dengan keterbatasan ini, maka kita perlu sedikit berakrobat supaya semua aplikasi kita bisa berbagai pakai port-port penting seperti misalnya port HTTPS (443). Sebagai studi kasus, pada artikel ini kita akan mendeploy beberapa aplikasi yang dibuat dengan bahasa pemrograman dan framework berbeda, yaitu Java dengan Spring Boot, NodeJS dengan Express, Ruby dengan Rails, dan tidak ketinggalan aplikasi sejuta umat Wordpress yang dibuat dengan PHP. Kita ingin mengakses keempatnya dengan alamat sebagai berikut:
 
-* https://app1.artivisi.id : Aplikasi Java dengan Spring Boot
-* https://app2.artivisi.id : Aplikasi NodeJS dengan ExpressJS
-* https://app3.artivisi.id : Aplikasi Ruby dengan RubyOnRails
-* https://wp.artivisi.id : Aplikasi PHP dengan Wordpress
+* `https://app1.artivisi.id` : Aplikasi Java dengan Spring Boot
+* `https://app2.artivisi.id` : Aplikasi NodeJS dengan ExpressJS
+* `https://app3.artivisi.id` : Aplikasi Ruby dengan RubyOnRails
+* `https://wp.artivisi.id` : Aplikasi PHP dengan Wordpress
 
 Keempat aplikasi akan dihosting/dijalankan di satu mesin yang sama. Saya akan gunakan VPS termurah yang disediakan [Digital Ocean](https://m.do.co/c/c5449509c33a), seharga $5 sebulan.
 
@@ -167,7 +167,7 @@ Semua domain kita sudah bisa diakses dengan protokol `http`. Sekarang saatnya ki
 ```
 add-apt-repository ppa:certbot/certbot
 apt update
-apt install certbot python-certbot-nginx -y
+apt install certbot -y
 ```
 
 Pada saat tulisan ini dibuat, ada sedikit masalah security sehingga prosesnya tidak bisa 100% otomatis. Kita harus mematikan Nginx dulu sementara `certbot` membuat sertifikat SSL. 
@@ -243,7 +243,7 @@ Test dulu apakah konfigurasinya sudah oke. Setelah berjalan dengan baik, kita re
 
 ### Test SSL Labs ###
 
-Setelah semua sertifikat terpasang sempurna, kita coba dengan aplikasi auditor konfigurasi SSL, yaitu [SSL Labs](https://www.ssllabs.com/ssltest/).
+Setelah semua sertifikat terpasang sempurna, kita coba dengan layanan auditor konfigurasi SSL, yaitu [SSL Labs](https://www.ssllabs.com/ssltest/). Layanan ini akan memberi tahu kita kalau ada kekurangan dalam konfigurasi https kita.
 
 Buka [websitenya](https://www.ssllabs.com/ssltest/) kemudian masukkan nama domain kita di sana.
 
