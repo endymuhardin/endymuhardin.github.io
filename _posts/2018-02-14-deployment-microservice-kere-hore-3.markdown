@@ -210,16 +210,16 @@ Klik `Install`, dan Wordpress sudah siap digunakan.
 
 Klik tombol Login
 
-[![Halaman Login]({{site.url}}/images/uploads/2018/msa-deployment/15-login.png)]({{site.url}}/images/uploads/2018/msa-deployment/15-login.png)
+[![Halaman Login]({{site.url}}/images/uploads/2018/msa-deployment/15-login-wp.png)]({{site.url}}/images/uploads/2018/msa-deployment/15-login-wp.png)
 
 
 Kita sudah bisa login ke halaman admin
 
-[![Halaman Admin]({{site.url}}/images/uploads/2018/msa-deployment/16-admin.png)]({{site.url}}/images/uploads/2018/msa-deployment/16-admin.png)
+[![Halaman Admin]({{site.url}}/images/uploads/2018/msa-deployment/16-admin-wp.png)]({{site.url}}/images/uploads/2018/msa-deployment/16-admin-wp.png)
 
 Kita juga bisa langsung melihat halaman depan website kita
 
-[![Tampilan website]({{site.url}}/images/uploads/2018/msa-deployment/17-frontpage.png)]({{site.url}}/images/uploads/2018/msa-deployment/17-frontpage.png)
+[![Tampilan website]({{site.url}}/images/uploads/2018/msa-deployment/17-frontpage-wp.png)]({{site.url}}/images/uploads/2018/msa-deployment/17-frontpage-wp.png)
 
 ## Penutup ##
 
