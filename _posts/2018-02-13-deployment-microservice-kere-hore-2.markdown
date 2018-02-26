@@ -7,7 +7,7 @@ categories:
 - devops
 ---
 
-Pada artikel sebelumnya, kita telah menyiapkan front proxy yang sudah berfungsi dengan baik. Kali ini, kita akan membuat aplikasi Java sederhana dengan Spring Boot yang kemudian akan kita pasang di VPS kita kemarin dengan nama domain `app1.artivisi.id`.
+Pada [artikel sebelumnya]({{site.url}}/devops/deployment-microservice-kere-hore-1/), kita telah menyiapkan front proxy yang sudah berfungsi dengan baik. Kali ini, kita akan membuat aplikasi Java sederhana dengan Spring Boot yang kemudian akan kita pasang di VPS kita kemarin dengan nama domain `app1.artivisi.id`.
 
 <!--more-->
 

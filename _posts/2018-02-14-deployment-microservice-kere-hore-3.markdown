@@ -223,4 +223,4 @@ Kita juga bisa langsung melihat halaman depan website kita
 
 ## Penutup ##
 
-Sampai di sini, kita sudah bisa menjalankan aplikasi Java dan PHP dalam satu host. Tunggu artikel berikutnya untuk menambah aplikasi NodeJS dan Ruby on Rails.
+Sampai di sini, kita sudah bisa menjalankan aplikasi Java dan PHP dalam satu host. Tunggu [artikel berikutnya untuk cara menambah aplikasi NodeJS]({{site.url}}/devops/deployment-microservice-kere-hore-4/).
