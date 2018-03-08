@@ -135,7 +135,7 @@ Puma starting in single mode...
 Use Ctrl-C to stop
 ```
 
-Kita bisa coba browse ke http://app3.artivisi.id:3000 dan menemui tampilan seperti ini
+Kita bisa coba browse ke `http://app3.artivisi.id:3000` dan menemui tampilan seperti ini
 
 [![Hello Rails]({{site.url}}/images/uploads/2018/msa-deployment/22-halo-rails.png)]({{site.url}}/images/uploads/2018/msa-deployment/22-halo-rails.png)
 
@@ -249,6 +249,8 @@ service app3 start
 Browse ke `http://app3.artivisi.id:10003` dan kita akan dapatkan tampilan seperti ini
 
 [![Tampilan production tanpa https]({{site.url}}/images/uploads/2018/msa-deployment/23-rails-no-https.png)]({{site.url}}/images/uploads/2018/msa-deployment/23-rails-no-https.png)
+
+Selanjutnya, kita akan aktifkan konfigurasi reverse proxy di Nginx supaya aplikasi ini bisa diakses dengan `https` di port standar, yaitu `443`. Bukan lagi port `10003`. Setelah reverse proxy diaktifkan, kita bisa mengaksesnya dengan alamat yang terlihat normal, yaitu `https://app3.artivisi.id`.
 
 ## Konfigurasi Reverse Proxy Nginx ##
 
