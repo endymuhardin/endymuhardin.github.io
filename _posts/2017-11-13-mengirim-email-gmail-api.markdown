@@ -20,10 +20,10 @@ Pada artikel ini kita akan membahas yang paling populer saja, yaitu GMail. GMail
 
 Berikut langkah-langkahnya:
 
+<!--more-->
+
 * TOC
 {:toc}
-
-<!--more-->
 
 ## Membuat Project Google Developer ##
 
@@ -551,6 +551,133 @@ Berikut outputnya di mailbox.
 Dan seperti ini tampilan hasilnya.
 
 [![Choose Account]({{site.url}}/images/uploads/2017/gmail-api/23-email-content-template.png)]({{site.url}}/images/uploads/2017/gmail-api/23-email-content-template.png)
+
+## Deployment Heroku ##
+
+Ada pertanyaan di komentar :
+
+> Bagaimana cara menjalankan aplikasi ini di Heroku?
+
+Deployment di Heroku agak sedikit ribet, tapi bisa dilakukan. Sumber kesulitan utama adalah karena Heroku menganut prinsip [ephemeral file system](https://devcenter.heroku.com/articles/dynos#isolation-and-security). Artinya, semua file yang bukan bagian dari aplikasi akan **dihapus** setiap kali aplikasi dideploy atau direstart. Kesulitan yang ditimbulkan karena ini antara lain:
+
+* Bila ingin menjadikan `client_secret.json` sebagai bagian aplikasi, maka file ini harus dicommit ke source code repository. Tentunya ini tidak baik, karena semua yang masuk repo bukan lagi `secret`.
+* Kita tidak bisa menaruh file `clients_secret.json` di server aplikasi / dyno Heroku, karena akan dibuang setiap kali restart/deploy.
+* Kita tidak bisa menjalankan proses OAuth Google API, karena dia akan membuka port secara random, dan melakukan redirect ke port tersebut. Seperti kita lihat pada log di atas, dia mengharapkan redirect ke `http://localhost:51302/Callback&response_type=code&scope=https://www.googleapis.com/auth/gmail.send`. Port `51302` ini hanya akan jalan di jaringan internal Heroku dan tidak bisa diakses dari luar.
+
+Untuk itu, solusinya adalah sebagai berikut :
+
+* Taruh file `client_secret.json` di lokasi yang bisa diunduh oleh aplikasi kita di Heroku.
+* Supaya tidak perlu menjalankan proses otorisasi OAuth, kita jalankan prosesnya di laptop/PC, kemudian upload hasilnya, yaitu file `StoredCredential` ke lokasi tersebut.
+* Download file `client_secret.json` dan `StoredCredential` dari lokasi tersebut ke aplikasi kita di Heroku.
+
+Kita bisa menaruh kedua file ini di server VPS kita, atau menggunakan layanan cloud seperti Dropbox atau Amazon S3. Cara mengambil file dari kedua layanan ini tidak saya bahas di sini. Sebagai contoh sederhana, kita akan gunakan layanan [Ngrok](https://ngrok.com/) supaya laptop kita bisa diakses dari Heroku.
+
+Kita akan mempublikasikan kedua file credentials tersebut agar bisa diakses oleh aplikasi kita di Heroku. Ada dua peralatan yang kita gunakan di sini:
+
+* web server di laptop supaya folder berisi file credentials bisa diakses melalui HTTP
+* ngrok untuk mempublikasikan web server lokal tersebut agar bisa diakses dari internet
+
+Web server sederhana banyak ditemukan di internet. Sudah ada yang membuatkan [rekap daftar web server yang bisa dijalankan dengan satu baris perintah](https://gist.github.com/willurd/5720255). Pilih saja salah satu, lalu jalankan. Misalnya seperti ini :
+
+```
+cd ~/.gmail-api/credentials
+python -m SimpleHTTPServer 8000
+```
+
+Dia akan segera ready di port `8000`. Outputnya seperti ini
+
+```
+Serving HTTP on 0.0.0.0 port 8000 ...
+```
+
+Selanjutnya, port 8000 tersebut kita publikasikan dengan ngrok
+
+```
+./ngrok http 8000
+```
+
+Outputnya seperti ini
+
+```
+ngrok by @inconshreveable
+             (Ctrl+C to quit)
+Session Status                online
+Session Expires               7 hours, 15 minutes
+Version                       2.2.8
+Region                        United States (us)
+Web Interface                 http://127.0.0.1:4040
+Forwarding                    http://646f1763.ngrok.io -> localhost:8000
+Forwarding                    https://646f1763.ngrok.io -> localhost:8000
+```
+
+Kita bisa gunakan URL yang disediakan ngrok untuk mengambil file dari aplikasi kita. Berikut kode programnya
+
+```java
+private static final String CLIENT_SECRET_JSON_FILE = "client_secret.json";
+private static final String STORED_CREDENTIAL_FILE = "StoredCredential";
+
+@Value("${GMAIL_CREDENTIAL_FILE_SERVER}")
+private String credentialFileServer;
+
+@Bean @Profile("!heroku")
+public GoogleClientSecrets localFileClientSecrets() throws Exception {
+  return GoogleClientSecrets.load(jsonFactory(),
+          new InputStreamReader(new FileInputStream(dataStoreFolder + File.separator + CLIENT_SECRET_JSON_FILE)));
+}
+
+@Bean @Profile("heroku")
+public GoogleClientSecrets downloadClientSecrets() throws Exception {
+  downloadCredentialsFile(CLIENT_SECRET_JSON_FILE);
+  downloadCredentialsFile(STORED_CREDENTIAL_FILE);
+  return GoogleClientSecrets.load(jsonFactory(),
+      new InputStreamReader(new FileInputStream(dataStoreFolder + File.separator + CLIENT_SECRET_JSON_FILE)));
+}
+
+private void downloadCredentialsFile(String filename) throws Exception {
+  RestTemplate restTemplate = new RestTemplate();
+  restTemplate.getMessageConverters().add(
+      new ByteArrayHttpMessageConverter());
+
+  HttpHeaders headers = new HttpHeaders();
+  headers.setAccept(Arrays.asList(MediaType.APPLICATION_OCTET_STREAM));
+
+  HttpEntity<String> entity = new HttpEntity<String>(headers);
+
+  ResponseEntity<byte[]> response = restTemplate.exchange(
+      credentialFileServer + "/" + filename,
+      HttpMethod.GET, entity, byte[].class, "1");
+
+  if (response.getStatusCode() == HttpStatus.OK) {
+    Files.createDirectories(Paths.get(dataStoreFolder));
+    Files.write(Paths.get(dataStoreFolder + File.separator + filename), 
+      response.getBody());
+  }
+}
+```
+
+Kita memisahkan kode program untuk mempersiapkan client secret menjadi satu method tersendiri. Yang satu menyiapkan credential dari file local. Ini adalah kondisi normal seperti sebelumnya. Satu lagi mengambil file credential dari server lain (dalam hal ini laptop yang sudah dipublish dengan ngrok) dan menaruhnya di tempat yang sesuai. Nantinya setiap kali startup, aplikasi kita akan terlebih dulu mengunduh file credential tersebut.
+
+Untuk memilih method mana yang dieksekusi, kita gunakan anotasi `@Profile`. Yang satu jalan bila profile `heroku` tidak aktif, yaitu bila aplikasi tidak jalan di Heroku. Satu lagi jalan bila aplikasi dideploy ke Heroku.
+
+Agar aplikasi berjalan baik, kita akan setup dua environment variable di Heroku untuk dibaca oleh aplikasi kita. Yang pertama adalah profile `heroku` agar method `downloadClientSecrets` dijalankan. Berikut perintahnya dengan `heroku-cli`.
+
+```
+heroku config:set SPRING_PROFILES_ACTIVE=heroku
+```
+
+Anda juga bisa memasang variabel ini lewat web UI seperti pada [tutorial terdahulu](https://software.endy.muhardin.com/java/project-bootstrap-03/).
+
+Selain itu, kita pasang juga environment variable `GMAIL_CREDENTIAL_FILE_SERVER` sebagai berikut
+
+```
+heroku config:set GMAIL_CREDENTIAL_FILE_SERVER=https://646f1763.ngrok.io
+```
+
+Nah, sekarang aplikasi kita sudah bisa dideploy ke Heroku. 
+
+> Disclaimer !!! Teknik ngrok di atas tidak untuk dipakai di production, karena tidak ada proteksi apapun terhadap `client_secret.json` dan `StoredCredential`. Lakukan proteksi yang memadai bila mau dihosting sendiri, atau gunakan layanan dengan security yang baik seperti Dropbox atau Amazon S3.
+
+## Penutup ##
 
 Demikianlah cara menggunakan GMail API untuk mengirim notifikasi email dari aplikasi kita. Source code lengkap ada [di Github](https://github.com/endymuhardin/belajar-gmail-api). Lihat juga [commit history](https://github.com/endymuhardin/belajar-gmail-api/commits/master) untuk urutan implementasi codingnya.
 
