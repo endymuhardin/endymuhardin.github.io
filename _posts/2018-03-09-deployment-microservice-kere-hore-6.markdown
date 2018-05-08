@@ -37,7 +37,7 @@ Tidak seperti Apache HTTPD dan Nginx, LetsEncrypt belum mendukung otomasi pengel
 
 Berikut adalah skema proses permintaan dan perpanjangan sertifikat dengan menggunakan HAProxy.
 
-[![Skema HAProxy]({{site.url}}/images/uploads/2018/msa-deployment/25-letsencrypt-haproxy.jpg)]
+[![Skema HAProxy]({{site.url}}/images/uploads/2018/msa-deployment/25-letsencrypt-haproxy.jpg)]({{site.url}}/images/uploads/2018/msa-deployment/25-letsencrypt-haproxy.jpg)
 
 Kita meminta sertifikat SSL dari LetsEncrypt menggunakan aplikasi yang disebut `certbot`. Pada saat dijalankan, prosesnya yang terjadi kira-kira seperti ini:
 
