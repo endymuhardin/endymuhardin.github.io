@@ -447,4 +447,4 @@ Tapi bila kita sudah login, apalagi pakai beberapa akun, maka kita akan disajika
 
 Setelah kita login, maka aplikasi akan melakukan flow OAuth `authorization-code`, kemudian akan mendapatkan `email` user yang berhasil login dari Google. Kemudian aplikasi akan melakukan mapping dari nilai `email` tersebut menjadi daftar `String` berisi `permisson` untuk user yang memiliki email tersebut. Selanjutnya, daftar permission akan diaplikasikan sesuai dengan tampilan screen dan ijin akses ke url tertentu.
 
-Selamat mencoba, semoga bermanfaat.
+Selamat mencoba, semoga bermanfaat. Source code lengkap ada [di Github](https://github.com/endymuhardin/belajar-google-sso)
