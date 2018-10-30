@@ -439,11 +439,11 @@ Browse ke `http://localhost:8080`, kita akan mendapati link login yang otomatis 
 
 Klik link Google. Bila kita belum login ke layanan Google (Gmail, Youtube, dsb) maka kita akan dimintai login.
 
-[![Login Screen Google]({{site.url}}/images/uploads/2018/google-sso/09-login-page-aplikasi.png)]({{site.url}}/images/uploads/2018/google-sso/09-login-page-aplikasi.png)
+[![Login Screen Google]({{site.url}}/images/uploads/2018/google-sso/10-login-page-google.png)]({{site.url}}/images/uploads/2018/google-sso/10-login-page-google.png)
 
 Tapi bila kita sudah login, apalagi pakai beberapa akun, maka kita akan disajikan pilihan mau pakai akun yang mana.
 
-[![Pilihan Google Account]({{site.url}}/images/uploads/2018/google-sso/09-login-page-aplikasi.png)]({{site.url}}/images/uploads/2018/google-sso/09-login-page-aplikasi.png)
+[![Pilihan Google Account]({{site.url}}/images/uploads/2018/google-sso/11-consent-screen.png)]({{site.url}}/images/uploads/2018/google-sso/11-consent-screen.png)
 
 Setelah kita login, maka aplikasi akan melakukan flow OAuth `authorization-code`, kemudian akan mendapatkan `email` user yang berhasil login dari Google. Kemudian aplikasi akan melakukan mapping dari nilai `email` tersebut menjadi daftar `String` berisi `permisson` untuk user yang memiliki email tersebut. Selanjutnya, daftar permission akan diaplikasikan sesuai dengan tampilan screen dan ijin akses ke url tertentu.
 
