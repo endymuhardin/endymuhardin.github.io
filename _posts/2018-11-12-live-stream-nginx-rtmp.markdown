@@ -17,7 +17,7 @@ Karena banyak platform berbeda, tapi tujuannya sama, maka sayapun mencari aplika
 
 Pada artikel kali ini, kita akan membahas setup Nginx RTMP Module dengan Raspberry Pi.
 
-![[Raspi Resource Usage]({{site.url}}/images/uploads/2018/live-streaming/01-raspi-resource-usage.png)]({{site.url}}/images/uploads/2018/live-streaming/01-raspi-resource-usage.png)
+[![Raspi Resource Usage]({{site.url}}/images/uploads/2018/live-streaming/01-raspi-resource-usage.png)]({{site.url}}/images/uploads/2018/live-streaming/01-raspi-resource-usage.png)
 
 <!--more-->
 
@@ -83,7 +83,7 @@ sudo /usr/local/nginx/sbin/nginx
 
 Kemudian kita test dengan browse ke `http://<ip-server-raspberry>/`. Seharusnya kita akan melihat layar selamat datang Nginx.
 
-![[Welcome Nginx]({{site.url}}/images/uploads/2018/live-streaming/00-nginx-welcome.png)]({{site.url}}/images/uploads/2018/live-streaming/00-nginx-welcome.png)
+[![Welcome Nginx]({{site.url}}/images/uploads/2018/live-streaming/00-nginx-welcome.png)]({{site.url}}/images/uploads/2018/live-streaming/00-nginx-welcome.png)
 
 ## Konfigurasi Youtube ##
 
@@ -91,31 +91,31 @@ Ada dua tujuan live streaming yang populer, yaitu Youtube dan Facebook.
 
 Kita akan setup Youtube dulu. Login ke Youtube, kemudian buka [halaman setting Live Streaming](https://www.youtube.com/live_dashboard?ar=1).
 
-![[Youtube Live Streaming Page]({{site.url}}/images/uploads/2018/live-streaming/01-live-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/01-live-streaming.png)
+[![Youtube Live Streaming Page]({{site.url}}/images/uploads/2018/live-streaming/01-live-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/01-live-streaming.png)
 
 Ada dua pilihan metode streaming di Youtube, yaitu Live Streaming dan [Event](https://www.youtube.com/my_live_events?o=U&ar=1). Bila kita mau spontan tayang, maka kita bisa gunakan Live Streaming. Langsung saja copy `Server URL` dan `Stream name/key` dan pasang di aplikasi broadcaster kita.
 
 Bila sesi livenya terjadwal, kita bisa menggunakan Event. Di menu Event, kita bisa mengatur sesi live dengan lebih baik, misalnya kita bisa jadwalkan terlebih dulu sehingga para subscriber kita bisa menyiapkan waktu untuk menonton.
 
-![[Create Event]({{site.url}}/images/uploads/2018/live-streaming/02-create-event.png)]({{site.url}}/images/uploads/2018/live-streaming/02-create-event.png)
+[![Create Event]({{site.url}}/images/uploads/2018/live-streaming/02-create-event.png)]({{site.url}}/images/uploads/2018/live-streaming/02-create-event.png)
 
 Untuk membuat Event, kita klik tab Event di kiri. Kemudian isi nama event dan waktu tayang. Begitu kita klik `Create Event`, subscriber kita akan diberikan notifikasi.
 
 Selanjutnya, kita akan menentukan setting bitrate dan resolusi. Semakin besar bitrate/resolusi, semakin baik kualitas audio dan video. Tapi bandwidth yang dibutuhkan juga semakin besar. Biasanya saya menggunakan `480p` saja untuk acara training/seminar/diskusi. Untuk jenis event seperti ini, kualitas audio jauh lebih penting daripada gambar.
 
-![[Pilihan Resolusi]({{site.url}}/images/uploads/2018/live-streaming/03-pilihan-resolusi.png)]({{site.url}}/images/uploads/2018/live-streaming/03-pilihan-resolusi.png)
+[![Pilihan Resolusi]({{site.url}}/images/uploads/2018/live-streaming/03-pilihan-resolusi.png)]({{site.url}}/images/uploads/2018/live-streaming/03-pilihan-resolusi.png)
 
 Bila resolusi yang kita inginkan tidak ada, maka kita bisa membuat yang baru. Cukup create event, lalu pilih resolusi yang ingin kita gunakan.
 
-![[Membuat resolusi baru]({{site.url}}/images/uploads/2018/live-streaming/04-create-resolusi.png)]({{site.url}}/images/uploads/2018/live-streaming/04-create-resolusi.png)
+[![Membuat resolusi baru]({{site.url}}/images/uploads/2018/live-streaming/04-create-resolusi.png)]({{site.url}}/images/uploads/2018/live-streaming/04-create-resolusi.png)
 
 Setelah kita memilih resolusi, kita akan diberikan setting untuk aplikasi encoder/broadcaster. Sama seperti sebelumnya, kita butuh nilai `Stream URL` dan `Stream Name/Key`.
 
-![[Setting Encoder]({{site.url}}/images/uploads/2018/live-streaming/05-setting-encoder.png)]({{site.url}}/images/uploads/2018/live-streaming/05-setting-encoder.png)
+[![Setting Encoder]({{site.url}}/images/uploads/2018/live-streaming/05-setting-encoder.png)]({{site.url}}/images/uploads/2018/live-streaming/05-setting-encoder.png)
 
 `Stream URL` Youtube biasanya adalah `rtmp://a.rtmp.youtube.com/live2/`
 
-![[Preview Streaming]({{site.url}}/images/uploads/2018/live-streaming/06-persiapan-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/06-persiapan-streaming.png)
+[![Preview Streaming]({{site.url}}/images/uploads/2018/live-streaming/06-persiapan-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/06-persiapan-streaming.png)
 
 Berikutnya, kita akan disajikan layar persiapan event. Di sini kita bisa mulai menyalakan aplikasi encoder kita. Hasilnya akan tampil di halaman tersebut. Kita bisa mengetes kualitas streaming kita di layar ini. Pada titik ini, tayangan kita belum dipublish secara umum. Hanya kita yang bisa melihatnya.
 
@@ -125,11 +125,11 @@ Setelah kita puas dengan kualitas video tayangan, kita bisa klik `Start Streamin
 
 Di Facebook, kita bisa langsung pergi ke halaman [Create Live Stream](https://www.facebook.com/live/create). Klik tombol `Create`, dan kemudian kita akan masuk ke halaman persiapan live streaming
 
-![[Persiapan Live Streaming]({{site.url}}/images/uploads/2018/live-streaming/01-facebook-live-create.png)]({{site.url}}/images/uploads/2018/live-streaming/01-facebook-live-create.png)
+[![Persiapan Live Streaming]({{site.url}}/images/uploads/2018/live-streaming/01-facebook-live-create.png)]({{site.url}}/images/uploads/2018/live-streaming/01-facebook-live-create.png)
 
 Seperti biasa, kita butuh `Stream URL` dan `Stream Key`. Kita juga perlu mengisi judul dan deskripsi acara. Settingan privasi tayangan juga bisa diatur.
 
-![[Konfigurasi Encoder]({{site.url}}/images/uploads/2018/live-streaming/02-facebook-encoder-setting.png)]({{site.url}}/images/uploads/2018/live-streaming/02-facebook-encoder-setting.png)
+[![Konfigurasi Encoder]({{site.url}}/images/uploads/2018/live-streaming/02-facebook-encoder-setting.png)]({{site.url}}/images/uploads/2018/live-streaming/02-facebook-encoder-setting.png)
 
 `Stream URL` Facebook biasanya adalah `rtmp://live-api-s.facebook.com:80/rtmp/`
 
@@ -243,7 +243,7 @@ systemctl enable nginx.service
 
 [OBS (Open Broadcaster Software) Project](https://obsproject.com/) adalah aplikasi encoder/broadcaster open source yang sudah terbukti kehandalannya. Aplikasi ini sudah amat cukup untuk melakukan live streaming.
 
-![[Layanan OBS]({{site.url}}/images/uploads/2018/live-streaming/03-obs-pilihan-stream-service.png)]({{site.url}}/images/uploads/2018/live-streaming/03-obs-pilihan-stream-service.png)
+[![Layanan OBS]({{site.url}}/images/uploads/2018/live-streaming/03-obs-pilihan-stream-service.png)]({{site.url}}/images/uploads/2018/live-streaming/03-obs-pilihan-stream-service.png)
 
 Di antara fiturnya adalah:
 
@@ -255,15 +255,15 @@ Saking banyak dan lengkap fiturnya, perlu satu artikel khusus untuk membahas OBS
 
 Walaupun demikian, ada satu keterbatasan OBS, yaitu dia hanya bisa broadcast ke satu tujuan. Tidak bisa misalnya ke Youtube dan Facebook sekaligus.
 
-![[Direct Streaming]({{site.url}}/images/uploads/2018/live-streaming/01-direct-streaming.jpg)]({{site.url}}/images/uploads/2018/live-streaming/01-direct-streaming.jpg)
+[![Direct Streaming]({{site.url}}/images/uploads/2018/live-streaming/01-direct-streaming.jpg)]({{site.url}}/images/uploads/2018/live-streaming/01-direct-streaming.jpg)
 
 Untuk itu, kita akan menggunakan relay server dengan `Nginx` yang sudah kita setup di atas. Sehingga topologinya menjadi seperti ini
 
-![[Nginx RTMP Streaming]({{site.url}}/images/uploads/2018/live-streaming/02-nginx-rtmp-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/02-nginx-rtmp-streaming.png)
+[![Nginx RTMP Streaming]({{site.url}}/images/uploads/2018/live-streaming/02-nginx-rtmp-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/02-nginx-rtmp-streaming.png)
 
 Untuk menghubungkan OBS dengan Nginx, masuk ke menu `Settings`, kemudian masuk ke menu `Stream`. Kita bisa pasang `Stream URL` dan `Stream Key` di sana.
 
-![[Konfigurasi Stream OBS]({{site.url}}/images/uploads/2018/live-streaming/02-obs-stream-setting.png)]({{site.url}}/images/uploads/2018/live-streaming/02-obs-stream-setting.png)
+[![Konfigurasi Stream OBS]({{site.url}}/images/uploads/2018/live-streaming/02-obs-stream-setting.png)]({{site.url}}/images/uploads/2018/live-streaming/02-obs-stream-setting.png)
 
 Kita masukkan nilai berikut:
 
@@ -278,17 +278,17 @@ Nginx RTMP Module selain mempublish tayangan kita ke tujuan yang disebutkan dala
 
 Masuk ke menu `File > Open Network`, lalu masukkan URL `rtmp://<ip-nginx-rtmp>/live/<stream-key>` seperti screenshot berikut
 
-![[VLC Open Stream]({{site.url}}/images/uploads/2018/live-streaming/01-vlc-open-stream.png)]({{site.url}}/images/uploads/2018/live-streaming/01-vlc-open-stream.png)
+[![VLC Open Stream]({{site.url}}/images/uploads/2018/live-streaming/01-vlc-open-stream.png)]({{site.url}}/images/uploads/2018/live-streaming/01-vlc-open-stream.png)
 
 Seharusnya kita bisa menonton live streaming yang dikirim oleh OBS.
 
-![[VLC View Stream]({{site.url}}/images/uploads/2018/live-streaming/02-vlc-view-stream.png)]({{site.url}}/images/uploads/2018/live-streaming/02-vlc-view-stream.png)
+[![VLC View Stream]({{site.url}}/images/uploads/2018/live-streaming/02-vlc-view-stream.png)]({{site.url}}/images/uploads/2018/live-streaming/02-vlc-view-stream.png)
 
 ## Penutup ##
 
 Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya gratis, setupnya tidak sulit, aplikasinya gratis, pokoknya tinggal pakai. Bahkan seandainya kita hanya bermodalkan smartphone, kita bisa langsung live. Akan tetapi, untuk mendapatkan hasil yang lebih profesional, kita perlu menggunakan aplikasi yang lebih canggih seperti OBS. Di situ kita bisa menambahkan logo di kanan atas, nama pembicara di bawah (lower third), running text, menjalankan iklan, dan sebagainya. Hasilnya bisa dilihat di [event Monday Forum Tazkia](https://youtu.be/HQ-BG0pyz8A)
 
-![[YouTube Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)
+[![YouTube Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)
 
 Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banyak platform sekaligus. Walaupun demikian, Instagram Live masih belum bisa ditangani oleh aplikasi encoder/broadcaster termasuk Nginx RTMP Module ini.
 
