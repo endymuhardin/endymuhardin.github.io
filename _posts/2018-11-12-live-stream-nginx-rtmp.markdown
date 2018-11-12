@@ -296,7 +296,7 @@ Selamat mencoba, semoga bermanfaat ...
 
 ## Referensi ##
 
-* https://obsproject.com/forum/resources/how-to-set-up-your-own-private-rtmp-server-using-nginx.50/
-* https://github.com/tiangolo/nginx-rtmp-docker/blob/master/README.md
-* https://www.leaseweb.com/labs/2013/11/streaming-video-demand-nginx-rtmp-module/
-* https://www.vultr.com/docs/setup-nginx-rtmp-on-centos-7
+* [https://obsproject.com/forum/resources/how-to-set-up-your-own-private-rtmp-server-using-nginx.50/](https://obsproject.com/forum/resources/how-to-set-up-your-own-private-rtmp-server-using-nginx.50/)
+* [https://github.com/tiangolo/nginx-rtmp-docker/blob/master/README.md](https://github.com/tiangolo/nginx-rtmp-docker/blob/master/README.md)
+* [https://www.leaseweb.com/labs/2013/11/streaming-video-demand-nginx-rtmp-module/](https://www.leaseweb.com/labs/2013/11/streaming-video-demand-nginx-rtmp-module/)
+* [https://www.vultr.com/docs/setup-nginx-rtmp-on-centos-7](https://www.vultr.com/docs/setup-nginx-rtmp-on-centos-7)
