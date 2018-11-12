@@ -267,7 +267,7 @@ Untuk menghubungkan OBS dengan Nginx, masuk ke menu `Settings`, kemudian masuk k
 
 Kita masukkan nilai berikut:
 
-* `Stream URL` : `rtmp://<ip-address-nginx-server>/live
+* `Stream URL` : `rtmp://<ip-address-nginx-server>/live`
 * `Stream Key` : masukkan nilai apa saja, bebas. Misalnya kita berikan key `coba-coba-streaming`
 
 Setelah itu kita bisa mulai streaming dengan menekan tombol `Start Streaming`.
