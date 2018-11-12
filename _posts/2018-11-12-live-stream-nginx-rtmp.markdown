@@ -253,7 +253,7 @@ Di antara fiturnya adalah:
 
 Saking banyak dan lengkap fiturnya, perlu satu artikel khusus untuk membahas OBS. Sedangkan di sini kita mau fokus membahas live streaming.
 
-Walaupun demikian, ada satu keterbatasan OBS, yaitu dia hanya bisa broadcast ke satu tujuan. Tidak bisa misalnya ke Youtube dan Facebook sekaligus.
+Walaupun demikian, ada satu keterbatasan OBS, yaitu dia hanya bisa broadcast ke satu tujuan. Tidak bisa misalnya ke Youtube dan Facebook sekaligus. Bila kita ingin melakukan broadcast ke beberapa tujuan seperti gambar di bawah, kita harus pakai aplikasi lain seperti misalnya `Vmix` atau menggunakan layanan cloud seperti `reStream`, `SwitchBoard`, atau lainnya.
 
 [![Direct Streaming]({{site.url}}/images/uploads/2018/live-streaming/01-direct-streaming.jpg)]({{site.url}}/images/uploads/2018/live-streaming/01-direct-streaming.jpg)
 
