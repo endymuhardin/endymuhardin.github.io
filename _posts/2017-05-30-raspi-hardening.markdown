@@ -373,7 +373,7 @@ network={
 Selanjutnya kita restart wifinya.
 
 ```
-wpa_cli reconfigure
+wpa_cli -i wlan0 reconfigure
 ```
 
 Kalau kita lihat lognya, berikut outputnya
