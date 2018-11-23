@@ -12,14 +12,14 @@ Berikut langkah-langkah yang biasa saya lakukan pada saat setup Raspberry PI
 
 
 1. [Instalasi Raspbian ke MicroSD]({{ page.url }}/#instalasi)
-2. [Login ke Raspbian]({{ page.url }}/#login)
-3. [Buat user baru]({{ page.url }}/#user-baru)
-4. [Hapus user pi]({{ page.url }}/#hapus-user-pi)
-5. [Ganti keyboard dan timezone]({{ page.url }}/#keyboard-timezone)
-6. [Update & Upgrade]({{ page.url }}/#update-upgrade)
-7. [Setup passwordless login]({{ page.url }}/#passwordless-ssh)
-8. [Proteksi brute-force ssh]({{ page.url }}/#proteksi-brute-force-ssh)
-9. [Setup WiFi]({{ page.url }}/#setup-wifi-debian)
+2. [Setup WiFi]({{ page.url }}/#setup-wifi-debian)
+3. [Login ke Raspbian]({{ page.url }}/#login)
+4. [Buat user baru]({{ page.url }}/#user-baru)
+5. [Hapus user pi]({{ page.url }}/#hapus-user-pi)
+6. [Ganti keyboard dan timezone]({{ page.url }}/#keyboard-timezone)
+7. [Update & Upgrade]({{ page.url }}/#update-upgrade)
+8. [Setup passwordless login]({{ page.url }}/#passwordless-ssh)
+9. [Proteksi brute-force ssh]({{ page.url }}/#proteksi-brute-force-ssh)
 10. [Automount USB]({{ page.url }}/#automount-usb-debian)
 
 <!--more-->
@@ -101,7 +101,6 @@ $ mount
 devfs on /dev (devfs, local, nobrowse)
 map -hosts on /net (autofs, nosuid, automounted, nobrowse)
 map auto_home on /home (autofs, automounted, nobrowse)
-/dev/disk4 on /Volumes/SDUF128G (hfs, local, nodev, nosuid, journaled, noowners)
 /dev/disk2s2 on /Volumes/Untitled (ufsd_ExtFS, local, nodev, nosuid, noowners)
 /dev/disk2s1 on /Volumes/boot (msdos, local, nodev, nosuid, noowners)
 ```
@@ -112,7 +111,29 @@ Kemudian buat filenya. Bisa dengan File Explorer, klik kanan, Create New File. T
 $ touch /Volumes/boot/ssh
 ```
 
-Setelah itu, unmount MicroSD, dan pasang di Raspberry PI. Lalu tancapkan di kabel jaringan dan nyalakan.
+<a name="setup-wifi-debian"></a>
+## Setup WIFI ##
+
+Raspberry PI model terbaru (Pi 3 model B dan Pi Zero W) sudah memiliki chipset WiFi. Berikut cara untuk mendaftarkan SSID beserta passwordnya langsung ke SD Card sehingga pada waktu dinyalakan Raspi akan langsung terhubung dengan WiFi kita.
+
+Misalnya, nama SSIDnya adalah `wifiendy` dan passwordnya `abcd11223344`. Isi konfigurasi berikut di file `/Volumes/boot/wpa_supplicant.conf`
+
+```
+country=ID
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+   ssid="wifiendy"
+   psk="abcd11223344"
+}
+```
+
+Setelah itu, unmount MicroSD, dan pasang di Raspberry PI. Lalu tancapkan di kabel power dan nyalakan.
+
+```
+diskutil unmountDisk /dev/rdisk2
+```
 
 <a name="login"></a>
 ## Login ke Raspbian ##
@@ -330,80 +351,6 @@ Kita bisa lihat bahwa insiden tersebut sudah dilog dengan perintah `dmesg`. Outp
 
 ```
 SSH brute force IN=eth0 OUT= MAC=30:85:a9:47:f6:9c:e4:8d:8c:7b:3c:a5:08:00 SRC=192.168.44.1 DST=192.168.44.252 LEN=64 TOS=0x00 PREC=0x00 TTL=63 ID=14346 DF PROTO=TCP SPT=50169 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0
-```
-
-<a name="setup-wifi-debian"></a>
-## Setup WIFI ##
-
-Raspberry PI model terbaru (Pi 3 model B dan Pi Zero W) sudah memiliki chipset WiFi. Berikut cara untuk mendaftarkan SSID beserta passwordnya melalui command line.
-
-Misalnya, nama SSIDnya adalah `wifiendy` dan passwordnya `abcd11223344`. Jalankan perintah berikut dengan user `root` atau `sudo`.
-
-```
-wpa_passphrase "wifiendy" >> /etc/wpa_supplicant/wpa_supplicant.conf
-```
-
-Kita akan diminta memasukkan password
-
-```
-# reading passphrase from stdin
-abcd11223344
-```
-
-Kita lihat hasilnya
-
-```
-cat /etc/wpa_supplicant/wpa_supplicant.conf
-```
-
-Isinya seperti ini
-
-```
-country=ID
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-# reading passphrase from stdin
-network={
-	ssid="wifiendy"
-	#psk="abcd11223344"
-	psk=8ae0138e65134b98df15c7ad380d3e1f8ae0138e65134b98df15c7ad380d3e1f
-}
-```
-
-Selanjutnya kita restart wifinya.
-
-```
-wpa_cli -i wlan0 reconfigure
-```
-
-Kalau kita lihat lognya, berikut outputnya
-
-```
-May 15 15:12:30 raspberrypi wpa_supplicant[492]: wlan0: Trying to associate with 90:03:25:df:ec:38 (SSID='wifiendy' freq=2442 MHz)
-May 15 15:12:30 raspberrypi wpa_supplicant[492]: wlan0: Association request to the driver failed
-May 15 15:12:30 raspberrypi kernel: [ 1223.435406] R8188EU: ERROR assoc success
-May 15 15:12:30 raspberrypi wpa_supplicant[492]: wlan0: Associated with 90:03:25:df:ec:38
-May 15 15:12:30 raspberrypi kernel: [ 1223.435782] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
-May 15 15:12:31 raspberrypi wpa_supplicant[492]: wlan0: WPA: Key negotiation completed with 90:03:25:df:ec:38 [PTK=CCMP GTK=TKIP]
-May 15 15:12:31 raspberrypi wpa_supplicant[492]: wlan0: CTRL-EVENT-CONNECTED - Connection to 90:03:25:df:ec:38 completed [id=0 id_str=]
-May 15 15:12:31 raspberrypi dhcpcd[762]: wlan0: carrier acquired
-May 15 15:12:31 raspberrypi dhcpcd[762]: wlan0: IAID 6d:12:48:44
-May 15 15:12:31 raspberrypi dhcpcd[762]: wlan0: soliciting a DHCP lease
-May 15 15:12:31 raspberrypi dhcpcd[762]: wlan0: soliciting an IPv6 router
-May 15 15:12:33 raspberrypi dhcpcd[762]: wlan0: Router Advertisement from fe80::1
-May 15 15:12:33 raspberrypi dhcpcd[762]: wlan0: adding default route via fe80::1
-May 15 15:12:33 raspberrypi dhcpcd[762]: wlan0: requesting DHCPv6 information
-May 15 15:12:33 raspberrypi dhcpcd[762]: wlan0: offered 192.168.100.100 from 192.168.100.1
-May 15 15:12:34 raspberrypi ntpd[783]: Listen normally on 6 wlan0 fe80::5a43:a9ab:af11:4a8c UDP 123
-May 15 15:12:34 raspberrypi ntpd[783]: peers refreshed
-May 15 15:12:38 raspberrypi dhcpcd[762]: wlan0: leased 192.168.100.100 for 259200 seconds
-May 15 15:12:38 raspberrypi dhcpcd[762]: wlan0: adding route to 192.168.100.0/24
-May 15 15:12:38 raspberrypi avahi-daemon[422]: Joining mDNS multicast group on interface wlan0.IPv4 with address 192.168.100.100.
-May 15 15:12:38 raspberrypi dhcpcd[762]: wlan0: adding default route via 192.168.100.1
-May 15 15:12:38 raspberrypi avahi-daemon[422]: New relevant interface wlan0.IPv4 for mDNS.
-May 15 15:12:38 raspberrypi avahi-daemon[422]: Registering new address record for 192.168.100.100 on wlan0.IPv4.
-May 15 15:12:40 raspberrypi ntpd[783]: Listen normally on 7 wlan0 192.168.100.100 UDP 123
-May 15 15:12:40 raspberrypi ntpd[783]: peers refreshed
 ```
 
 <a name="automount-usb-debian"></a>
