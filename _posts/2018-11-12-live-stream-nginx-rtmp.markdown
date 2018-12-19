@@ -292,6 +292,26 @@ Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya 
 
 Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banyak platform sekaligus. Walaupun demikian, Instagram Live masih belum bisa ditangani oleh aplikasi encoder/broadcaster termasuk Nginx RTMP Module ini.
 
+Kita juga bisa menjalankan Nginx RTMP Module ini dengan menggunakan docker. Perintahnya sebagai berikut:
+
+```
+docker run \
+    -p 1935:1935 \
+    -p 8080:8080 \
+    -e RTMP_PUSH_URLS=rtmp://live.youtube.com/myname/streamkey,rtmp://live-api-s.facebook.com:80/rtmp/streamkey
+    jasonrivers/nginx-rtmp
+```
+
+Di aplikasi OBS, masukkan setting seperti ini:
+
+```
+Streaming Service: Custom
+Server: rtmp://<your server ip>/live
+Play Path/Stream Key: mystream
+```
+
+Untuk lebih jelasnya, bisa dilihat langsung dokumentasinya di [DockerHub](https://hub.docker.com/r/jasonrivers/nginx-rtmp/)
+
 Selamat mencoba, semoga bermanfaat ...
 
 ## Referensi ##
