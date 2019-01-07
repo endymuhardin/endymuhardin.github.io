@@ -295,10 +295,10 @@ Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banya
 Kita juga bisa menjalankan Nginx RTMP Module ini dengan menggunakan docker. Perintahnya sebagai berikut:
 
 ```
-docker run \
+docker run -d --name nginx-rtmp-streamer \
     -p 1935:1935 \
     -p 8080:8080 \
-    -e RTMP_PUSH_URLS=rtmp://live.youtube.com/myname/streamkey,rtmp://live-api-s.facebook.com:80/rtmp/streamkey
+    -e RTMP_PUSH_URLS='rtmp://live.youtube.com/myname/streamkey,rtmp://live-api-s.facebook.com:80/rtmp/streamkey' \
     jasonrivers/nginx-rtmp
 ```
 
