@@ -64,7 +64,7 @@ Untuk menyederhanakan kode program, agar bisa fokus ke login dan ijin akses, kit
 
 Tampilannya kira-kira seperti ini
 
-[![Tampilan Aplikasi]({{site.url}}/images/uploads/2018/google-sso/00-create-client-app-project.png)]({{site.url}}/images/uploads/2018/google-sso/00-create-client-app-project.png)
+[![Tampilan Aplikasi]({{site.url}}/images/uploads/2018/google-sso/01-create-client-app-project.png)]({{site.url}}/images/uploads/2018/google-sso/01-create-client-app-project.png)
 
 Yang diimplementasikan dengan Spring Controller berikut
 
