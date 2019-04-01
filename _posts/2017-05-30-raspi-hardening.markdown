@@ -206,7 +206,7 @@ $ sudo deluser --remove-home pi
 Karena Raspberry PI buatan Inggris, maka default keyboardnya adalah `UK`, bukan `US` seperti biasanya kita instal Linux. Di komputer saya, dampaknya tombol `"` akan menghasilkan karakter `@`. Untuk itu kita ganti dulu keyboardnya.
 
 ```
-$ sudo nano /etc/defaults/keyboard
+$ sudo nano /etc/default/keyboard
 ```
 
 Kemudian ganti menjadi `US`
