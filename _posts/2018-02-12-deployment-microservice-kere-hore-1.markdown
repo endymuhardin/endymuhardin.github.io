@@ -167,22 +167,90 @@ Semua domain kita sudah bisa diakses dengan protokol `http`. Sekarang saatnya ki
 ```
 add-apt-repository ppa:certbot/certbot
 apt update
-apt install certbot -y
+apt install certbot python-certbot-nginx -y
 ```
-
-Pada saat tulisan ini dibuat, ada sedikit masalah security sehingga prosesnya tidak bisa 100% otomatis. Kita harus mematikan Nginx dulu sementara `certbot` membuat sertifikat SSL. 
-
-```
-nginx -s stop
-```
-
-Selanjutnya, kita jalankan certbot
+Setelah terinstal, kita tinggal menjalankan `certbot`. Dia akan otomatis membaca konfigurasi virtualhost kita di Nginx, dan menawarkan untuk membuatkan sertifikat SSL untuk tiap domain.
 
 ```
-certbot certonly --standalone -d app1.artivisi.id
+certbot --nginx
 ```
 
-Ulangi perintah di atas untuk masing-masing domain.
+Dia akan menanyakan beberapa pertanyaan, seperti ini:
+
+```
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address (used for urgent renewal and security notices) (Enter 'c' to
+cancel): it@tazkia.ac.id
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
+agree in order to register with the ACME server at
+https://acme-v02.api.letsencrypt.org/directory
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(A)gree/(C)ancel: a
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing to share your email address with the Electronic Frontier
+Foundation, a founding partner of the Let's Encrypt project and the non-profit
+organization that develops Certbot? We'd like to send you email about our work
+encrypting the web, EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: n
+
+Which names would you like to activate HTTPS for?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: app1.artivisi.id
+2: app2.artivisi.id
+3: app3.artivisi.id
+4: wp.artivisi.id
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to select all options shown (Enter 'c' to cancel): 1
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge for app1.artivisi.id
+Waiting for verification...
+Cleaning up challenges
+Deploying Certificate to VirtualHost /etc/nginx/sites-enabled/app1.artivisi.id
+
+Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: No redirect - Make no further changes to the webserver configuration.
+2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
+new sites, or if you're confident your site works on HTTPS. You can undo this
+change by editing your web server's configuration.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2
+Redirecting all traffic on port 80 to ssl in /etc/nginx/sites-enabled/app1.artivisi.id
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations! You have successfully enabled https://app1.artivisi.id
+
+You should test your configuration at:
+https://www.ssllabs.com/ssltest/analyze.html?d=app1.artivisi.id
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/app1.artivisi.id/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/app1.artivisi.id/privkey.pem
+   Your cert will expire on 2019-11-03. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot again
+   with the "certonly" option. To non-interactively renew *all* of
+   your certificates, run "certbot renew"
+ - Your account credentials have been saved in your Certbot
+   configuration directory at /etc/letsencrypt. You should make a
+   secure backup of this folder now. This configuration directory will
+   also contain certificates and private keys obtained by Certbot so
+   making regular backups of this folder is ideal.
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+```
 
 Hasilnya bisa kita lihat di `/etc/letsencrypt/live`.
 
@@ -195,49 +263,47 @@ drwxr-xr-x 2 root root 4096 Feb 12 09:38 app3.artivisi.id
 drwxr-xr-x 2 root root 4096 Feb 12 09:43 wp.artivisi.id
 ```
 
-Sebetulnya kita bisa membuat satu sertifikat untuk semua domain. Perintahnya digabungkan menjadi satu
-
-```
-certbot certonly --standalone -d app1.artivisi.id -d app2.artivisi.id -d app3.artivisi.id -d wp.artivisi.id
-```
-
-Akan tetapi, nanti hasilnya menjadi satu sertifikat gabungan. Saya lebih suka sertifikat masing-masing agar lebih fleksibel dalam pengelolaannya nanti.
+Certbot ini juga menginstal script untuk melakukan perpanjangan secara otomatis. Scriptnya ada di dalam folder `/etc/cron.d`. Dia akan mengecek apakah ada sertifikat yang mau expire. Kalau ada, maka akan dilakukan perpanjangan otomatis.
 
 ### Konfigurasi HTTPS ###
 
-Selanjutnya, kita akan mengkonfigurasi masing-masing domain. Berikut konfigurasi untuk `app1.artivisi.id`
+Bila kita memilih opsi 2 pada waktu menjalankan certbot seperti di atas, dia akan menambahkan konfigurasi secara otomatis. Kita tidak perlu lagi mengedit sendiri. Hasilnya seperti ini:
 
 ```
 server {
-    server_name app1.artivisi.id;
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
 
-    ssl_certificate /etc/letsencrypt/live/app1.artivisi.id/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/app1.artivisi.id/privkey.pem;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+  root /var/www/app1.artivisi.id/html;
+  index index.html index.htm index.nginx-debian.html;
 
-    root /var/www/app1.artivisi.id/html;
-    index index.php index.html;
+  server_name app1.artivisi.id;
 
-    location / {
-      try_files $uri $uri/ =404;
-    }
+  location / {
+    try_files $uri $uri/ =404;
+  }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/app1.artivisi.id/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/app1.artivisi.id/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
 }
 server {
     if ($host = app1.artivisi.id) {
         return 301 https://$host$request_uri;
-    }
+    } # managed by Certbot
+
 
   listen 80;
   listen [::]:80;
 
   server_name app1.artivisi.id;
-  return 404;
+    return 404; # managed by Certbot
 }
 ```
 
-Test dulu apakah konfigurasinya sudah oke. Setelah berjalan dengan baik, kita replikasi ke domain lainnya. Tinggal copy paste saja, dan edit nama domainnya.
+Test dulu apakah konfigurasinya sudah oke. Setelah berjalan dengan baik, kita test juga ke domain lainnya. Tinggal copy paste saja, dan edit nama domainnya.
 
 [![HTTPS semua domain sudah oke]({{site.url}}/images/uploads/2018/msa-deployment/04-semua-app-https.png)]({{site.url}}/images/uploads/2018/msa-deployment/04-semua-app-https.png)
 
