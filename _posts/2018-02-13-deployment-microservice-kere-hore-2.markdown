@@ -148,6 +148,24 @@ Kita bisa coba browse ke `http://app1.artivisi.id:10001` untuk memastikan aplika
 
 Perhatikan alamat URLnya, kita masih menggunakan port `10001` dan tidak menggunakan `https`.
 
+## Membuat User OS untuk Aplikasi ##
+
+Pada langkah pengetesan di atas, kita menjalankan aplikasi dengan user `root`. Cara seperti ini kurang aman, karena bila ada kelemahan security pada aplikasi kita, orang jahat bisa langsung mengambil alih sistem, karena dia memiliki akses user `root` yang memiliki ijin tidak terbatas. 
+
+Untuk itu, kita akan membuat user khusus untuk menjalankan aplikasi ini. Misalnya kita akan membuat user dengan nama `aplikasi` yang folder `home`nya adalah folder tempat aplikasi diinstal, yaitu di `/var/lib/appspringsaya`. Berikut perintahnya, jalankan sebagai `root`
+
+```
+useradd -d /var/lib/appspringsaya -s /bin/bash aplikasi
+```
+
+Setelah itu, kita ganti kepemilikan file dan folder aplikasi, yang tadinya dimiliki root, menjadi miliknya user `aplikasi`
+
+```
+chown -R aplikasi:aplikasi /var/lib/appspringsaya
+```
+
+User dan kepemilikan file/folder sudah selesai, selanjutnya kita konfigurasi system service.
+
 ## Setup Systemd Service ##
 
 Bila kita jalankan dengan perintah `java -jar`, aplikasi kita akan mati bila kita logout, apalagi kalau server kita restart. Untuk itu kita perlu menginstalnya menjadi service agar bisa jalan otomatis pada waktu server dinyalakan.
@@ -160,7 +178,7 @@ Description=Aplikasi Spring Saya
 After=syslog.target
 
 [Service]
-User=root
+User=aplikasi
 ExecStart=/var/lib/appspringsaya/appspringsaya.jar
 SuccessExitStatus=143
 
