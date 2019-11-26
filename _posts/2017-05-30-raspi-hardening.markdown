@@ -12,7 +12,7 @@ Berikut langkah-langkah yang biasa saya lakukan pada saat setup Raspberry PI
 
 
 1. [Instalasi Raspbian ke MicroSD]({{ page.url }}/#instalasi)
-2. [Setup WiFi]({{ page.url }}/#setup-wifi-debian)
+2. [Setup Network]({{ page.url }}/#setup-network)
 3. [Login ke Raspbian]({{ page.url }}/#login)
 4. [Buat user baru]({{ page.url }}/#user-baru)
 5. [Hapus user pi]({{ page.url }}/#hapus-user-pi)
@@ -111,8 +111,24 @@ Kemudian buat filenya. Bisa dengan File Explorer, klik kanan, Create New File. T
 $ touch /Volumes/boot/ssh
 ```
 
-<a name="setup-wifi-debian"></a>
-## Setup WIFI ##
+<a name="setup-network"></a>
+## Setup Networking ##
+
+Ada dua interface yang biasa ditemukan di Raspberry: ethernet dan wifi.
+
+### Ethernet ###
+
+Secara default, Raspberry Pi akan mengatur ethernet card yang dimilikinya untuk mendapatkan alamat IP otomatis (DHCP Client). Akan tetapi, kadangkala kita ingin mendapatkan alamat IP yang statis, sehingga bisa langsung kita akses melalui SSH dan cross cable.
+
+Untuk mengatur agar alamat IPnya statis, kita edit file `/etc/dhcpcd.conf` yang ada di partisi `rootfs`. Aktifkan baris berikut ini
+
+```
+controlgroup wheel
+interface eth0
+static ip_address=192.168.0.10/24
+```
+
+### WiFi ###
 
 Raspberry PI model terbaru (Pi 3 model B dan Pi Zero W) sudah memiliki chipset WiFi. Berikut cara untuk mendaftarkan SSID beserta passwordnya langsung ke SD Card sehingga pada waktu dinyalakan Raspi akan langsung terhubung dengan WiFi kita.
 
