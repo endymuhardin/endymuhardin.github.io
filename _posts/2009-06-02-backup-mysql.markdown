@@ -13,14 +13,11 @@ Sebelumnya, saya telah membahas script backup untuk [Trac](http://endy.artivisi.
 
 Sama seperti backup script sebelumnya, script ini akan membuat folder sesuai dengan tanggal dan jam backup. Selanjutnya, script akan melakukan backup terhadap database MySQL sesuai dengan nama database yang ditentukan. Backup ini akan disimpan di folder yang kita tentukan. 
 
-Berikut backup scriptnya.
+Berikut backup scriptnya. Misalnya kita beri nama `mysql-backup.sh` dan disimpan di folder `/root/backup-db`
 
 [Update - 7 Des 2009] Sudah ditambahkan perintah untuk kompresi hasil backupnya.
 
-
-
-    
-    
+    ```sh
     #!/bin/sh
     
     test -x /bin/date || exit -1
@@ -83,14 +80,41 @@ Berikut backup scriptnya.
     /bin/rm -rf "$BACKUP_FOLDER/$CURR_DATE"
     
     echo "Completed"
-    
+    ```
 
 
 
 Script di atas dapat dijalankan setiap Jumat malam jam 23.00 dengan konfigurasi sebagai berikut. 
 
+    ```
+    0 23 * * 5 /bin/sh /root/backup-db/mysql-backup.sh db_host db_name db_user db_pass /root/backup-db
+    ```
 
-    
-    
-    0 23 * * 5 /bin/sh /path/ke/mysql-backup.sh db_host db_name db_user db_pass backup_folder_mysql
-    
+Bila kita ingin membuat backup untuk semua database dalam server, kita bisa buatkan script yang mengambil nama-nama database di server, kemudian looping untuk melakukan backup kepada masing-masing database tersebut. Berikut scriptnya
+
+    ```sh
+    #!/bin/sh
+
+    MYSQL_USER="root"
+    MYSQL=/usr/bin/mysql
+    MYSQL_PASSWORD="passwordnya root mysql"
+    MYSQLDUMP=/usr/bin/mysqldump
+    BACKUP_DIR="/root/backup-db"
+
+    databases=`$MYSQL --user=$MYSQL_USER -p$MYSQL_PASSWORD -e "SHOW DATABASES;" | grep -Ev "(Database|information_schema|performance_schema)"`
+
+
+    for db in $databases; do
+    /bin/mkdir -p $BACKUP_DIR/$db
+    /bin/sh /root/backup-db/backup.sh localhost $db $MYSQL_USER $MYSQL_PASSWORD $BACKUP_DIR/$db
+    done
+    ```
+
+Simpan file tersebut dengan nama `mysql-backup-semua.sh` dan letakkan di folder `/root/backup-db`.
+
+Cara memanggilnya di cron sebagai berikut
+
+    ```
+    0 0 * * * /bin/sh /root/backup-db/mysql-backup-semua.sh > /root/backup-db/`date +\%Y\%m\%d\%H\%M\%S`-cron.log 2>&1
+    ```
+
