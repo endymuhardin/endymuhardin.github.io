@@ -92,5 +92,5 @@ Script di atas dapat dijalankan setiap Jumat malam jam 23.00 dengan konfigurasi 
 
     
     
-    0 23 * * 5 /bin/sh /path/ke/mysql-backup.sh db_user db_pass db_name backup_folder_mysql
+    0 23 * * 5 /bin/sh /path/ke/mysql-backup.sh db_host db_name db_user db_pass backup_folder_mysql
     
