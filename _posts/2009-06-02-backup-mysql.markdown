@@ -105,8 +105,8 @@ databases=`$MYSQL --user=$MYSQL_USER -p$MYSQL_PASSWORD -e "SHOW DATABASES;" | gr
 
 
 for db in $databases; do
-/bin/mkdir -p $BACKUP_DIR/$db
-/bin/sh /root/backup-db/backup.sh localhost $db $MYSQL_USER $MYSQL_PASSWORD $BACKUP_DIR/$db
+    /bin/mkdir -p $BACKUP_DIR/$db
+    /bin/sh /root/backup-db/backup.sh localhost $db $MYSQL_USER $MYSQL_PASSWORD $BACKUP_DIR/$db
 done
 ```
 
