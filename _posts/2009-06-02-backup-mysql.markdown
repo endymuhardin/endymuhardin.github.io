@@ -62,12 +62,12 @@ echo "..."
 echo "Backup $DBNAME schema to $BACKUP_FOLDER/$CURR_DATE/$DBNAME-schema-$CURR_DATE.sql"
 echo "..."
 
-/usr/bin/mysqldump $DBNAME -u $USERNAME -p$PASSWORD -h$DBHOST -d > "$BACKUP_FOLDER/$CURR_DATE/$DBNAME-schema-$CURR_DATE.sql"
+/usr/bin/mysqldump $DBNAME -u $USERNAME -p$PASSWORD -h$DBHOST -d --compact > "$BACKUP_FOLDER/$CURR_DATE/$DBNAME-schema-$CURR_DATE.sql"
 
 echo "Backup $DBNAME data to $BACKUP_FOLDER/$CURR_DATE/$DBNAME-data-$CURR_DATE.sql"
 echo "..."
 
-/usr/bin/mysqldump $DBNAME -u $USERNAME -p$PASSWORD -h $DBHOST -n -c -t --single-transaction > "$BACKUP_FOLDER/$CURR_DATE/$DBNAME-data-$CURR_DATE.sql"
+/usr/bin/mysqldump $DBNAME -u $USERNAME -p$PASSWORD -h $DBHOST -n -c -t --compact --single-transaction > "$BACKUP_FOLDER/$CURR_DATE/$DBNAME-data-$CURR_DATE.sql"
 
 echo "Compressing folder $CURR_DATE"
 echo "..."
