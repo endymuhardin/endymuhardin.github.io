@@ -133,6 +133,39 @@ Seperti biasa, kita butuh `Stream URL` dan `Stream Key`. Kita juga perlu mengisi
 
 `Stream URL` Facebook biasanya adalah `rtmp://live-api-s.facebook.com:80/rtmp/`
 
+**UPDATE !!!**
+Sejak Mei 2019, Facebook mengganti protokol koneksi Live Streaming menggunakan SSL. Sehingga URLnya menjadi `rtmps://live-api-s.facebook.com:443/rtmp/`. Akibatnya, Nginx RTMP Module tidak bisa lagi langsung terkoneksi dengan Facebook. 
+
+Solusinya adalah menggunakan aplikasi `stunnel` untuk menyediakan koneksi SSL ke Facebook, sehingga Nginx RTMP Module tidak perlu mengurus SSL.
+
+## Konfigurasi STunnel ##
+
+Stunnel dapat diinstal menggunakan perintah `apt install stunnel4 -y`. Setelah itu, kita buatkan konfigurasinya di file `/etc/stunnel/stunnel.conf` sebagai berikut:
+
+```
+setuid = stunnel4
+setgid = stunnel4
+pid=/tmp/stunnel.pid
+output = /var/log/stunnel4/stunnel.log
+include = /etc/stunnel/conf.d
+```
+
+Kita buat konfigurasi koneksi ke Facebook di file `/etc/stunnel/conf.d/fb.conf` sebagai berikut
+
+```
+[fb-live]
+client = yes
+accept = 127.0.0.1:8888
+connect = live-api-s.facebook.com:443
+verifyChain = no
+```
+
+Lalu, enable `stunnel` dengan cara mengedit file `/etc/default/stunnel4` menjadi seperti ini
+
+```
+ENABLE=1
+```
+
 ## Konfigurasi Nginx RTMP Module ##
 
 Dengan Nginx RTMP Module, kita bisa mempublikasikan stream kita ke banyak tujuan. Di artikel ini, kita akan gunakan dua saja, yaitu Youtube dan Facebook. Konfigurasinya sebagai berikut, ditulis di file `/usr/local/nginx/conf/nginx.conf`
@@ -150,7 +183,7 @@ rtmp {
       allow publish 127.0.0.1;
       deny publish all;
       push rtmp://a.rtmp.youtube.com/live2/abcd-abcd-abcd-abcd;
-      push rtmp://live-api-s.facebook.com:80/rtmp/12345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+      push rtmp://localhost:8888/rtmp/12345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
     }
   }
 }
@@ -158,7 +191,7 @@ rtmp {
 
 Tujuan stream kita ada di baris yang ada perintah `push`. Formatnya adalah `push rtmp://<stream-url>/<stream-key>`
 
-Nilai ini kita dapatkan dari konfigurasi YouTube dan Facebook di atas.
+Nilai ini kita dapatkan dari konfigurasi YouTube dan Facebook di atas. Untuk Youtube, kita push langsung ke tujuan. Sedangkan untuk Facebook, kita push ke `stunnel` di port `8888` untuk selanjutnya diteruskan ke Facebook.
 
 Kita juga perlu membatasi alamat IP aplikasi yang boleh stream ke sana. Bila tidak dibatasi, maka orang lain bisa publish ke sana dan tayang di channel YouTube kita dan timeline Facebook kita. Tentu ini tidak kita inginkan. Pembatasannya ada di baris berikut:
 
@@ -284,22 +317,66 @@ Seharusnya kita bisa menonton live streaming yang dikirim oleh OBS.
 
 [![VLC View Stream]({{site.url}}/images/uploads/2018/live-streaming/02-vlc-view-stream.png)]({{site.url}}/images/uploads/2018/live-streaming/02-vlc-view-stream.png)
 
-## Penutup ##
+## Docker ##
 
-Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya gratis, setupnya tidak sulit, aplikasinya gratis, pokoknya tinggal pakai. Bahkan seandainya kita hanya bermodalkan smartphone, kita bisa langsung live. Akan tetapi, untuk mendapatkan hasil yang lebih profesional, kita perlu menggunakan aplikasi yang lebih canggih seperti OBS. Di situ kita bisa menambahkan logo di kanan atas, nama pembicara di bawah (lower third), running text, menjalankan iklan, dan sebagainya. Hasilnya bisa dilihat di [event Monday Forum Tazkia](https://youtu.be/HQ-BG0pyz8A)
+Bila setiap kali mau melakukan live streaming kita harus melakukan konfigurasi, tentunya ini sangat melelahkan. Agar lebih praktis, kita bisa menjalankan setup ini menggunakan Docker. Apa itu docker dan bagaimana cara kerjanya tidak dibahas pada artikel ini. Silahkan baca [artikel berikut untuk memahami apa itu docker](https://software.endy.muhardin.com/linux/intro-docker/). 
 
-[![YouTube Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)
+Kita akan menjalankan dua Docker container sekaligus, yang satu menjalankan `stunnel`, satunya lagi menjalankan `nginx-rtmp-module`. Caranya adalah menggunakan `docker-compose`. File konfigurasinya kita buat dalam file bernama `docker-compose.yml` yang isinya sebagai berikut:
 
-Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banyak platform sekaligus. Walaupun demikian, Instagram Live masih belum bisa ditangani oleh aplikasi encoder/broadcaster termasuk Nginx RTMP Module ini.
+```yml
+version: "2.1"
 
-Kita juga bisa menjalankan Nginx RTMP Module ini dengan menggunakan docker. Perintahnya sebagai berikut:
+services:
+  stunnel-proxy:
+    image: tstrohmeier/stunnel-client:latest
+    restart: always
+    environment:
+      - ACCEPT=8888
+      - CONNECT=live-api-s.facebook.com:443
+
+  nginx-rtmp-streamer:
+    image: jasonrivers/nginx-rtmp
+    environment:
+      - RTMP_PUSH_URLS=rtmp://a.rtmp.youtube.com/live2/${YOUTUBE_STREAM_KEY},rtmp://stunnel-proxy:8888/rtmp/${FACEBOOK_STREAM_KEY}
+    depends_on:
+      - stunnel-proxy
+    ports:
+      - "1935:1935"
+      - "8080:8080"
+```
+
+File tersebut membutuhkan konfigurasi untuk mengisi variabel `${YOUTUBE_STREAM_KEY}` dan `${FACEBOOK_STREAM_KEY}`. Kedua nilai ini sengaja dikeluarkan dari file `docker-compose` agar bisa diubah-ubah sesuai akun yang akan digunakan untuk live.
+
+Konfigurasinya kita buat dalam file yang bernama `.env`. Isinya sebagai berikut
 
 ```
-docker run -d --name nginx-rtmp-streamer \
-    -p 1935:1935 \
-    -p 8080:8080 \
-    -e RTMP_PUSH_URLS='rtmp://live.youtube.com/myname/streamkey,rtmp://live-api-s.facebook.com:80/rtmp/streamkey' \
-    jasonrivers/nginx-rtmp
+YOUTUBE_STREAM_KEY=abcd-abcd-abcd-abcd
+FACEBOOK_STREAM_KEY=12345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+```
+
+File `.env` dan file `docker-compose.yml` diletakkan dalam folder yang sama. Setelah itu jalankan dengan perintah `docker-compose up -d`. Outputnya seperti ini
+
+```
+Creating network "tmp_default" with the default driver
+Creating tmp_stunnel-proxy_1 ... done
+Creating tmp_nginx-rtmp-streamer_1 ... done
+Attaching to tmp_stunnel-proxy_1, tmp_nginx-rtmp-streamer_1
+nginx-rtmp-streamer_1  | Creating config
+nginx-rtmp-streamer_1  | Creating stream live
+nginx-rtmp-streamer_1  | Pushing stream to rtmp://a.rtmp.youtube.com/live2/abcd-abcd-abcd-abcd
+nginx-rtmp-streamer_1  | Pushing stream to rtmp://stunnel-proxy:8888/rtmp/112345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+nginx-rtmp-streamer_1  | Creating stream testing
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: stunnel 5.46 on x86_64-alpine-linux-musl platform
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Compiled with LibreSSL 2.7.3
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Running  with LibreSSL 2.7.4
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Threading:PTHREAD Sockets:POLL,IPv6 TLS:ENGINE,OCSP,SNI
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Reading configuration from file /etc/stunnel/stunnel.conf
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: UTF-8 byte order mark not detected
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG4[ui]: Service [stunnelHttpsToHttpclient] needs authentication to prevent MITM attacks
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Configuration successful
+stunnel-proxy_1        | 2020.02.05 05:38:00 LOG5[0]: Service [stunnelHttpsToHttpclient] accepted connection from 172.19.0.3:50088
+stunnel-proxy_1        | 2020.02.05 05:38:00 LOG5[0]: s_connect: connected 31.13.92.6:443
+stunnel-proxy_1        | 2020.02.05 05:38:00 LOG5[0]: Service [stunnelHttpsToHttpclient] connected remote server from 172.19.0.2:41612
 ```
 
 Di aplikasi OBS, masukkan setting seperti ini:
@@ -310,7 +387,16 @@ Server: rtmp://<your server ip>/live
 Play Path/Stream Key: mystream
 ```
 
-Untuk lebih jelasnya, bisa dilihat langsung dokumentasinya di [DockerHub](https://hub.docker.com/r/jasonrivers/nginx-rtmp/)
+Setelah selesai, untuk mematikannya, ketik perintah `docker-compose down`.
+
+
+## Penutup ##
+
+Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya gratis, setupnya tidak sulit, aplikasinya gratis, pokoknya tinggal pakai. Bahkan seandainya kita hanya bermodalkan smartphone, kita bisa langsung live. Akan tetapi, untuk mendapatkan hasil yang lebih profesional, kita perlu menggunakan aplikasi yang lebih canggih seperti OBS. Di situ kita bisa menambahkan logo di kanan atas, nama pembicara di bawah (lower third), running text, menjalankan iklan, dan sebagainya. Hasilnya bisa dilihat di [event Monday Forum Tazkia](https://youtu.be/HQ-BG0pyz8A)
+
+[![YouTube Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)
+
+Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banyak platform sekaligus. Walaupun demikian, Instagram Live masih belum bisa ditangani oleh aplikasi encoder/broadcaster termasuk Nginx RTMP Module ini.
 
 Selamat mencoba, semoga bermanfaat ...
 
@@ -320,3 +406,7 @@ Selamat mencoba, semoga bermanfaat ...
 * [https://github.com/tiangolo/nginx-rtmp-docker/blob/master/README.md](https://github.com/tiangolo/nginx-rtmp-docker/blob/master/README.md)
 * [https://www.leaseweb.com/labs/2013/11/streaming-video-demand-nginx-rtmp-module/](https://www.leaseweb.com/labs/2013/11/streaming-video-demand-nginx-rtmp-module/)
 * [https://www.vultr.com/docs/setup-nginx-rtmp-on-centos-7](https://www.vultr.com/docs/setup-nginx-rtmp-on-centos-7)
+* [https://dev.to/lax/rtmps-relay-with-stunnel-12d3](https://dev.to/lax/rtmps-relay-with-stunnel-12d3)
+* [https://sites.google.com/view/facebook-rtmp-to-rtmps/home](https://sites.google.com/view/facebook-rtmp-to-rtmps/home)
+* [https://hub.docker.com/r/tstrohmeier/stunnel-client/](https://hub.docker.com/r/tstrohmeier/stunnel-client/)
+* [https://github.com/arut/nginx-rtmp-module/issues/1397](https://github.com/arut/nginx-rtmp-module/issues/1397)
