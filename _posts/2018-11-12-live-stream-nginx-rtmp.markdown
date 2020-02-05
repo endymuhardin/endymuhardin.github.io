@@ -324,7 +324,7 @@ Bila setiap kali mau melakukan live streaming kita harus melakukan konfigurasi, 
 Kita akan menjalankan dua Docker container sekaligus, yang satu menjalankan `stunnel`, satunya lagi menjalankan `nginx-rtmp-module`. Caranya adalah menggunakan `docker-compose`. File konfigurasinya kita buat dalam file bernama `docker-compose.yml` yang isinya sebagai berikut:
 
 ```yml
-version: "2.1"
+version: "3"
 
 services:
   stunnel-proxy:
