@@ -19,6 +19,9 @@ Nah, demikian konsepnya secara garis besar, sekarang mari kita langsung ke kode 
 
 <!--more-->
 
+* TOC
+{:toc}
+
 ## Studi Kasus ##
 
 Seperti biasanya, untuk memudahkan kita belajar pemrograman, kita karang studi kasus yang membutuhkan fitur yang ingin kita pelajari. Studi kasus kita kali ini adalah aplikasi yang menampilkan riwayat transaksi di rekening pengguna. Pengguna bisa login, kemudian melihat history transaksi yang dia lakukan. Agar tidak terlalu rumit, kita tidak membuat fitur input transaksi. Datanya langsung saja kita sediakan dari database.
