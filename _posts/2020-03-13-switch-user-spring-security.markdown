@@ -383,7 +383,7 @@ Untuk mengetes apakah switch user sudah jalan atau belum, kita bisa jalankan apl
 
 Kita akan dihadapkan pada halaman login.
 
-[![Screen Login]({{site.url}}/images/uploads/2020/switch-user/)]()
+[![Screen Login]({{site.url}}/images/uploads/2020/switch-user/01-login-screen.png)]({{site.url}}/images/uploads/2020/switch-user/01-login-screen.png)
 
 Ada beberapa login yang bisa dipilih:
 
@@ -392,13 +392,11 @@ Ada beberapa login yang bisa dipilih:
 * `user002` dengan password `user00`
 * `user003` dengan password `user00`
 
-Setelah berhasil login, kita akan melihat screen `Daftar Transaksi` seperti ini
-
-[![Screen Daftar Transaksi]({{site.url}}/images/uploads/2020/switch-user/01-login-screen.png)]({{site.url}}/images/uploads/2020/switch-user/01-login-screen.png)
-
 Bila kita login dengan user `admin` maka kita akan melihat menu di kanan atas seperti ini
 
 [![Menu Admin]({{site.url}}/images/uploads/2020/switch-user/02-menu-admin.png)]({{site.url}}/images/uploads/2020/switch-user/02-menu-admin.png)
+
+Link tersebut tidak kita dapati bila login dengan user yang lain.
 
 Klik link `Ganti User` dan kita akan mendapati form pilihan user sebagai berikut
 
