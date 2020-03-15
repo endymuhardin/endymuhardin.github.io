@@ -346,9 +346,9 @@ Filter tersebut harus kita daftarkan supaya aktif. Urutannya ditaruh paling bawa
 Jangan lupa kita atur permission urlnya sehingga cuma bisa diakses oleh orang yang berhak. Kode programnya seperti ini
 
 ```java
-.mvcMatchers("/switchuser/logout")
+.mvcMatchers("/switchuser/exit")
     .hasAuthority(SwitchUserFilter.ROLE_PREVIOUS_ADMINISTRATOR)
-.mvcMatchers("/switchuser/form")
+.mvcMatchers("/switchuser/select", "/switchuser/form")
     .hasAuthority("Administrator")
 ```
 
