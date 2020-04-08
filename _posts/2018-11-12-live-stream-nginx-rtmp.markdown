@@ -353,31 +353,41 @@ Kita akan menjalankan dua Docker container sekaligus, yang satu menjalankan `stu
 version: "3"
 
 services:
-  stunnel-proxy:
+  stunnel-proxy-fb:
     image: tstrohmeier/stunnel-client:latest
     restart: always
     environment:
       - ACCEPT=8888
       - CONNECT=live-api-s.facebook.com:443
+  
+  stunnel-proxy-ig:
+    image: tstrohmeier/stunnel-client:latest
+    restart: always
+    environment:
+      - ACCEPT=9999
+      - CONNECT=live-upload.instagram.com:443
 
   nginx-rtmp-streamer:
     image: jasonrivers/nginx-rtmp
     environment:
-      - RTMP_PUSH_URLS=rtmp://a.rtmp.youtube.com/live2/${YOUTUBE_STREAM_KEY},rtmp://stunnel-proxy:8888/rtmp/${FACEBOOK_STREAM_KEY}
+      - RTMP_PUSH_URLS=rtmp://a.rtmp.youtube.com/live2/${YOUTUBE_STREAM_KEY},rtmp://stunnel-proxy-fb:8888/rtmp/${FACEBOOK_STREAM_KEY},rtmp://stunnel-proxy-ig:9999/rtmp/${INSTAGRAM_STREAM_KEY}
     depends_on:
-      - stunnel-proxy
+      - stunnel-proxy-fb
+      - stunnel-proxy-ig
     ports:
       - "1935:1935"
       - "8080:8080"
+
 ```
 
-File tersebut membutuhkan konfigurasi untuk mengisi variabel `${YOUTUBE_STREAM_KEY}` dan `${FACEBOOK_STREAM_KEY}`. Kedua nilai ini sengaja dikeluarkan dari file `docker-compose` agar bisa diubah-ubah sesuai akun yang akan digunakan untuk live.
+File tersebut membutuhkan konfigurasi untuk mengisi variabel `${YOUTUBE_STREAM_KEY}`, `${FACEBOOK_STREAM_KEY}`, dan `${INSTAGRAM_STREAM_KEY}`. Kedua nilai ini sengaja dikeluarkan dari file `docker-compose` agar bisa diubah-ubah sesuai akun yang akan digunakan untuk live.
 
 Konfigurasinya kita buat dalam file yang bernama `.env`. Isinya sebagai berikut
 
 ```
 YOUTUBE_STREAM_KEY=abcd-abcd-abcd-abcd
 FACEBOOK_STREAM_KEY=12345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+INSTAGRAM_STREAM_KEY=xyz-xyz-xyz
 ```
 
 File `.env` dan file `docker-compose.yml` diletakkan dalam folder yang sama. Setelah itu jalankan dengan perintah `docker-compose up -d`. Outputnya seperti ini
@@ -390,7 +400,8 @@ Attaching to tmp_stunnel-proxy_1, tmp_nginx-rtmp-streamer_1
 nginx-rtmp-streamer_1  | Creating config
 nginx-rtmp-streamer_1  | Creating stream live
 nginx-rtmp-streamer_1  | Pushing stream to rtmp://a.rtmp.youtube.com/live2/abcd-abcd-abcd-abcd
-nginx-rtmp-streamer_1  | Pushing stream to rtmp://stunnel-proxy:8888/rtmp/112345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+nginx-rtmp-streamer_1  | Pushing stream to rtmp://stunnel-proxy-fb:8888/rtmp/112345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+nginx-rtmp-streamer_1  | Pushing stream to rtmp://stunnel-proxy-ig:9999/rtmp/112345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
 nginx-rtmp-streamer_1  | Creating stream testing
 stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: stunnel 5.46 on x86_64-alpine-linux-musl platform
 stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Compiled with LibreSSL 2.7.3
@@ -423,6 +434,10 @@ Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya 
 [![YouTube Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)
 
 Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banyak platform sekaligus. 
+
+Walaupun demikian, ternyata hasil streaming di Instagram terpotong sesuai orientasi layar. Kalau mau oke, harus oprek2 `ffmpeg` untuk merapikan croppingnya.
+
+[![Instagram Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/08-hasil-streaming-ig.jpeg)]({{site.url}}/images/uploads/2018/live-streaming/08-hasil-streaming-ig.jpeg)
 
 Selamat mencoba, semoga bermanfaat ...
 
