@@ -121,6 +121,32 @@ Berikutnya, kita akan disajikan layar persiapan event. Di sini kita bisa mulai m
 
 Setelah kita puas dengan kualitas video tayangan, kita bisa klik `Start Streaming`. Barulah event live kita akan bisa dilihat orang banyak.
 
+## Konfigurasi Instagram ##
+
+Fasilitas live ke Instagram dari laptop/PC sebetulnya tidak disediakan secara resmi. Instagram tidak memberikan alamat URL RTMP dan Stream Key yang bisa kita pasang di aplikasi streamer. Kalau kita cari di Google, ada beberapa tutorial, akan tetapi mayoritas di antaranya sudah tidak valid lagi.
+
+Saya menemukan ada satu teknik yang bisa dijalankan pada saat artikel ini ditulis, yaitu menggunakan aplikasi [YellowDuck](https://yellowduck.tv). Itupun tidak berhasil 100%, untuk setup pertama kali, saya selalu menemui kegagalan. Baru setelah dicoba di hari berikutnya, aplikasi ini bisa jalan.
+
+Walaupun demikian, tidak menutup kemungkinan aplikasi inipun untuk diblokir oleh Instagram di masa yang akan datang.
+
+Pada prinsipnya, cara kerja aplikasi ini adalah dia akan berpura-pura menjadi aplikasi Instagram. Kita masukkan username dan password Instagram kita dan klik login. Dia akan mencoba login ke Instagram, menyalakan fitur live, mengambil URL RTMP dan Stream Key, kemudian menampilkannya agar bisa kita gunakan. Sebetulnya metode ini memiliki resiko keamanan, karena kita memberikan username dan password Instagram kita ke aplikasi tersebut. Walaupun dia sudah berjanji tidak akan menyimpan, tapi ya tetap saja pertanyaannya apakah kita percaya sama dia atau tidak :D.
+
+Anyway, kita lanjutkan saja.
+
+Aplikasinya sendiri mudah digunakan. Kita tinggal unduh dan install aplikasinya. Kemudian kita jalankan. Dia akan menampilkan halaman login.
+
+[![Halaman Login YellowDuck]({{site.url}}/images/uploads/2018/live-streaming/01-yellowduck-login.png)]({{site.url}}/images/uploads/2018/live-streaming/01-yellowduck-login.png)
+
+Kita masukkan username dan password Instagram kita. Dia akan berusaha login. Biasanya ketika baru pertama digunakan, Instagram akan curiga, dan meminta konfirmasi kepada kita di aplikasi mobile yang aslinya. Oleh karena itu, YellowDuck akan memberi tahu kita agar kita mengijinkan dia login. Petunjuknya seperti ini.
+
+[![Halaman Permission YellowDuck]({{site.url}}/images/uploads/2018/live-streaming/02-yellowduck-permission.png)]({{site.url}}/images/uploads/2018/live-streaming/02-yellowduck-permission.png)
+
+Pada langkah ini, sering terjadi kegagalan, walaupun kita sudah ikuti petunjuknya. Biasanya tidak akan sukses walaupun dicoba berkali-kali. Biarkan saja, coba lagi besoknya. Karena dia tidak akan segera sukses. Pengalaman saya, di hari berikutnya baru dia bisa login. Hasilnya seperti ini.
+
+[![Halaman Sukses YellowDuck]({{site.url}}/images/uploads/2018/live-streaming/03-yellowduck-success.png)]({{site.url}}/images/uploads/2018/live-streaming/03-yellowduck-success.png)
+
+Selanjutnya, kita tinggal copy saja RTMP URL dan Stream Key untuk dipakai di langkah berikutnya.
+
 ## Konfigurasi Facebook ##
 
 Di Facebook, kita bisa langsung pergi ke halaman [Create Live Stream](https://www.facebook.com/live/create). Klik tombol `Create`, dan kemudian kita akan masuk ke halaman persiapan live streaming
@@ -396,7 +422,7 @@ Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya 
 
 [![YouTube Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)
 
-Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banyak platform sekaligus. Walaupun demikian, Instagram Live masih belum bisa ditangani oleh aplikasi encoder/broadcaster termasuk Nginx RTMP Module ini.
+Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banyak platform sekaligus. 
 
 Selamat mencoba, semoga bermanfaat ...
 
