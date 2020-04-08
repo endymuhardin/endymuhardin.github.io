@@ -139,7 +139,7 @@ Aplikasinya sendiri mudah digunakan. Kita tinggal unduh dan install aplikasinya.
 
 Kita masukkan username dan password Instagram kita. Dia akan berusaha login. Biasanya ketika baru pertama digunakan, Instagram akan curiga, dan meminta konfirmasi kepada kita di aplikasi mobile yang aslinya. Oleh karena itu, YellowDuck akan memberi tahu kita agar kita mengijinkan dia login. Petunjuknya seperti ini.
 
-[![Halaman Permission YellowDuck]({{site.url}}/images/uploads/2018/live-streaming/02-yellowduck-permission.png)]({{site.url}}/images/uploads/2018/live-streaming/02-yellowduck-permission.png)
+[![Halaman Permission YellowDuck]({{site.url}}/images/uploads/2018/live-streaming/02-yellowduck-permission.jpeg)]({{site.url}}/images/uploads/2018/live-streaming/02-yellowduck-permission.jpeg)
 
 Pada langkah ini, sering terjadi kegagalan, walaupun kita sudah ikuti petunjuknya. Biasanya tidak akan sukses walaupun dicoba berkali-kali. Biarkan saja, coba lagi besoknya. Karena dia tidak akan segera sukses. Pengalaman saya, di hari berikutnya baru dia bisa login. Hasilnya seperti ini.
 
