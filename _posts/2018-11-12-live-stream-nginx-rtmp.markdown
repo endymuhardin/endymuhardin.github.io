@@ -275,13 +275,32 @@ Dengan kombinasi opsi tersebut, kita bisa mempublikasikan tayangan kita dalam be
 
 ### Konversi Vertikal untuk Instagram ###
 
-Apabila kita ingin live ke Instagram, kita harus sesuaikan dulu format videonya agar menjadi vertikal. Caranya sama, menggunakan `ffmpeg` sebagai berikut
+Apabila kita ingin live ke Instagram, kita harus sesuaikan dulu format videonya agar menjadi vertikal. 
+
+Ada dua pilihan, kita tetap tampilkan videonya secara horizontal, tetapi kita tambahkan _padding_ atas dan bawah. Bisa pakai blur, bisa pakai hitam. Saya biasanya pilih hitam untuk menghemat kerja CPU.
+
+Berikut konfigurasi untuk menambahkan padding hitam.
 
 ```
 application live {
     live on;
     record off;
     exec ffmpeg -i rtmp://localhost/live/$name -threads 1 -c:v libx264 -profile:v baseline -vf 'scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2,setsar=1' -f flv -c:a aac -ac 1 -strict -2 -b:v 350K -b:a 56k rtmp://localhost/liveIG/$name;
+}
+
+application liveIG {
+    live on;
+    record off;
+}
+```
+
+Atau bila ingin merotasi videonya agar tetap lebar, tapi berorientasi vertikal, bisa gunakan konfigurasi yang ini
+
+```
+application live {
+    live on;
+    record off;
+    exec ffmpeg -i rtmp://localhost/live/$name -threads 1 -c:v libx264 -profile:v baseline -vf 'transpose=1' -f flv -c:a aac -ac 1 -strict -2 -b:v 350K -b:a 56k rtmp://localhost/liveIG/$name;
 }
 
 application liveIG {
@@ -477,10 +496,6 @@ Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya 
 [![YouTube Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)
 
 Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banyak platform sekaligus. 
-
-Walaupun demikian, ternyata hasil streaming di Instagram terpotong sesuai orientasi layar. Kalau mau oke, harus oprek2 `ffmpeg` untuk merapikan croppingnya.
-
-[![Instagram Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/08-hasil-streaming-ig.jpeg)]({{site.url}}/images/uploads/2018/live-streaming/08-hasil-streaming-ig.jpeg)
 
 Selamat mencoba, semoga bermanfaat ...
 
