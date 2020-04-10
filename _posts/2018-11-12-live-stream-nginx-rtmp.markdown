@@ -202,6 +202,16 @@ connect = live-api-s.facebook.com:443
 verifyChain = no
 ```
 
+Untuk konfigurasi Instagram, kita buat di file `/etc/stunnel/conf.d/ig.conf` sebagai berikut
+
+```
+[ig-live]
+client = yes
+accept = 127.0.0.1:9999
+connect = live-upload.instagram.com:443
+verifyChain = no
+```
+
 Lalu, enable `stunnel` dengan cara mengedit file `/etc/default/stunnel4` menjadi seperti ini
 
 ```
@@ -213,8 +223,6 @@ Nyalakan `stunnel` tiap kali boot.
 ```
 sudo systemctl enable stunnel4.service
 ```
-
-
 
 ## Konfigurasi Nginx RTMP Module ##
 
