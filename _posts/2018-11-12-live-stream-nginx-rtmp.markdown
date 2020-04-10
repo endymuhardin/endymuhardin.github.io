@@ -85,6 +85,22 @@ Kemudian kita test dengan browse ke `http://<ip-server-raspberry>/`. Seharusnya 
 
 [![Welcome Nginx]({{site.url}}/images/uploads/2018/live-streaming/00-nginx-welcome.png)]({{site.url}}/images/uploads/2018/live-streaming/00-nginx-welcome.png)
 
+## Instalasi Ubuntu 18.04 ##
+
+Di Ubuntu sudah ada paket modul RTMP untuk Nginx, sehingga kita tidak perlu lagi kompilasi source code. Cukup install saja langsung seperti ini
+
+```
+apt install nginx libnginx-mod-rtmp -y
+```
+
+Bila kita ingin streaming ke Facebook dan Instagram, kita juga harus menginstal paket `stunnel`
+
+```
+apt install stunnel4 -y
+```
+
+Konfigurasi Nginx dan Stunnel akan kita bahas di bawah.
+
 ## Konfigurasi Youtube ##
 
 Ada dua tujuan live streaming yang populer, yaitu Youtube dan Facebook.
@@ -192,6 +208,14 @@ Lalu, enable `stunnel` dengan cara mengedit file `/etc/default/stunnel4` menjadi
 ENABLE=1
 ```
 
+Nyalakan `stunnel` tiap kali boot.
+
+```
+sudo systemctl enable stunnel4.service
+```
+
+
+
 ## Konfigurasi Nginx RTMP Module ##
 
 Dengan Nginx RTMP Module, kita bisa mempublikasikan stream kita ke banyak tujuan. Di artikel ini, kita akan gunakan dua saja, yaitu Youtube dan Facebook. Konfigurasinya sebagai berikut, ditulis di file `/usr/local/nginx/conf/nginx.conf`
@@ -209,7 +233,7 @@ rtmp {
       allow publish 127.0.0.1;
       deny publish all;
       push rtmp://a.rtmp.youtube.com/live2/abcd-abcd-abcd-abcd;
-      push rtmp://localhost:8888/rtmp/12345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+      push rtmp://localhost:8888/rtmp/12345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk;
     }
   }
 }
@@ -223,6 +247,8 @@ Kita juga perlu membatasi alamat IP aplikasi yang boleh stream ke sana. Bila tid
 
 * `allow publish <ip-yang-boleh-publish>`
 * `deny publish all`
+
+### Resize Resolusi Video ###
 
 Bila kita ingin melakukan transcoding, misalnya mengubah stream yang resolusi awalnya `1080p` menjadi `360p`, kita bisa jalankan konversi dengan `ffmpeg` atau `avconv`. Tambahkan perintah `exec` sebagai berikut
 
@@ -246,6 +272,23 @@ application live360p {
 Untuk mengubah bitrate video, ubah nilai setelah `-b:v`. Kualitas audio bisa disesuaikan dengan nilai setelah opsi `-b:a`. Resolusi diubah dengan opsi `-s`.
 
 Dengan kombinasi opsi tersebut, kita bisa mempublikasikan tayangan kita dalam beberapa pilihan resolusi dan kualitas. Jadi penonton yang menggunakan smartphone bisa memilih resolusi kecil, dan penonton di rumah dengan TV layar lebar bisa memilih resolusi maksimal.
+
+### Konversi Vertikal untuk Instagram ###
+
+Apabila kita ingin live ke Instagram, kita harus sesuaikan dulu format videonya agar menjadi vertikal. Caranya sama, menggunakan `ffmpeg` sebagai berikut
+
+```
+application live {
+    live on;
+    record off;
+    exec ffmpeg -i rtmp://localhost/live/$name -threads 1 -c:v libx264 -profile:v baseline -vf 'scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2,setsar=1' -f flv -c:a aac -ac 1 -strict -2 -b:v 350K -b:a 56k rtmp://localhost/liveIG/$name;
+}
+
+application liveIG {
+    live on;
+    record off;
+}
+```
 
 Sebelum dijalankan, test dulu konfigurasi kita dengan perintah berikut
 
@@ -451,3 +494,4 @@ Selamat mencoba, semoga bermanfaat ...
 * [https://sites.google.com/view/facebook-rtmp-to-rtmps/home](https://sites.google.com/view/facebook-rtmp-to-rtmps/home)
 * [https://hub.docker.com/r/tstrohmeier/stunnel-client/](https://hub.docker.com/r/tstrohmeier/stunnel-client/)
 * [https://github.com/arut/nginx-rtmp-module/issues/1397](https://github.com/arut/nginx-rtmp-module/issues/1397)
+* [https://sites.google.com/view/facebook-rtmp-to-rtmps/home](https://sites.google.com/view/facebook-rtmp-to-rtmps/home)
