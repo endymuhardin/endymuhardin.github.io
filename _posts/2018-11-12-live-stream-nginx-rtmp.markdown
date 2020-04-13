@@ -518,3 +518,4 @@ Selamat mencoba, semoga bermanfaat ...
 * [https://hub.docker.com/r/tstrohmeier/stunnel-client/](https://hub.docker.com/r/tstrohmeier/stunnel-client/)
 * [https://github.com/arut/nginx-rtmp-module/issues/1397](https://github.com/arut/nginx-rtmp-module/issues/1397)
 * [https://sites.google.com/view/facebook-rtmp-to-rtmps/home](https://sites.google.com/view/facebook-rtmp-to-rtmps/home)
+* [https://www.openwritings.net/pg/ffmpeg/ffmpeg-add-logo-video](https://www.openwritings.net/pg/ffmpeg/ffmpeg-add-logo-video)
