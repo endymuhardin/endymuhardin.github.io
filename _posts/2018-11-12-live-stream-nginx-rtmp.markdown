@@ -317,6 +317,39 @@ application liveIG {
 }
 ```
 
+Konfigurasi lengkapnya seperti ini
+
+```
+rtmp {
+  server {
+    listen 1935;
+    chunk_size 4096;
+    application live {
+      live on;
+      record off;
+
+      # Konversi vertikal untuk Instagram
+      exec ffmpeg -i rtmp://localhost/live/$name -threads 1 -c:v libx264 -profile:v baseline -vf 'transpose=1,scale=1024:1280:force_original_aspect_ratio=decrease,pad=1024:1280:(ow-iw)/2:(oh-ih)/2,setsar=1' -f flv -c:a aac -ac 1 -strict -2 -b:v 350K -b:a 56k rtmp://localhost/liveIG/$name;
+
+      # Push Youtube
+      push rtmp://a.rtmp.youtube.com/live2/<stream-key>;
+
+      # Push Facebook
+      push rtmp://localhost:8888/rtmp/<stream-key>;
+    }
+
+    # Stream Instagram
+    application liveIG {
+      live on;
+      record off;
+      
+      # Push IG Live
+      push rtmp://localhost:9999/rtmp/<stream-key>;
+    }
+  }
+}
+```
+
 Sebelum dijalankan, test dulu konfigurasi kita dengan perintah berikut
 
 ```
