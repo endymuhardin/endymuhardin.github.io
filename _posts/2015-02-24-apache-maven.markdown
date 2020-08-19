@@ -108,6 +108,7 @@ Untuk memulai, kita bisa copy paste `pom.xml` minimalis berikut
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
 </project>
