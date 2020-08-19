@@ -106,6 +106,10 @@ Untuk memulai, kita bisa copy paste `pom.xml` minimalis berikut
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
+
 </project>
 ```
 
