@@ -81,7 +81,7 @@ Pesan : halo
 Proses ini dinamakan SNAT (Source NAT). Perintahnya adalah sebagai berikut:
  
 ```
-iptables -t nat -I POSTROUTING --dport 8080 -j SNAT --to-source 192.168.0.1
+iptables -t nat -A POSTROUTING --dport 8080 -j SNAT --to-source 192.168.0.1
 ```
 
 Setelah di`SNAT` pesan tersebut bisa dibalas oleh aplikasi di laptop kita seperti ini: 
@@ -107,7 +107,7 @@ Solusinya, kita gunakan masquerade.
 Berikut perintahnya:
  
 ```
-iptables -t nat -I POSTROUTING -s 192.168.0.0/24 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j MASQUERADE
 ```
 
 Dengan menggunakan masquerade, kita tidak perlu menyebutkan `--to-source` karena alamat IP asal (IP publik gateway kita) berubah-ubah.
