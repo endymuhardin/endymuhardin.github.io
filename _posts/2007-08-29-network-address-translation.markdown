@@ -39,7 +39,7 @@ Di Linux, ini dilakukan dengan perintah iptables.
 Perintahnya adalah sebagai berikut: 
 
 ```
-iptables -t nat -A PREROUTING -d 202.159.11.11 --dport 8080 -j DNAT --to-destination 192.168.0.10:8080
+iptables -t nat -A PREROUTING -d 202.159.11.11 -p tcp --dport 8080 -j DNAT --to-destination 192.168.0.10:8080
 ```
 
 Setelah di`DNAT`, paketnya menjadi seperti ini: 
@@ -81,7 +81,7 @@ Pesan : halo
 Proses ini dinamakan SNAT (Source NAT). Perintahnya adalah sebagai berikut:
  
 ```
-iptables -t nat -A POSTROUTING --dport 8080 -j SNAT --to-source 192.168.0.1
+iptables -t nat -A POSTROUTING -p tcp --dport 8080 -j SNAT --to-source 192.168.0.1
 ```
 
 Setelah di`SNAT` pesan tersebut bisa dibalas oleh aplikasi di laptop kita seperti ini: 
