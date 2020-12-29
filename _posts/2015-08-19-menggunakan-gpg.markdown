@@ -284,6 +284,76 @@ gpg> save
 
 Demikian juga, untuk mengganti masa kadaluarsa, gunakan perintah `expiry`.
 
+```
+gpg --edit-key endy.muhardin@gmail.com
+gpg> expire
+Changing expiration time for the primary key.
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Wed Dec 29 11:38:49 2021 WIB
+Is this correct? (y/N) y
+
+sec  rsa2048/3D115775D2C19EB3
+     created: 2011-07-20  expires: 2021-12-29  usage: SC  
+     trust: ultimate          validity: unknown
+ssb  rsa2048/BB31E545AF288E4C
+     created: 2011-07-20  expired: 2017-08-16  usage: E   
+[ unknown] (1). Endy Muhardin (endy) <endy.muhardin@gmail.com>
+
+gpg: WARNING: Your encryption subkey expires soon.
+gpg: You may want to change its expiration date too.
+gpg> save
+```
+
+Kita mendapatkan warning bahwa subkey kita juga expire. Sebaiknya kita update sekalian.
+
+```
+gpg --edit-key endy.muhardin@gmail.com
+gpg> list
+
+sec  rsa2048/3D115775D2C19EB3
+     created: 2011-07-20  expires: 2021-12-29  usage: SC  
+     trust: ultimate      validity: ultimate
+ssb  rsa2048/BB31E545AF288E4C
+     created: 2011-07-20  expired: 2017-08-16  usage: E   
+[ultimate] (1). Endy Muhardin (endy) <endy.muhardin@gmail.com>
+
+gpg> key 1
+
+sec  rsa2048/3D115775D2C19EB3
+     created: 2011-07-20  expires: 2021-12-29  usage: SC  
+     trust: ultimate      validity: ultimate
+ssb* rsa2048/BB31E545AF288E4C
+     created: 2011-07-20  expired: 2017-08-16  usage: E   
+[ultimate] (1). Endy Muhardin (endy) <endy.muhardin@gmail.com>
+
+gpg> expire
+Changing expiration time for a subkey.
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Wed Dec 29 11:40:56 2021 WIB
+Is this correct? (y/N) y
+
+sec  rsa2048/3D115775D2C19EB3
+     created: 2011-07-20  expires: 2021-12-29  usage: SC  
+     trust: ultimate      validity: ultimate
+ssb* rsa2048/BB31E545AF288E4C
+     created: 2011-07-20  expires: 2021-12-29  usage: E   
+[ultimate] (1). Endy Muhardin (endy) <endy.muhardin@gmail.com>
+
+gpg> save
+```
+
 ## Penggunaan Keypair ##
 
 Setelah kita memiliki keypair, kita bisa gunakan untuk:
