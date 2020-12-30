@@ -15,7 +15,7 @@ Solusinya adalah menghubungkan laptop kita ke VPN gateway yang memiliki IP publi
 
 Skema tersebut diilustrasikan seperti pada gambar berikut
 
-[![VPN Expose Laptop]({{site.url}}/images/uploads/2020/vpn-wireguard/vpn-use-case-expose-laptop-app.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/vpn-use-case-expose-laptop-app.png)
+[![VPN Expose Laptop]({{site.url}}/images/uploads/2020/vpn-wireguard/vpn-use-case-expose-laptop-app.jpg)]({{site.url}}/images/uploads/2020/vpn-wireguard/vpn-use-case-expose-laptop-app.jpg)
 
 Langkah-langkah implementasinya sebagai berikut:
 
