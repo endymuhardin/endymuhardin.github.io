@@ -119,7 +119,44 @@ Setelah itu kita nyalakan WireGuard, kemudian coba akses melalui IP public VPN g
 
 ## Bonus : SSL Termination ##
 
-Selain menggunakan port forwarding dengan `iptables`, sebetulnya kita juga bisa menggunakan `Nginx` sebagai reverse proxy, dan memasang sertifikat SSL di situ. Cara setupnya bisa dibaca di artikel terdahulu tentang [Deployment Aplikasi Kere Hore Bagian 1]({% post_url 2018-02-12-deployment-microservice-kere-hore-1 %})
+Selain menggunakan port forwarding dengan `iptables`, sebetulnya kita juga bisa menggunakan `Nginx` sebagai reverse proxy, dan memasang sertifikat SSL di situ. Cara setupnya bisa dibaca di artikel terdahulu tentang [Deployment Aplikasi Kere Hore Bagian 2]({% post_url 2018-02-13-deployment-microservice-kere-hore-2 %})
+
+Konfigurasi Nginx-nya sebagai berikut
+
+```
+server {
+    server_name aplikasi.artivisi.id;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    ssl_certificate /etc/letsencrypt/live/aplikasi.artivisi.id/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/aplikasi.artivisi.id/privkey.pem;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    root /var/www/aplikasi.artivisi.id/html;
+    index index.php index.html;
+
+    location / {
+      proxy_pass http://10.100.100.22:8000;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+      proxy_set_header X-Forwarded-Port $server_port;
+    }
+}
+server {
+    if ($host = aplikasi.artivisi.id) {
+        return 301 https://$host$request_uri;
+    }
+
+  listen 80;
+  listen [::]:80;
+
+  server_name aplikasi.artivisi.id;
+  return 404;
+}
+```
 
 Bila kita sudah menggunaakn reverse proxy dengan `Nginx`, maka tidak perlu lagi memasang `DNAT` dan `SNAT` dengan `iptables`. 
 
