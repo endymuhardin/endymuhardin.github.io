@@ -45,7 +45,7 @@ Setelah kita buat VPS, kita bisa login menggunakan SSH dan melakukan instalasi s
 
 ## Konfigurasi WireGuard dan Internet Sharing ##
 
-Pada prinsipnya, membuat internet proxy dengan VPN sama saja dengan mengkonfigurasi internet connection sharing. Konsep dan implementasinya sudah pernah saya bahas di [artikel jaman dulu tentang Network Address Translation](https://software.endy.muhardin.com/linux/network-address-translation/). Walaupun tulisan tersebut saat ini sudah berusia 13 tahun, tapi konsepnya masih sama. Bahkan command `iptables`nya masih bisa dicopas. Jadi, silahkan baca dan pahami dulu artikel tersebut.
+Pada prinsipnya, membuat internet proxy dengan VPN sama saja dengan mengkonfigurasi internet connection sharing. Konsep dan implementasinya sudah pernah saya bahas di [artikel jaman dulu tentang Network Address Translation]({% post_url 2007-08-29-network-address-translation %}). Walaupun tulisan tersebut saat ini sudah berusia 13 tahun, tapi konsepnya masih sama. Bahkan command `iptables`nya masih bisa dicopas. Jadi, silahkan baca dan pahami dulu artikel tersebut.
 
 > Sudah dibaca ??? Oke baik mari kita lanjutkan ...
 
