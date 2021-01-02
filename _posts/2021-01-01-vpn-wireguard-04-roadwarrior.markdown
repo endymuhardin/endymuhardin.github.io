@@ -115,7 +115,7 @@ Endpoint = 180.244.234.226:51515
 PersistentKeepalive = 10
 ```
 
-Kita daftarkan VPN gateway di internet tadi sebagai `Peer` di sini. `AllowedIPs` kita set ke subnet VPN, sehingga semua `Peer` dengan alamat IP VPN (`10.100.10.xxx`) bisa terlihat oleh Raspi ini. `Endpoint` kita arahkan ke VPN gateway kita di cloud service. Kemudian kita tambahkan `PersistentKeepalive` agar VPN internal ini mengirim paket setiap 10 detik ke VPN external di cloud service untuk menjaga agar koneksi tidak dihapus oleh router.
+Kita daftarkan VPN gateway di internet tadi sebagai `Peer` di sini. `AllowedIPs` kita set ke subnet VPN, sehingga semua `Peer` dengan alamat IP VPN (`10.100.10.xxx`) bisa terlihat oleh Raspi ini. `Endpoint` kita arahkan ke VPN gateway kita di cloud service. Kemudian kita tambahkan `PersistentKeepalive` agar VPN internal ini mengirim paket setiap 10 detik ke VPN external di cloud service untuk menjaga agar koneksi tidak dihapus oleh router, seperti sudah kita bahas di bagian mengenai _Hole Punching_ pada [artikel sebelumnya]({% post_url 2020-12-30-vpn-wireguard-03-publish-laptop %})
 
 ## Membuat konfigurasi remote worker  ##
 

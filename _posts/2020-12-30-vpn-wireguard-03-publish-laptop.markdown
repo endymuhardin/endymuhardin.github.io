@@ -81,11 +81,15 @@ Endpoint = 139.59.112.17:51515
 PersistentKeepalive = 25
 ```
 
+### NAT Hole Punching ###
+
 Ada dua hal yang berbeda dengan konfigurasi internet gateway pada artikel sebelumnya, yaitu:
 
 * `AllowedIPs` hanya diisi IP VPN di sisi gateway. Artinya koneksi internet tetap diarahkan melalui router wifi kita di rumah. Hanya paket yang menuju VPN gateway yang dikirim melalui interface WireGuard
 
-* `PersistentKeepalive` adalah konfigurasi agar WireGuard di laptop mengirim data setiap 25 detik ke VPN gateway. Karena posisi laptop kita berada di balik router wifi rumah (istilahnya : _behind NAT proxy_), maka jalur datanya akan tertutup bila dia nganggur selama periode waktu tertentu. Kalau sudah tertutup, VPN gateway tidak bisa mengirim request lagi ke laptop kita. Dengan konfigurasi `PersistentKeepalive` ini, laptop kita akan mengirim data secara periodik untuk menjaga agar jalurnya tetap terbuka, sehingga request dari luar bisa tetap masuk menembus NAT router wifi kita.
+* `PersistentKeepalive` adalah konfigurasi agar WireGuard di laptop mengirim data setiap 25 detik ke VPN gateway. Karena posisi laptop kita berada di balik router wifi rumah (istilahnya : _behind NAT proxy_), maka jalur datanya akan tertutup bila dia nganggur selama periode waktu tertentu. Kalau sudah tertutup, VPN gateway tidak bisa mengirim request lagi ke laptop kita. Dengan konfigurasi `PersistentKeepalive` ini, laptop kita akan mengirim data secara periodik untuk menjaga agar jalurnya tetap terbuka, sehingga request dari luar bisa tetap masuk menembus NAT router wifi kita. 
+
+Teknik untuk menjaga jalur data tetap terbuka di belakang NAT ini disebut dengan istilah [NAT Hole Punching](https://en.wikipedia.org/wiki/Hole_punching_(networking)). Ada banyak teknik yang bisa digunakan, salah satunya adalah mengirim paket secara periodik, supaya jalurnya tidak ditutup oleh router.
 
 ## Pengetesan ##
 
