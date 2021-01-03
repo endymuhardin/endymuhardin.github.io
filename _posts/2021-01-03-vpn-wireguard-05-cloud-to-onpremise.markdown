@@ -17,7 +17,7 @@ Salah satu contoh kegunaannya adalah apabila kita ingin menggunakan layanan serv
 
 Skema tersebut diilustrasikan seperti pada gambar berikut
 
-[![VPN Cloud - OnPremise]({{site.url}}/images/uploads/2020/vpn-wireguard/vpn-use-case-cloud-to-onpremise.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/vpn-use-case-cloud-to-onpremise.png)
+[![VPN Cloud - OnPremise]({{site.url}}/images/uploads/2020/vpn-wireguard/vpn-use-case-cloud-to-onpremise.jpg)]({{site.url}}/images/uploads/2020/vpn-wireguard/vpn-use-case-cloud-to-onpremise.jpg)
 
 Langkah-langkah implementasinya sebagai berikut:
 
