@@ -179,6 +179,8 @@ Jangan lupa untuk menyediakan environment variable untuk mengisi konfigurasi di 
 * `DB_USERNAME` : `belajarvpn`
 * `DB_PASSWORD` : `belajar1234`
 
+[![AWS Lambda Environment Variable]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-env-var.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-env-var.png)
+
 Setelah function dibuat, environment variable diisi, dan file zip berisi source code diupload, kita bisa membuat test event dengan isi seperti ini
 
 ```js
