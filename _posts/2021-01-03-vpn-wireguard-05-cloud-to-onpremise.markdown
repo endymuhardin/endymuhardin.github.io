@@ -189,6 +189,8 @@ Setelah function dibuat, environment variable diisi, dan file zip berisi source 
 }
 ```
 
+[![AWS Lambda Test]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-test.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-test.png)
+
 Kemudian kita test functionnya. Kalau routing VPN kita belum berjalan dengan baik, maka akan muncul error seperti ini
 
 ```
@@ -220,6 +222,6 @@ insert into employee values('1','Vaquar khan');
 insert into employee values('2','Zidan khan');
 ```
 
-Bila kita ingin membuat REST API, kita bisa menggunakan fitur API Gateway yang disediakan oleh AWS. Caranya tidak kita bahas di sini. Silahkan baca-baca dokumentasi AWS. Demikian juga cara pengaturan routing VPC supaya Lambda bisa connect ke subnet database. Teknisnya bisa dibaca di [gist ini](https://gist.github.com/reggi/dc5f2620b7b4f515e68e46255ac042a7)
+Bila kita ingin membuat REST API, kita bisa menggunakan fitur API Gateway yang disediakan oleh AWS. Caranya tidak kita bahas di sini. Silahkan baca-baca dokumentasi AWS. Demikian juga cara pengaturan routing VPC supaya Lambda bisa connect ke subnet database. Teknisnya bisa dibaca di [dokumentasi AWS](https://aws.amazon.com/premiumsupport/knowledge-center/lambda-dedicated-vpc/) dan [gist ini](https://gist.github.com/reggi/dc5f2620b7b4f515e68e46255ac042a7)
 
 Semoga bermanfaat ... 
