@@ -34,7 +34,7 @@ Dibandingkan konfigurasi skenario sebelumnya, skema cloud-on premise ini tergolo
 
 ## Konfigurasi VPN Gateway di Cloud Service ##
 
-Di cloud services, kita perlu membuatkan VPN gateway. Di cloud DigitalOcean, VPN gateway ini kita buat berupa droplet biasa. Di Amazon AWS, kita bisa menggunakan layanan EC2 atau Lightsail.
+Di cloud services, kita perlu membuatkan VPN gateway. Di cloud DigitalOcean, VPN gateway ini kita buat berupa droplet biasa. Di Amazon AWS, kita bisa menggunakan layanan EC2 untuk dijadikan VPN gateway.
 
 Di VPS ini, kita bisa menginstal WireGuard seperti biasa. Caranya bisa dibaca di [artikel sebelumnya]({% post_url 2020-12-25-vpn-wireguard-01-intro %})
 
@@ -54,7 +54,7 @@ AllowedIPs = 10.100.10.11/32,192.168.0.0/24
 
 Jangan lupa kita cantumkan alamat subnet database server kita, yaitu `192.168.0.0/24` di `AllowedIPs` agar WireGuard membuatkan routing untuk mengarahkan paket menuju database server kita di IP `192.168.0.10` melalui jaringan VPN di `10.100.10.0/24`.
 
-Bila kita menggunakan VPS AWS seperti EC2 dan Lightsail, kita perlu menambahkan `PersistentKeepalive  = 25` di blok `[Peer]` karena AWS meletakkan VPS kita di jaringan internal, di belakang firewall/load balancer. Oleh karena itu kita perlu [mengaktifkan hole punching]({% post_url 2020-12-30-vpn-wireguard-03-publish-laptop %}). 
+Bila kita menggunakan AWS EC2, kita perlu menambahkan `PersistentKeepalive  = 25` di blok `[Peer]` karena AWS meletakkan VPS kita di jaringan internal, di belakang firewall/load balancer. Oleh karena itu kita perlu [mengaktifkan hole punching]({% post_url 2020-12-30-vpn-wireguard-03-publish-laptop %}). 
 
 ## Konfigurasi VPN Gateway di Data Center On Premise  ##
 
@@ -80,11 +80,9 @@ Kita bisa mengecek konfigurasi routing di VPN gateway cloud dengan perintah `ip 
 
 ```
 ip route
-default via 172.26.0.1 dev eth0 proto dhcp src 172.26.3.231 metric 100 
-172.26.0.0/20 dev eth0 proto kernel scope link src 172.26.3.231 
-172.26.0.1 dev eth0 proto dhcp scope link src 172.26.3.231 metric 100 
-10.100.10.0/24 dev wg0 proto kernel scope link src 172.17.0.4 
-192.168.0.0/24 dev wg0 scope link  
+default via 172.17.0.1 dev eth0 proto dhcp src 172.17.0.22 metric 100 
+10.100.0.0/24 dev wg0 proto kernel scope link src 10.100.0.22
+192.168.0.0/24 dev wg0 scope link 
 ```
 
 Yang perlu diperhatikan adalah route menuju subnet `192.168.0.0/24` di mana database on-premise berada sudah mengarah ke interface WireGuard, yaitu `wg0`.
@@ -96,10 +94,10 @@ Konfigurasi routing ini dibuatkan otomatis oleh WireGuard, asalkan kita mengkonf
 Agar yakin 100% bahwa konfigurasi ini sudah oke, tentunya kita harus :
 
 * menyiapkan database yang akan digunakan, di VPS dengan IP `192.168.0.2` dalam data center on-premise
-* bikin aplikasi atau function yang dideploy di Lightsail/EC2/Lambda, yang mengakses database di IP `192.168.0.2`
-* membuat routing VPC agar paket data dari Lightsail/EC2/Lambda bisa diarahkan ke VPN gateway kita di cloud, untuk kemudian dikirim melalui VPN ke gateway di on-premise, dan kemudian diteruskan ke database server
+* bikin aplikasi atau function yang dideploy di AWS Lambda, yang mengakses database di IP `192.168.0.2`
+* membuat routing VPC agar paket data dari AWS Lambda bisa diarahkan ke VPN gateway kita di cloud, untuk kemudian dikirim melalui VPN ke gateway di on-premise, dan kemudian diteruskan ke database server
 
-Tapi untuk gampangnya, kita bisa ping saja dari Lightsail/EC2/Lambda di AWS ke IP database
+Tapi untuk gampangnya, kita bisa ping saja dari EC2 di AWS ke IP database
 
 ```
 ping 192.168.0.2
@@ -155,13 +153,14 @@ npm init
 npm install --save mysql
 ```
 
+Perintah di atas akan menghasilkan file `package.json`
+
 Setelah kita jalankan perintah di atas, maka folder kita akan berisi sebagai berikut:
 
 ```
 ls -l
 -rw-r--r--   1  855 Jan  3 23:07 index.js
 drwxr-xr-x  14  448 Jan  3 22:54 node_modules
--rw-r--r--   1 6711 Jan  3 22:54 package-lock.json
 -rw-r--r--   1  316 Jan  3 23:04 package.json
 ```
 
@@ -222,6 +221,41 @@ insert into employee values('1','Vaquar khan');
 insert into employee values('2','Zidan khan');
 ```
 
-Bila kita ingin membuat REST API, kita bisa menggunakan fitur API Gateway yang disediakan oleh AWS. Caranya tidak kita bahas di sini. Silahkan baca-baca dokumentasi AWS. Demikian juga cara pengaturan routing VPC supaya Lambda bisa connect ke subnet database. Teknisnya bisa dibaca di [dokumentasi AWS](https://aws.amazon.com/premiumsupport/knowledge-center/lambda-dedicated-vpc/) dan [gist ini](https://gist.github.com/reggi/dc5f2620b7b4f515e68e46255ac042a7)
+Bila konfigurasi routing sudah benar, maka function kita di atas akan menghasilkan log output seperti ini
 
-Semoga bermanfaat ... 
+```
+Response:
+[
+  {
+    "emp_id": "1",
+    "emp_name": "Vaquar khan"
+  }
+]
+
+Request ID:
+"597b4c33-338b-4d10-a0cd-38d41a363ac9"
+```
+
+## Konfigurasi Networking AWS ##
+
+Agar function kita di AWS Lambda bisa menggunakan VPN Gateway yang kita buat dengan EC2, maka kita harus membuat function di VPC yang sama dengan VPC tempat EC2 berada. Konfigurasinya seperti ini
+
+[![AWS Lambda VPC]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-vpc.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-vpc.png).
+
+Kemudian, kita juga harus menambahkan routing di VPC agar paket menuju subnet `192.168.0.0/24` diarahkan melalui VPN gateway kita berupa EC2 instance.
+
+[![AWS VPC Route]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-vpc-route.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-vpc-route.png).
+
+Terakhir, kita harus mematikan `Source/Destination Check` di EC2 instance. 
+
+[![AWS EC2 Src/Dest Check]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-ec2-srcdstcheck.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-ec2-srcdstcheck.png).
+
+Centang checkbox Stop
+
+[![AWS EC2 Stop Src/Dest Check]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-disable-srcdstcheck.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-disable-srcdstcheck.png).
+
+Secara default, EC2 hanya akan memproses paket data yang berasal atau menuju dirinya. Dengan demikian, paket dari Lambda ke DB on-premise yang sekedar numpang lewat (sourcenya lambda dan destinationnya database `192.168.0.2`) tidak akan diteruskan oleh EC2. Dengan mematikan pengecekan, EC2 akan memproses semua data yang numpang lewat tersebut.
+
+Setelah semua routing dikonfigurasi, kita bisa mencoba menjalankan function kita tersebut. Seharusnya function akan bisa mengakses database kita di on-premise dengan lancar.
+
+Selamat mencoba. Semoga bermanfaat ... 
