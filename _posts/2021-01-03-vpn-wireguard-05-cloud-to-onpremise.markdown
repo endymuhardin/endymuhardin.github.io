@@ -244,18 +244,24 @@ Agar function kita di AWS Lambda bisa menggunakan VPN Gateway yang kita buat den
 
 Kemudian, kita juga harus menambahkan routing di VPC agar paket menuju subnet `192.168.0.0/24` diarahkan melalui VPN gateway kita berupa EC2 instance.
 
-[![AWS VPC Route]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-vpc-route.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-vpc-route.png).
+[![AWS VPC Route]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-vpc-route.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-vpc-route.png)
 
 Terakhir, kita harus mematikan `Source/Destination Check` di EC2 instance. 
 
-[![AWS EC2 Src/Dest Check]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-ec2-srcdstcheck.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-ec2-srcdstcheck.png).
+[![AWS EC2 Src/Dest Check]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-ec2-srcdstcheck.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-ec2-srcdstcheck.png)
 
 Centang checkbox Stop
 
-[![AWS EC2 Stop Src/Dest Check]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-disable-srcdstcheck.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-disable-srcdstcheck.png).
+[![AWS EC2 Stop Src/Dest Check]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-disable-srcdstcheck.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-disable-srcdstcheck.png)
 
 Secara default, EC2 hanya akan memproses paket data yang berasal atau menuju dirinya. Dengan demikian, paket dari Lambda ke DB on-premise yang sekedar numpang lewat (sourcenya lambda dan destinationnya database `192.168.0.2`) tidak akan diteruskan oleh EC2. Dengan mematikan pengecekan, EC2 akan memproses semua data yang numpang lewat tersebut.
 
-Setelah semua routing dikonfigurasi, kita bisa mencoba menjalankan function kita tersebut. Seharusnya function akan bisa mengakses database kita di on-premise dengan lancar.
+Setelah semua routing dikonfigurasi, kita bisa mencoba menjalankan function kita tersebut. Function akan bisa mengakses database kita di on-premise dengan lancar.
+
+[![AWS Lambda Result 1]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-result-1.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-result-1.png)
+
+[![AWS Lambda Result 2]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-result-2.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-result-2.png)
+
+[![AWS Lambda Result 3]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-result-3.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/aws-lambda-result-3.png)
 
 Selamat mencoba. Semoga bermanfaat ... 
