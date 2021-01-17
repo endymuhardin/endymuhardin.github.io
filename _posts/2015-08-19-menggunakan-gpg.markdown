@@ -212,7 +212,7 @@ cat endymuhardin-plain.asc | gpg --import
 Sedangkan bila private key dienkripsi seperti anjuran di atas, maka perlu didekripsi dulu. Seperti halnya pada waktu enkripsi, proses dekripsi juga kita lakukan dalam satu langkah
 
 ```
-gpg -a --output - endymuhardin-encrypted.asc | gpg --import
+gpg -a --output - endymuhardin-encrypted.asc | gpg --batch --import
 ```
 
 Setelah diimport, kita perlu membuat statusnya menjadi `trusted` supaya bisa digunakan untuk encrypt/decrypt maupun sign/verify.
