@@ -35,6 +35,18 @@ Kita harus tahu dulu label volume external harddisk. Misalnya harddisk saya nama
 LABEL=BackupEndy none ntfs rw,auto,nobrowse
 ```
 
+Bila labelnya mengandung spasi, maka kita harus menggunakan `UUID`. Nilainya bisa didapatkan dengan menggunakan `diskutil`.
+
+```
+diskutil info /Volumes/Backup\ Endy | grep UUID
+```
+
+Konfigurasinya menjadi seperti ini
+
+```
+UUID=uuidabcdxyzuuid none ntfs rw,auto,nobrowse
+```
+
 Tapi ini mungkin kurang _user-friendly_ karena harus mengedit file sistem yang membutuhkan penggunaan akun superuser. Selain itu, kita harus tahu label partisi dan harus menambahkannya ke `/etc/fstab` setiap kali ada flashdisk/harddisk baru yang ingin kita pasang.
 
 Alternatif terakhir adalah menggunakan aplikasi gratisan, yaitu [Mounty.app](https://mounty.app/)
