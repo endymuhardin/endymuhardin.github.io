@@ -20,6 +20,7 @@ Akan tetapi, ternyata lisensi saya tersebut tidak bisa dipakai lagi di MacOS ver
 Setelah googling, ada beberapa alternatif yang bisa dilakukan (selain beli Paragon), yaitu:
 
 * Menggunakan driver `osxfuse` dan `ntfs-3g`
+* Melakukan mount secara manual melalui command line
 * Membuat konfigurasi di `/etc/fstab`
 * Menggunakan aplikasi Mounty.app
 
@@ -27,7 +28,14 @@ Setelah googling, ada beberapa alternatif yang bisa dilakukan (selain beli Parag
 
 Alternatif pertama, tidak saya coba lebih lanjut. Di semua artikel yang saya baca, membahas metode ini, mengharuskan kita untuk men-disable System Integrity Protection (SIP). Saya lebih baik pinjam laptop lain untuk copy file daripada men-disable fitur keamanan. Jadi opsi pertama ini tidak kita lanjutkan.
 
-Alternatif kedua, sebetulnya sangat mudah. MacOS sebetulnya sudah bisa menulis ke partisi NTFS, tapi tidak di-enable,  entah karena alasan teknis atau alasan bisnis. Kita cukup mengaktifkannya dengan cara menulis konfigurasi di file `/etc/fstab`. File ini bukanlah file yang aneh bagi yang biasa menggunakan Linux. Ini adalah file yang diedit untuk mendefinisikan partisi di harddisk kita, baik external maupun internal.
+Alternatif kedua, sebetulnya sangat mudah. MacOS sebetulnya sudah bisa menulis ke partisi NTFS, tapi tidak di-enable,  entah karena alasan teknis atau alasan bisnis. Jadi _by-default_ pada waktu kita memasang external disk atau flashdisk berpartisi NTFS, MacOS hanya menyediakan akses _read only_. Kita cuma bisa buka file dan folder, tapi tidak bisa membuat file dan folder baru. Untuk itu, kita bisa melakukan _mount_ ulang terhadap disk NTFS kita dengan perintah berikut
+
+```
+sudo umount /Volume/BackupEndy
+sudo mount -t ntfs -o rw,auto,nobrowse /dev/disk3s1 /Volume/BackupEndy
+```
+
+Bila kita sering cabut-pasang disk yang sama, kita bisa mengotomasinya dengan cara menulis konfigurasi di file `/etc/fstab`. File ini bukanlah file yang aneh bagi yang biasa menggunakan Linux. Ini adalah file yang diedit untuk mendefinisikan partisi di harddisk kita, baik external maupun internal.
 
 Kita harus tahu dulu label volume external harddisk. Misalnya harddisk saya namanya `BackupEndy`, maka saya tambahkan baris berikut di file `/etc/fstab`
 
@@ -41,11 +49,19 @@ Bila labelnya mengandung spasi, maka kita harus menggunakan `UUID`. Nilainya bis
 diskutil info /Volumes/Backup\ Endy | grep UUID
 ```
 
-Konfigurasinya menjadi seperti ini
+Outputnya seperti ini
 
 ```
-UUID=uuidabcdxyzuuid none ntfs rw,auto,nobrowse
+Disk / Partition UUID:     F542CBB9-590E-4ECB-8F27-BA79C8DA6C9E
 ```
+
+Kita pasang nilai UUID tersebut di `/etc/fstab` seperti ini
+
+```
+UUID=F542CBB9-590E-4ECB-8F27-BA79C8DA6C9E none ntfs rw,auto,nobrowse
+```
+
+Setelah kita tambahkan konfigurasi tersebut, maka setiap kali harddisk/flashdisk tersebut kita pasang, otomatis akan di-mount secara read-write alias bisa ditulisi.
 
 Tapi ini mungkin kurang _user-friendly_ karena harus mengedit file sistem yang membutuhkan penggunaan akun superuser. Selain itu, kita harus tahu label partisi dan harus menambahkannya ke `/etc/fstab` setiap kali ada flashdisk/harddisk baru yang ingin kita pasang.
 
