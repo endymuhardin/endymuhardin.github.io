@@ -60,7 +60,45 @@ Ada beberapa hal yang biasa kita lakukan berkaitan dengan keypair:
 Sebelum bisa menggunakan GPG, terlebih dulu kita harus memiliki pasangan private dan public key. Kita bisa membuatnya dengan menggunakan perintah berikut
 
 ```
-gpg --gen-key
+gpg --full-generate-key 
+```
+
+GPG akan mengajukan beberapa pertanyaan seperti ini
+
+```
+gpg (GnuPG) 2.2.27; Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+  (14) Existing key from card
+Your selection? 1
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 4096
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 2y
+Key expires at Wed Jan 18 13:23:40 2023 WIB
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: Endy Muhardin
+Email address: endy.muhardin@gmail.com
+Comment: 
+You selected this USER-ID:
+    "Endy Muhardin <endy.muhardin@gmail.com>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit?
 ```
 
 Ada beberapa opsi yang kita harus isi:
@@ -109,6 +147,30 @@ Cara di atas **sangat tidak aman**, karena bilangan acak yang dihasilkan `urando
 Walaupun ada juga yang menganggap itu [mitos belaka](http://www.2uo.de/myths-about-urandom/).
 
 Setelah proses generate key selesai, keypair yang baru dibuat secara otomatis akan dimasukkan ke dalam `keyring`, yaitu database key yang kita miliki.
+
+Kadangkala kita akan mendapatkan pesan error seperti ini
+
+```
+gpg: can't connect to the agent: No such file or directory
+gpg: agent_genkey failed: No agent running
+Key generation failed: No agent running
+```
+
+Itu disebabkan karena `gpg-agent` belum aktif. Kita bisa aktifkan dulu dengan perintah berikut
+
+```
+/usr/local/Cellar/gnupg/2.2.27/bin/gpg-agent -v --daemon
+```
+
+Outputnya seperti ini
+
+```
+gpg-agent[11577]: listening on socket '/Users/endymuhardin/.gnupg/S.gpg-agent'
+gpg-agent[11577]: listening on socket '/Users/endymuhardin/.gnupg/S.gpg-agent.extra'
+gpg-agent[11577]: listening on socket '/Users/endymuhardin/.gnupg/S.gpg-agent.browser'
+gpg-agent[11577]: listening on socket '/Users/endymuhardin/.gnupg/S.gpg-agent.ssh'
+gpg-agent[11578]: gpg-agent (GnuPG) 2.2.27 started
+```
 
 ### Melihat isi keyring ###
 
