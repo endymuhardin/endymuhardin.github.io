@@ -114,19 +114,25 @@ Salah satu langkah krusial dalam membuat backup adalah **test restore**. Jangan 
 
 Prosedurnya adalah sebagai berikut. Lakukan prosedur ini di komputer lain untuk memastikan tidak ada dependensi sama sekali terhadap laptop yang sekarang kita gunakan untuk enkripsi. Kita bisa gunakan VPS, atau virtual box di laptop untuk memastikan prosedur ini berjalan dengan baik di komputer yang fresh.
 
-1. Decrypt file backup
+1. Import gpg key terenkripsi
+
+    ```
+    gpg --decrypt -a --output - endymuhardin-encrypted.asc | gpg --batch --import
+    ```
+
+2. Decrypt file backup
 
     ```
     gpg --decrypt-files *.gpg
     ```
 
-2. Buka kompresi tarball
+3. Buka kompresi tarball
 
     ```
     tar xvzf 1994-2010.tar.gz
     ```
 
-3. Cek random isi file dan foldernya. Pastikan foldernya bisa diakses, dan filenya bisa dibuka.
+4. Cek random isi file dan foldernya. Pastikan foldernya bisa diakses, dan filenya bisa dibuka.
 
 # Copy backup ke harddisk lain #
 
