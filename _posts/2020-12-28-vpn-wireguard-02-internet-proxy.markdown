@@ -191,7 +191,7 @@ QR Code ini bisa kita scan di aplikasi Android atau IOS. Sedangkan untuk aplikas
 Supaya lebih rapi dan portable, di sisi internet gateway kita bisa mengumpulkan konfigurasi semua user dalam satu file, misalnya kita beri nama `peer.conf`. Kemudian file ini kita load dari konfigurasi utama di file `wg0.conf` dengan menambakan baris berikut
 
 ```
-PostUp = wg addconf wg0 /etc/wireguard/peer.conf
+PostUp = wg addconf %i /etc/wireguard/peer.conf
 ```
 
 sehingga isinya menjadi seperti ini
@@ -207,7 +207,7 @@ PostUp = iptables -A FORWARD -i %i -j ACCEPT
 PostUp = iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 # Load konfigurasi user
-PostUp = wg addconf wg0 /etc/wireguard/peer.conf
+PostUp = wg addconf %i /etc/wireguard/peer.conf
 
 # Kalau VPN dimatikan, hapus aturan firewall untuk meneruskan paket dari user
 PostDown = iptables -D FORWARD -i %i -j ACCEPT
