@@ -188,6 +188,32 @@ cat endy.conf | qrencode -o user.png
 
 QR Code ini bisa kita scan di aplikasi Android atau IOS. Sedangkan untuk aplikasi desktop (Windows, Linux, MacOS), kita bisa langsung copy-paste file konfigurasi dalam format teks tadi.
 
+Supaya lebih rapi dan portable, di sisi internet gateway kita bisa mengumpulkan konfigurasi semua user dalam satu file, misalnya kita beri nama `peer.conf`. Kemudian file ini kita load dari konfigurasi utama di file `wg0.conf` dengan menambakan baris berikut
+
+```
+PostUp = wg addconf wg0 /etc/wireguard/peer.conf
+```
+
+sehingga isinya menjadi seperti ini
+
+```
+[Interface]
+PrivateKey = 2KSQxhAa4EmrFV//t5Lbvq5L4nCDo6bHrM2/Dolxo04=
+Address = 10.100.10.1/24 # IP Private VPN Gateway
+ListenPort = 51515 # Port untuk menerima koneksi dari user
+
+# Aturan Firewall untuk meneruskan paket dari user ke internet
+PostUp = iptables -A FORWARD -i %i -j ACCEPT
+PostUp = iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+# Load konfigurasi user
+PostUp = wg addconf wg0 /etc/wireguard/peer.conf
+
+# Kalau VPN dimatikan, hapus aturan firewall untuk meneruskan paket dari user
+PostDown = iptables -D FORWARD -i %i -j ACCEPT
+PostDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+```
+
 ## Pengetesan ##
 
 Kita bisa mengetes konfigurasi ini dengan cara browse ke website [ifconfig.me](https://ifconfig.me/)
