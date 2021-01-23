@@ -60,6 +60,13 @@ Ada beberapa pilihan untuk aplikasi FBE, diantaranya:
 * EncFS
 * CryFS
 
+Beberapa artikel membahas perbandingan di antara alternatif tersebut, yaitu:
+
+* [Perbandingan oleh pembuat CryFS](https://www.cryfs.org/comparison/)
+* [Perbandingan oleh pembuat GoCryptFS](https://nuetzlich.net/gocryptfs/comparison/)
+
+Tentu ada bias dalam artikel di atas, karena yang menulis adalah pembuat salah satu aplikasinya. Tapi lumayan untuk menambah informasi.
+
 Silahkan dipilih tools mana yang kira-kira cocok dengan selera Anda. Saat ini saya sedang explore Cryptomator dan GoCryptFS. So far GoCryptFS terlihat paling menarik.
 
 Selamat mencoba, semoga bermanfaat ...
