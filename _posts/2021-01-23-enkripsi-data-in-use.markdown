@@ -26,6 +26,8 @@ Ada banyak aplikasi untuk mengenkripsi data seperti ini. Akan tetapi, biasanya b
 * Full Disk Encryption (FDE)
 * File Based Encryption
 
+## Full Disk Encryption ##
+
 Full disk encryption adalah solusi untuk mengenkripsi keseluruhan disk (harddisk ataupun flashdisk). Kita format dulu disk kosong dengan filesystem terenkripsi, kemudian kita _mount_ disk tersebut agar terlihat dalam bentuk tidak terenkripsi. Pada waktu melakukan _mount_, kita akan diminta password untuk membuka enkripsi. Setelah dimount, kita bisa baca tulis file seperti biasa. Setelah selesai dipakai, kita _unmount_ disk tersebut. Bila disk tersebut dipasang di komputer dan penggunanya tidak bisa memasukkan password yang sesuai, maka seluruh isi disk tidak akan terbaca.
 
 Full disk encryption ini cocok digunakan untuk partisi utama di perangkat yang kita gunakan, seperti harddisk laptop, pc, ataupun smartphone. Partisi utama ini sekali dibuka, dipakai sepanjang perangkat hidup dan dipakai. Setelah perangkat dimatikan, otomatis dia unmount dan tidak akan terbaca. Jadi disk kita aman, walaupun perangkatnya dibuka dan disknya dipasang di komputer lain, datanya tidak akan bisa dibaca.
@@ -38,6 +40,8 @@ Beberapa aplikasi full disk encryption yang populer diantaranya:
 
 Buat yang pakai Windows, silahkan dicari sendiri ya ... 
 Atau ya pindah Ubuntu atau MacOS ajalah :D 
+
+## File Based Encryption ##
 
 FDE walaupun sangat seamless (tidak terasa pemakaiannya) untuk partisi harddisk, dia kurang cocok untuk enkripsi folder per folder. Misalnya kita punya 10 folder yang tersinkronisasi ke Dropbox, 2 folder diantaranya berisi data rahasia. Kita tidak bisa menggunakan FDE untuk keperluan ini. Untuk itu, kita butuh solusi lain, yaitu FBE (file based encryption). FBE bisa mengenkripsi satu folder (berikut isinya) saja. 
 
@@ -68,5 +72,63 @@ Beberapa artikel membahas perbandingan di antara alternatif tersebut, yaitu:
 Tentu ada bias dalam artikel di atas, karena yang menulis adalah pembuat salah satu aplikasinya. Tapi lumayan untuk menambah informasi.
 
 Silahkan dipilih tools mana yang kira-kira cocok dengan selera Anda. Saat ini saya sedang explore Cryptomator dan GoCryptFS. So far GoCryptFS terlihat paling menarik.
+
+## Cara Penggunaan GoCryptFS ##
+
+Sebagai ilustrasi, untuk membuat folder enkripsi seperti pada animasi di atas, berikut perintahnya:
+
+```
+mkdir encrypted decrypted
+gocryptfs -init encrypted
+```
+
+Dia akan menanyakan password untuk melakukan enkripsi. Password ini kemudian akan _dienhance_ menggunakan algoritma _scrypt_ menjadi _Key Encrypting Key (KEK)_. Setelah itu, `gocryptfs` akan membuat dua master key, satu untuk mengenkripsi nama file, satunya untuk mengenkripsi isi file. Outputnya seperti ini
+
+```
+Choose a password for protecting your files.
+Password: 
+Repeat: 
+
+Your master key is:
+
+    1d6dd761-31c94976-b4070b98-f6625425-
+    c0d35bdd-a9b41578-9de318b0-28e073b9
+
+If the gocryptfs.conf file becomes corrupted or you ever forget your password,
+there is only one hope for recovery: The master key. Print it to a piece of
+paper and store it in a drawer. This message is only printed once.
+The gocryptfs filesystem has been created successfully.
+You can now mount it using: gocryptfs encrypted MOUNTPOINT
+```
+
+Kemudian dia akan mengenkripsi kedua master key dengan KEK tadi, dan menulisnya di file `gocryptfs.conf`. Selain itu dia juga akan membuat file _Initialization Vector_ yaitu `gocryptfs.diriv`.
+
+Kita harus simpan kedua master key ini di tempat aman, supaya kalau file konfigurasinya hilang, kita tetap bisa mendekripsi file-file kita.
+
+Selanjutnya, kita _mount_ folder terenkripsi tadi supaya terlihat file dalam bentuk _plain_.
+
+```
+gocryptfs encrypted decrypted
+```
+
+Dia akan meminta password untuk mendekripsi master key, kemudian dengan master key tersebut mendekripsi nama file dan isi file.
+
+```
+Password: 
+Decrypting master key
+Filesystem mounted and ready.
+```
+
+Sekarang kita bisa mengisi/mengubah isi folder `decrypted`. Hasilnya akan langsung terlihat di folder `encrypted`. 
+
+Setelah selesai menggunakan, kita bisa _unmount_ dengan perintah berikut
+
+```
+umount decrypted
+```
+
+Sekarang folder _mount_ sudah kosong kembali. Kita bisa hapus kalau mau.
+
+Buat yang lebih suka versi GUI, bisa coba [SiriKali](https://mhogomchungu.github.io/sirikali/)
 
 Selamat mencoba, semoga bermanfaat ...
