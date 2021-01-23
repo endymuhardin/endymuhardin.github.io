@@ -129,6 +129,6 @@ umount decrypted
 
 Sekarang folder _mount_ sudah kosong kembali. Kita bisa hapus kalau mau.
 
-Buat yang lebih suka versi GUI, bisa coba [SiriKali](https://mhogomchungu.github.io/sirikali/)
+Buat yang lebih suka versi GUI, bisa coba [SiriKali](https://mhogomchungu.github.io/sirikali/) atau sekalian [Cryptomator](https://cryptomator.org/) yang UInya lebih bagus.
 
 Selamat mencoba, semoga bermanfaat ...
