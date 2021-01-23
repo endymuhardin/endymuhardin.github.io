@@ -20,6 +20,9 @@ Di artikel ini, kita akan membahas apa itu GPG, kapan kita menggunakannya, dan b
 
 <!--more-->
 
+* TOC
+{:toc}
+
 ## Apa itu GPG ##
 
 Pada dasarnya, GPG menggunakan prinsip asymmetric encryption, yaitu enkripsi dan dekripsi menggunakan dua key yang berbeda. Walaupun demikian, dia juga punya opsi untuk melakukan symmetric encryption seperti akan kita praktekkan nanti.

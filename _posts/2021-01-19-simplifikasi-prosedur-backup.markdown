@@ -33,6 +33,9 @@ Jadi pada artikel kali ini, kita akan membahas prosedur backup untuk foto dan vi
 
 <!--more-->
 
+* TOC
+{:toc}
+
 ## Goals & Non-Goals ##
 
 Secara prinsip, backup tetap mengikuti kaidah 3-2-1, yaitu :
