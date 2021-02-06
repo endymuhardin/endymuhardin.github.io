@@ -261,6 +261,24 @@ Hasilnya adalah file text yang terenkripsi. Walaupun orang lain melihat dan mend
 
 File private key ini bisa kita simpan di tempat yang aman. Bisa di safety deposit box, brankas, atau tempat lain yang dianggap aman. Silahkan baca diskusi di StackOverflow untuk mendapat ide tentang berbagai metode penyimpanan.
 
+Kadangkala kita menemui error seperti ini pada waktu melakukan export/import
+
+```
+gpg: problem with the agent: Inappropriate ioctl for device
+gpg: error creating passphrase: Operation cancelled
+gpg: symmetric encryption of '[stdin]' failed: Operation cancelled
+gpg: [stdout]: write error: Broken pipe
+gpg: filter_flush failed on close: Broken pipe
+```
+
+Solusinya mudah, cukup jalankan perintah berikut di command line
+
+```
+export GPG_TTY=$(tty)
+```
+
+Selanjutnya, kita bisa mengulangi perintah export tadi. Seharusnya sekarang sudah bisa berjalan dengan baik.
+
 ### Import Key ###
 
 Ada beberapa situasi dimana kita melakukan import, diantaranya:
