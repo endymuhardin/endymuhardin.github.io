@@ -97,7 +97,7 @@ Database sudah siap digunakan.
 Sebelum mendeploy aplikasi, kita pastikan dulu `Java SDK` dan `haveged` sudah terinstal
 
 ```
-apt install openjdk-9-jre-headless -y
+apt install openjdk-8-jdk-headless haveged -y
 ```
 
 `haveged` adalah generator entropi yang dibutuhkan untuk menghasilkan random number. Bila ini lupa dipasang, aplikasi kita akan seolah hang pada saat membutuhkan random number.
