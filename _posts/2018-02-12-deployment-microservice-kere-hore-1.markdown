@@ -165,9 +165,9 @@ Kalau sudah berhasil, lakukan hal yang sama untuk semua domain yang lain. Pastik
 Semua domain kita sudah bisa diakses dengan protokol `http`. Sekarang saatnya kita amankan dengan `https`. Kita akan menggunakan sertifikat gratisan dari LetsEncrypt. Proses pengambilan sertifikat sudah diotomasi dengan aplikasi yang bernama `certbot`. Kita install dulu `certbot`nya
 
 ```
-add-apt-repository ppa:certbot/certbot
-apt update
-apt install certbot python-certbot-nginx -y
+snap install core
+snap refresh core
+snap install --classic certbot
 ```
 Setelah terinstal, kita tinggal menjalankan `certbot`. Dia akan otomatis membaca konfigurasi virtualhost kita di Nginx, dan menawarkan untuk membuatkan sertifikat SSL untuk tiap domain.
 
