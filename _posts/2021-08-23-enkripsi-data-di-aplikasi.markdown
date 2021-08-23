@@ -66,11 +66,11 @@ Akan tetapi, HSM ini harganya relatif mahal. Bisa seharga mobil baru. Oleh karen
 
 Untuk memahami penggunaan Vault, berikut adalah aplikasi kita sebelum melakukan enkripsi data pribadi
 
-[![Diagram sebelum pakai vault]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/01-arsitektur-sebelum-enkripsi.png)]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/01-arsitektur-sebelum-enkripsi.png)
+[![Diagram sebelum pakai vault]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/01-arsitektur-sebelum-enkripsi.jpg)]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/01-arsitektur-sebelum-enkripsi.jpg)
 
 Database kita terlihat seperti ini
 
-[![Database sebelum pakai vault]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/05-db-sebelum-enkripsi.png)]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/05-db-sebelum-enkripsi.png)
+[![Database sebelum pakai vault]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/05-db-sebelum-enkripsi.jpg)]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/05-db-sebelum-enkripsi.jpg)
 
 Dan penyimpanan file kita seperti ini
 
