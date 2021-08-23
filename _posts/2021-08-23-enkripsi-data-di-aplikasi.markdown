@@ -70,7 +70,7 @@ Untuk memahami penggunaan Vault, berikut adalah aplikasi kita sebelum melakukan 
 
 Database kita terlihat seperti ini
 
-[![Database sebelum pakai vault]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/05-db-sebelum-enkripsi.jpg)]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/05-db-sebelum-enkripsi.jpg)
+[![Database sebelum pakai vault]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/05-db-sebelum-enkripsi.png)]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/05-db-sebelum-enkripsi.png)
 
 Dan penyimpanan file kita seperti ini
 
@@ -78,7 +78,7 @@ Dan penyimpanan file kita seperti ini
 
 Dan berikut ini adalah arsitektur aplikasi kita setelah menggunakan Vault.
 
-[![Diagram setelah pakai vault]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/02-arsitektur-setelah-enkripsi.png)]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/02-arsitektur-setelah-enkripsi.png)
+[![Diagram setelah pakai vault]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/02-arsitektur-setelah-enkripsi.jpg)]({{site.url}}/images/uploads/2021/enkripsi-data-pribadi/02-arsitektur-setelah-enkripsi.jpg)
 
 Database yang sudah terenkripsi
 
