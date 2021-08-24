@@ -58,6 +58,19 @@ Untuk memudahkan saya menulis artikel, kita akan menggunakan beberapa istilah, y
 * plaintext : informasi asli
 * ciphertext : informasi yang telah dienkripsi sehingga tidak terbaca
 
+## Alternatif Solusi ##
+
+Untuk melakukan enkripsi, kita bisa membuat key sendiri dan mengenkripsi data dengan key tersebut. Caranya sudah pernah saya tulis [di artikel terdahulu]({% post_url 2013-11-21-symmetric-encryption-dengan-java %}). Akan tetapi, kemudian kita akan menemui masalah key management, yaitu bagaimana kita akan :
+
+* membuat key untuk masing-masing keperluan (key untuk NIK, key untuk file KTP, key untuk nomor kartu kredit, dsb)
+* menyimpan key tersebut secara aman
+* melakukan rotasi/penggantian key secara berkala
+* membuat mapping data mana menggunakan key yang mana
+
+Nah, ternyata cukup banyak juga yang harus kita kerjakan untuk urusan enkripsi ini. Apakah kita harus buat sendiri? Tidak perlu. Dengan keajaiban open source, kita tinggal cari aplikasi yang sesuai untuk urusan `key management` ini.
+
+## Key Management System ##
+
 Tempat penyimpanan key yang paling aman adalah menggunakan Hardware Security Module (HSM). Ini adalah mesin khusus yang tugasnya menyimpan key. Dia memiliki berbagai perangkat pendeteksi aksi pembobolan. Bila dia merasa sedang dibobol, maka dia akan menghapus key yang dia simpan, sehingga orang tidak bisa membacanya.
 
 Akan tetapi, HSM ini harganya relatif mahal. Bisa seharga mobil baru. Oleh karena itu, kita akan menggunakan penyimpanan key berupa aplikasi open source yang gratis, yaitu [Vault](https://www.vaultproject.io). Aplikasi Vault ini sudah diakui dan dipakai di berbagai skenario production. 
@@ -280,13 +293,13 @@ Sebelum mulai melakukan enkripsi, kita harus menyuruh Vault untuk membuat key da
 @Service @Slf4j
 public class VaultService {
     private static final String KEY_TYPE = "aes128-gcm96";
-    private static final String KEY_ENCRYPT_STRING = "KEY_ENCRYPT_STRING";
+    private static final String KEY_ENCRYPT_KTP = "KEY_ENCRYPT_KTP";
 
     private VaultTransitOperations vaultTransit;
 
     public VaultService(VaultOperations vaultOperations) {
         vaultTransit = vaultOperations.opsForTransit();
-        vaultTransit.createKey(KEY_ENCRYPT_STRING,
+        vaultTransit.createKey(KEY_ENCRYPT_KTP,
                 VaultTransitKeyCreationRequest.ofKeyType(KEY_TYPE));
     }
 }
@@ -296,7 +309,7 @@ Berikutnya, kita mengirim informasi yang ingin dienkripsi. Berikut kode programn
 
 ```java
 public String encrypt(String plaintext) {
-    return vaultTransit.encrypt(KEY_ENCRYPT_STRING, plaintext);
+    return vaultTransit.encrypt(KEY_ENCRYPT_KTP, plaintext);
 }
 ```
 
@@ -323,7 +336,7 @@ Untuk mendapatkan nilai yang asli kembali, kita lakukan dekripsi. Kode programny
 
 ```java
 public String decrypt(String cipherText) {
-    return vaultTransit.decrypt(KEY_ENCRYPT_STRING, cipherText);
+    return vaultTransit.decrypt(KEY_ENCRYPT_KTP, cipherText);
 }
 ```
 
@@ -405,6 +418,12 @@ Decrypted file : /var/folders/qx/dsj14n214d92nqfd0_mgd03c0000gn/T/9156c7d7-d9f4-
 ```
 
 Kita cek di folder yang disebutkan di output. Filenya harusnya sudah terlihat gambar aslinya.
+
+## Pengembangan Selanjutnya ##
+
+Pada contoh di atas, kita cuma membuat dan menggunakan satu key saja. Seharusnya nanti kita akan membuat key untuk masing-masing keperluan. Key untuk enkripsi nomor ktp berbeda dengan key untuk enkripsi file ktp. Demikian juga bila kita punya banyak data sensitif lain seperti nomor kartu kredit, foto selfie dengan ktp, nama ibu kandung, dan sebagainya.
+
+Key tersebut juga perlu kita rotasi secara berkala, sehingga bila satu key bocor, tidak semua data bisa dibaca oleh si cracker.
 
 Selamat mencoba. Mudah-mudahan dengan mengimplementasikan artikel ini, aplikasi yang kita buat akan menjadi lebih aman.
 
