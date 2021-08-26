@@ -246,8 +246,6 @@ Selanjutnya, untuk mengaktifkan Vault, kita harus melakukan `Unseal`. Berikut ta
 
 [![Prosedur Unseal]({{site.url}}/images/uploads/2021/setup-vault-production/04-unseal.png)]({{site.url}}/images/uploads/2021/setup-vault-production/04-unseal.png)
 
-Kita harus memasukkan key sejumlah yang kita tentukan pada `minimum threshold` di langkah sebelumnya. Setelah semua key dimasukkan, maka Vault akan berada dalam kondisi `Unsealed` dan siap digunakan. Ini bisa dilihat dari indikator di kanan atas yang berwarna hijau.
-
 Bila `unseal key` ada dalam format terenkripsi (karena menggunakan GPG), maka kita bisa menampilkan key aslinya dengan perintah berikut
 
 ```
@@ -255,6 +253,8 @@ echo "wcBMA37..." | base64 --decode | gpg -dq
 ```
 
 Tentunya perintah `gpg -dq` tersebut hanya bisa dijalankan di komputer yang terpasang private key GPG.
+
+Kita harus memasukkan key sejumlah yang kita tentukan pada `minimum threshold` di langkah sebelumnya. Setelah semua key dimasukkan, maka Vault akan berada dalam kondisi `Unsealed` dan siap digunakan. Ini bisa dilihat dari indikator di kanan atas yang berwarna hijau.
 
 [![Login]({{site.url}}/images/uploads/2021/setup-vault-production/05-root-login.png)]({{site.url}}/images/uploads/2021/setup-vault-production/05-root-login.png)
 
