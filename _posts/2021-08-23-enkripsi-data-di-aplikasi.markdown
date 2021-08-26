@@ -7,8 +7,6 @@ categories:
 - java
 ---
 
-Pengamanan data sensitif di aplikasi
-
 Dalam membuat aplikasi, kita seringkali butuh untuk menyimpan data user, misalnya:
 
 * Nomor KTP
