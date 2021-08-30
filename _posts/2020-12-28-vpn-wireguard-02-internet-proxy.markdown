@@ -138,7 +138,7 @@ AllowedIPs = 10.100.10.11/32
 File konfigurasi user bisa kita tampilkan dalam QR Code dengan aplikasi `qrencode`. Kita gunakan perintah `cat` untuk menampilkan isi file, kemudian kita _pipe_ outputnya ke `qrencode`. Aplikasi `qrencode` bisa menampilkan QR Code dalam format teks, sehingga bisa dijalankan di command line, seperti ini
 
 ```
-cat user.conf | qrencode -t utf8
+qrencode -t ansiutf8 < user.conf
 █████████████████████████████████████████████████████████████████████████████
 █████████████████████████████████████████████████████████████████████████████
 ████ ▄▄▄▄▄ █▀▄▀▄▄▄ ▀█  ▀█▀▄▀███▀ ▄█▀█▄▄▀ ▀▀ ▄   █▄▄▄▀▄█▄█▀▀ █ ▄▄▄█ ▄▄▄▄▄ ████
