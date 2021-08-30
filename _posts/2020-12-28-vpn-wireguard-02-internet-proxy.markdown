@@ -183,7 +183,7 @@ qrencode -t ansiutf8 < user.conf
 Atau bisa juga kita tulis ke file, sehingga bisa dikirim melalui email atau chat.
 
 ```
-cat endy.conf | qrencode -o user.png
+qrencode -o user.png < user.conf
 ```
 
 QR Code ini bisa kita scan di aplikasi Android atau IOS. Sedangkan untuk aplikasi desktop (Windows, Linux, MacOS), kita bisa langsung copy-paste file konfigurasi dalam format teks tadi.
