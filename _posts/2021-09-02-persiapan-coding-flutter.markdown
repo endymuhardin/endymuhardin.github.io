@@ -245,6 +245,10 @@ Setelah kita jalankan emulator, maka di pojok kanan bawah akan tampil nama devic
 
 [![Simulator iPhone]({{site.url}}/images/uploads/2021/persiapan-flutter/06-simulator-iphone.png)]({{site.url}}/images/uploads/2021/persiapan-flutter/06-simulator-iphone.png)
 
+Kita juga bisa menjalankan simulator Android.
+
+[![Simulator Android]({{site.url}}/images/uploads/2021/persiapan-flutter/06-simulator-android.png)]({{site.url}}/images/uploads/2021/persiapan-flutter/06-simulator-android.png)
+
 Aplikasi yang baru saja kita generate bisa langsung dijalankan di emulator. Klik menu Run > Start Debugging untuk menjalankan aplikasi. 
 
 [![Run App]({{site.url}}/images/uploads/2021/persiapan-flutter/07-run-app.png)]({{site.url}}/images/uploads/2021/persiapan-flutter/07-run-app.png)
@@ -253,9 +257,13 @@ VS Code akan menanyakan emulator mana yang akan digunakan untuk mengetes aplikas
 
 [![Select Device]({{site.url}}/images/uploads/2021/persiapan-flutter/08-select-device.png)]({{site.url}}/images/uploads/2021/persiapan-flutter/08-select-device.png)
 
-Selanjutnya, VSCode akan melakukan build, dan hasilnya akan dijalankan di emulator. Kita bisa lihat hasilnya sebagai berikut
+Selanjutnya, VSCode akan melakukan build, dan hasilnya akan dijalankan di emulator. Kita bisa lihat hasilnya di emulator iPhone sebagai berikut
 
-[![App Display]({{site.url}}/images/uploads/2021/persiapan-flutter/09-app-display.png)]({{site.url}}/images/uploads/2021/persiapan-flutter/09-app-display.png)
+[![App Display iPhone]({{site.url}}/images/uploads/2021/persiapan-flutter/09-app-display-iphone.png)]({{site.url}}/images/uploads/2021/persiapan-flutter/09-app-display-iphone.png)
+
+Atau di emulator Android
+
+[![App Display Android]({{site.url}}/images/uploads/2021/persiapan-flutter/09-app-display-android.png)]({{site.url}}/images/uploads/2021/persiapan-flutter/09-app-display-android.png)
 
 Nah, kita bisa melanjutkan coding untuk menambahkan fitur di aplikasi. VS Code juga menyediakan visual editor untuk memudahkan kita dalam mengatur layout komponen.
 
