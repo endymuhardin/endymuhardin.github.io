@@ -117,6 +117,17 @@ Android SDK Manager akan mengunduh kelengkapan tersebut, hasilnya setelah unduha
 
 [![Hasil download Android SDK]({{site.url}}/images/uploads/2021/persiapan-flutter/03-hasil-donlod-android-sdk.png)]({{site.url}}/images/uploads/2021/persiapan-flutter/03-hasil-donlod-android-sdk.png)
 
+Setelah semua terinstal, kita set dulu pathnya. Edit file `.zshrc` (MacOS) atau `.bashrc` (Ubuntu)
+
+```
+export ANDROID_HOME=$HOME/Applications/android-sdk
+export PATH=$ANDROID_HOME/cmdline-tools/tools/bin:$PATH
+export PATH=$ANDROID_HOME/emulator:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+```
+
+Jangan lupa sesuaikan lokasi `ANDROID_HOME` dengan lokasi instalasi di komputer masing-masing.
+
 Kita coba lagi mengecek status kelengkapan Flutter dengan perintah `flutter doctor`. Sekarang hasilnya seperti ini
 
 ```
