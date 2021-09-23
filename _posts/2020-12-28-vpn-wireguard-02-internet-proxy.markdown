@@ -227,9 +227,46 @@ $ curl ifconfig.me
 180.244.232.79
 ```
 
-## Cara Singkat ##
+## Cara Singkat dengan Easy WG Quick ##
 
 Bila kita tidak ingin melakukan konfigurasi secara manual seperti cara di atas, kita bisa menggunakan script yang sudah dibuatkan orang di internet. Salah satunya adalah [Easy WG Quick](https://github.com/burghardt/easy-wg-quick). Aplikasi ini terinspirasi dari aplikasi konfigurator untuk OpenVPN, yaitu [Easy RSA](https://github.com/OpenVPN/easy-rsa).
+
+Berikut rangkaian perintah untuk membuat client dengan `easy-wg-quick`.
+
+1. Download scriptnya. Kemudian set executable
+
+    ```
+    wget https://git.io/fjb5R -O easy-wg-quick
+    chmod +x easy-wg-quick
+    ```
+
+2. Buat client `endy-laptop`.
+
+    ```
+    ./easy-wg-quick endy-laptop
+    ```
+
+3. Download dan install konfigurasi ke laptop. Ini tidak saya jelaskan, karena tergantung aplikasi client yang digunakan di perangkat masing-masing.
+
+4. Aktifkan konfigurasi peer di sisi server
+
+    * Copy file `wghub.conf` ke folder `/etc/wireguard`. Ini harus dilakukan tiap kali ada penambahan client baru.
+
+        ```
+        cp wghub.conf /etc/wireguard/
+        ````
+
+    * Instal sebagai `systemd` service (ini sekali saja pertama kali)
+
+        ```
+        systemctl enable wg-quick@wghub
+        ```
+
+    * (Re)start service `systemd`
+
+        ```
+        systemctl start wg-quick@wghub
+        ```
 
 ## Kill Switch ##
 
