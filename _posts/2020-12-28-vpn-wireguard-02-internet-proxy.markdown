@@ -262,7 +262,7 @@ Berikut rangkaian perintah untuk membuat client dengan `easy-wg-quick`.
         systemctl enable wg-quick@wghub
         ```
 
-    * (Re)start service `systemd`
+    * (Re)start service `systemd`. Dilakukan setiap kali kita menimpa `wghub.conf` dengan yang baru (setelah menambah client baru)
 
         ```
         systemctl start wg-quick@wghub
