@@ -9,9 +9,23 @@ categories:
 - lain
 ---
 
-Sebelumnya, saya telah membahas script backup untuk [Trac](http://endy.artivisi.com/blog/lain/backup-trac/) maupun [Subversion](http://endy.artivisi.com/blog/aplikasi/svn-parentpath-backup/). Kali ini, kita akan bahas backup script untuk MySQL. 
+Sebelumnya, saya telah membahas script backup untuk [Trac](https://software.endy.muhardin.com/linux/backup-trac/) maupun [Subversion](https://software.endy.muhardin.com/aplikasi/svn-parentpath-backup/). Kali ini, kita akan bahas backup script untuk MySQL. 
 
 Sama seperti backup script sebelumnya, script ini akan membuat folder sesuai dengan tanggal dan jam backup. Selanjutnya, script akan melakukan backup terhadap database MySQL sesuai dengan nama database yang ditentukan. Backup ini akan disimpan di folder yang kita tentukan. 
+
+Backup script ini sebenarnya hanya menjalankan perintah `mysqldump` saja. Ada dua kali pemanggilan `mysqldump`, yang pertama melakukan backup untuk skema database, yang kedua melakukan backup untuk data dalam tiap tabel.
+
+Perintah untuk melakukan backup skema adalah sebagai berikut
+
+```
+mysqldump -d --compact <nama-database> > backup-skema-database-`date +%Y%m%d-%H%M`.sql
+```
+
+Sedangkan perintah untuk melakukan backup data adalah sebagai berikut
+
+```
+mysqldump -n -c -t --compact --single-transaction <nama-database> > backup-data-database-`date +%Y%m%d-%H%M`.sql
+```
 
 Berikut backup scriptnya. Misalnya kita beri nama `mysql-backup.sh` dan disimpan di folder `/root/backup-db`
 
