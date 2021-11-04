@@ -81,7 +81,7 @@ Nah, kemudian saya menemukan video tutorial OneMarcFifty yang membahas OpenMPTCP
 
 Dan [artikel yang membahas langkah-langkah implementasinya](https://milankragujevic.com/openmptcprouter-true-bonding-of-2-wan-connections-for-cheap).
 
-### Komponen WAN Bonding ###
+### Komponen WAN Bonding dengan Multipath TCP ###
 
 Kunci sukses dari metode bonding ini adalah pemilihan VPS yang menjadi pintu keluar semua request. Ada beberapa kriteria untuk memilih VPS:
 
