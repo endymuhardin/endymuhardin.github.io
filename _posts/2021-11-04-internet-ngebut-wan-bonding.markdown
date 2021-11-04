@@ -47,7 +47,7 @@ Mekanisme failover ini memang bisa untuk mengatasi koneksi yang bermasalah di te
 
 Dengan load balancing, router kita lebih pintar. Dia akan melihat setiap alamat website yang dituju, kemudian memilihkan provider yang sedikit bebannya. Keterbatasan dari load balancing ini adalah, sekali dia sudah mengarahkan koneksi melalui provider tertentu, maka semua request ke tujuan tersebut akan selalu diarahkan melalui provider tersebut. Misalnya, kita live streaming ke Youtube. Pada waktu koneksi pertama, router akan memilihkan provider untuk menuju Youtube, misalnya dia memilihkan XL. Maka semua request ke Youtube dari komputer kita, akan selalu dilewatkan melalui XL. Bila kita buka website lain, misalnya Instagram, barulah dipilihkan jalur lain, misalnya Indosat. 
 
-[![Skema Load Balancing]({{site.url}}/images/uploads/2021/wan-bonding/skema-load-balancing.png)]({{site.url}}/images/uploads/2021/wan-bonding/skema-load-balancing.png)
+[![Skema Load Balancing]({{site.url}}/images/uploads/2021/wan-bonding/skema-load-balance.png)]({{site.url}}/images/uploads/2021/wan-bonding/skema-load-balance.png)
 
 Oleh karena itu, metode ini walaupun cocok buat rumahan atau kantoran, dimana banyak orang mengakses ke banyak website, tapi kurang cocok buat live streaming. Pada live streaming, kita hanya kirim data ke sedikit tujuan, misal ke Youtube saja, atau Youtube dan Facebook. Biasanya maksimal tiga tujuan : Youtube Live, Facebook Live, dan Instagram Live. Jadi koneksinya tidak bisa pindah-pindah provider. Misal di tengah jalan tiba-tiba koneksi Telkomsel drop, dia tidak bisa langsung pindah ke Indosat.
 
