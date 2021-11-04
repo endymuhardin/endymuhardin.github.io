@@ -425,6 +425,8 @@ Tiap koneksi provider kita sediakan ethernet card masing-masing di router. Bila 
 
 [![TP-Link UE300]({{site.url}}/images/uploads/2021/wan-bonding/tplink-UE300.jpg)]({{site.url}}/images/uploads/2021/wan-bonding/tplink-UE300.jpg)
 
+Gambarnya diambil dari [website resmi TP-Link](https://www.tp-link.com/id/home-networking/computer-accessory/ue300/)
+
 Harganya 200 ribuan satu.
 
 Tapi bila kita mau irit, kita bisa menggunakan port ethernet bawaan Raspberry Pi yang cuma satu. Di Linux, satu ethernet card bisa dipasang banyak alamat IP. Gambarnya seperti ini
