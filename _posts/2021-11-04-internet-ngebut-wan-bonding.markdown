@@ -29,6 +29,8 @@ Setelah menjelajah dunia maya bertahun-tahun -- sebetulnya saya mulai kepikiran 
 
 <!--more-->
 
+<hr/>
+
 ## Berbagai Metode Multi WAN ##
 
 Yang akan kita buat ini disebut dengan istilah Multi WAN, artinya multiple wide area network. Yaitu menggunakan beberapa koneksi internet (WAN) sekaligus. Misalnya kita gunakan 3 provider : Telkomsel, Indosat, XL. Ada beberapa cara atau skema untuk menggabungkan 3 provider ini, yaitu :
@@ -525,7 +527,7 @@ Kemudian jalankan speed test.
 
 Kita bisa lakukan ini secara bergantian untuk masing-masing modem. Dengan demikian kita ada gambaran mengenai kecepatan masing-masing modem.
 
-## Test Koneksi Aggregat ##
+## Test Koneksi Gabungan ##
 
 Setelah tahu kecepatan masing-masing provider, kita bisa tes kecepatan gabungan. Kembalikan setting IP menjadi otomatis, sehingga laptop kita mendapatkan IP dari router. 
 
