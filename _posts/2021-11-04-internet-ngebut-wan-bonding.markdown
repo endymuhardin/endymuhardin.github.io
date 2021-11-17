@@ -323,10 +323,16 @@ Outputnya tidak saya tampilkan karena banyak sekali.
 
 ### Install paket-paket OpenMPTCP ###
 
-Instalasi paket OpenMPTCP memakan waktu cukup lama, karena banyak aplikasi yang dia setup. Oleh karena itu, kita jalankan perintahnya di dalam `tmux` atau `screen` sehingga kita bisa logout dan tidak perlu menunggu selesai. Script instalasi berjalan dengan user `root`, jadi kita perlu untuk menjalankan `sudo -i` dulu. Setelah menjadi root, jalankan perintah berikut:
+Instalasi paket OpenMPTCP memakan waktu cukup lama, karena banyak aplikasi yang dia setup. Oleh karena itu, kita jalankan perintahnya di dalam `tmux` atau `screen` sehingga kita bisa logout dan tidak perlu menunggu selesai. Script instalasi berjalan dengan user `root`, jadi kita perlu untuk menjalankan `sudo -i` dulu. Setelah menjadi root, jalankan perintah berikut bila menggunakan Ubuntu :
 
 ```
 wget -O - https://www.openmptcprouter.com/server/ubuntu20.04-x86_64.sh | sh
+```
+
+Atau perintah berikut bila menggunakan Debian
+
+```
+wget -O - https://www.openmptcprouter.com/server/debian10-x86_64.sh | sh
 ```
 
 Saya juga mencoba instalasi paket OpenMPTCPRouter di [IDCloudHost](https://idcloudhost.com), dan ternyata ada langkah tambahan yang perlu kita lakukan sebelum menjalankan perintah di atas, yaitu:
