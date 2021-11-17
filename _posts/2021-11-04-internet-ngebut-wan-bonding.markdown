@@ -169,17 +169,7 @@ Setelah itu, kita bisa langsung saja Create Instance. Dan hasilnya akan terlihat
 Buat kaum yang tidak pakai GUI, berikut perintah command line untuk membuat VPS dengan konfigurasi di atas.
 
 ```
-gcloud compute instances create vps-mptcp \ 
---project=mptcp-gateway \ 
---zone=asia-southeast2-a \  
---machine-type=e2-micro \ 
---network-interface=network-tier=PREMIUM,subnet=default \ 
---maintenance-policy=MIGRATE \ 
---service-account=724546327782-compute@developer.gserviceaccount.com \ 
---scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append \ 
---create-disk=auto-delete=yes,boot=yes,device-name=vps-mptcp,image=projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20211102,mode=rw,size=10,type=projects/mptcp-gateway/zones/asia-southeast2-a/diskTypes/pd-balanced \ 
---no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring \ 
---reservation-affinity=any
+gcloud compute instances create vps-mptcp --project=mptcp-gateway --zone=asia-southeast2-a --machine-type=e2-micro --network-interface=network-tier=PREMIUM,subnet=default --maintenance-policy=MIGRATE --service-account=724546327782-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append --create-disk=auto-delete=yes,boot=yes,device-name=vps-mptcp,image=projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20211102,mode=rw,size=10,type=projects/mptcp-gateway/zones/asia-southeast2-a/diskTypes/pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
 ```
 
 ### Setting Firewall ###
@@ -201,11 +191,7 @@ Intinya adalah kita akan membuka semua port untuk protokol TCP dan UDP.
 Berikut perintah command line untuk yang tidak suka klik klik
 
 ```
-gcloud compute --project=mptcp-gateway \
-firewall-rules create \
-allow-all-tcp-udp --description="Semua koneksi ke semua port dengan protokol TCP dan UDP diijinkan" \
---direction=INGRESS --priority=1000 --network=default \
---action=ALLOW --rules=all --source-ranges=0.0.0.0/0
+gcloud compute --project=mptcp-gateway firewall-rules create allow-all-tcp-udp --description="Semua koneksi ke semua port dengan protokol TCP dan UDP diijinkan" --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=all --source-ranges=0.0.0.0/0
 ```
 
 Hasilnya, kita dapat melihat rule yang barusan dibuat berada di paling atas.
@@ -410,6 +396,30 @@ Terakhir, kita restart VPSnya supaya aplikasi-aplikasi yang diinstal script tadi
 
 ```
 sudo reboot
+```
+
+### Menghapus VPS ###
+
+Karena VPS kita dihitung tagihannya tiap jam, setelah event kita perlu segera menghapus VPS tersebut supaya tagihannya tidak jalan terus. Berikut adalah perintah untuk menghapus VPS di Google Cloud
+
+```
+gcloud compute instances delete vps-mptcp
+```
+
+Google akan mengkonfirmasi penghapusan VPS
+
+```
+The following instances will be deleted. Any attached disks configured to be auto-deleted will be deleted unless they are attached to any other instances or 
+the `--keep-disks` flag is given and specifies them for keeping. Deleting a disk is irreversible and any data on the disk will be lost.
+ - [vps-mptcp] in [asia-southeast2-a]
+
+Do you want to continue (Y/n)?
+```
+
+Jawab saja `y`
+
+```
+Deleted [https://www.googleapis.com/compute/v1/projects/mptcp-gateway/zones/asia-southeast2-a/instances/vps-mptcp].
 ```
 
 ## Setup Modem ##
