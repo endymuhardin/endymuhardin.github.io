@@ -441,6 +441,8 @@ Tapi bila kita mau irit, kita bisa menggunakan port ethernet bawaan Raspberry Pi
 
 Syaratnya, kita harus mematikan fungsi DHCP di semua modem/provider. Sebabnya, semua koneksi akan terhubung ke satu switch yang sama, sehingga broadcast addressnya sama. Bila masing-masing modem/provider mengaktifkan DHCP server, maka akan tabrakan dan menjadi tidak jelas nanti alamatnya apa. Apalagi bila PC/Laptop yang ingin berinternet juga terhubung ke switch yang sama. Bisa-bisa PC/Laptop tersebut langsung terkoneksi ke salah satu modem, tidak melalui router.
 
+[![Disable DHCP Modem]({{site.url}}/images/uploads/2021/wan-bonding/modem-disable-dhcp.png)]({{site.url}}/images/uploads/2021/wan-bonding/modem-disable-dhcp.png)
+
 Setelah kita matikan fungsi DHCP server di modem, kita juga harus membedakan segmen alamat IP di tiap modem. Karena saya menggunakan modem orbit semua, maka settingan pabrikannya juga sama. Alamat IPnya adalah `192.168.8.1` di semua modem. Jadi kita perlu ganti menjadi :
 
 * Modem A : `192.168.11.1`
