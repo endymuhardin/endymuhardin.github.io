@@ -576,6 +576,8 @@ Selanjutnya, masukkan alamat komputer kita dengan stream keynya. Misalnya `rtmp:
 
 Klik OK, selanjutnya kita tinggal menerima data di komputer dengan OBS atau VLC seperti dijelaskan di atas.
 
+Buat pengguna MacOS yang lebih suka tampilan grafis, bisa coba [Mac Local RTMP Server](https://github.com/sallar/mac-local-rtmp-server) atau [OBS Link](https://help.elgato.com/hc/en-us/articles/360031363132-OBS-Link-Setup) dari Elgato.
+
 ## Penutup ##
 
 Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya gratis, setupnya tidak sulit, aplikasinya gratis, pokoknya tinggal pakai. Bahkan seandainya kita hanya bermodalkan smartphone, kita bisa langsung live. Akan tetapi, untuk mendapatkan hasil yang lebih profesional, kita perlu menggunakan aplikasi yang lebih canggih seperti OBS. Di situ kita bisa menambahkan logo di kanan atas, nama pembicara di bawah (lower third), running text, menjalankan iklan, dan sebagainya. Hasilnya bisa dilihat di [event Monday Forum Tazkia](https://youtu.be/HQ-BG0pyz8A)
