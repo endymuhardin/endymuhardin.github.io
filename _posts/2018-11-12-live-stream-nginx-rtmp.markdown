@@ -530,6 +530,52 @@ Play Path/Stream Key: mystream
 Setelah selesai, untuk mematikannya, ketik perintah `docker-compose down`.
 
 
+### Live Streaming Drone ###
+
+Metode docker ini juga bisa digunakan untuk membuat live streaming dari drone Dji dan kamera GoPro.
+
+Jalankan Docker container dengan perintah berikut
+
+```
+docker run -d --rm -p 1935:1935 -p 8080:8080 jasonrivers/nginx-rtmp
+```
+
+Komputer kita akan menjalankan RTMP server di port `1935` dan siap menerima koneksi. Kita harus cari tahu dulu alamat IP komputer kita, misalnya `192.168.100.4`. 
+
+Bila kita menggunakan GoPro, buka aplikasinya di hape. Kemudian masuk ke menu `Live`
+
+[![GoPro Menu Live]({{site.url}}/images/uploads/2018/live-streaming/01-gopro-live.jpg)]({{site.url}}/images/uploads/2018/live-streaming/01-gopro-live.jpg)
+
+Selanjutnya, pilih menu `RTMP`.
+
+[![GoPro RTMP]({{site.url}}/images/uploads/2018/live-streaming/02-gopro-rtmp.jpg)]({{site.url}}/images/uploads/2018/live-streaming/02-gopro-rtmp.jpg)
+
+Masukkan alamat komputer kita tadi, yaitu `192.168.100.4` berikut url dan stream key yang kita pilih. Misalnya `rtmp://192.168.100.4/live/gopro`. Setelah itu klik `Continue`
+
+[![GoPro Continue]({{site.url}}/images/uploads/2018/live-streaming/03-gopro-continue.jpg)]({{site.url}}/images/uploads/2018/live-streaming/03-gopro-continue.jpg)
+
+Klik `Go Live`. GoPro akan segera mengirim data ke komputer. 
+
+[![GoPro Live]({{site.url}}/images/uploads/2018/live-streaming/05-gopro-live.jpg)]({{site.url}}/images/uploads/2018/live-streaming/05-gopro-live.jpg)
+
+Kita bisa pantau koneksi dan kestabilan pengiriman data.
+
+[![GoPro Koneksi]({{site.url}}/images/uploads/2018/live-streaming/06-gopro-koneksi.jpg)]({{site.url}}/images/uploads/2018/live-streaming/06-gopro-koneksi.jpg)
+
+Untuk drone Dji, caranya mirip. Masuk ke menu `Transmission`
+
+[![Dji Transmission]({{site.url}}/images/uploads/2018/live-streaming/01-dji-transmission.jpg)]({{site.url}}/images/uploads/2018/live-streaming/01-dji-transmission.jpg)
+
+Kemudian klik `Live Streaming Platforms`. Cuma ada satu pilihan di sana, yaitu `RTMP`
+
+[![Dji RTMP Menu]({{site.url}}/images/uploads/2018/live-streaming/02-dji-rtmp-menu.jpg)]({{site.url}}/images/uploads/2018/live-streaming/02-dji-rtmp-menu.jpg)
+
+Selanjutnya, masukkan alamat komputer kita dengan stream keynya. Misalnya `rtmp://192.168.100.4/live/mini2`
+
+[![Dji RTMP URL]({{site.url}}/images/uploads/2018/live-streaming/03-dji-rtmp-url.jpg)]({{site.url}}/images/uploads/2018/live-streaming/03-dji-rtmp-url.jpg)
+
+Klik OK, selanjutnya kita tinggal menerima data di komputer dengan OBS atau VLC seperti dijelaskan di atas.
+
 ## Penutup ##
 
 Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya gratis, setupnya tidak sulit, aplikasinya gratis, pokoknya tinggal pakai. Bahkan seandainya kita hanya bermodalkan smartphone, kita bisa langsung live. Akan tetapi, untuk mendapatkan hasil yang lebih profesional, kita perlu menggunakan aplikasi yang lebih canggih seperti OBS. Di situ kita bisa menambahkan logo di kanan atas, nama pembicara di bawah (lower third), running text, menjalankan iklan, dan sebagainya. Hasilnya bisa dilihat di [event Monday Forum Tazkia](https://youtu.be/HQ-BG0pyz8A)
