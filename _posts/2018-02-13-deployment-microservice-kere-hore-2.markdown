@@ -216,10 +216,15 @@ Kita bisa test restart VPS dan pastikan aplikasi kita jalan dengan baik walaupun
 
 Tentunya kita tidak mau mengakses aplikasi kita tanpa `https` dan di port yang tidak lazim. Untuk itu, kita akan buat konfigurasi di Nginx agar semua request ke `https://app1.artivisi.id` diarahkan ke `http://localhost:10001`. Nantinya port `10001` akan kita tutup di firewall agar tidak bisa diakses langsung oleh user.
 
-Buka konfigurasi `/etc/nginx/sites-enabled/app1.artivisi.id` dan tambahkan satu baris berikut:
+Buka konfigurasi `/etc/nginx/sites-enabled/app1.artivisi.id` dan tambahkan baris berikut:
 
 ```
 proxy_pass http://localhost:10001;
+proxy_set_header Host $http_host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Proto $scheme;
+proxy_set_header X-Forwarded-Port $server_port;
 ```
 
 Sehingga menjadi seperti ini
