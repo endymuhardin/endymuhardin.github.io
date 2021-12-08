@@ -121,6 +121,25 @@ Jangan lupa mengganti:
 
 sesuai dengan project kita.
 
+Untuk Java 9 ke atas, maka setting `maven.compiler.source` dan `maven.compiler.target` digabungkan menjadi `maven.compiler.release`, seperti ini
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.muhardin.endy.belajar</groupId>
+  <artifactId>belajar-maven</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <properties>
+    <maven.compiler.release>11</maven.compiler.release>
+  </properties>
+
+</project>
+```
+
 ## Struktur Folder Project Maven ##
 
 [![Struktur Folder Maven](https://lh6.googleusercontent.com/-wsPV4myilDQ/Uxk77D4MtcI/AAAAAAAAFYg/dQlTHnnx_FQ/w243-h354-no/01-struktur-folder-maven.png)](https://lh6.googleusercontent.com/-wsPV4myilDQ/Uxk77D4MtcI/AAAAAAAAFYg/dQlTHnnx_FQ/w243-h354-no/01-struktur-folder-maven.png)
