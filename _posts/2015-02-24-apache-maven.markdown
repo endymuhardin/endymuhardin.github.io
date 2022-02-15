@@ -121,7 +121,7 @@ Jangan lupa mengganti:
 
 sesuai dengan project kita.
 
-Untuk Java 9 ke atas, maka setting `maven.compiler.source` dan `maven.compiler.target` digabungkan menjadi `maven.compiler.release`, seperti ini
+Untuk Java 9 ke atas, maka setting `maven.compiler.source` dan `maven.compiler.target` seperti ini
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -134,7 +134,8 @@ Untuk Java 9 ke atas, maka setting `maven.compiler.source` dan `maven.compiler.t
   <packaging>jar</packaging>
 
   <properties>
-    <maven.compiler.release>11</maven.compiler.release>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
 
 </project>
