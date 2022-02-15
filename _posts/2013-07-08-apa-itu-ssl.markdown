@@ -26,7 +26,7 @@ Ada beberapa keuntungan bila kita menggunakan SSL, yaitu:
 * kerahasiaan (confidentiality)
 * identifikasi (authentication)
 
-Kerahasiaan diperlukan bila kita mengirim informasi yang tidak noleh diketahui orang lain, misalnya username dan password pada saat mengisi halaman login. Kita tidak ingin ada orang lain yang menyadap trafik internet kita dan mengintip password kita ([eavesdropping](http://en.wikipedia.org/wiki/Eavesdropping)).
+Kerahasiaan diperlukan bila kita mengirim informasi yang tidak boleh diketahui orang lain, misalnya username dan password pada saat mengisi halaman login. Kita tidak ingin ada orang lain yang menyadap trafik internet kita dan mengintip password kita ([eavesdropping](http://en.wikipedia.org/wiki/Eavesdropping)).
 
 Identifikasi diperlukan untuk memastikan identitas suatu layanan/aplikasi. Misalnya kita mengakses situs internet banking, kita butuh keyakinan bahwa yang kita akses adalah aplikasi yang asli. Tidak dimanipulasi orang di tengah jalan ([man in the middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)) ataupun diganti dengan situs palsu ([phising](https://en.wikipedia.org/wiki/Phishing)).
 
