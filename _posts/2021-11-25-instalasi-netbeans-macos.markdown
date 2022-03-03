@@ -87,13 +87,21 @@ Ada satu file lagi yang perlu kita edit, yaitu file `netbeans.conf`
 
 [![Edit netbeans.conf]({{site.url}}/images/uploads/2021/netbeans-install-macos/07-edit-netbeans-conf.png)]({{site.url}}/images/uploads/2021/netbeans-install-macos/07-edit-netbeans-conf.png)
 
-File ini tidak bisa kita edit secara langsung, karena lokasinya di folder terproteksi. Oleh karena itu, copy dulu ke lokasi lain, baru diedit. Ubah isi `netbeans_jdkhome` menjadi sebagai berikut
+File ini tidak bisa kita edit secara langsung, karena lokasinya di folder terproteksi. Oleh karena itu, copy dulu ke lokasi lain, baru diedit. 
+
+Atau bisa juga langsung diedit menggunakan `vim` kalau mau lebih cepat
+
+```
+sudo vim /Applications/NetBeans/Apache\ NetBeans\ 12.5.app/Contents/Resources/NetBeans/netbeans/etc/netbeans.conf
+```
+
+Ubah isi `netbeans_jdkhome` menjadi sebagai berikut
 
 ```
 netbeans_jdkhome="/Users/endymuhardin/.sdkman/candidates/java/current"
 ```
 
-Jangan lupa menghapus karakter `#` di awal baris. Setelah diedit, copy balik filenya ke lokasi semula.
+Jangan lupa menghapus karakter `#` di awal baris. Setelah diedit, copy balik filenya ke lokasi semula. Bila menggunakan `vim`, bisa langsung ketik `Esc :wq` untuk save dan quit.
 
 Selanjutnya, kita bisa menjalankan aplikasi Netbeans seperti biasa. Kita juga bisa mengganti versi Java SDK ke versi 11 dengan SDKMAN. Lihat dulu versi java yang tersedia
 
