@@ -142,4 +142,4 @@ Dengan adanya `docker-compose` ini, kita tinggal menjalankan perintah `docker-co
 
 Jangan lupa daftarkan folder yang berisi data testing tadi (`db-timezone`, `db-authserver`) ke `.gitignore` supaya tidak ikut tersimpan di git.
 
-Demikian tips untuk menyiapkan development environment agar kita mudah menangani banyak project sekaligus.
+Demikian tips untuk menyiapkan development environment agar kita mudah menangani banyak project sekaligus. Selamat mencoba, semoga bermanfaat ...
