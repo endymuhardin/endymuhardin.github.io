@@ -179,6 +179,7 @@ After=syslog.target
 
 [Service]
 User=aplikasi
+Environment=SPRING_PROFILES_ACTIVE=production
 ExecStart=/var/lib/appspringsaya/appspringsaya.jar
 SuccessExitStatus=143
 
