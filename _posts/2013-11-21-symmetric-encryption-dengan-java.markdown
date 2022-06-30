@@ -235,7 +235,7 @@ Pada kode program di atas, kita lihat bahwa sebelum ditulis ke file, kita encode
 Setelah punya key, kita buat object `cipher`
 
 ```java
-String algoritmaEnkripsi = "AES/CBC/PKCS5Padding";
+String algoritmaEnkripsi = "AES/GCM/NoPadding";
 Cipher cipher = Cipher.getInstance(algoritmaEnkripsi);
 cipher.init(Cipher.ENCRYPT_MODE, key);
 ```
@@ -243,8 +243,10 @@ cipher.init(Cipher.ENCRYPT_MODE, key);
 Dari kode program di atas, kita bisa lihat bahwa:
 
 * algoritma yang digunakan adalah `AES`
-* block cipher mode menggunakan `CBC`
-* padding menggunakan `PKCS5`
+* block cipher mode menggunakan `GCM`
+* tidak menggunakan padding / `NoPadding`
+
+Penggunaan GCM lebih direkomendasikan daripada ECB seperti bisa dibaca [di sini](https://web.cs.ucdavis.edu/~rogaway/ocb/gcm.pdf) dan [di sini](https://crypto.stackexchange.com/questions/20941/why-shouldnt-i-use-ecb-encryption).
 
 ## Generate Initialization Vector ##
 
