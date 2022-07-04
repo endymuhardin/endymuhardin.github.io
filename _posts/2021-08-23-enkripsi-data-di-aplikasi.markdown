@@ -425,6 +425,6 @@ Key tersebut juga perlu kita rotasi secara berkala, sehingga bila satu key bocor
 
 Selamat mencoba. Mudah-mudahan dengan mengimplementasikan artikel ini, aplikasi yang kita buat akan menjadi lebih aman.
 
-Kode program lengkapnya bisa dilihat [di Github](https://github.com/endymuhardin/belajar-spring-vault)
+Kode program lengkapnya bisa dilihat [di Github](https://github.com/endymuhardin/belajar-enkripsi-data)
 
 Semoga bermanfaat ... 
