@@ -268,6 +268,84 @@ Berikut rangkaian perintah untuk membuat client dengan `easy-wg-quick`.
         systemctl start wg-quick@wghub
         ```
 
+
+## Antarmuka Web dengan Wg Gen Web ##
+
+Bila kita tidak mau menggunakan antarmuka berbasis command line, kita juga bisa menggunakan tampilan berbasis web, yaitu [Wg Gen Web](https://github.com/vx3r/wg-gen-web). Ini adalah aplikasi web untuk mengelola konfigurasi di sisi server dan juga di sisi client. 
+
+Untuk menjalankan aplikasi ini, kita bisa menggunakan perintah docker seperti ini :
+
+```
+docker run --rm -it -v /Users/endymuhardin/tmp/wg-gen-web/data:/data -p 8080:8080 -e "WG_CONF_DIR=/data" vx3r/wg-gen-web:latest
+```
+
+Atau kalau saya, lebih suka menggunakan file `docker-compose.yml` yang isinya seperti ini:
+
+```yml
+version: '3.6'
+services:
+  wg-gen-web:
+    image: vx3r/wg-gen-web:latest
+    container_name: wg-gen-web
+    ports:
+      - "8080:8080"
+    environment:
+      - WG_CONF_DIR=/data
+      - OAUTH2_PROVIDER_NAME=fake
+    volumes:
+      - ./data:/data
+```
+
+Setelah dijalankan, kita bisa melihat tampilan untuk mengelola konfigurasi server sebagai berikut
+
+[![Wg Gen Web Server Config 1]({{site.url}}/images/uploads/2020/vpn-wireguard/wg-gen-web-server-1.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/wg-gen-web-server-1.png)
+
+[![Wg Gen Web Server Config 2]({{site.url}}/images/uploads/2020/vpn-wireguard/wg-gen-web-server-2.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/wg-gen-web-server-2.png)
+
+Dan berikut adalah tampilan untuk mendaftarkan client baru
+
+[![Wg Gen Web Add Client]({{site.url}}/images/uploads/2020/vpn-wireguard/wg-gen-web-add-client.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/wg-gen-web-add-client.png)
+
+Setelah didaftarkan, kita bisa melihat daftar client yang ada, berikut dengan QR Code untuk konfigurasinya
+
+[![Wg Gen Web List Client]({{site.url}}/images/uploads/2020/vpn-wireguard/wg-gen-web-list-client.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/wg-gen-web-list-client.png)
+
+Aplikasi ini akan membuat beberapa file konfigurasi yang nantinya bisa kita pasang di server ataupun dikirim ke client.
+
+[![Wg Gen Web Konfigurasi]({{site.url}}/images/uploads/2020/vpn-wireguard/wg-gen-web-data-folder-content.png)]({{site.url}}/images/uploads/2020/vpn-wireguard/wg-gen-web-data-folder-content.png)
+
+Aplikasi ini bisa dipasang di server, sehingga bila ada penambahan client, file `wg0.conf` akan langsung ter-update. Akan tetapi, kita harus melakukan konfigurasi `systemd` supaya service Wireguard direstart pada saat file `wg0.conf` berubah isinya. Caranya adalah dengan mendaftarkan `Systemd Path Monitor`. Berikut konfigurasinya
+
+```
+# /etc/systemd/system/wg-gen-web.path
+[Unit]
+Description=Watch /etc/wireguard for changes
+
+[Path]
+PathModified=/etc/wireguard
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Konfigurasi di atas akan memonitor folder `/etc/wireguard`. Bila isinya berubah, maka dia akan mengeksekusi service `wg-gen-web` yang konfigurasinya seperti ini
+
+```
+# /etc/systemd/system/wg-gen-web.service
+[Unit]
+Description=Reload WireGuard
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl reload wg-quick@wg0.service
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Akan tetapi, bila kita tidak mau menambah aplikasi yang kurang esensial ke server kita, maka kita bisa jalankan aplikasi ini di lokal menggunakan docker pada saat ingin menambah/mengurangi client, dan kemudian kita copy manual file hasilnya ke server.
+
 ## Kill Switch ##
 
 Dalam penggunaan VPN, kita mengenal adanya istilah VPN leak. Yaitu kadangkala koneksi VPN terputus dan komputer/smartphone kita mengirim paket tanpa VPN. Dengan demikian, di sisi penerima bisa melihat alamat IP kita yang asli, kemudian mengkorelasikannya dengan request kita sebelumnya (misal dengan session ID) dan mendeteksi bahwa ada dua request yang usernya sama, tapi alamat IPnya berbeda. 
