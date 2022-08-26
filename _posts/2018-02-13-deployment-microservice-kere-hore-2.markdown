@@ -155,7 +155,7 @@ Pada langkah pengetesan di atas, kita menjalankan aplikasi dengan user `root`. C
 Untuk itu, kita akan membuat user khusus untuk menjalankan aplikasi ini. Misalnya kita akan membuat user dengan nama `aplikasi` yang folder `home`nya adalah folder tempat aplikasi diinstal, yaitu di `/var/lib/appspringsaya`. Berikut perintahnya, jalankan sebagai `root`
 
 ```
-useradd -d /var/lib/appspringsaya -s /bin/bash aplikasi
+useradd -d /var/lib/appspringsaya -s /bin/bash --system aplikasi
 ```
 
 Setelah itu, kita ganti kepemilikan file dan folder aplikasi, yang tadinya dimiliki root, menjadi miliknya user `aplikasi`
