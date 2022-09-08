@@ -297,23 +297,23 @@ return memberList;
 
 Kalau kita lihat isi database, berikut isinya bila kita tidak lakukan enkripsi
 
-[![Isi database tanpa enkripsi]({{site.url}}/images/uploads/2022/01-query-tanpa-enkripsi.png)]({{site.url}}/images/uploads/2022/01-query-tanpa-enkripsi.png)
+[![Isi database tanpa enkripsi]({{site.url}}/images/uploads/2022/enkripsi-aes-data-aplikasi/01-query-tanpa-enkripsi.png)]({{site.url}}/images/uploads/2022/enkripsi-aes-data-aplikasi/01-query-tanpa-enkripsi.png)
 
 Dan ini hasil querynya bila nomor KTP kita enkripsi
 
-[![Isi database dengan enkripsi]({{site.url}}/images/uploads/2022/02-query-database-dengan-enkripsi.png)]({{site.url}}/images/uploads/2022/02-query-database-dengan-enkripsi.png)
+[![Isi database dengan enkripsi]({{site.url}}/images/uploads/2022/enkripsi-aes-data-aplikasi/02-query-database-dengan-enkripsi.png)]({{site.url}}/images/uploads/2022/enkripsi-aes-data-aplikasi/02-query-database-dengan-enkripsi.png)
 
 Sedangkan untuk file yang diupload, tanpa enkripsi kita bisa langsung buka di file explorer
 
-[![File upload tanpa enkripsi]({{site.url}}/images/uploads/2022/03-file-upload-tanpa-enkripsi.png)]({{site.url}}/images/uploads/2022/03-file-upload-tanpa-enkripsi.png)
+[![File upload tanpa enkripsi]({{site.url}}/images/uploads/2022/enkripsi-aes-data-aplikasi/03-file-upload-tanpa-enkripsi.png)]({{site.url}}/images/uploads/2022/enkripsi-aes-data-aplikasi/03-file-upload-tanpa-enkripsi.png)
 
 Tapi kalau dienkripsi, tidak bisa dilihat langsung tanpa melalui aplikasi
 
-[![File upload dengan enkripsi]({{site.url}}/images/uploads/2022/04-file-upload-dengan-enkripsi.png)]({{site.url}}/images/uploads/2022/04-file-upload-dengan-enkripsi.png)
+[![File upload dengan enkripsi]({{site.url}}/images/uploads/2022/enkripsi-aes-data-aplikasi/04-file-upload-dengan-enkripsi.png)]({{site.url}}/images/uploads/2022/enkripsi-aes-data-aplikasi/04-file-upload-dengan-enkripsi.png)
 
 Lewat aplikasi, kita bisa lihat datanya, baik nomor KTP maupun file yang diupload
 
-[![Tampilan Aplikasi]({{site.url}}/images/uploads/2022/05-tampilan-aplikasi.png)]({{site.url}}/images/uploads/2022/05-tampilan-aplikasi.png)
+[![Tampilan Aplikasi]({{site.url}}/images/uploads/2022/enkripsi-aes-data-aplikasi/05-tampilan-aplikasi.png)]({{site.url}}/images/uploads/2022/enkripsi-aes-data-aplikasi/05-tampilan-aplikasi.png)
 
 Demikian cara mengamankan data user yang diamanahkan kepada kita. Namanya kena hack itu musibah, sudah takdir Allah. Tugas kita sebagai programmer, berusaha semampunya untuk mengamankan data.
 
