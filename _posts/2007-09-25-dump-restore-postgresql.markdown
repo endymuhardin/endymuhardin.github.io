@@ -13,59 +13,40 @@ Pada tahap implementasi, fitur dump-restore database sangat penting. Dengan fitu
 
 Agar tidak lupa, berikut saya tulis rangkaian langkah-langkahnya. Diasumsikan kita sudah memiliki database development dengan parameter sebagai berikut: 
 
+  * Nama Database : `buku_tamu`
+  * Username : `belajar`
+  * Password : `java`
+  * File hasil dump : `buku_tamu-schema-20070925-2021.sql` dan `buku_tamu-data-20070925-2021.sql`
 
-
-	
-  * Nama Database : buku_tamu_devel
-
-	
-  * Username : belajar
-
-	
-  * Password : java
-
-	
-  * File hasil dump : buku_tamu-dump-sql
-
-
-
-Untuk melakukan dump, berikut adalah perintahnya: 
-
-
+Untuk melakukan dump skema tabel, berikut adalah perintahnya: 
     
 ```
-pg_dump -CdD  -Fp -U belajar buku_tamu_devel > buku_tamu-dump.sql
+pg_dump --schema-only --no-owner -h localhost --username belajar buku_tamu | grep -v "^--"  > buku_tamu-schema.sql && sed -i '/^SET/d' buku_tamu-schema.sql && sed -i '/^SELECT/d' buku_tamu-schema.sql && mv buku_tamu-schema.sql buku_tamu-schema-`date +%Y%m%d-%H%M`.sql
 ```
-
-
 
 Penjelasannya sebagai berikut: 
 
+  * `--pg_dump` : adalah aplikasi command line untuk melakukan import
+  * `--schema-only` : hanya membuat DDL statement, tanpa data
+  * `--no-owner` : tidak perlu mengatur kepemilikan tabel dan view
+  * `-h` : supaya koneksi dilakukan melalui TCP/IP, bukan Unix socket
+  * `grep -v "^--"` : menghilangkan baris-baris comment di file hasil backup
+  * `sed -i '/^SET/d'` : menghilangkan command-command `SET` yang kita tidak perlukan
+  * `sed -i '/^SELECT/d'` : menghilangkan command-command `SELECT` yang kita tidak perlukan
 
+Untuk melakukan dump data dalam database, berikut adalah perintahnya:
 
-	
-  * pg_dump : adalah aplikasi command line untuk melakukan import
+```
+pg_dump --column-inserts --data-only -h localhost -U belajar buku_tamu | grep -v "^--" > buku_tamu-data.sql  && sed -i '/^SET/d' buku_tamu-data.sql && sed -i '/^SELECT/d' buku_tamu-data.sql && mv buku_tamu-data.sql buku_tamu-data-`date +%Y%m%d-%H%M`.sql
+```
 
-	
-  * C : opsi untuk create semua tabel. Selain opsi C, kita juga bisa menggunakan opsi c, yaitu DROP dulu tabelnya baru kemudian CREATE. Pada skenario ini, file dump akan diaplikasikan ke database baru, jadi tidak perlu DROP dulu tabel-tabel yang sudah ada.
+Penjelasannya sebagai berikut: 
 
-	
-  * d : opsi untuk mengisi data. Bila ada opsi ini, pg_dump akan menghasilkan statement INSERT dari data yang sudah ada.
-
-	
-  * D : opsi untuk menulis nama kolom. Dengan opsi ini, di statement INSERT akan ada nama kolom. 
-
-	
-  * Fp : format hasilnya adalah plain text
-
-	
-  * U : username untuk koneksi ke database
-
-
+  * `--column-inserts` : mencantumkan nama kolom dalam statement insert data
+  * `--data-only` : hanya membuat `INSERT` statement
 
 Selanjutnya, tiba saat melakukan restore. Parameternya sama dengan database development, kecuali nama databasenya adalah `buku_tamu_prod`. Bila database belum ada, buat dulu dengan user postgres. 
 
-    
 ```
 $ sudo su - postgres
 $ createdb buku_tamu_prod
@@ -73,33 +54,18 @@ CREATE DATABASE
 $ exit
 ```
     
-
-
-
 Baru setelah itu kita lakukan restore. 
 
-
-    
 ```
-psql -d buku_tamu_prod -U belajar -f buku_tamu-dump.sql
+psql -h localhost -d buku_tamu_prod -U belajar -f buku_tamu-schema-20070925-2021.sql.sql
+psql -h localhost -d buku_tamu_prod -U belajar -f buku_tamu-data-20070925-2021.sql.sql
 ``` 
-
-
 
 Penjelasan opsinya adalah sebagai berikut: 
 
-
-
-
-	
-  * d : nama database yang akan direstore
-
-	
-  * U : username yang digunakan untuk koneksi
-
-	
-  * f : file dump
-
-
+  * `-h` : supaya connect melalui TCP/IP, bukan lewat Unix socket
+  * `-d` : nama database yang akan direstore
+  * `-U` : username yang digunakan untuk koneksi
+  * `-f` : file dump
 
 Bila tidak ada pesan error, struktur tabel dan data seharusnya sudah masuk ke database baru.
