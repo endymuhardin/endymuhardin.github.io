@@ -20,6 +20,9 @@ Di artikel ini, kita akan membahas apa itu GPG, kapan kita menggunakannya, dan b
 
 <!--more-->
 
+* TOC
+{:toc}
+
 ## Apa itu GPG ##
 
 Pada dasarnya, GPG menggunakan prinsip asymmetric encryption, yaitu enkripsi dan dekripsi menggunakan dua key yang berbeda. Walaupun demikian, dia juga punya opsi untuk melakukan symmetric encryption seperti akan kita praktekkan nanti.
@@ -60,7 +63,45 @@ Ada beberapa hal yang biasa kita lakukan berkaitan dengan keypair:
 Sebelum bisa menggunakan GPG, terlebih dulu kita harus memiliki pasangan private dan public key. Kita bisa membuatnya dengan menggunakan perintah berikut
 
 ```
-gpg --gen-key
+gpg --full-generate-key 
+```
+
+GPG akan mengajukan beberapa pertanyaan seperti ini
+
+```
+gpg (GnuPG) 2.2.27; Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+  (14) Existing key from card
+Your selection? 1
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 4096
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 2y
+Key expires at Wed Jan 18 13:23:40 2023 WIB
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: Endy Muhardin
+Email address: endy.muhardin@gmail.com
+Comment: 
+You selected this USER-ID:
+    "Endy Muhardin <endy.muhardin@gmail.com>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit?
 ```
 
 Ada beberapa opsi yang kita harus isi:
@@ -109,6 +150,30 @@ Cara di atas **sangat tidak aman**, karena bilangan acak yang dihasilkan `urando
 Walaupun ada juga yang menganggap itu [mitos belaka](http://www.2uo.de/myths-about-urandom/).
 
 Setelah proses generate key selesai, keypair yang baru dibuat secara otomatis akan dimasukkan ke dalam `keyring`, yaitu database key yang kita miliki.
+
+Kadangkala kita akan mendapatkan pesan error seperti ini
+
+```
+gpg: can't connect to the agent: No such file or directory
+gpg: agent_genkey failed: No agent running
+Key generation failed: No agent running
+```
+
+Itu disebabkan karena `gpg-agent` belum aktif. Kita bisa aktifkan dulu dengan perintah berikut
+
+```
+/usr/local/Cellar/gnupg/2.2.27/bin/gpg-agent -v --daemon
+```
+
+Outputnya seperti ini
+
+```
+gpg-agent[11577]: listening on socket '/Users/endymuhardin/.gnupg/S.gpg-agent'
+gpg-agent[11577]: listening on socket '/Users/endymuhardin/.gnupg/S.gpg-agent.extra'
+gpg-agent[11577]: listening on socket '/Users/endymuhardin/.gnupg/S.gpg-agent.browser'
+gpg-agent[11577]: listening on socket '/Users/endymuhardin/.gnupg/S.gpg-agent.ssh'
+gpg-agent[11578]: gpg-agent (GnuPG) 2.2.27 started
+```
 
 ### Melihat isi keyring ###
 
@@ -196,6 +261,24 @@ Hasilnya adalah file text yang terenkripsi. Walaupun orang lain melihat dan mend
 
 File private key ini bisa kita simpan di tempat yang aman. Bisa di safety deposit box, brankas, atau tempat lain yang dianggap aman. Silahkan baca diskusi di StackOverflow untuk mendapat ide tentang berbagai metode penyimpanan.
 
+Kadangkala kita menemui error seperti ini pada waktu melakukan export/import
+
+```
+gpg: problem with the agent: Inappropriate ioctl for device
+gpg: error creating passphrase: Operation cancelled
+gpg: symmetric encryption of '[stdin]' failed: Operation cancelled
+gpg: [stdout]: write error: Broken pipe
+gpg: filter_flush failed on close: Broken pipe
+```
+
+Solusinya mudah, cukup jalankan perintah berikut di command line
+
+```
+export GPG_TTY=$(tty)
+```
+
+Selanjutnya, kita bisa mengulangi perintah export tadi. Seharusnya sekarang sudah bisa berjalan dengan baik.
+
 ### Import Key ###
 
 Ada beberapa situasi dimana kita melakukan import, diantaranya:
@@ -206,13 +289,13 @@ Ada beberapa situasi dimana kita melakukan import, diantaranya:
 Untuk import private key, bila dalam kondisi _plain_ perintahnya sebagai berikut
 
 ```
-cat endymuhardin-plain.asc | gpg --import
+cat endymuhardin-plain.asc | gpg --batch --import
 ```
 
 Sedangkan bila private key dienkripsi seperti anjuran di atas, maka perlu didekripsi dulu. Seperti halnya pada waktu enkripsi, proses dekripsi juga kita lakukan dalam satu langkah
 
 ```
-gpg -a --output - endymuhardin-encrypted.asc | gpg --import
+gpg --decrypt -a --output - endymuhardin-encrypted.asc | gpg --batch --import
 ```
 
 Setelah diimport, kita perlu membuat statusnya menjadi `trusted` supaya bisa digunakan untuk encrypt/decrypt maupun sign/verify.
@@ -283,6 +366,76 @@ gpg> save
 ```
 
 Demikian juga, untuk mengganti masa kadaluarsa, gunakan perintah `expiry`.
+
+```
+gpg --edit-key endy.muhardin@gmail.com
+gpg> expire
+Changing expiration time for the primary key.
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Wed Dec 29 11:38:49 2021 WIB
+Is this correct? (y/N) y
+
+sec  rsa2048/3D115775D2C19EB3
+     created: 2011-07-20  expires: 2021-12-29  usage: SC  
+     trust: ultimate          validity: unknown
+ssb  rsa2048/BB31E545AF288E4C
+     created: 2011-07-20  expired: 2017-08-16  usage: E   
+[ unknown] (1). Endy Muhardin (endy) <endy.muhardin@gmail.com>
+
+gpg: WARNING: Your encryption subkey expires soon.
+gpg: You may want to change its expiration date too.
+gpg> save
+```
+
+Kita mendapatkan warning bahwa subkey kita juga expire. Sebaiknya kita update sekalian.
+
+```
+gpg --edit-key endy.muhardin@gmail.com
+gpg> list
+
+sec  rsa2048/3D115775D2C19EB3
+     created: 2011-07-20  expires: 2021-12-29  usage: SC  
+     trust: ultimate      validity: ultimate
+ssb  rsa2048/BB31E545AF288E4C
+     created: 2011-07-20  expired: 2017-08-16  usage: E   
+[ultimate] (1). Endy Muhardin (endy) <endy.muhardin@gmail.com>
+
+gpg> key 1
+
+sec  rsa2048/3D115775D2C19EB3
+     created: 2011-07-20  expires: 2021-12-29  usage: SC  
+     trust: ultimate      validity: ultimate
+ssb* rsa2048/BB31E545AF288E4C
+     created: 2011-07-20  expired: 2017-08-16  usage: E   
+[ultimate] (1). Endy Muhardin (endy) <endy.muhardin@gmail.com>
+
+gpg> expire
+Changing expiration time for a subkey.
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Wed Dec 29 11:40:56 2021 WIB
+Is this correct? (y/N) y
+
+sec  rsa2048/3D115775D2C19EB3
+     created: 2011-07-20  expires: 2021-12-29  usage: SC  
+     trust: ultimate      validity: ultimate
+ssb* rsa2048/BB31E545AF288E4C
+     created: 2011-07-20  expires: 2021-12-29  usage: E   
+[ultimate] (1). Endy Muhardin (endy) <endy.muhardin@gmail.com>
+
+gpg> save
+```
 
 ## Penggunaan Keypair ##
 

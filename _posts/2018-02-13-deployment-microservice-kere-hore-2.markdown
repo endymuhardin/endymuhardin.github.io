@@ -97,7 +97,7 @@ Database sudah siap digunakan.
 Sebelum mendeploy aplikasi, kita pastikan dulu `Java SDK` dan `haveged` sudah terinstal
 
 ```
-apt install openjdk-9-jre-headless -y
+apt install openjdk-8-jdk-headless haveged -y
 ```
 
 `haveged` adalah generator entropi yang dibutuhkan untuk menghasilkan random number. Bila ini lupa dipasang, aplikasi kita akan seolah hang pada saat membutuhkan random number.
@@ -155,7 +155,7 @@ Pada langkah pengetesan di atas, kita menjalankan aplikasi dengan user `root`. C
 Untuk itu, kita akan membuat user khusus untuk menjalankan aplikasi ini. Misalnya kita akan membuat user dengan nama `aplikasi` yang folder `home`nya adalah folder tempat aplikasi diinstal, yaitu di `/var/lib/appspringsaya`. Berikut perintahnya, jalankan sebagai `root`
 
 ```
-useradd -d /var/lib/appspringsaya -s /bin/bash aplikasi
+useradd -d /var/lib/appspringsaya -s /bin/bash --system aplikasi
 ```
 
 Setelah itu, kita ganti kepemilikan file dan folder aplikasi, yang tadinya dimiliki root, menjadi miliknya user `aplikasi`
@@ -179,6 +179,7 @@ After=syslog.target
 
 [Service]
 User=aplikasi
+Environment=SPRING_PROFILES_ACTIVE=production
 ExecStart=/var/lib/appspringsaya/appspringsaya.jar
 SuccessExitStatus=143
 
@@ -216,10 +217,15 @@ Kita bisa test restart VPS dan pastikan aplikasi kita jalan dengan baik walaupun
 
 Tentunya kita tidak mau mengakses aplikasi kita tanpa `https` dan di port yang tidak lazim. Untuk itu, kita akan buat konfigurasi di Nginx agar semua request ke `https://app1.artivisi.id` diarahkan ke `http://localhost:10001`. Nantinya port `10001` akan kita tutup di firewall agar tidak bisa diakses langsung oleh user.
 
-Buka konfigurasi `/etc/nginx/sites-enabled/app1.artivisi.id` dan tambahkan satu baris berikut:
+Buka konfigurasi `/etc/nginx/sites-enabled/app1.artivisi.id` dan tambahkan baris berikut:
 
 ```
 proxy_pass http://localhost:10001;
+proxy_set_header Host $http_host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Proto $scheme;
+proxy_set_header X-Forwarded-Port $server_port;
 ```
 
 Sehingga menjadi seperti ini

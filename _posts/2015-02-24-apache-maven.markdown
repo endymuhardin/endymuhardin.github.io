@@ -106,6 +106,11 @@ Untuk memulai, kita bisa copy paste `pom.xml` minimalis berikut
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
 </project>
 ```
 
@@ -115,6 +120,26 @@ Jangan lupa mengganti:
 * artifactId
 
 sesuai dengan project kita.
+
+Untuk Java 9 ke atas, maka setting `maven.compiler.source` dan `maven.compiler.target` seperti ini
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.muhardin.endy.belajar</groupId>
+  <artifactId>belajar-maven</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+
+</project>
+```
 
 ## Struktur Folder Project Maven ##
 

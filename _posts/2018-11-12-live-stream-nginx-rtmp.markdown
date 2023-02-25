@@ -85,6 +85,22 @@ Kemudian kita test dengan browse ke `http://<ip-server-raspberry>/`. Seharusnya 
 
 [![Welcome Nginx]({{site.url}}/images/uploads/2018/live-streaming/00-nginx-welcome.png)]({{site.url}}/images/uploads/2018/live-streaming/00-nginx-welcome.png)
 
+## Instalasi Ubuntu 18.04 ##
+
+Di Ubuntu sudah ada paket modul RTMP untuk Nginx, sehingga kita tidak perlu lagi kompilasi source code. Cukup install saja langsung seperti ini
+
+```
+apt install nginx libnginx-mod-rtmp -y
+```
+
+Bila kita ingin streaming ke Facebook dan Instagram, kita juga harus menginstal paket `stunnel`
+
+```
+apt install stunnel4 -y
+```
+
+Konfigurasi Nginx dan Stunnel akan kita bahas di bawah.
+
 ## Konfigurasi Youtube ##
 
 Ada dua tujuan live streaming yang populer, yaitu Youtube dan Facebook.
@@ -121,6 +137,32 @@ Berikutnya, kita akan disajikan layar persiapan event. Di sini kita bisa mulai m
 
 Setelah kita puas dengan kualitas video tayangan, kita bisa klik `Start Streaming`. Barulah event live kita akan bisa dilihat orang banyak.
 
+## Konfigurasi Instagram ##
+
+Fasilitas live ke Instagram dari laptop/PC sebetulnya tidak disediakan secara resmi. Instagram tidak memberikan alamat URL RTMP dan Stream Key yang bisa kita pasang di aplikasi streamer. Kalau kita cari di Google, ada beberapa tutorial, akan tetapi mayoritas di antaranya sudah tidak valid lagi.
+
+Saya menemukan ada satu teknik yang bisa dijalankan pada saat artikel ini ditulis, yaitu menggunakan aplikasi [YellowDuck](https://yellowduck.tv). Itupun tidak berhasil 100%, untuk setup pertama kali, saya selalu menemui kegagalan. Baru setelah dicoba di hari berikutnya, aplikasi ini bisa jalan.
+
+Walaupun demikian, tidak menutup kemungkinan aplikasi inipun untuk diblokir oleh Instagram di masa yang akan datang.
+
+Pada prinsipnya, cara kerja aplikasi ini adalah dia akan berpura-pura menjadi aplikasi Instagram. Kita masukkan username dan password Instagram kita dan klik login. Dia akan mencoba login ke Instagram, menyalakan fitur live, mengambil URL RTMP dan Stream Key, kemudian menampilkannya agar bisa kita gunakan. Sebetulnya metode ini memiliki resiko keamanan, karena kita memberikan username dan password Instagram kita ke aplikasi tersebut. Walaupun dia sudah berjanji tidak akan menyimpan, tapi ya tetap saja pertanyaannya apakah kita percaya sama dia atau tidak :D.
+
+Anyway, kita lanjutkan saja.
+
+Aplikasinya sendiri mudah digunakan. Kita tinggal unduh dan install aplikasinya. Kemudian kita jalankan. Dia akan menampilkan halaman login.
+
+[![Halaman Login YellowDuck]({{site.url}}/images/uploads/2018/live-streaming/01-yellowduck-login.png)]({{site.url}}/images/uploads/2018/live-streaming/01-yellowduck-login.png)
+
+Kita masukkan username dan password Instagram kita. Dia akan berusaha login. Biasanya ketika baru pertama digunakan, Instagram akan curiga, dan meminta konfirmasi kepada kita di aplikasi mobile yang aslinya. Oleh karena itu, YellowDuck akan memberi tahu kita agar kita mengijinkan dia login. Petunjuknya seperti ini.
+
+[![Halaman Permission YellowDuck]({{site.url}}/images/uploads/2018/live-streaming/02-yellowduck-permission.jpeg)]({{site.url}}/images/uploads/2018/live-streaming/02-yellowduck-permission.jpeg)
+
+Pada langkah ini, sering terjadi kegagalan, walaupun kita sudah ikuti petunjuknya. Biasanya tidak akan sukses walaupun dicoba berkali-kali. Biarkan saja, coba lagi besoknya. Karena dia tidak akan segera sukses. Pengalaman saya, di hari berikutnya baru dia bisa login. Hasilnya seperti ini.
+
+[![Halaman Sukses YellowDuck]({{site.url}}/images/uploads/2018/live-streaming/03-yellowduck-success.png)]({{site.url}}/images/uploads/2018/live-streaming/03-yellowduck-success.png)
+
+Selanjutnya, kita tinggal copy saja RTMP URL dan Stream Key untuk dipakai di langkah berikutnya.
+
 ## Konfigurasi Facebook ##
 
 Di Facebook, kita bisa langsung pergi ke halaman [Create Live Stream](https://www.facebook.com/live/create). Klik tombol `Create`, dan kemudian kita akan masuk ke halaman persiapan live streaming
@@ -132,6 +174,55 @@ Seperti biasa, kita butuh `Stream URL` dan `Stream Key`. Kita juga perlu mengisi
 [![Konfigurasi Encoder]({{site.url}}/images/uploads/2018/live-streaming/02-facebook-encoder-setting.png)]({{site.url}}/images/uploads/2018/live-streaming/02-facebook-encoder-setting.png)
 
 `Stream URL` Facebook biasanya adalah `rtmp://live-api-s.facebook.com:80/rtmp/`
+
+**UPDATE !!!**
+Sejak Mei 2019, Facebook mengganti protokol koneksi Live Streaming menggunakan SSL. Sehingga URLnya menjadi `rtmps://live-api-s.facebook.com:443/rtmp/`. Akibatnya, Nginx RTMP Module tidak bisa lagi langsung terkoneksi dengan Facebook. 
+
+Solusinya adalah menggunakan aplikasi `stunnel` untuk menyediakan koneksi SSL ke Facebook, sehingga Nginx RTMP Module tidak perlu mengurus SSL.
+
+## Konfigurasi STunnel ##
+
+Stunnel dapat diinstal menggunakan perintah `apt install stunnel4 -y`. Setelah itu, kita buatkan konfigurasinya di file `/etc/stunnel/stunnel.conf` sebagai berikut:
+
+```
+setuid = stunnel4
+setgid = stunnel4
+pid=/tmp/stunnel.pid
+output = /var/log/stunnel4/stunnel.log
+include = /etc/stunnel/conf.d
+```
+
+Kita buat konfigurasi koneksi ke Facebook di file `/etc/stunnel/conf.d/fb.conf` sebagai berikut
+
+```
+[fb-live]
+client = yes
+accept = 127.0.0.1:8888
+connect = live-api-s.facebook.com:443
+verifyChain = no
+```
+
+Untuk konfigurasi Instagram, kita buat di file `/etc/stunnel/conf.d/ig.conf` sebagai berikut
+
+```
+[ig-live]
+client = yes
+accept = 127.0.0.1:9999
+connect = live-upload.instagram.com:443
+verifyChain = no
+```
+
+Lalu, enable `stunnel` dengan cara mengedit file `/etc/default/stunnel4` menjadi seperti ini
+
+```
+ENABLE=1
+```
+
+Nyalakan `stunnel` tiap kali boot.
+
+```
+sudo systemctl enable stunnel4.service
+```
 
 ## Konfigurasi Nginx RTMP Module ##
 
@@ -150,7 +241,7 @@ rtmp {
       allow publish 127.0.0.1;
       deny publish all;
       push rtmp://a.rtmp.youtube.com/live2/abcd-abcd-abcd-abcd;
-      push rtmp://live-api-s.facebook.com:80/rtmp/12345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+      push rtmp://localhost:8888/rtmp/12345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk;
     }
   }
 }
@@ -158,12 +249,14 @@ rtmp {
 
 Tujuan stream kita ada di baris yang ada perintah `push`. Formatnya adalah `push rtmp://<stream-url>/<stream-key>`
 
-Nilai ini kita dapatkan dari konfigurasi YouTube dan Facebook di atas.
+Nilai ini kita dapatkan dari konfigurasi YouTube dan Facebook di atas. Untuk Youtube, kita push langsung ke tujuan. Sedangkan untuk Facebook, kita push ke `stunnel` di port `8888` untuk selanjutnya diteruskan ke Facebook.
 
 Kita juga perlu membatasi alamat IP aplikasi yang boleh stream ke sana. Bila tidak dibatasi, maka orang lain bisa publish ke sana dan tayang di channel YouTube kita dan timeline Facebook kita. Tentu ini tidak kita inginkan. Pembatasannya ada di baris berikut:
 
 * `allow publish <ip-yang-boleh-publish>`
 * `deny publish all`
+
+### Resize Resolusi Video ###
 
 Bila kita ingin melakukan transcoding, misalnya mengubah stream yang resolusi awalnya `1080p` menjadi `360p`, kita bisa jalankan konversi dengan `ffmpeg` atau `avconv`. Tambahkan perintah `exec` sebagai berikut
 
@@ -187,6 +280,75 @@ application live360p {
 Untuk mengubah bitrate video, ubah nilai setelah `-b:v`. Kualitas audio bisa disesuaikan dengan nilai setelah opsi `-b:a`. Resolusi diubah dengan opsi `-s`.
 
 Dengan kombinasi opsi tersebut, kita bisa mempublikasikan tayangan kita dalam beberapa pilihan resolusi dan kualitas. Jadi penonton yang menggunakan smartphone bisa memilih resolusi kecil, dan penonton di rumah dengan TV layar lebar bisa memilih resolusi maksimal.
+
+### Konversi Vertikal untuk Instagram ###
+
+Apabila kita ingin live ke Instagram, kita harus sesuaikan dulu format videonya agar menjadi vertikal. 
+
+Ada dua pilihan, kita tetap tampilkan videonya secara horizontal, tetapi kita tambahkan _padding_ atas dan bawah. Bisa pakai blur, bisa pakai hitam. Saya biasanya pilih hitam untuk menghemat kerja CPU.
+
+Berikut konfigurasi untuk menambahkan padding hitam.
+
+```
+application live {
+    live on;
+    record off;
+    exec ffmpeg -i rtmp://localhost/live/$name -threads 1 -c:v libx264 -profile:v baseline -vf 'scale=1024:1280:force_original_aspect_ratio=decrease,pad=1024:1280:(ow-iw)/2:(oh-ih)/2,setsar=1' -f flv -c:a aac -ac 1 -strict -2 -b:v 350K -b:a 56k rtmp://localhost/liveIG/$name;
+}
+
+application liveIG {
+    live on;
+    record off;
+}
+```
+
+Atau bila ingin merotasi videonya agar tetap lebar, tapi berorientasi vertikal, bisa gunakan konfigurasi yang ini
+
+```
+application live {
+    live on;
+    record off;
+    exec ffmpeg -i rtmp://localhost/live/$name -threads 1 -c:v libx264 -profile:v baseline -vf 'transpose=1,scale=1024:1280:force_original_aspect_ratio=decrease,pad=1024:1280:(ow-iw)/2:(oh-ih)/2,setsar=1' -f flv -c:a aac -ac 1 -strict -2 -b:v 350K -b:a 56k rtmp://localhost/liveIG/$name;
+}
+
+application liveIG {
+    live on;
+    record off;
+}
+```
+
+Konfigurasi lengkapnya seperti ini
+
+```
+rtmp {
+  server {
+    listen 1935;
+    chunk_size 4096;
+    application live {
+      live on;
+      record off;
+
+      # Konversi vertikal untuk Instagram
+      exec ffmpeg -i rtmp://localhost/live/$name -threads 1 -c:v libx264 -profile:v baseline -vf 'transpose=1,scale=1024:1280:force_original_aspect_ratio=decrease,pad=1024:1280:(ow-iw)/2:(oh-ih)/2,setsar=1' -f flv -c:a aac -ac 1 -strict -2 -b:v 350K -b:a 56k rtmp://localhost/liveIG/$name;
+
+      # Push Youtube
+      push rtmp://a.rtmp.youtube.com/live2/<stream-key>;
+
+      # Push Facebook
+      push rtmp://localhost:8888/rtmp/<stream-key>;
+    }
+
+    # Stream Instagram
+    application liveIG {
+      live on;
+      record off;
+      
+      # Push IG Live
+      push rtmp://localhost:9999/rtmp/<stream-key>;
+    }
+  }
+}
+```
 
 Sebelum dijalankan, test dulu konfigurasi kita dengan perintah berikut
 
@@ -284,22 +446,77 @@ Seharusnya kita bisa menonton live streaming yang dikirim oleh OBS.
 
 [![VLC View Stream]({{site.url}}/images/uploads/2018/live-streaming/02-vlc-view-stream.png)]({{site.url}}/images/uploads/2018/live-streaming/02-vlc-view-stream.png)
 
-## Penutup ##
+## Docker ##
 
-Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya gratis, setupnya tidak sulit, aplikasinya gratis, pokoknya tinggal pakai. Bahkan seandainya kita hanya bermodalkan smartphone, kita bisa langsung live. Akan tetapi, untuk mendapatkan hasil yang lebih profesional, kita perlu menggunakan aplikasi yang lebih canggih seperti OBS. Di situ kita bisa menambahkan logo di kanan atas, nama pembicara di bawah (lower third), running text, menjalankan iklan, dan sebagainya. Hasilnya bisa dilihat di [event Monday Forum Tazkia](https://youtu.be/HQ-BG0pyz8A)
+Bila setiap kali mau melakukan live streaming kita harus melakukan konfigurasi, tentunya ini sangat melelahkan. Agar lebih praktis, kita bisa menjalankan setup ini menggunakan Docker. Apa itu docker dan bagaimana cara kerjanya tidak dibahas pada artikel ini. Silahkan baca [artikel berikut untuk memahami apa itu docker](https://software.endy.muhardin.com/linux/intro-docker/). 
 
-[![YouTube Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)
+Kita akan menjalankan dua Docker container sekaligus, yang satu menjalankan `stunnel`, satunya lagi menjalankan `nginx-rtmp-module`. Caranya adalah menggunakan `docker-compose`. File konfigurasinya kita buat dalam file bernama `docker-compose.yml` yang isinya sebagai berikut:
 
-Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banyak platform sekaligus. Walaupun demikian, Instagram Live masih belum bisa ditangani oleh aplikasi encoder/broadcaster termasuk Nginx RTMP Module ini.
+```yml
+version: "3"
 
-Kita juga bisa menjalankan Nginx RTMP Module ini dengan menggunakan docker. Perintahnya sebagai berikut:
+services:
+  stunnel-proxy-fb:
+    image: tstrohmeier/stunnel-client:latest
+    restart: always
+    environment:
+      - ACCEPT=8888
+      - CONNECT=live-api-s.facebook.com:443
+  
+  stunnel-proxy-ig:
+    image: tstrohmeier/stunnel-client:latest
+    restart: always
+    environment:
+      - ACCEPT=9999
+      - CONNECT=live-upload.instagram.com:443
+
+  nginx-rtmp-streamer:
+    image: jasonrivers/nginx-rtmp
+    environment:
+      - RTMP_PUSH_URLS=rtmp://a.rtmp.youtube.com/live2/${YOUTUBE_STREAM_KEY},rtmp://stunnel-proxy-fb:8888/rtmp/${FACEBOOK_STREAM_KEY},rtmp://stunnel-proxy-ig:9999/rtmp/${INSTAGRAM_STREAM_KEY}
+    depends_on:
+      - stunnel-proxy-fb
+      - stunnel-proxy-ig
+    ports:
+      - "1935:1935"
+      - "8080:8080"
 
 ```
-docker run -d --name nginx-rtmp-streamer \
-    -p 1935:1935 \
-    -p 8080:8080 \
-    -e RTMP_PUSH_URLS='rtmp://live.youtube.com/myname/streamkey,rtmp://live-api-s.facebook.com:80/rtmp/streamkey' \
-    jasonrivers/nginx-rtmp
+
+File tersebut membutuhkan konfigurasi untuk mengisi variabel `${YOUTUBE_STREAM_KEY}`, `${FACEBOOK_STREAM_KEY}`, dan `${INSTAGRAM_STREAM_KEY}`. Kedua nilai ini sengaja dikeluarkan dari file `docker-compose` agar bisa diubah-ubah sesuai akun yang akan digunakan untuk live.
+
+Konfigurasinya kita buat dalam file yang bernama `.env`. Isinya sebagai berikut
+
+```
+YOUTUBE_STREAM_KEY=abcd-abcd-abcd-abcd
+FACEBOOK_STREAM_KEY=12345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+INSTAGRAM_STREAM_KEY=xyz-xyz-xyz
+```
+
+File `.env` dan file `docker-compose.yml` diletakkan dalam folder yang sama. Setelah itu jalankan dengan perintah `docker-compose up -d`. Outputnya seperti ini
+
+```
+Creating network "tmp_default" with the default driver
+Creating tmp_stunnel-proxy_1 ... done
+Creating tmp_nginx-rtmp-streamer_1 ... done
+Attaching to tmp_stunnel-proxy_1, tmp_nginx-rtmp-streamer_1
+nginx-rtmp-streamer_1  | Creating config
+nginx-rtmp-streamer_1  | Creating stream live
+nginx-rtmp-streamer_1  | Pushing stream to rtmp://a.rtmp.youtube.com/live2/abcd-abcd-abcd-abcd
+nginx-rtmp-streamer_1  | Pushing stream to rtmp://stunnel-proxy-fb:8888/rtmp/112345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+nginx-rtmp-streamer_1  | Pushing stream to rtmp://stunnel-proxy-ig:9999/rtmp/112345678909876543?s_ps=9&s_sw=9&s_vt=abc-d&a=QwertYasDf321Hjk
+nginx-rtmp-streamer_1  | Creating stream testing
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: stunnel 5.46 on x86_64-alpine-linux-musl platform
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Compiled with LibreSSL 2.7.3
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Running  with LibreSSL 2.7.4
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Threading:PTHREAD Sockets:POLL,IPv6 TLS:ENGINE,OCSP,SNI
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Reading configuration from file /etc/stunnel/stunnel.conf
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: UTF-8 byte order mark not detected
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG4[ui]: Service [stunnelHttpsToHttpclient] needs authentication to prevent MITM attacks
+stunnel-proxy_1        | 2020.02.05 05:37:48 LOG5[ui]: Configuration successful
+stunnel-proxy_1        | 2020.02.05 05:38:00 LOG5[0]: Service [stunnelHttpsToHttpclient] accepted connection from 172.19.0.3:50088
+stunnel-proxy_1        | 2020.02.05 05:38:00 LOG5[0]: s_connect: connected 31.13.92.6:443
+stunnel-proxy_1        | 2020.02.05 05:38:00 LOG5[0]: Service [stunnelHttpsToHttpclient] connected remote server from 172.19.0.2:41612
 ```
 
 Di aplikasi OBS, masukkan setting seperti ini:
@@ -310,7 +527,64 @@ Server: rtmp://<your server ip>/live
 Play Path/Stream Key: mystream
 ```
 
-Untuk lebih jelasnya, bisa dilihat langsung dokumentasinya di [DockerHub](https://hub.docker.com/r/jasonrivers/nginx-rtmp/)
+Setelah selesai, untuk mematikannya, ketik perintah `docker-compose down`.
+
+
+### Live Streaming Drone ###
+
+Metode docker ini juga bisa digunakan untuk membuat live streaming dari drone Dji dan kamera GoPro.
+
+Jalankan Docker container dengan perintah berikut
+
+```
+docker run -d --rm -p 1935:1935 -p 8080:8080 jasonrivers/nginx-rtmp
+```
+
+Komputer kita akan menjalankan RTMP server di port `1935` dan siap menerima koneksi. Kita harus cari tahu dulu alamat IP komputer kita, misalnya `192.168.100.4`. 
+
+Bila kita menggunakan GoPro, buka aplikasinya di hape. Kemudian masuk ke menu `Live`
+
+[![GoPro Menu Live]({{site.url}}/images/uploads/2018/live-streaming/01-gopro-live.jpg)]({{site.url}}/images/uploads/2018/live-streaming/01-gopro-live.jpg)
+
+Selanjutnya, pilih menu `RTMP`.
+
+[![GoPro RTMP]({{site.url}}/images/uploads/2018/live-streaming/02-gopro-rtmp.jpg)]({{site.url}}/images/uploads/2018/live-streaming/02-gopro-rtmp.jpg)
+
+Masukkan alamat komputer kita tadi, yaitu `192.168.100.4` berikut url dan stream key yang kita pilih. Misalnya `rtmp://192.168.100.4/live/gopro`. Setelah itu klik `Continue`
+
+[![GoPro Continue]({{site.url}}/images/uploads/2018/live-streaming/03-gopro-continue.jpg)]({{site.url}}/images/uploads/2018/live-streaming/03-gopro-continue.jpg)
+
+Klik `Go Live`. GoPro akan segera mengirim data ke komputer. 
+
+[![GoPro Live]({{site.url}}/images/uploads/2018/live-streaming/05-gopro-live.jpg)]({{site.url}}/images/uploads/2018/live-streaming/05-gopro-live.jpg)
+
+Kita bisa pantau koneksi dan kestabilan pengiriman data.
+
+[![GoPro Koneksi]({{site.url}}/images/uploads/2018/live-streaming/06-gopro-koneksi.jpg)]({{site.url}}/images/uploads/2018/live-streaming/06-gopro-koneksi.jpg)
+
+Untuk drone Dji, caranya mirip. Masuk ke menu `Transmission`
+
+[![Dji Transmission]({{site.url}}/images/uploads/2018/live-streaming/01-dji-transmission.jpg)]({{site.url}}/images/uploads/2018/live-streaming/01-dji-transmission.jpg)
+
+Kemudian klik `Live Streaming Platforms`. Cuma ada satu pilihan di sana, yaitu `RTMP`
+
+[![Dji RTMP Menu]({{site.url}}/images/uploads/2018/live-streaming/02-dji-rtmp-menu.jpg)]({{site.url}}/images/uploads/2018/live-streaming/02-dji-rtmp-menu.jpg)
+
+Selanjutnya, masukkan alamat komputer kita dengan stream keynya. Misalnya `rtmp://192.168.100.4/live/mini2`
+
+[![Dji RTMP URL]({{site.url}}/images/uploads/2018/live-streaming/03-dji-rtmp-url.jpg)]({{site.url}}/images/uploads/2018/live-streaming/03-dji-rtmp-url.jpg)
+
+Klik OK, selanjutnya kita tinggal menerima data di komputer dengan OBS atau VLC seperti dijelaskan di atas.
+
+Buat pengguna MacOS yang lebih suka tampilan grafis, bisa coba [Mac Local RTMP Server](https://github.com/sallar/mac-local-rtmp-server) atau [OBS Link](https://help.elgato.com/hc/en-us/articles/360031363132-OBS-Link-Setup) dari Elgato.
+
+## Penutup ##
+
+Live Streaming merupakan fasilitas jaman now yang sangat bermanfaat. Layanannya gratis, setupnya tidak sulit, aplikasinya gratis, pokoknya tinggal pakai. Bahkan seandainya kita hanya bermodalkan smartphone, kita bisa langsung live. Akan tetapi, untuk mendapatkan hasil yang lebih profesional, kita perlu menggunakan aplikasi yang lebih canggih seperti OBS. Di situ kita bisa menambahkan logo di kanan atas, nama pembicara di bawah (lower third), running text, menjalankan iklan, dan sebagainya. Hasilnya bisa dilihat di [event Monday Forum Tazkia](https://youtu.be/HQ-BG0pyz8A)
+
+[![YouTube Hasil Streaming]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)]({{site.url}}/images/uploads/2018/live-streaming/07-hasil-streaming.png)
+
+Dengan sedikit tambahan Nginx RTMP Module, kita bisa mempublikasikannya ke banyak platform sekaligus. 
 
 Selamat mencoba, semoga bermanfaat ...
 
@@ -320,3 +594,9 @@ Selamat mencoba, semoga bermanfaat ...
 * [https://github.com/tiangolo/nginx-rtmp-docker/blob/master/README.md](https://github.com/tiangolo/nginx-rtmp-docker/blob/master/README.md)
 * [https://www.leaseweb.com/labs/2013/11/streaming-video-demand-nginx-rtmp-module/](https://www.leaseweb.com/labs/2013/11/streaming-video-demand-nginx-rtmp-module/)
 * [https://www.vultr.com/docs/setup-nginx-rtmp-on-centos-7](https://www.vultr.com/docs/setup-nginx-rtmp-on-centos-7)
+* [https://dev.to/lax/rtmps-relay-with-stunnel-12d3](https://dev.to/lax/rtmps-relay-with-stunnel-12d3)
+* [https://sites.google.com/view/facebook-rtmp-to-rtmps/home](https://sites.google.com/view/facebook-rtmp-to-rtmps/home)
+* [https://hub.docker.com/r/tstrohmeier/stunnel-client/](https://hub.docker.com/r/tstrohmeier/stunnel-client/)
+* [https://github.com/arut/nginx-rtmp-module/issues/1397](https://github.com/arut/nginx-rtmp-module/issues/1397)
+* [https://sites.google.com/view/facebook-rtmp-to-rtmps/home](https://sites.google.com/view/facebook-rtmp-to-rtmps/home)
+* [https://www.openwritings.net/pg/ffmpeg/ffmpeg-add-logo-video](https://www.openwritings.net/pg/ffmpeg/ffmpeg-add-logo-video)

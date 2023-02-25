@@ -561,10 +561,17 @@ Ada pertanyaan di komentar :
 Deployment di Heroku agak sedikit ribet, tapi bisa dilakukan. Sumber kesulitan utama adalah karena Heroku menganut prinsip [ephemeral file system](https://devcenter.heroku.com/articles/dynos#isolation-and-security). Artinya, semua file yang bukan bagian dari aplikasi akan **dihapus** setiap kali aplikasi dideploy atau direstart. Kesulitan yang ditimbulkan karena ini antara lain:
 
 * Bila ingin menjadikan `client_secret.json` sebagai bagian aplikasi, maka file ini harus dicommit ke source code repository. Tentunya ini tidak baik, karena semua yang masuk repo bukan lagi `secret`.
-* Kita tidak bisa menaruh file `clients_secret.json` di server aplikasi / dyno Heroku, karena akan dibuang setiap kali restart/deploy.
+* Kita tidak bisa menaruh file `client_secret.json` di server aplikasi / dyno Heroku, karena akan dibuang setiap kali restart/deploy.
 * Kita tidak bisa menjalankan proses OAuth Google API, karena dia akan membuka port secara random, dan melakukan redirect ke port tersebut. Seperti kita lihat pada log di atas, dia mengharapkan redirect ke `http://localhost:51302/Callback&response_type=code&scope=https://www.googleapis.com/auth/gmail.send`. Port `51302` ini hanya akan jalan di jaringan internal Heroku dan tidak bisa diakses dari luar.
 
-Untuk itu, solusinya adalah sebagai berikut :
+Untuk itu, ada dua strategi untuk mengatasi masalah ini: 
+
+1. Dengan menggunakan external webserver
+2. Menggunakan environment variable
+
+### Menggunakan External Web Server ###
+
+Secara garis besar, cara kerjanya seperti ini:
 
 * Taruh file `client_secret.json` di lokasi yang bisa diunduh oleh aplikasi kita di Heroku.
 * Supaya tidak perlu menjalankan proses otorisasi OAuth, kita jalankan prosesnya di laptop/PC, kemudian upload hasilnya, yaitu file `StoredCredential` ke lokasi tersebut.
@@ -676,6 +683,99 @@ heroku config:set GMAIL_CREDENTIAL_FILE_SERVER=https://646f1763.ngrok.io
 Nah, sekarang aplikasi kita sudah bisa dideploy ke Heroku. 
 
 > Disclaimer !!! Teknik ngrok di atas tidak untuk dipakai di production, karena tidak ada proteksi apapun terhadap `client_secret.json` dan `StoredCredential`. Lakukan proteksi yang memadai bila mau dihosting sendiri, atau gunakan layanan dengan security yang baik seperti Dropbox atau Amazon S3.
+
+### Menggunakan Environment Variable ###
+
+Secara garis besar, cara kerjanya seperti ini:
+
+* Simpan isi file `client_secret.json` dan `StoredCredential` ke dalam environment variable
+* Pada waktu aplikasi start, baca environment variable tersebut, dan tulis kembali menjadi file
+* Selanjutnya, aplikasi bisa dijalankan seperti biasa.
+
+File `client_secret.json` bentuknya text, sedangkan file `StoredCredential` adalah file binary. File text bisa langsung kita pasang menjadi environment variable. File binary harus dikonversi dulu menjadi text, supaya bisa digunakan sebagai environment variable. Algoritma konversi (encoding) yang lazim dipakai orang adalah `Base64`. 
+
+Agar kode program di aplikasi lebih sederhana, kita akan tetap mengkonversi file `client_secret.json` dengan `Base64`.
+
+Untuk itu, kita buat dulu kode program Java untuk mengkonversi kedua file ini. Kode programnya bisa kita buat sebagai JUnit test supaya mudah dijalankan. Berikut kode program untuk mengkonversi filenya.
+
+
+```java
+class KonversiCredentialTests {
+
+	@Value("${gmail.folder}")
+	private String dataStoreFolder;
+
+	@Test
+	public void testConvertStoredCredential() throws IOException {
+		byte[] credentialFile = Files.readAllBytes(
+				Paths.get(dataStoreFolder + File.separator +
+						AplikasiRegistrasiApplication.STORED_CREDENTIAL_FILE));
+		String base64Encoded
+				= Base64.getEncoder()
+				.encodeToString(credentialFile);
+
+		System.out.println(base64Encoded);
+	}
+
+	@Test
+	public void testConvertClientSecret() throws IOException {
+		byte[] clientSecretJson = Files.readAllBytes(
+				Paths.get(dataStoreFolder + File.separator +
+						AplikasiRegistrasiApplication.CLIENT_SECRET_JSON_FILE));
+		String base64Encoded
+				= Base64.getEncoder()
+				.encodeToString(clientSecretJson);
+
+		System.out.println(base64Encoded);
+	}
+
+}
+```
+
+Setelah dijalankan, kita akan mendapatkan satu baris string di layar. 
+
+[![Convert Base 64]({{site.url}}/images/uploads/2017/gmail-api/25-convert-base64.png)]({{site.url}}/images/uploads/2017/gmail-api/25-convert-base64.png)
+
+Kita pasang baris ini sebagai environment variable di Heroku seperti ini
+
+[![Environment Variable Heroku]({{site.url}}/images/uploads/2017/gmail-api/24-heroku-environment.png)]({{site.url}}/images/uploads/2017/gmail-api/24-heroku-environment.png)
+
+Kita juga bisa setup environment variable melalui Heroku CLI melalui command line seperti ini
+
+```
+heroku config:set CLIENT_SECRET_JSON=blablablayaddayaddayadda
+heroku config:set STORED_CREDENTIAL=blablablayaddayaddayadda
+```
+
+Kemudian, kita baca environment variable ini pada saat aplikasi dijalankan, dan kita tulis ke file.
+
+```java
+public static final String CLIENT_SECRET_JSON_ENV = "CLIENT_SECRET_JSON";
+public static final String STORED_CREDENTIAL_ENV = "STORED_CREDENTIAL";
+public static final String CLIENT_SECRET_JSON_FILE = "client_secret.json";
+public static final String STORED_CREDENTIAL_FILE = "StoredCredential";
+
+@Bean @Profile("heroku")
+public GoogleClientSecrets environmentVariableClientSecrets() throws Exception {
+    restoreEnvironmentVariableToFile(CLIENT_SECRET_JSON_ENV, CLIENT_SECRET_JSON_FILE);
+    restoreEnvironmentVariableToFile(STORED_CREDENTIAL_ENV, STORED_CREDENTIAL_FILE);
+    return loadGoogleClientSecrets();
+}
+
+private GoogleClientSecrets loadGoogleClientSecrets() throws IOException {
+    return GoogleClientSecrets.load(jsonFactory,
+            new InputStreamReader(new FileInputStream(dataStoreFolder + File.separator + CLIENT_SECRET_JSON_FILE)));
+}
+
+private void restoreEnvironmentVariableToFile(String environmentVariableName, String filename) throws IOException {
+    Files.createDirectories(Paths.get(dataStoreFolder));
+    Files.write(Paths.get(dataStoreFolder +
+                    File.separator + filename),
+            Base64.getDecoder().decode(env.getProperty(environmentVariableName)));
+}
+```
+
+Menurut saya, cara kedua ini lebih _robust_, karena bisa berjalan secara mandiri tanpa perlu setup webserver lain. Juga lebih secure, karena file credential tidak perlu ditaruh di lokasi lain dan tidak perlu dikirim melalui internet.
 
 ## Penutup ##
 

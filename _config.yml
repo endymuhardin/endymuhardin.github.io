@@ -38,3 +38,6 @@ google_analytics_tracking_id: UA-36102948-1
 
 # Facebook Comments
 facebook_appid: 269506799827290
+
+# Timezone
+timezone: Asia/Jakarta

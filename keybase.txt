@@ -1,0 +1,57 @@
+==================================================================
+https://keybase.io/endymuhardin
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://software.endy.muhardin.com
+  * I am endymuhardin (https://keybase.io/endymuhardin) on keybase.
+  * I have a public key ASAQsBsHmGv6voky7r3JEBf5HMGSsRPUlpaAjRZf_uKtXgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101446441a313d8d503aea6062629d8150cb51d11bc53e4c656118518b0bd3414050a",
+      "host": "keybase.io",
+      "kid": "012010b01b07986bfabe8932eebdc91017f91cc192b113d49696808d165ffee2ad5e0a",
+      "uid": "4a43ca73553e507759ebb5984f56ec19",
+      "username": "endymuhardin"
+    },
+    "merkle_root": {
+      "ctime": 1612586437,
+      "hash": "0f818f8466e1a9855f65d57d39825302227b63ac0799264cdfa83ab32870bf139d5815d255db8f40f1b698a2c882bfb8636aa7da27465fd4b832611213ae9a17",
+      "hash_meta": "be716492b5f5bff47591653bfd4146b851e4ad2e4be2ee7864a083a92203b599",
+      "seqno": 19026327
+    },
+    "service": {
+      "entropy": "jhUExbIhrquNYOF+Ri+/gTNj",
+      "hostname": "software.endy.muhardin.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.6.2"
+  },
+  "ctime": 1612586496,
+  "expire_in": 504576000,
+  "prev": "beffb186d769f63bc19ac25a6e12ffdbc4a313c27ce3fe0fb271e1bb91241e54",
+  "seqno": 7,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgELAbB5hr+r6JMu69yRAX+RzBkrET1JaWgI0WX/7irV4Kp3BheWxvYWTESpcCB8Qgvv+xhtdp9jvBmsJabhL/28SjE8J84/4PsnHhu5EkHlTEINjkCglSOJuP8d2G+jpUQTdJPWQNTaqUqANqOEi8tt5yAgHCo3NpZ8RAY4hwNJdyAChGGACnuflbVgiFwbIrKiusGmcX7x3mVxE3KszdKMEvfv6lts9QgsfahABfqmn1OG1IvRD1piFqAqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIDp3sbBylRctoq1R/j08HaeEkIppCDq1DgeRwjWK0Yz4o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/endymuhardin
+
+==================================================================
+
