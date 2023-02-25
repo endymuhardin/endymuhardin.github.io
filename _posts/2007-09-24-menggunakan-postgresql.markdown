@@ -34,6 +34,7 @@ Selanjutnya, konfigurasi Postgre agar meminta password setiap ada koneksi masuk,
 Ganti otentikasi dalam `pg_hba.conf` menjadi 
     
 ```
+local   all         postgres                      peer
 local   all         all                           password
 host    all         all         127.0.0.1/32      password
 host    all         all         ::1/128           password
