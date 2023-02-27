@@ -65,39 +65,55 @@ Biasanya, kita mengirim email melalui aplikasi web based yang sudah disediakan G
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/m5jI0Y14Wqc" frameborder="0" allowfullscreen></iframe>
 
-Kita perlu membuat credentials agar aplikasi kita bisa menggunakan GMail atas nama akun pemilik project. Klik menu Credentials di panel kiri. Selanjutnya kita akan melihat wizard untuk membuat credential
+Sebelum membuat credential bertipe OAuth, terlebih dulu kita harus mengkonfigurasikan OAuth Consent Screen. Klik menu Consent Screen di panel kiri, kemudian pilih User Type External
 
-[![Create Credential]({{site.url}}/images/uploads/2017/gmail-api/08-create-credentials.png)]({{site.url}}/images/uploads/2017/gmail-api/08-create-credentials.png)
+[![Consent Screen User Type]({{site.url}}/images/uploads/2017/gmail-api/08-oauth-consent-screen-user-type.png)]({{site.url}}/images/uploads/2017/gmail-api/08-oauth-consent-screen-user-type.png)
 
-Ada beberapa pilihan jenis credential, kita pilih yang OAuth
+Selanjutnya, beri nama aplikasi dan masukkan email support
 
-[![Pilih OAuth]({{site.url}}/images/uploads/2017/gmail-api/09-pilih-oauth.png)]({{site.url}}/images/uploads/2017/gmail-api/09-pilih-oauth.png)
+[![Consent Screen App Info]({{site.url}}/images/uploads/2017/gmail-api/09-oauth-consent-screen-app-info.png)]({{site.url}}/images/uploads/2017/gmail-api/09-oauth-consent-screen-app-info.png)
 
-Kita harus mengkonfigurasikan dulu Consent Screen, yaitu halaman konfirmasi yang akan ditampilkan Google pada waktu meminta ijin dari user.
+App Domain dan authorized domain bisa kita kosongkan. Developer contact harus diisi
 
-[![Consent Screen]({{site.url}}/images/uploads/2017/gmail-api/11-consent-screen.png)]({{site.url}}/images/uploads/2017/gmail-api/11-consent-screen.png)
+[![Consent Screen App Domain]({{site.url}}/images/uploads/2017/gmail-api/10-oauth-consent-screen-app-domain.png)]({{site.url}}/images/uploads/2017/gmail-api/10-oauth-consent-screen-app-domain.png)
 
-Selanjutnya, kita memilih jenis aplikasi yang akan dibuat.
+Untuk scope, kita tidak perlu isi apa-apa.
 
-[![Jenis Project]({{site.url}}/images/uploads/2017/gmail-api/12-client-id.png)]({{site.url}}/images/uploads/2017/gmail-api/12-client-id.png)
+[![Consent Screen App Scope]({{site.url}}/images/uploads/2017/gmail-api/11-oauth-consent-screen-app-scope.png)]({{site.url}}/images/uploads/2017/gmail-api/11-oauth-consent-screen-app-scope.png)
+
+Demikian juga untuk test user, dikosongkan saja.
+
+[![Consent Screen Test User]({{site.url}}/images/uploads/2017/gmail-api/12-oauth-consent-screen-test-users.png)]({{site.url}}/images/uploads/2017/gmail-api/12-oauth-consent-screen-test-users.png)
+
+Setelah consent screen selesai dikonfigurasi, kita lanjutkan ke Create Credentials. Ada beberapa jenis user yang bisa dipilih, kita gunakan OAuth Client ID.
+
+[![Create Credentials - User Type]({{site.url}}/images/uploads/2017/gmail-api/13-create-credentials.png)]({{site.url}}/images/uploads/2017/gmail-api/13-create-credentials.png)
+
+Tentukan jenis aplikasi, kita pilih saja Desktop Application. Karena walaupun aplikasi kita berbasis web, tapi pengiriman email hanya akan dilakukan oleh satu email account saja. Bukan email account user aplikasi.
+
+[![Create Credential - App Type]({{site.url}}/images/uploads/2017/gmail-api/14-credential-application-option.png)]({{site.url}}/images/uploads/2017/gmail-api/14-credential-application-option.png)
+
+Isikan nama aplikasi, ini yang nanti akan tampil di consent screen.
+
+[![Create Credentials - App Name]({{site.url}}/images/uploads/2017/gmail-api/15-credential-application-type.png)]({{site.url}}/images/uploads/2017/gmail-api/15-credential-application-type.png)
 
 Selesai, client id dan secret sudah selesai.
 
-[![Credential created]({{site.url}}/images/uploads/2017/gmail-api/13-client-id-created.png)]({{site.url}}/images/uploads/2017/gmail-api/13-client-id-created.png)
+[![Credential created]({{site.url}}/images/uploads/2017/gmail-api/16-client-id-created.png)]({{site.url}}/images/uploads/2017/gmail-api/16-client-id-created.png)
 
 Agar bisa digunakan di aplikasi, kita perlu mengunduh file credential
 
-[![Link Download Credential]({{site.url}}/images/uploads/2017/gmail-api/14-dashboard-credentials.png)]({{site.url}}/images/uploads/2017/gmail-api/14-dashboard-credentials.png)
+[![Link Download Credential]({{site.url}}/images/uploads/2017/gmail-api/17-dashboard-credentials.png)]({{site.url}}/images/uploads/2017/gmail-api/17-dashboard-credentials.png)
 
 Download filenya, kita akan membutuhkannya nanti.
 
-[![File Credentials]({{site.url}}/images/uploads/2017/gmail-api/15-file-credentials.png)]({{site.url}}/images/uploads/2017/gmail-api/15-file-credentials.png)
+[![File Credentials]({{site.url}}/images/uploads/2017/gmail-api/18-file-credentials.png)]({{site.url}}/images/uploads/2017/gmail-api/18-file-credentials.png)
 
 ## Membuat Project Spring Boot ##
 
 Selanjutnya, kita buat aplikasi untuk mengirim email. Seperti biasa, kita generate project di [start.spring.io](https://start.spring.io)
 
-[![Start Spring IO]({{site.url}}/images/uploads/2017/gmail-api/16-spring-starter.png)]({{site.url}}/images/uploads/2017/gmail-api/16-spring-starter.png)
+[![Start Spring IO]({{site.url}}/images/uploads/2017/gmail-api/19-spring-starter.png)]({{site.url}}/images/uploads/2017/gmail-api/19-spring-starter.png)
 
 Beberapa modul yang saya gunakan:
 
@@ -293,15 +309,15 @@ Please open the following address in your browser:
 
 Buka url tadi di browser.
 
-[![Choose Account]({{site.url}}/images/uploads/2017/gmail-api/17-choose-account.png)]({{site.url}}/images/uploads/2017/gmail-api/17-choose-account.png)
+[![Choose Account]({{site.url}}/images/uploads/2017/gmail-api/20-choose-account.png)]({{site.url}}/images/uploads/2017/gmail-api/20-choose-account.png)
 
 Kita akan disuruh memilih akun mana yang kita akan pakai. Pastikan pilih akun sesuai pembuatan project di Developer Console. Selanjutnya, kita akan ditanya apakah akan mengijinkan (Allow) `Aplikasi Notifikasi` untuk mengirim email atas nama / seolah-olah dari `artivisi.intermedia@gmail.com`.
 
-[![Allow Access]({{site.url}}/images/uploads/2017/gmail-api/18-allow-access.png)]({{site.url}}/images/uploads/2017/gmail-api/18-allow-access.png)
+[![Allow Access]({{site.url}}/images/uploads/2017/gmail-api/21-allow-access.png)]({{site.url}}/images/uploads/2017/gmail-api/21-allow-access.png)
 
 Begitu kita allow, tampilan browsernya sebagai berikut.
 
-[![Allow Success]({{site.url}}/images/uploads/2017/gmail-api/19-oauth-success.png)]({{site.url}}/images/uploads/2017/gmail-api/19-oauth-success.png)
+[![Allow Success]({{site.url}}/images/uploads/2017/gmail-api/22-oauth-success.png)]({{site.url}}/images/uploads/2017/gmail-api/22-oauth-success.png)
 
 Di belakang layar, GMail akan memberikan respon sukses ke aplikasi kita yang sedang berjalan tadi (`mvn spring-boot:run`), sehingga prosesnya berlanjut sampai aplikasi berjalan sempurna.
 
@@ -457,11 +473,11 @@ public class BelajarGmailApiApplicationTests {
 
 Cek inbox gan, harusnya ada message baru.
 
-[![Inbox]({{site.url}}/images/uploads/2017/gmail-api/20-inbox.png)]({{site.url}}/images/uploads/2017/gmail-api/20-inbox.png)
+[![Inbox]({{site.url}}/images/uploads/2017/gmail-api/23-inbox.png)]({{site.url}}/images/uploads/2017/gmail-api/23-inbox.png)
 
 Klik untuk melihat isinya
 
-[![Choose Account]({{site.url}}/images/uploads/2017/gmail-api/21-email-content.png)]({{site.url}}/images/uploads/2017/gmail-api/21-email-content.png)
+[![Choose Account]({{site.url}}/images/uploads/2017/gmail-api/24-email-content.png)]({{site.url}}/images/uploads/2017/gmail-api/24-email-content.png)
 
 
 ## Mengirim Email dengan Template HTML ##
@@ -546,11 +562,11 @@ public class BelajarGmailApiApplicationTests {
 
 Berikut outputnya di mailbox.
 
-[![Inbox Template]({{site.url}}/images/uploads/2017/gmail-api/22-inbox-template.png)]({{site.url}}/images/uploads/2017/gmail-api/22-inbox-template.png)
+[![Inbox Template]({{site.url}}/images/uploads/2017/gmail-api/25-inbox-template.png)]({{site.url}}/images/uploads/2017/gmail-api/25-inbox-template.png)
 
 Dan seperti ini tampilan hasilnya.
 
-[![Choose Account]({{site.url}}/images/uploads/2017/gmail-api/23-email-content-template.png)]({{site.url}}/images/uploads/2017/gmail-api/23-email-content-template.png)
+[![Choose Account]({{site.url}}/images/uploads/2017/gmail-api/26-email-content-template.png)]({{site.url}}/images/uploads/2017/gmail-api/26-email-content-template.png)
 
 ## Deployment Heroku ##
 
@@ -734,11 +750,11 @@ class KonversiCredentialTests {
 
 Setelah dijalankan, kita akan mendapatkan satu baris string di layar. 
 
-[![Convert Base 64]({{site.url}}/images/uploads/2017/gmail-api/25-convert-base64.png)]({{site.url}}/images/uploads/2017/gmail-api/25-convert-base64.png)
+[![Convert Base 64]({{site.url}}/images/uploads/2017/gmail-api/27-convert-base64.png)]({{site.url}}/images/uploads/2017/gmail-api/27-convert-base64.png)
 
 Kita pasang baris ini sebagai environment variable di Heroku seperti ini
 
-[![Environment Variable Heroku]({{site.url}}/images/uploads/2017/gmail-api/24-heroku-environment.png)]({{site.url}}/images/uploads/2017/gmail-api/24-heroku-environment.png)
+[![Environment Variable Heroku]({{site.url}}/images/uploads/2017/gmail-api/28-heroku-environment.png)]({{site.url}}/images/uploads/2017/gmail-api/28-heroku-environment.png)
 
 Kita juga bisa setup environment variable melalui Heroku CLI melalui command line seperti ini
 
