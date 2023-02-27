@@ -132,17 +132,17 @@ Berikut dependensinya dalam format Maven
 <dependency>
   <groupId>com.google.api-client</groupId>
   <artifactId>google-api-client</artifactId>
-  <version>1.23.0</version>
+  <version>2.2.0</version>
 </dependency>
 <dependency>
   <groupId>com.google.oauth-client</groupId>
   <artifactId>google-oauth-client-jetty</artifactId>
-  <version>1.23.0</version>
+  <version>1.34.1</version>
 </dependency>
 <dependency>
   <groupId>com.google.apis</groupId>
   <artifactId>google-api-services-gmail</artifactId>
-  <version>v1-rev73-1.23.0</version>
+  <version>v1-rev20230206-2.0.0</version>
 </dependency>
 ```
 
@@ -181,7 +181,6 @@ Misalnya, kita akan sediakan folder `${HOME}/.gmail-api/credentials` untuk lokas
 spring.application.name=notifikasi-gmail
 gmail.account.username=endy.muhardin@gmail.com
 gmail.folder=${user.home}/.gmail-api/credentials
-gmail.credential=${gmail.folder}/client_secret.json
 ```
 
 Tentunya jangan lupa kita buatkan dulu folder di atas. Kita juga harus pindahkan dan rename file json yang kita dapatkan dari Google Developer Console tadi. Pastikan akun gmail yang kita taruh di file konfigurasi (`gmail.account.username`) sama dengan akun gmail yang digunakan untuk membuat project di Developer Console.
@@ -220,9 +219,6 @@ public class GmailApiService {
     @Value("${gmail.account.username}")
     private String gmailUsername;
 
-    @Value("${gmail.credential}")
-    private String credentialFile;
-
     @Value("${gmail.folder}")
     private String dataStoreFolder;
 
@@ -240,37 +236,34 @@ public class GmailApiService {
   private static final List<String> SCOPES =
             Arrays.asList(GmailScopes.GMAIL_SEND);
 
+  @Autowired private GoogleClientSecrets clientSecrets;
+  @Autowired private JsonFactory jsonFactory;
+
   private Gmail gmail;
-
+  
   @PostConstruct
-    public void inisialisasiOauth() throws Exception {
-        JsonFactory jsonFactory =
-                JacksonFactory.getDefaultInstance();
+  public void inisialisasiOauth() throws Exception {
+      Files.createDirectories(Paths.get(dataStoreFolder));
 
-        FileDataStoreFactory fileDataStoreFactory =
-                new FileDataStoreFactory(new File(dataStoreFolder));
+      FileDataStoreFactory fileDataStoreFactory =
+              new FileDataStoreFactory(new File(dataStoreFolder));
 
-        HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+      HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
 
-        GoogleClientSecrets clientSecrets =
-                GoogleClientSecrets.load(jsonFactory,
-                        new InputStreamReader(new FileInputStream(credentialFile)));
+      GoogleAuthorizationCodeFlow flow =
+              new GoogleAuthorizationCodeFlow.Builder(
+                      httpTransport, jsonFactory, clientSecrets, SCOPES)
+                      .setDataStoreFactory(fileDataStoreFactory)
+                      .setAccessType("offline")
+                      .build();
 
-        GoogleAuthorizationCodeFlow flow =
-                new GoogleAuthorizationCodeFlow.Builder(
-                        httpTransport, jsonFactory, clientSecrets, SCOPES)
-                        .setDataStoreFactory(fileDataStoreFactory)
-                        .setAccessType("offline")
-                        .build();
+      Credential gmailCredential = new AuthorizationCodeInstalledApp(
+              flow, new LocalServerReceiver()).authorize("user");
 
-        Credential gmailCredential = new AuthorizationCodeInstalledApp(
-                flow, new LocalServerReceiver()).authorize("user");
-
-        gmail = new Gmail.Builder(httpTransport, jsonFactory, gmailCredential)
-                .setApplicationName(applicationName)
-                .build();
-
-    }
+      gmail = new Gmail.Builder(httpTransport, jsonFactory, gmailCredential)
+              .setApplicationName(applicationName)
+              .build();
+  }
 }
 ```
 
@@ -399,18 +392,6 @@ Untuk mengirim email, berikut kode programnya
 ```java
 package com.muhardin.endy.belajar.belajargmailapi.service;
 
-import com.google.api.client.util.Base64;
-import com.google.api.services.gmail.Gmail;
-import com.google.api.services.gmail.model.Message;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
- 
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.io.ByteArrayOutputStream;
-import java.util.Properties;
-
 @Service
 public class GmailApiService {
 
@@ -425,14 +406,14 @@ public class GmailApiService {
             InternetAddress destination = new InternetAddress(to);
             MimeMessage email = new MimeMessage(session);
             email.setFrom(new InternetAddress(gmailUsername, from));
-            email.addRecipient(javax.mail.Message.RecipientType.TO, destination);
+            email.addRecipient(RecipientType.TO, destination);
             email.setSubject(subject);
             email.setContent(content, "text/html; charset=utf-8");
 
             ByteArrayOutputStream buffer = new ByteArrayOutputStream();
             email.writeTo(buffer);
             byte[] bytes = buffer.toByteArray();
-            String encodedEmail = Base64.encodeBase64URLSafeString(bytes);
+            String encodedEmail = Base64.getEncoder().encodeToString(bytes);
             Message message = new Message();
             message.setRaw(encodedEmail);
 
@@ -496,7 +477,7 @@ Berikut tambahan dependensi di `pom.xml` untuk menggunakan Mustache.
 <dependency>
   <groupId>com.github.spullara.mustache.java</groupId>
   <artifactId>compiler</artifactId>
-  <version>0.9.5</version>
+  <version>0.9.10</version>
 </dependency>
 ```
 
@@ -725,7 +706,7 @@ class KonversiCredentialTests {
 	public void testConvertStoredCredential() throws IOException {
 		byte[] credentialFile = Files.readAllBytes(
 				Paths.get(dataStoreFolder + File.separator +
-						AplikasiRegistrasiApplication.STORED_CREDENTIAL_FILE));
+						GmailApiConfiguration.STORED_CREDENTIAL_FILE));
 		String base64Encoded
 				= Base64.getEncoder()
 				.encodeToString(credentialFile);
@@ -737,7 +718,7 @@ class KonversiCredentialTests {
 	public void testConvertClientSecret() throws IOException {
 		byte[] clientSecretJson = Files.readAllBytes(
 				Paths.get(dataStoreFolder + File.separator +
-						AplikasiRegistrasiApplication.CLIENT_SECRET_JSON_FILE));
+						GmailApiConfiguration.CLIENT_SECRET_JSON_FILE));
 		String base64Encoded
 				= Base64.getEncoder()
 				.encodeToString(clientSecretJson);
