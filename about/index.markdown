@@ -19,4 +19,4 @@ Software Developer, based in Jakarta, live in Bogor.
   * Facebook : [http://www.facebook.com/endy.muhardin](http://www.facebook.com/endy.muhardin)
   * LinkedIn : [http://id.linkedin.com/pub/endy-muhardin/3/940/1bb](http://id.linkedin.com/pub/endy-muhardin/3/940/1bb)
 
-[![Contact Card](files/contact.png)](files/contact.png)
+[![Contact Card]({{site.url}}/files/contact.png)]({{site.url}}/files/contact.png)
