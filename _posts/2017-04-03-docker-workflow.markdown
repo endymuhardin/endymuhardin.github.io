@@ -377,9 +377,9 @@ ENTRYPOINT ["java", "-jar", "application.jar"]
 
 `Dockerfile` ini masih bisa kita kembangkan lagi menjadi 3 tahap, yaitu :
 
-    1. Build source code menjadi jar. Kita juga pisahkan layer download dependensi dan compile, supaya bisa dicache.
-    2. Extract jar untuk memisahkan dependensi.
-    3. Create image dengan menaruh dependensi dan aplikasi ke layer terpisah.
+1. Build source code menjadi jar. Kita juga pisahkan layer download dependensi dan compile, supaya bisa dicache.
+2. Extract jar untuk memisahkan dependensi.
+3. Create image dengan menaruh dependensi dan aplikasi ke layer terpisah.
 
 `Dockerfile`nya menjadi seperti ini
 
