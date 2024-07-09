@@ -385,7 +385,7 @@ ENTRYPOINT ["java", "-jar", "application.jar"]
 
 ```
 # stage 1 : build jar dulu
-FROM maven:3-eclipse-temurin-17 as mvnbuild
+FROM maven:3-eclipse-temurin-17 AS mvnbuild
 # membuat working folder
 WORKDIR /opt/aplikasi
 # menambahkan pom.xml dari laptop ke dalam container
@@ -398,7 +398,7 @@ COPY src ./src
 RUN mvn package
 
 # stage 2 : extract jar untuk memisahkan layer
-FROM bellsoft/liberica-openjre-alpine:17-cds as jarlayer
+FROM bellsoft/liberica-openjre-alpine:17-cds AS jarlayer
 WORKDIR /builder
 COPY --from=mvnbuild /opt/aplikasi/target/*.jar application.jar
 RUN java -Djarmode=tools -jar application.jar extract --layers --destination extracted
