@@ -69,50 +69,50 @@ Berikut adalah contoh file `docker-compose.yml` untuk database MySQL
 
 ```yml
 services:
-  db-timezone:
+  db-belajar:
     image: mysql
     platform: linux/x86_64
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
-      - MYSQL_DATABASE=timezonedb
-      - MYSQL_USER=timezone
-      - MYSQL_PASSWORD=timezone123
+      - MYSQL_DATABASE=belajardb
+      - MYSQL_USER=belajar
+      - MYSQL_PASSWORD=belajar123
     ports:
       - 3306:3306
     volumes:
-      - ./db-timezone:/var/lib/mysql
+      - ./db-belajar:/var/lib/mysql
 ```
 
 Ini untuk database PostgreSQL
 
 ```yml
 services:
-  db-authserver:
+  db-belajar:
     image: postgres
     environment:
-      - POSTGRES_DB=authserver-db
-      - POSTGRES_USER=authserver
-      - POSTGRES_PASSWORD=authserver123
+      - POSTGRES_DB=belajar-db
+      - POSTGRES_USER=belajar
+      - POSTGRES_PASSWORD=belajar123
     ports:
       - 5432:5432
     volumes:
-      - ./db-authserver:/var/lib/postgresql/data
+      - ./db-belajar:/var/lib/postgresql/data
 ```
 
 Bila aplikasi kita butuh PostgreSQL dan Kafka sekaligus, tinggal kita pasang keduanya seperti ini
 
 ```yml
 services:
-  belajar-docker-db:
+  db-belajar:
     image: postgres:14
     environment:
-      - POSTGRES_DB=belajar-docker-db
-      - POSTGRES_USER=belajardocker
-      - POSTGRES_PASSWORD=belajar-docker123
+      - POSTGRES_DB=belajar-db
+      - POSTGRES_USER=belajar
+      - POSTGRES_PASSWORD=belajar123
     ports:
       - 5432:5432
     volumes:
-      - ./db-belajar-docker:/var/lib/postgresql/data
+      - ./db-belajar:/var/lib/postgresql/data
 
   zookeeper:
     image: confluentinc/cp-zookeeper
