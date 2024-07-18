@@ -103,16 +103,16 @@ Bila aplikasi kita butuh PostgreSQL dan Kafka sekaligus, tinggal kita pasang ked
 
 ```yml
 services:
-  db-muamalat-va:
+  belajar-docker-db:
     image: postgres:14
     environment:
-      - POSTGRES_DB=muamalat-va-db
-      - POSTGRES_USER=muamalat
-      - POSTGRES_PASSWORD=muamalat123
+      - POSTGRES_DB=belajar-docker-db
+      - POSTGRES_USER=belajardocker
+      - POSTGRES_PASSWORD=belajar-docker123
     ports:
       - 5432:5432
     volumes:
-      - ./db-muamalat-va:/var/lib/postgresql/data
+      - ./db-belajar-docker:/var/lib/postgresql/data
 
   zookeeper:
     image: confluentinc/cp-zookeeper
@@ -142,4 +142,10 @@ Dengan adanya `docker-compose` ini, kita tinggal menjalankan perintah `docker-co
 
 Jangan lupa daftarkan folder yang berisi data testing tadi (`db-timezone`, `db-authserver`) ke `.gitignore` supaya tidak ikut tersimpan di git.
 
-Demikian tips untuk menyiapkan development environment agar kita mudah menangani banyak project sekaligus. Selamat mencoba, semoga bermanfaat ...
+Demikian tips untuk menyiapkan development environment agar kita mudah menangani banyak project sekaligus. 
+
+Untuk yang butuh penjelasan secara visual, bisa menonton video penjelasannya di Youtube.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IT3dB-8HxLA?si=fWz9O4hB208TcXnJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Selamat mencoba, semoga bermanfaat ...
