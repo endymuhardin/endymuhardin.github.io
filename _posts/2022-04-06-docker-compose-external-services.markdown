@@ -142,6 +142,68 @@ Dengan adanya `docker-compose` ini, kita tinggal menjalankan perintah `docker-co
 
 Jangan lupa daftarkan folder yang berisi data testing tadi (`db-timezone`, `db-authserver`) ke `.gitignore` supaya tidak ikut tersimpan di git.
 
+
+## Connect ke Database dalam Docker ##
+
+Apabila kita hanya bermodalkan `Docker` untuk menjalankan database, tanpa menginstal MySQL atau PostgreSQL, kita tidak akan bisa menjalankan aplikasi commandline `mysql` dan `psql` karena aplikasi tersebut tidak terinstal. Contohnya, bila kita mencoba connect seperti ini
+
+```
+psql -h 127.0.0.1 -U belajar -d belajar-db
+```
+
+Maka kita akan mendapatkan output seperti ini
+
+```
+zsh: command not found: psql
+```
+
+Oleh karena itu, kita harus menjalankan `psql` tersebut di dalam docker container postgresql. Kita cari dulu nama containernya dengan perintah `docker ps -a`. Outputnya seperti ini
+
+```
+CONTAINER ID   IMAGE             COMMAND                  CREATED              STATUS              PORTS                    NAMES
+0c576d91f55d   postgres          "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:5432->5432/tcp   belajar-vault-db-belajar-1
+```
+
+Kita bisa connect ke database dengan perintah berikut
+
+```
+docker exec -it belajar-vault-db-belajar-1 psql -U belajar -d belajar-db
+```
+
+Setelah dijalankan, kita akan mendapatkan prompt psql seperti ini
+
+```
+psql (16.3 (Debian 16.3-1.pgdg120+1))
+Type "help" for help.
+
+belajar-db=# 
+```
+
+Sedangkan untuk MySQL, perintahnya sebagai berikut
+
+```
+docker exec -it nama-container-mysql mysql -u belajar belajardb -p
+```
+
+Kita akan disambut dengan prompt password. Setelah kita masukkan password, maka kita akan mendapati prompt mysql seperti ini
+
+```
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 9.0.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+```
+
 Demikian tips untuk menyiapkan development environment agar kita mudah menangani banyak project sekaligus. 
 
 Untuk yang butuh penjelasan secara visual, bisa menonton video penjelasannya di Youtube.
