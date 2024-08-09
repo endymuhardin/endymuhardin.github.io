@@ -210,4 +210,134 @@ Untuk yang butuh penjelasan secara visual, bisa menonton video penjelasannya di 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IT3dB-8HxLA?si=fWz9O4hB208TcXnJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+## Docker Compose Komplit ##
+
+Sebagai referensi, berikut file `docker-compose.yml` yang saya gunakan untuk training microservices. Asal laptopnya kuat, kita bisa jalankan semua service ini untuk melayani studi kasus microservice yang kita demokan.
+
+```yml
+services:
+  db-rekening:
+    image: postgres
+    environment:
+      - POSTGRES_DB=rekening-db
+      - POSTGRES_USER=rekening
+      - POSTGRES_PASSWORD=rekening123
+    ports:
+      - 54321:5432
+    volumes:
+      - ../rekening/db-rekening:/var/lib/postgresql/data
+
+  db-pembayaran:
+    image: postgres
+    environment:
+      - POSTGRES_DB=pembayaran-db
+      - POSTGRES_USER=pembayaran
+      - POSTGRES_PASSWORD=pembayaran123
+    ports:
+      - 54322:5432
+    volumes:
+      - ../pembayaran/db-pembayaran:/var/lib/postgresql/data
+      
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    volumes:
+      - ./prometheus/config:/etc/prometheus
+      - ./prometheus/data:/prometheus
+  
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+    volumes:
+      - ./grafana/config:/etc/grafana/provisioning/datasources
+      - ./grafana/data:/var/lib/grafana
+
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - 9411:9411
+  
+  elasticsearch:
+    image: elasticsearch:7.17.23
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    ports:
+      - "9200:9200"
+
+  logstash:
+    image: logstash:7.17.23
+    command: -f /etc/logstash/conf.d/
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    volumes:
+      - ./logstash/config:/etc/logstash/conf.d/
+    ports:
+      - "5001:5001"
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: kibana:7.17.23
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+  kafka:
+    image: 'bitnami/kafka:latest'
+    environment:
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://0.0.0.0:9094
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,EXTERNAL://172.16.2.96:9094
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT
+    ports:
+      - '9092:9092'
+      - '9094:9094'
+
+  db-keycloak:
+    image: postgres
+    volumes:
+      - ./keycloak-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloakdb
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak1234
+  
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0.6
+    command: start
+    environment:
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_PORT: 20000
+      KC_HOSTNAME_STRICT_BACKCHANNEL: false
+      KC_HTTP_ENABLED: true
+      KC_HOSTNAME_STRICT_HTTPS: false
+      KC_HEALTH_ENABLED: true
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin1234
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://db-keycloak/keycloakdb
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloak1234
+    ports:
+      - 20000:8080
+    depends_on:
+      - db-keycloak
+```
+
 Selamat mencoba, semoga bermanfaat ...
