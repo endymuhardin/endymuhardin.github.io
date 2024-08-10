@@ -46,7 +46,7 @@ Dengan memisahkan kedua hal tersebut menjadi layer tersendiri, Docker bisa membu
 Bentuknya seperti ini
 
 ```
-FROM bellsoft/liberica-openjre-alpine:21-cds as builder
+FROM bellsoft/liberica-openjre-alpine:21-cds AS builder
 WORKDIR /builder
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} application.jar
