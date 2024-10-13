@@ -21,7 +21,7 @@ Seiring dengan perkembangan zaman, saat ini setup Wireguard semakin mudah. Setid
 
 Berikut adalah cara setup untuk menjalankan wg-easy yang dilengkapi dengan Nginx Front Proxy dengan sertifikat SSL dari Letsencrypt.
 
-<!-- more -->
+<!--more-->
 
 Pertama, kita buat dulu file `docker-compose.yml` sebagai berikut
 
