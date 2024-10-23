@@ -84,7 +84,9 @@ Ada beberapa konfigurasi yang saya lakukan, yaitu :
 
 ## Informasi Umum ##
 
-``` ruby _config.yml
+File  `_config.yml`
+
+```ruby
 url: http://endy.artivisi.com/blog
 title: Living life and make it better
 subtitle: life, learn, contribute
@@ -94,14 +96,14 @@ author: Endy Muhardin
 ## Permalink ##
 Supaya sama dengan URL blog lama, format URL di Octopress juga harus disesuaikan sbb : 
 
-``` ruby _config.yml
+```ruby
 permalink: /:categories/:title/
 ```
 
 ## Pagination ##
 Di halaman pertama cukup tampilkan 3 entri terbaru. Di sidebar, tampilkan 10 link artikel terakhir. 
 
-``` ruby _config.yml
+``` ruby
 paginate: 3
 recent_posts: 10
 ```
@@ -120,19 +122,17 @@ Sebetulnya ada beberapa cara untuk memigrasi artikel lama. Saya menggunakan exit
 
 Selanjutnya, saya harus membersihkan tag image dan caption bawaan Wordpress, karena tidak bisa tampil dengan baik. Saya menggunakan perintah sed di linux agar bisa memproses banyak file sekaligus. 
 
-{% raw %}
-
 Berikut perintah untuk memperbaiki tag image yang tadinya seperti ini <code>!\[Synergy Screenshot](/images/uploads/2006/05/synergy.gif)</code> menjadi seperti ini <code>![Synergy Screenshot ](/uploads/2006/05/synergy.gif) </code>, saya gunakan perintah berikut : 
 
 
-``` sh
+```sh
 find . -name "*.markdown" -print | xargs sed -i "s|\[!\[\(.*\)\](\(.*\))\](\(.*\))|{% img \2 \1 %}|g"
 ```
 
 
 Tag caption juga harus dihilangkan, berikut perintahnya: 
 
-``` sh
+```sh
 find . -name "*.markdown" -print | xargs sed -i "s|\[caption.*\]\(.*\)\[/caption\]|\1|g"
 ```
 
@@ -140,14 +140,14 @@ Secara default, exitwp akan menghasilkan tag image dengan URL lengkap, misalnya 
 
 Berikut perintahnya : 
 
-``` sh
+```sh
 find . -name "*.markdown" -print | xargs sed -i "s|http://endy.artivisi.com/blog/wp-content|/images|g"
 ```
 
 ## Memproses tag gist ##
 Seperti saya tuliskan di sini, saya menggunakan plugin Wordpress untuk [menampilkan Gist](http://endy.artivisi.com/blog/Aplikasi/menggunakan-gist/). Octopress sudah memiliki dukungan sendiri terhadap Gist, sehingga harus ada proses konversi. Berikut perintahnya : 
 
-``` sh
+```sh
 find . -name "*.markdown" -print | xargs sed -i "s|\[gist id=\(.*\) file=\(.*\)\]|{% gist \1 \2 %}|g"
 find . -name "*.markdown" -print | xargs sed -i "s| bump=.||g"
 ```
@@ -161,7 +161,7 @@ Untuk menggantikan fitur komentar, ada beberapa alternatif yang bisa digunakan, 
 
 Melihat audiens blog yang rata-rata memiliki akun Facebook, maka baiklah kita pilih Facebook saja. Cara mengaktifkannya bisa dibaca [di tutorial ini](http://blog.grambo.me.uk/blog/2012/02/20/adding-facebook-comments-to-octopress/). Ada sedikit bug disana, yaitu pada file <code>post.html</code> dan <code>page.html</code>. Harusnya seperti ini : 
 
-``` ruby
+```ruby
 {% if site.facebook_appid and page.comments == true %}
   <section>
     <h1>Comments</h1>
@@ -171,7 +171,6 @@ Melihat audiens blog yang rata-rata memiliki akun Facebook, maka baiklah kita pi
   </section>
 {% endif %}
 ```
-{% endraw %}
 
 Daftar komentar orang bisa kita lihat dan moderasi di [https://developers.facebook.com/tools/comments](https://developers.facebook.com/tools/comments).
 
