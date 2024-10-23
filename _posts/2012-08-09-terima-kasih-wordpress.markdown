@@ -80,11 +80,9 @@ Octopress disiapkan dengan beberapa langkah berikut :
 3. Clone repository Octopress
 4. Konfigurasi Octopress
 
-Ada beberapa konfigurasi yang saya lakukan, yaitu : 
+Ada beberapa konfigurasi yang saya lakukan di file `_config.yml`, yaitu : 
 
 ## Informasi Umum ##
-
-File  `_config.yml`
 
 ```ruby
 url: http://endy.artivisi.com/blog
@@ -103,7 +101,7 @@ permalink: /:categories/:title/
 ## Pagination ##
 Di halaman pertama cukup tampilkan 3 entri terbaru. Di sidebar, tampilkan 10 link artikel terakhir. 
 
-``` ruby
+```ruby
 paginate: 3
 recent_posts: 10
 ```
