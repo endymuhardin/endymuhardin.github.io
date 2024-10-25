@@ -159,6 +159,7 @@ Untuk menggantikan fitur komentar, ada beberapa alternatif yang bisa digunakan, 
 
 Melihat audiens blog yang rata-rata memiliki akun Facebook, maka baiklah kita pilih Facebook saja. Cara mengaktifkannya bisa dibaca [di tutorial ini](http://blog.grambo.me.uk/blog/2012/02/20/adding-facebook-comments-to-octopress/). Ada sedikit bug disana, yaitu pada file <code>post.html</code> dan <code>page.html</code>. Harusnya seperti ini : 
 
+{% raw %}
 ```ruby
 {% if site.facebook_appid and page.comments == true %}
   <section>
@@ -169,6 +170,7 @@ Melihat audiens blog yang rata-rata memiliki akun Facebook, maka baiklah kita pi
   </section>
 {% endif %}
 ```
+{% endraw %}
 
 Daftar komentar orang bisa kita lihat dan moderasi di [https://developers.facebook.com/tools/comments](https://developers.facebook.com/tools/comments).
 
