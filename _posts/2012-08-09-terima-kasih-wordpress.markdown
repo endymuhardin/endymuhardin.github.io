@@ -122,11 +122,11 @@ Selanjutnya, saya harus membersihkan tag image dan caption bawaan Wordpress, kar
 
 Berikut perintah untuk memperbaiki tag image yang tadinya seperti ini <code>!\[Synergy Screenshot](/images/uploads/2006/05/synergy.gif)</code> menjadi seperti ini <code>![Synergy Screenshot ](/uploads/2006/05/synergy.gif) </code>, saya gunakan perintah berikut : 
 
-
+{% raw %}
 ```sh
 find . -name "*.markdown" -print | xargs sed -i "s|\[!\[\(.*\)\](\(.*\))\](\(.*\))|{% img \2 \1 %}|g"
 ```
-
+{% endraw %}
 
 Tag caption juga harus dihilangkan, berikut perintahnya: 
 
