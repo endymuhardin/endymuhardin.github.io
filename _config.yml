@@ -12,8 +12,7 @@ permalink:        /:categories/:title/
 title:            'Living life and Make it Better'
 tagline:          'life, learn, contribute'
 description:      'learns software development, java programming, android, linux, and other open source technology'
-url:              https://software.endy.muhardin.com
-
+url:              https://endymuhardin.github.io
 author:
   name:           Endy Muhardin
   email:          endy.muhardin@gmail.com
@@ -21,7 +20,7 @@ author:
   twitter:        endymuhardin
   linkedin:       endy-muhardin
   facebook:       endy.muhardin
-  url:            http://endy.muhardin.com
+  url:            https://software.endy.muhardin.com
   email_md5:      a3c8a6a973fc0c0fa3d89cb69c103ad0
   bio:            Software Developer berdomisili di Jabodetabek, berkutat di lingkungan open source, terutama Java dan Linux.
 
